@@ -20,7 +20,7 @@ import {
 import {ShopifySalesChannel, Seo, useNonce} from '@shopify/hydrogen';
 import invariant from 'tiny-invariant';
 
-import {Layout} from '~/components';
+import Layout from '~/components/layouts/default';
 import {seoPayload} from '~/lib/seo.server';
 
 import favicon from '../public/favicon.svg';
@@ -30,6 +30,8 @@ import {NotFound} from './components/NotFound';
 import styles from './styles/app.css';
 import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
 import {useAnalytics} from './hooks/useAnalytics';
+import {useChangeLanguage} from 'remix-i18next';
+import {LAYOUT_QUERY} from './graphql/common';
 
 // This is important to avoid re-fetching root queries on sub-navigations
 export const shouldRevalidate: ShouldRevalidateFunction = ({
@@ -61,7 +63,12 @@ export const links: LinksFunction = () => {
       rel: 'preconnect',
       href: 'https://shop.app',
     },
-    {rel: 'icon', type: 'image/svg+xml', href: favicon},
+    // {rel: 'icon', type: 'image/svg+xml', href: favicon},
+    {
+      rel: 'icon',
+      type: 'image/png',
+      href: 'https://cdn.shopify.com/s/files/1/0622/9511/3954/files/32x32.png?v=1671002587',
+    },
   ];
 };
 
@@ -86,6 +93,11 @@ export async function loader({request, context}: LoaderArgs) {
     seo,
   });
 }
+export const handle = {
+  // In the handle export, we could add a i18n key with namespaces our route
+  // will need to load. This key can be a single string or an array of strings.
+  i18n: ['common', 'home'],
+};
 
 export default function App() {
   const nonce = useNonce();
@@ -94,6 +106,12 @@ export default function App() {
   const hasUserConsent = true;
 
   useAnalytics(hasUserConsent);
+
+  // This hook will change the i18n instance language to the current locale
+  // detected by the loader, this way, when we do something to change the
+  // language, this locale will change and i18next will load the correct
+  // translation files
+  useChangeLanguage(locale.language.toLowerCase());
 
   return (
     <html lang={locale.language}>
@@ -105,10 +123,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Layout
-          key={`${locale.language}-${locale.country}`}
-          layout={data.layout}
-        >
+        <Layout key={`${locale.language}-${locale.country}`}>
           <Outlet />
         </Layout>
         <ScrollRestoration nonce={nonce} />
@@ -144,10 +159,7 @@ export function ErrorBoundary({error}: {error: Error}) {
         <Links />
       </head>
       <body>
-        <Layout
-          layout={root?.data?.layout}
-          key={`${locale.language}-${locale.country}`}
-        >
+        <Layout key={`${locale.language}-${locale.country}`}>
           {isRouteError ? (
             <>
               {routeError.status === 404 ? (
@@ -170,67 +182,13 @@ export function ErrorBoundary({error}: {error: Error}) {
   );
 }
 
-const LAYOUT_QUERY = `#graphql
-  query layout(
-    $language: LanguageCode
-    $headerMenuHandle: String!
-    $footerMenuHandle: String!
-  ) @inContext(language: $language) {
-    shop {
-      ...Shop
-    }
-    headerMenu: menu(handle: $headerMenuHandle) {
-      ...Menu
-    }
-    footerMenu: menu(handle: $footerMenuHandle) {
-      ...Menu
-    }
-  }
-  fragment Shop on Shop {
-    id
-    name
-    description
-    primaryDomain {
-      url
-    }
-    brand {
-      logo {
-        image {
-          url
-        }
-      }
-    }
-  }
-  fragment MenuItem on MenuItem {
-    id
-    resourceId
-    tags
-    title
-    type
-    url
-  }
-  fragment ChildMenuItem on MenuItem {
-    ...MenuItem
-  }
-  fragment ParentMenuItem on MenuItem {
-    ...MenuItem
-    items {
-      ...ChildMenuItem
-    }
-  }
-  fragment Menu on Menu {
-    id
-    items {
-      ...ParentMenuItem
-    }
-  }
-` as const;
-
 async function getLayoutData({storefront, env}: AppLoadContext) {
   const data = await storefront.query(LAYOUT_QUERY, {
     variables: {
       headerMenuHandle: 'main-menu',
       footerMenuHandle: 'footer',
+      menu1Handle: 'footer-knowledge',
+      menu2Handle: 'cpap',
       language: storefront.i18n.language,
     },
   });

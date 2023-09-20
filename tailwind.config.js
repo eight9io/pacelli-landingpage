@@ -1,5 +1,6 @@
 import formsPlugin from '@tailwindcss/forms';
 import typographyPlugin from '@tailwindcss/typography';
+import daisyui from 'daisyui';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -7,7 +8,48 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: 'rgb(var(--color-primary) / <alpha-value>)',
+        // primary: 'rgb(var(--color-primary) / <alpha-value>)',
+        // secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
+        primary: {
+          50: '#f4f9f8',
+          100: '#dcebe7',
+          200: '#b8d7d0',
+          300: '#8cbcb2',
+          400: '#649d94',
+          500: '#4a827a',
+          600: '#3a6761',
+          700: '#315450',
+          800: '#2a4542',
+          900: '#273a38',
+          950: '#142423',
+          DEFAULT: '#142423',
+        },
+        secondary: {
+          50: '#edfffb',
+          100: '#bffff6',
+          200: '#80ffef',
+          300: '#39ffe8',
+          400: '#01ffd8',
+          500: '#00e4c1',
+          600: '#00b8a1',
+          700: '#009181',
+          800: '#007268',
+          900: '#03554d',
+          950: '#003a37',
+          DEFAULT: '#03554d',
+        },
+        neutral: {
+          50: '#F3F4F6',
+          100: '#E5E7EB',
+          300: '#D1D5DB',
+          400: '#9CA3AF',
+          600: '#4B5563',
+          800: '#111827',
+          DEFAULT: '#4B5563',
+        },
+        base: {
+          100: '#F3F4F6',
+        },
         contrast: 'rgb(var(--color-contrast) / <alpha-value>)',
         notice: 'rgb(var(--color-accent) / <alpha-value>)',
         shopPay: 'rgb(var(--color-shop-pay) / <alpha-value>)',
@@ -38,10 +80,6 @@ export default {
       width: {
         mobileGallery: 'calc(100vw - 3rem)',
       },
-      fontFamily: {
-        sans: ['Helvetica Neue', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif: ['"IBMPlexSerif"', 'Palatino', 'ui-serif'],
-      },
       fontSize: {
         display: ['var(--font-size-display)', '1.1'],
         heading: ['var(--font-size-heading)', '1.25'],
@@ -60,5 +98,59 @@ export default {
       },
     },
   },
-  plugins: [formsPlugin, typographyPlugin],
+  daisyui: {
+    themes: [
+      {
+        default: {
+          primary: {
+            50: '#f4f9f8',
+            100: '#dcebe7',
+            200: '#b8d7d0',
+            300: '#8cbcb2',
+            400: '#649d94',
+            500: '#4a827a',
+            600: '#3a6761',
+            700: '#315450',
+            800: '#2a4542',
+            900: '#273a38',
+            950: '#142423',
+            DEFAULT: '#142423',
+          },
+          secondary: {
+            50: '#edfffb',
+            100: '#bffff6',
+            200: '#80ffef',
+            300: '#39ffe8',
+            400: '#01ffd8',
+            500: '#00e4c1',
+            600: '#00b8a1',
+            700: '#009181',
+            800: '#007268',
+            900: '#03554d',
+            950: '#003a37',
+            DEFAULT: '#03554d',
+          },
+          neutral: {
+            50: '#F3F4F6',
+            100: '#E5E7EB',
+            300: '#D1D5DB',
+            500: '#9CA3AF',
+            600: '#4B5563',
+            800: '#111827',
+            DEFAULT: '#4B5563',
+          },
+          base: {
+            100: '#F3F4F6',
+          },
+          // success: colors.green,
+          // info: colors.cyan,
+          // danger: colors.red,
+          // warning: colors.orange,
+          // light: colors.white,
+          // dark: colors.black,
+        },
+      },
+    ],
+  },
+  plugins: [formsPlugin, typographyPlugin, daisyui],
 };

@@ -18,6 +18,7 @@ import {
   FeaturedProducts,
 } from '~/components';
 import {getInputStyleClasses} from '~/lib/utils';
+import {SfIconAdd, SfIconRemove} from '@storefront-ui/react';
 
 type Layouts = 'page' | 'drawer';
 
@@ -244,7 +245,7 @@ function CartLineItem({line}: {line: CartLine}) {
             width={110}
             height={110}
             data={merchandise.image}
-            className="object-cover object-center w-24 h-24 border rounded md:w-28 md:h-28"
+            className="object-contain object-center w-24 h-24 border rounded md:w-28 md:h-28"
             alt={merchandise.title}
           />
         )}
@@ -316,7 +317,7 @@ function CartLineQuantityAdjust({line}: {line: CartLine}) {
       <label htmlFor={`quantity-${lineId}`} className="sr-only">
         Quantity, {quantity}
       </label>
-      <div className="flex items-center border rounded">
+      <div className="flex items-center border rounded-full">
         <UpdateCartButton lines={[{id: lineId, quantity: prevQuantity}]}>
           <button
             name="decrease-quantity"
@@ -325,7 +326,7 @@ function CartLineQuantityAdjust({line}: {line: CartLine}) {
             value={prevQuantity}
             disabled={quantity <= 1}
           >
-            <span>&#8722;</span>
+            <SfIconRemove />
           </button>
         </UpdateCartButton>
 
@@ -340,7 +341,7 @@ function CartLineQuantityAdjust({line}: {line: CartLine}) {
             value={nextQuantity}
             aria-label="Increase quantity"
           >
-            <span>&#43;</span>
+            <SfIconAdd />
           </button>
         </UpdateCartButton>
       </div>

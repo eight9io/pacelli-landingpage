@@ -44,3 +44,5 @@ export function Link(props: LinkProps) {
 
   return <RemixLink to={toWithLocale} className={className} {...resOfProps} />;
 }
+
+export default Link;

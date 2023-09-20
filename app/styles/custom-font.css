@@ -11,3 +11,38 @@
   font-style: italic;
   src: url('./fonts/IBMPlexSerif-TextItalic.woff2') format('woff2');
 }
+@font-face {
+  font-family: 'Quicksand';
+  font-display: swap;
+  font-weight: 300;
+  src: url('./fonts/Quicksand-Light.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-display: swap;
+  font-weight: 400;
+  src: url('./fonts/Quicksand-Regular.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-display: swap;
+  font-weight: 500;
+  src: url('./fonts/Quicksand-Medium.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-display: swap;
+  font-weight: 600;
+  src: url('./fonts/Quicksand-SemiBold.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-display: swap;
+  font-weight: 700;
+  src: url('./fonts/Quicksand-Bold.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'Urbanist';
+  font-display: swap;
+  src: url('./fonts/Urbanist-VariableFont_wght.ttf') format('ttf');
+}

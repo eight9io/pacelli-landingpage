@@ -2,6 +2,24 @@ import type {Localizations} from '~/lib/type';
 
 export const countries: Localizations = {
   default: {
+    label: 'Italy (EUR €)',
+    language: 'IT',
+    country: 'IT',
+    currency: 'EUR',
+  },
+  '/en-it': {
+    label: 'Italy (EUR €)',
+    language: 'EN',
+    country: 'IT',
+    currency: 'EUR',
+  },
+  '/en-au': {
+    label: 'Australia (AUD $)',
+    language: 'EN',
+    country: 'AU',
+    currency: 'AUD',
+  },
+  '/en-us': {
     label: 'United States (USD $)',
     language: 'EN',
     country: 'US',
@@ -18,12 +36,6 @@ export const countries: Localizations = {
     language: 'EN',
     country: 'AT',
     currency: 'EUR',
-  },
-  '/en-au': {
-    label: 'Australia (AUD $)',
-    language: 'EN',
-    country: 'AU',
-    currency: 'AUD',
   },
   '/en-be': {
     label: 'Belgium (EUR €)',
@@ -108,12 +120,6 @@ export const countries: Localizations = {
     language: 'EN',
     country: 'IN',
     currency: 'INR',
-  },
-  '/en-it': {
-    label: 'Italy (EUR €)',
-    language: 'EN',
-    country: 'IT',
-    currency: 'EUR',
   },
   '/en-jp': {
     label: 'Japan (JPY ¥)',

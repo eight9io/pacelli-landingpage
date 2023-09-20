@@ -41,18 +41,19 @@ export function SortFilter({
   children,
   collections = [],
 }: Props) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   return (
     <>
       <div className="flex items-center justify-between w-full">
-        <button
+        {/* <button
           onClick={() => setIsOpen(!isOpen)}
           className={
             'relative flex items-center justify-center w-8 h-8 focus:ring-primary/5'
           }
         >
           <IconFilters />
-        </button>
+        </button> */}
+        <span></span>
         <SortMenu />
       </div>
       <div className="flex flex-col flex-wrap md:flex-row">
@@ -359,18 +360,18 @@ export default function SortMenu() {
   const activeItem = items.find((item) => item.key === params.get('sort'));
 
   return (
-    <Menu as="div" className="relative z-40">
+    <Menu as="div" className="relative z-30">
       <Menu.Button className="flex items-center">
-        <span className="px-2">
-          <span className="px-2 font-medium">Sort by:</span>
+        <span className="px-2 font-medium">Sort by:</span>
+        <span className="py-1 px-4 flex items-center gap-1 border-neutral border rounded-full">
           <span>{(activeItem || items[0]).label}</span>
+          <IconCaret />
         </span>
-        <IconCaret />
       </Menu.Button>
 
       <Menu.Items
         as="nav"
-        className="absolute right-0 flex flex-col p-4 text-right rounded-sm bg-contrast"
+        className="shadow absolute right-0 top-full flex flex-col p-4 text-right rounded-sm bg-contrast"
       >
         {items.map((item) => (
           <Menu.Item key={item.label}>

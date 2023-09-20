@@ -8,6 +8,12 @@ import {Text, Link, AddToCartButton, Button} from '~/components';
 import {isDiscounted, isNewArrival} from '~/lib/utils';
 import {getProductPlaceholder} from '~/lib/placeholders';
 
+import {
+  SfButton,
+  SfIconShoppingCart,
+  SfIconFavorite,
+} from '@storefront-ui/react';
+
 export function ProductCard({
   product,
   label,
@@ -56,78 +62,87 @@ export function ProductCard({
   return (
     <div className="flex flex-col gap-2">
       <Link
+        className="border border-neutral-200 rounded-md hover:shadow-lg overflow-hidden min-w-[250px]"
         onClick={onClick}
         to={`/products/${product.handle}`}
         prefetch="intent"
       >
-        <div className={clsx('grid gap-4', className)}>
-          <div className="card-image aspect-[4/5] bg-primary/5">
-            {image && (
-              <Image
-                className="object-cover w-full fadeIn"
-                sizes="(min-width: 64em) 25vw, (min-width: 48em) 30vw, 45vw"
-                aspectRatio="4/5"
-                data={image}
-                alt={image.altText || `Picture of ${product.title}`}
-                loading={loading}
+        <div className="relative">
+          {image && (
+            <Image
+              className="object-cover w-full fadeIn"
+              sizes="(min-width: 64em) 25vw, (min-width: 48em) 30vw, 45vw"
+              aspectRatio="4/5"
+              data={image}
+              alt={image.altText || `Picture of ${product.title}`}
+              loading={loading}
+            />
+          )}
+          <SfButton
+            type="button"
+            variant="tertiary"
+            size="sm"
+            square
+            className="absolute bottom-0 right-0 mr-2 mb-2 bg-white ring-1 ring-inset ring-neutral-200 !rounded-full"
+            aria-label="Add to wishlist"
+          >
+            <SfIconFavorite size="sm" />
+          </SfButton>
+        </div>
+        <div className="p-4 border-t border-neutral-200">
+          <Text className="text-secondary no-underline line-clamp-2 h-12">
+            {product.title}
+          </Text>
+          <span className="block pb-2 font-bold typography-text-lg">
+            {isDiscounted(price as MoneyV2, compareAtPrice as MoneyV2) && (
+              <CompareAtPrice
+                className={'opacity-50 font-normal'}
+                data={compareAtPrice as MoneyV2}
               />
             )}
-            <Text
-              as="label"
-              size="fine"
-              className="absolute top-0 right-0 m-4 text-right text-notice"
+            <Money
+              className="text-2xl text-secondary"
+              withoutTrailingZeros
+              data={price!}
+            />
+          </span>
+
+          {quickAdd && firstVariant.availableForSale && (
+            <AddToCartButton
+              lines={[
+                {
+                  quantity: 1,
+                  merchandiseId: firstVariant.id,
+                },
+              ]}
+              variant="primary"
+              className="mt-2 flex justify-center gap-2"
+              analytics={{
+                products: [productAnalytics],
+                totalValue: parseFloat(productAnalytics.price),
+              }}
             >
-              {cardLabel}
-            </Text>
-          </div>
-          <div className="grid gap-1">
-            <Text
-              className="w-full overflow-hidden whitespace-nowrap text-ellipsis "
-              as="h3"
-            >
-              {product.title}
-            </Text>
-            <div className="flex gap-4">
-              <Text className="flex gap-4">
-                <Money withoutTrailingZeros data={price!} />
-                {isDiscounted(price as MoneyV2, compareAtPrice as MoneyV2) && (
-                  <CompareAtPrice
-                    className={'opacity-50'}
-                    data={compareAtPrice as MoneyV2}
-                  />
-                )}
+              <SfIconShoppingCart className="hidden md:block" size="sm" />
+              <Text
+                as="span"
+                className="flex items-center justify-center gap-2"
+              >
+                Add to Cart
               </Text>
-            </div>
-          </div>
+            </AddToCartButton>
+          )}
+          {quickAdd && !firstVariant.availableForSale && (
+            <Button variant="secondary" className="mt-2" disabled>
+              <Text
+                as="span"
+                className="flex items-center justify-center gap-2"
+              >
+                Sold out
+              </Text>
+            </Button>
+          )}
         </div>
       </Link>
-      {quickAdd && firstVariant.availableForSale && (
-        <AddToCartButton
-          lines={[
-            {
-              quantity: 1,
-              merchandiseId: firstVariant.id,
-            },
-          ]}
-          variant="secondary"
-          className="mt-2"
-          analytics={{
-            products: [productAnalytics],
-            totalValue: parseFloat(productAnalytics.price),
-          }}
-        >
-          <Text as="span" className="flex items-center justify-center gap-2">
-            Add to Cart
-          </Text>
-        </AddToCartButton>
-      )}
-      {quickAdd && !firstVariant.availableForSale && (
-        <Button variant="secondary" className="mt-2" disabled>
-          <Text as="span" className="flex items-center justify-center gap-2">
-            Sold out
-          </Text>
-        </Button>
-      )}
     </div>
   );
 }

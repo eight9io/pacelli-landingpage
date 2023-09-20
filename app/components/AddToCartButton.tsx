@@ -31,6 +31,10 @@ export function AddToCartButton({
   analytics?: unknown;
   [key: string]: any;
 }) {
+  useEffect(() => {
+    console.log('AddToCartButton useEffect', lines);
+  }, [lines]);
+
   return (
     <CartForm
       route="/cart"

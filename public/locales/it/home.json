@@ -1,0 +1,35 @@
+{
+  "description": {
+    "item1": "This is a non-page component that requires its own namespace"
+  },
+  "hero": {
+    "item1": {
+      "title": "The Italian tradition\nof quality furnishings"
+    },
+    "item2": {
+      "title": "100+",
+      "subtitle": "Completed\nprojects"
+    },
+    "item3": {
+      "title": "50+",
+      "subtitle": "Years in business"
+    },
+    "learn_more": "Learn more"
+  },
+  "brand": {
+    "title": "Along with the best brands",
+    "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+  },
+  "social-proof": {
+    "title": "What they say about us",
+    "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+  },
+  "booking": {
+    "title": "Make an appointment with us",
+    "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+  },
+  "blog": {
+    "title": "Blogs",
+    "view_all": "View all"
+  }
+}
