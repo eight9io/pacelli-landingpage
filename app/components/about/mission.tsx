@@ -1,0 +1,54 @@
+import clsx from 'clsx';
+import Heading from '../common/heading';
+import icon1 from '~/assets/icons/icon_about_mission1.svg';
+import icon2 from '~/assets/icons/icon_about_mission2.svg';
+import icon3 from '~/assets/icons/icon_about_mission3.svg';
+
+interface MissionProps {
+  className?: string;
+}
+
+const Mission: React.FC<MissionProps> = ({className = ''}) => {
+  return (
+    <section className={clsx('bg-gray-100 py-[90px]', className)}>
+      <div className="base-container grid grid-cols-12">
+        <div className="col-span-6 md:col-span-6">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0816/1971/4346/files/image_home_about_3eeb2b7e-dd39-4162-b554-b16526eaef49.png"
+            alt="Mission"
+            width={500}
+            height={640}
+            className="md:h-[640px]"
+          />
+        </div>
+        <div className="col-span-6 md:col-span-6">
+          <Heading className="mb-10">Mission</Heading>
+          <div className="flex flex-col gap-8">
+            <div className="border-b pb-8 flex gap-6 items-end">
+              <img src={icon1} alt="Mission" />
+              <p className="text-secondary text-2xl font-bold leading-9 w-3/5">
+                Creare ambienti straordinari che soddisfino le esigenze e i
+                gusti individuali dei clienti
+              </p>
+            </div>
+            <div className="border-b pb-8 flex gap-6 items-end">
+              <p className="w-[15%]"></p>
+              <img src={icon2} alt="Mission" />
+              <p className="text-secondary text-2xl font-bold leading-9">
+                Trasformare le visioni dei clienti in realtà
+              </p>
+            </div>
+            <div className="border-b pb-8 flex gap-6 items-end leading-9">
+              <img src={icon3} alt="Mission" />
+              <p className="text-secondary text-2xl font-bold w-4/5">
+                Assicurare il successo di ogni progetto
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Mission;
