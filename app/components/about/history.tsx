@@ -8,11 +8,11 @@ interface HistoryProps {
 
 const History: React.FC<HistoryProps> = ({className = ''}) => {
   return (
-    <section className={clsx('py-[90px]', className)}>
+    <section className={clsx('py-[60px] md:py-[90px]', className)}>
       <div className="base-container">
         <Heading className="mb-6">La nostra storia</Heading>
         <div className="grid grid-cols-12 gap-8">
-          <div className="col-span-6 md:col-span-5">
+          <div className="col-span-12 md:col-span-5">
             <img
               src="https://cdn.shopify.com/s/files/1/0816/1971/4346/files/image_about_history.png?v=1695266697"
               alt="History"
@@ -21,7 +21,7 @@ const History: React.FC<HistoryProps> = ({className = ''}) => {
               className="object-cover w-full md:h-[870px]"
             />
           </div>
-          <div className="col-span-6 md:col-span-7">
+          <div className="col-span-12 md:col-span-7">
             <Text as="p" className="mb-8 max-w-auto leading-7">
               La progettazione di interni per Pacelli è una testimonianza di
               dedizione e passione che ha attraversato più di tre generazioni.
