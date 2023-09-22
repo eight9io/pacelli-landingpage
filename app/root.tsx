@@ -27,7 +27,7 @@ import favicon from '../public/favicon.svg';
 
 import {GenericError} from './components/GenericError';
 import {NotFound} from './components/NotFound';
-import styles from './styles/app.css';
+import styles from '~/styles/app.css';
 import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
 import {useAnalytics} from './hooks/useAnalytics';
 import {useChangeLanguage} from 'remix-i18next';
@@ -148,6 +148,8 @@ export function ErrorBoundary({error}: {error: Error}) {
     title = 'Not found';
     if (routeError.status === 404) pageType = routeError.data || pageType;
   }
+
+  console.log('error', routeError);
 
   return (
     <html lang={locale.language}>
