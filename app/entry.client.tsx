@@ -52,13 +52,13 @@ if (!i18next.isInitialized)
       });
     });
 
-startTransition(() => {
-  hydrateRoot(
-    document,
-    <StrictMode>
-      <I18nextProvider i18n={i18next}>
-        <RemixBrowser />
-      </I18nextProvider>
-    </StrictMode>,
-  );
-});
+// startTransition(() => {
+//   hydrateRoot(
+//     document,
+//     <StrictMode>
+//       <I18nextProvider i18n={i18next}>
+//         <RemixBrowser />
+//       </I18nextProvider>
+//     </StrictMode>,
+//   );
+// });

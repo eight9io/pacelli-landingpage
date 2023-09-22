@@ -44,5 +44,5 @@
 @font-face {
   font-family: 'Urbanist';
   font-display: swap;
-  src: url('./fonts/Urbanist-VariableFont_wght.ttf') format('ttf');
+  src: url('./fonts/Urbanist-Regular.woff2') format('woff2');
 }

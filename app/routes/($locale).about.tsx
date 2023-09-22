@@ -2,24 +2,18 @@ import {defer, type LoaderArgs} from '@shopify/remix-oxygen';
 import {useLoaderData} from '@remix-run/react';
 import {AnalyticsPageType} from '@shopify/hydrogen';
 
-import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import {seoPayload} from '~/lib/seo.server';
 import {routeHeaders} from '~/data/cache';
-import Brands from '~/components/home/brands';
-import Booking from '~/components/home/booking';
-import FeaturedPost from '~/components/home/featured-post';
-import Hero from '~/components/home/hero';
-import SocialProof from '~/components/home/social-proof';
-import About from '~/components/home/about';
-
-import {FEATURED_BLOG_QUERY} from '~/graphql/blogs';
+import Hero from '~/components/about/hero';
+import Mission from '~/components/about/mission';
+import Reason from '~/components/about/reason';
+import StrongPoint from '~/components/about/strong-point';
+import History from '~/components/about/history';
 
 export const headers = routeHeaders;
 
 export async function loader({params, context}: LoaderArgs) {
-  const {language, country} = context.storefront.i18n;
-
-  console.log('params', params);
+  // const {language, country} = context.storefront.i18n;
 
   // if (
   //   params.locale &&
@@ -30,13 +24,9 @@ export async function loader({params, context}: LoaderArgs) {
   //   throw new Response(null, {status: 404});
   // }
 
-  const {articles} = await context.storefront.query(FEATURED_BLOG_QUERY, {
-    variables: {first: 3},
-  });
   const seo = seoPayload.home();
 
   return defer({
-    articles: articles?.nodes,
     analytics: {
       pageType: AnalyticsPageType.home,
     },
@@ -44,13 +34,14 @@ export async function loader({params, context}: LoaderArgs) {
   });
 }
 
-export default function Homepage() {
-  const {articles} = useLoaderData<typeof loader>();
-
+export default function AboutPage() {
   return (
     <>
       <Hero />
-      <About />
+      <Mission />
+      <Reason />
+      <StrongPoint />
+      <History />
     </>
   );
 }

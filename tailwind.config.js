@@ -80,6 +80,10 @@ export default {
       width: {
         mobileGallery: 'calc(100vw - 3rem)',
       },
+      // fontFamily: {
+      //   sans: ['Urbanist', 'sans-serif'],
+      //   serif: ['Quicksand', 'Palatino', 'ui-serif'],
+      // },
       fontSize: {
         display: ['var(--font-size-display)', '1.1'],
         heading: ['var(--font-size-heading)', '1.25'],
