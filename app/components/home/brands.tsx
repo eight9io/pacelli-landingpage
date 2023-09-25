@@ -29,17 +29,35 @@ import sealy from '~/assets/brands/sealy.png';
 import stressless from '~/assets/brands/stressless.png';
 import talenti from '~/assets/brands/talenti.png';
 import tempur from '~/assets/brands/tempur.png';
+import adriani_rossi from '~/assets/brands/adriani_rossi.png';
+import berloni_bagno from '~/assets/brands/berloni_bagno.png';
+import connubia from '~/assets/brands/connubia.png';
+import devina_nais from '~/assets/brands/devina_nais.svg';
+import instabilelab from '~/assets/brands/instabilelab.png';
+import mobilgam from '~/assets/brands/mobilgam.png';
+import penta from '~/assets/brands/penta.png';
+import prandina from '~/assets/brands/prandina.png';
+import ronda_design from '~/assets/brands/ronda_design.png';
 
 interface BrandsProps {
   className?: string;
+  showDescription?: boolean;
 }
 
-const Brands: React.FC<BrandsProps> = ({className = ''}) => {
+const Brands: React.FC<BrandsProps> = ({
+  className = '',
+  showDescription = true,
+}) => {
   return (
     <section className={clsx(className)}>
       <div className="base-container !pt-0">
-        <div className="grid grid-cols-12 gap-0">
-          <div className="col-span-12 md:col-span-4 bg-base-100 pt-[120px] pb-6 md:mb-[120px] px-4 md:px-8">
+        <div className="grid grid-cols-12 gap-0 gap-y-8">
+          <div
+            className={clsx(
+              'col-span-12 md:col-span-4 bg-base-100 pt-[120px] pb-6 md:mb-[120px] px-4 md:px-8',
+              showDescription ? '' : 'hidden',
+            )}
+          >
             <h2 className="text-gray-900 text-[40px] md:text-[64px] font-semibold leading-[60px] md:leading-[78px] mb-4 md:mb-6">
               Insieme ai migliori Brands
             </h2>
@@ -53,12 +71,24 @@ const Brands: React.FC<BrandsProps> = ({className = ''}) => {
               nostra relazione con queste partner eccezionali.
             </p>
           </div>
-          <div className="col-span-12 md:col-span-8 md:mb-[120px]">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-6 justify-evenly md:[&>*:nth-child(29)]:col-start-2 md:pt-[120px]">
+          <div
+            className={clsx(
+              'md:mb-[120px] flex items-center',
+              showDescription ? 'col-span-12 md:col-span-8' : 'col-span-12',
+            )}
+          >
+            <div
+              className={clsx(
+                'grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-8 justify-evenly mb-8 w-full',
+              )}
+            >
               {BRANDS.map((brand) => (
                 <div
                   key={brand.name}
-                  className={clsx('flex justify-center items-center h-[50px]')}
+                  className={clsx(
+                    'flex justify-center items-center ',
+                    showDescription ? 'h-[50px]' : 'h-[66px]',
+                  )}
                 >
                   {brand.logo && (
                     <img className="" src={brand.logo} alt={brand.name} />
@@ -81,22 +111,137 @@ type Brand = {
   link?: string;
 };
 
+// const BRANDS: Brand[] = [
+//   {
+//     name: 'AMINI',
+//     logo: amini,
+//   },
+//   {
+//     name: 'aran',
+//     logo: aran,
+//   },
+//   {
+//     name: 'Binova',
+//     logo: binova,
+//   },
+//   {
+//     name: 'atmosphera',
+//     logo: atmosphera,
+//   },
+//   {
+//     name: 'BONALDO',
+//     logo: bonaldo,
+//   },
+//   {
+//     name: 'Birex',
+//     logo: birex,
+//   },
+//   {
+//     name: 'Cantori',
+//     logo: cantori,
+//   },
+//   {
+//     name: 'Ceccotti',
+//     logo: ceccotti,
+//   },
+//   {
+//     name: 'Conte',
+//     logo: conte,
+//   },
+//   {
+//     name: 'Dedon',
+//     logo: dedon,
+//   },
+//   {
+//     name: 'Dienne',
+//     logo: dienne,
+//   },
+//   {
+//     name: 'Doimocucine',
+//     logo: doimocucine,
+//   },
+//   {
+//     name: 'Doimosalotti',
+//     logo: doimosalotti,
+//   },
+//   {
+//     name: 'Edra',
+//     logo: edra,
+//   },
+//   {
+//     name: 'Francoferri',
+//     logo: francoferri,
+//   },
+//   {
+//     name: 'Kico',
+//     logo: kico,
+//   },
+//   {
+//     name: 'Magis',
+//     logo: magis,
+//   },
+//   {
+//     name: 'Miton',
+//     logo: miton,
+//   },
+//   {
+//     name: 'Modo10',
+//     logo: modo10,
+//   },
+//   {
+//     name: 'MorettiCompact',
+//     logo: moretticompact,
+//   },
+//   {
+//     name: 'Olivieri',
+//     logo: olivieri,
+//   },
+//   {
+//     name: 'Orme',
+//     logo: orme,
+//   },
+//   {
+//     name: 'Pianca',
+//     logo: pianca,
+//   },
+//   {
+//     name: 'Reflex',
+//     logo: reflex,
+//   },
+//   {
+//     name: 'Scab',
+//     logo: scab,
+//   },
+//   {
+//     name: 'Sealy',
+//     logo: sealy,
+//   },
+//   {
+//     name: 'Stressless',
+//     logo: stressless,
+//   },
+//   {
+//     name: 'Talenti',
+//     logo: talenti,
+//   },
+//   {
+//     name: 'Tempur',
+//     logo: tempur,
+//   },
+//   {
+//     name: 'Mobili',
+//     logo: mobili,
+//   },
+// ];
+
 const BRANDS: Brand[] = [
   {
-    name: 'AMINI',
-    logo: amini,
+    name: 'Adriani Rossi',
+    logo: adriani_rossi,
   },
   {
-    name: 'aran',
-    logo: aran,
-  },
-  {
-    name: 'atmosphera',
-    logo: atmosphera,
-  },
-  {
-    name: 'BONALDO',
-    logo: bonaldo,
+    name: 'Berloni Bagno',
+    logo: berloni_bagno,
   },
   {
     name: 'Binova',
@@ -107,20 +252,16 @@ const BRANDS: Brand[] = [
     logo: birex,
   },
   {
-    name: 'Cantori',
-    logo: cantori,
+    name: 'BONALDO',
+    logo: bonaldo,
   },
   {
-    name: 'Ceccotti',
-    logo: ceccotti,
+    name: 'Connubia',
+    logo: connubia,
   },
   {
-    name: 'Conte',
-    logo: conte,
-  },
-  {
-    name: 'Dedon',
-    logo: dedon,
+    name: 'Devina Nais',
+    logo: devina_nais,
   },
   {
     name: 'Dienne',
@@ -135,71 +276,43 @@ const BRANDS: Brand[] = [
     logo: doimosalotti,
   },
   {
-    name: 'Edra',
-    logo: edra,
-  },
-  {
     name: 'Francoferri',
     logo: francoferri,
   },
   {
-    name: 'Kico',
-    logo: kico,
-  },
-  {
-    name: 'Magis',
-    logo: magis,
-  },
-  {
-    name: 'Miton',
-    logo: miton,
-  },
-  {
-    name: 'Modo10',
-    logo: modo10,
+    name: 'Instabilelab',
+    logo: instabilelab,
   },
   {
     name: 'MorettiCompact',
     logo: moretticompact,
   },
   {
-    name: 'Olivieri',
-    logo: olivieri,
+    name: 'Mobilgam',
+    logo: mobilgam,
   },
   {
-    name: 'Orme',
-    logo: orme,
+    name: 'Penta',
+    logo: penta,
   },
   {
     name: 'Pianca',
     logo: pianca,
   },
   {
-    name: 'Reflex',
-    logo: reflex,
+    name: 'Prandina',
+    logo: prandina,
   },
   {
-    name: 'Scab',
-    logo: scab,
-  },
-  {
-    name: 'Sealy',
-    logo: sealy,
+    name: 'Ronda Design',
+    logo: ronda_design,
   },
   {
     name: 'Stressless',
     logo: stressless,
   },
   {
-    name: 'Talenti',
-    logo: talenti,
-  },
-  {
     name: 'Tempur',
     logo: tempur,
-  },
-  {
-    name: 'Mobili',
-    logo: mobili,
   },
 ];

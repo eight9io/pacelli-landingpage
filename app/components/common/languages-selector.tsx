@@ -81,7 +81,7 @@ const LanguagesSelector: React.FC<LanguagesSelectorProps> = ({
       {showLabel && <h4 className="cursor-default">{t('language')}</h4>}
       <div className="relative">
         <details className="group rounded-none" ref={closeRef}>
-          <summary className="flex items-center rounded-full bg-gray-200 justify-between px-4 py-1 text-base cursor-pointer">
+          <summary className="flex items-center rounded-full bg-gray-200 justify-between px-4 py-1 text-sm md:text-base cursor-pointer">
             {selectedLocale.language}
             <AngleDown className="group-open:rotate-180 transition duration-150 ml-1" />
           </summary>
@@ -140,7 +140,7 @@ function Language({
       <Button
         className={clsx([
           'bg-white w-full p-2 transition flex justify-start',
-          'items-center text-left cursor-pointer py-1 px-4',
+          'items-center text-left text-sm cursor-pointer py-1 px-4',
           isSelected
             ? 'font-bold bg-gray-100 pointer-events-none'
             : 'hover:bg-gray-100',
