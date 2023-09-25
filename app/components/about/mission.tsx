@@ -16,22 +16,34 @@ const Mission: React.FC<MissionProps> = ({className = ''}) => {
           <Heading className="mb-6 md:mb-10">Mission</Heading>
           <div className="flex flex-col gap-8">
             <div className="border-b md:borer-b-0 md:border-b pb-8 flex gap-6 items-end">
-              <img src={icon1} alt="Mission" />
-              <p className="text-secondary text-2xl font-bold leading-9 w-3/5">
+              <img
+                src={icon1}
+                alt="Mission"
+                className="h-20 md:h-auto flex-1"
+              />
+              <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9 md:w-3/5">
                 Creare ambienti straordinari che soddisfino le esigenze e i
                 gusti individuali dei clienti
               </p>
             </div>
             <div className="border-b md:borer-b-0 md:border-b pb-8 flex gap-6 items-end">
               <p className="hidden md:block md:w-[15%]"></p>
-              <img src={icon2} alt="Mission" />
-              <p className="text-secondary text-2xl font-bold leading-9">
+              <img
+                src={icon2}
+                alt="Mission"
+                className="h-20 md:h-auto flex-1"
+              />
+              <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9">
                 Trasformare le visioni dei clienti in realtà
               </p>
             </div>
             <div className="border-b md:borer-b-0 md:border-b pb-8 flex gap-6 items-end leading-9">
-              <img src={icon3} alt="Mission" />
-              <p className="text-secondary text-2xl font-bold w-4/5">
+              <img
+                src={icon3}
+                alt="Mission"
+                className="h-20 md:h-auto flex-1"
+              />
+              <p className="text-secondary text-[22px] md:text-2xl font-bold w-4/5">
                 Assicurare il successo di ogni progetto
               </p>
             </div>

@@ -69,7 +69,9 @@ export default {
       },
       spacing: {
         nav: 'var(--height-nav)',
+        'screen-without-topbar': 'calc(100vh - var(--height-nav))',
         screen: 'var(--screen-height, 100vh)',
+        15: '3.75rem',
       },
       height: {
         screen: 'var(--screen-height, 100vh)',
