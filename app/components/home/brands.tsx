@@ -77,11 +77,18 @@ const Brands: React.FC<BrandsProps> = ({
               showDescription ? 'col-span-12 md:col-span-8' : 'col-span-12',
             )}
           >
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-8 justify-evenly md:[&>*:nth-child(29)]:col-start-2 mb-8">
+            <div
+              className={clsx(
+                'grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-8 justify-evenly mb-8 w-full',
+              )}
+            >
               {BRANDS.map((brand) => (
                 <div
                   key={brand.name}
-                  className={clsx('flex justify-center items-center h-[50px]')}
+                  className={clsx(
+                    'flex justify-center items-center ',
+                    showDescription ? 'h-[50px]' : 'h-[66px]',
+                  )}
                 >
                   {brand.logo && (
                     <img className="" src={brand.logo} alt={brand.name} />

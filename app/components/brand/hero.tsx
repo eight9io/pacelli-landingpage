@@ -40,7 +40,7 @@ const Hero: React.FC<HeroProps> = ({className = ''}) => {
   return (
     <section
       className={clsx(
-        'overflow-hidden md:h-screen-without-topbar relative pt-20 md:pt-[160px] mb-15',
+        'overflow-hidden relative pt-20 md:pt-[160px] mb-15 md:mb-28',
         className,
       )}
     >
