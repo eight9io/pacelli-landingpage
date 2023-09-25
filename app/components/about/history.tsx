@@ -9,7 +9,7 @@ interface HistoryProps {
 const History: React.FC<HistoryProps> = ({className = ''}) => {
   return (
     <section className={clsx('py-[60px] md:py-[90px]', className)}>
-      <div className="base-container">
+      <div className="base-container py-0">
         <Heading className="mb-6">La nostra storia</Heading>
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-12 md:col-span-5">

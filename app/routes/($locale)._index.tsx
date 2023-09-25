@@ -20,14 +20,14 @@ export async function loader({params, context}: LoaderArgs) {
 
   console.log('params', params);
 
-  // if (
-  //   params.locale &&
-  //   params.locale.toLowerCase() !== `${language}-${country}`.toLowerCase()
-  // ) {
-  //   // If the locale URL param is defined, yet we still are on `EN-US`
-  //   // the the locale param must be invalid, send to the 404 page
-  //   throw new Response(null, {status: 404});
-  // }
+  if (
+    params.locale &&
+    params.locale.toLowerCase() !== `${language}-${country}`.toLowerCase()
+  ) {
+    // If the locale URL param is defined, yet we still are on `EN-US`
+    // the the locale param must be invalid, send to the 404 page
+    throw new Response(null, {status: 404});
+  }
 
   const {articles} = await context.storefront.query(FEATURED_BLOG_QUERY, {
     variables: {first: 3},

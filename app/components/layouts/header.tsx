@@ -57,7 +57,7 @@ export function HeaderSection() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <Logo className="" />
+          <Logo className="w-[95px] h-[30px] md:w-auto md:h-auto" />
         </div>
 
         <div className="flex flex-1 justify-end">
@@ -106,7 +106,7 @@ export function HeaderSection() {
                   <li key={href}>
                     <Link
                       className={clsx(
-                        'flex justify-between md:block rounded-none box-border pt-2 pb-1 md:pt-4 md:pb-2 text-[32px] md:text-[40px] leading-8 text-white border-b border-b-transparent hover:border-b-slate-400 ',
+                        'flex justify-between items-center md:block rounded-none box-border pt-2 pb-1 md:pt-4 md:pb-2 text-[32px] md:text-[40px] leading-8 text-white border-b border-b-transparent hover:border-b-slate-400 ',
                         isMenuItemActive(href) &&
                           'text-white border-b-slate-400',
                         'peer hover:[&+div]:block max-w-[395px]',

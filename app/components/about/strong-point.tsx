@@ -7,9 +7,9 @@ interface StrongPointProps {
 
 const StrongPoint: React.FC<StrongPointProps> = ({className = ''}) => {
   return (
-    <section className={clsx('bg-gray-100 py-[90px]', className)}>
+    <section className={clsx('bg-gray-100 py-[60px] md:py-[90px]', className)}>
       <div className="base-container">
-        <Heading className="mb-8">Punti di forza</Heading>
+        <Heading className="mb-4 md:mb-8">Punti di forza</Heading>
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-12 md:col-span-8">
             <p>
