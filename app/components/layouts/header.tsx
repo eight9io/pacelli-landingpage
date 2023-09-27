@@ -226,10 +226,6 @@ const mainMenuItems: MenuItem[] = [
     href: '/services',
     items: [
       {
-        text: 'Partnerships services',
-        href: '/services/partnerships',
-      },
-      {
         text: 'Professional services',
         href: '/services/professional',
       },

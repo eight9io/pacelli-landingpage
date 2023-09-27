@@ -48,7 +48,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({ className = '' }) => {
             />
 
             <TextField
-              name="email"
+              name="email" z
               label="Email *"
               inputClassName={clsx(
                 'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent   focus:border-b-2',

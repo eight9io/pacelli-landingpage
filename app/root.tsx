@@ -17,21 +17,21 @@ import {
   useRouteError,
   type ShouldRevalidateFunction,
 } from '@remix-run/react';
-import {ShopifySalesChannel, Seo, useNonce} from '@shopify/hydrogen';
+import { ShopifySalesChannel, Seo, useNonce } from '@shopify/hydrogen';
 import invariant from 'tiny-invariant';
 
 import Layout from '~/components/layouts/default';
-import {seoPayload} from '~/lib/seo.server';
+import { seoPayload } from '~/lib/seo.server';
 
 import favicon from '../public/favicon.svg';
 
-import {GenericError} from './components/GenericError';
-import {NotFound} from './components/NotFound';
+import { GenericError } from './components/GenericError';
+import { NotFound } from './components/NotFound';
 import styles from '~/styles/app.css';
-import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
-import {useAnalytics} from './hooks/useAnalytics';
-import {useChangeLanguage} from 'remix-i18next';
-import {LAYOUT_QUERY} from './graphql/common';
+import { DEFAULT_LOCALE, parseMenu } from './lib/utils';
+import { useAnalytics } from './hooks/useAnalytics';
+import { useChangeLanguage } from 'remix-i18next';
+import { LAYOUT_QUERY } from './graphql/common';
 
 // This is important to avoid re-fetching root queries on sub-navigations
 export const shouldRevalidate: ShouldRevalidateFunction = ({
@@ -54,7 +54,7 @@ export const shouldRevalidate: ShouldRevalidateFunction = ({
 
 export const links: LinksFunction = () => {
   return [
-    {rel: 'stylesheet', href: styles},
+    { rel: 'stylesheet', href: styles },
     {
       rel: 'preconnect',
       href: 'https://cdn.shopify.com',
@@ -72,14 +72,14 @@ export const links: LinksFunction = () => {
   ];
 };
 
-export async function loader({request, context}: LoaderArgs) {
-  const {session, storefront, cart} = context;
+export async function loader({ request, context }: LoaderArgs) {
+  const { session, storefront, cart } = context;
   const [customerAccessToken, layout] = await Promise.all([
     session.get('customerAccessToken'),
     getLayoutData(context),
   ]);
 
-  const seo = seoPayload.root({shop: layout.shop, url: request.url});
+  const seo = seoPayload.root({ shop: layout.shop, url: request.url });
 
   return defer({
     isLoggedIn: Boolean(customerAccessToken),
@@ -122,7 +122,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className='bg-white'>
         <Layout key={`${locale.language}-${locale.country}`}>
           <Outlet />
         </Layout>
@@ -134,7 +134,7 @@ export default function App() {
   );
 }
 
-export function ErrorBoundary({error}: {error: Error}) {
+export function ErrorBoundary({ error }: { error: Error }) {
   const nonce = useNonce();
   const [root] = useMatches();
   const locale = root?.data?.selectedLocale ?? DEFAULT_LOCALE;
@@ -168,7 +168,7 @@ export function ErrorBoundary({error}: {error: Error}) {
                 <NotFound type={pageType} />
               ) : (
                 <GenericError
-                  error={{message: `${routeError.status} ${routeError.data}`}}
+                  error={{ message: `${routeError.status} ${routeError.data}` }}
                 />
               )}
             </>
@@ -184,7 +184,7 @@ export function ErrorBoundary({error}: {error: Error}) {
   );
 }
 
-async function getLayoutData({storefront, env}: AppLoadContext) {
+async function getLayoutData({ storefront, env }: AppLoadContext) {
   const data = await storefront.query(LAYOUT_QUERY, {
     variables: {
       headerMenuHandle: 'main-menu',
@@ -205,25 +205,25 @@ async function getLayoutData({storefront, env}: AppLoadContext) {
       - /blog/news/blog-post -> /news/blog-post
       - /collections/all -> /products
   */
-  const customPrefixes = {BLOG: '', CATALOG: 'products'};
+  const customPrefixes = { BLOG: '', CATALOG: 'products' };
 
   const headerMenu = data?.headerMenu
     ? parseMenu(
-        data.headerMenu,
-        data.shop.primaryDomain.url,
-        env,
-        customPrefixes,
-      )
+      data.headerMenu,
+      data.shop.primaryDomain.url,
+      env,
+      customPrefixes,
+    )
     : undefined;
 
   const footerMenu = data?.footerMenu
     ? parseMenu(
-        data.footerMenu,
-        data.shop.primaryDomain.url,
-        env,
-        customPrefixes,
-      )
+      data.footerMenu,
+      data.shop.primaryDomain.url,
+      env,
+      customPrefixes,
+    )
     : undefined;
 
-  return {shop: data.shop, headerMenu, footerMenu};
+  return { shop: data.shop, headerMenu, footerMenu };
 }
