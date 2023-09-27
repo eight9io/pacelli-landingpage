@@ -6,7 +6,7 @@ interface HeroPartnershipsProps {
 
 const HeroPartnerships: React.FC<HeroPartnershipsProps> = ({ className = '' }) => {
   return (
-    <section className={clsx(' py-[30px] md:py-[90px]', className)}>
+    <section className={clsx(' py-[30px] md:py-[90px] mt-12', className)}>
       <div className="base-container">
 
         <div className="grid grid-cols-12 ">

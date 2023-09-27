@@ -47,13 +47,13 @@ export function HeaderSection() {
   return (
     <header
       className={clsx(
-        'bg-transparent inset-x-0 top-0 z-50 transition-all duration-200',
+        'bg-transparent inset-x-0 top-0 z-50 transition-all duration-200 ',
         isSticky ? 'fixed bg-white shadow-lg' : 'absolute',
       )}
     >
       <Topbar />
       <nav
-        className="base-container flex items-center justify-between p-4 lg:px-8"
+        className="header-container  flex items-center justify-between p-4 lg:px-8"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
