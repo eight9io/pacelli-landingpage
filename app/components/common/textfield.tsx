@@ -20,13 +20,13 @@ const TextField: React.FC<TextFieldProp> = ({
   return (
     <Field name={name}>
       {({ input, meta }) => (
-        <label htmlFor={`id-${name}`} className={clsx('group relative pb-6', className)}>
+        <label htmlFor={`id-${name}`} className={clsx('group relative pb-6  ', className)}>
           <input
             id={`id-${name}`}
             type="text"
             placeholder={label}
             className={clsx(
-              'input focus:outline-offset-0 focus:outline-w-[1px] focus:outline-1 rounded-sm input-primary w-full',
+              'border-gray-400  input focus:outline-offset-0 focus:outline-w-[1px] focus:outline-1 rounded-sm input-primary w-full placeholder:text-primary-950',
               meta.error && meta.touched && 'focus:outline-red-500 border-red-500',
               meta.error && meta.touched && inputErrorClassName,
               inputClassName
