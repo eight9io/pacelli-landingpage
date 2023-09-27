@@ -6,7 +6,7 @@ interface SocialProofProps {
   className?: string;
 }
 
-const SocialProof: React.FC<SocialProofProps> = ({className = ''}) => {
+const SocialProof: React.FC<SocialProofProps> = ({ className = '' }) => {
   return (
     <section className={clsx('pt-[60px] bg-base-100', className)}>
       <h2 className="text-center text-gray-900 text-[40px] md:text-[64px] font-semibold tracking-tight">
@@ -30,8 +30,8 @@ const SocialProof: React.FC<SocialProofProps> = ({className = ''}) => {
                   height={400}
                 />
               </div>
-              <div className="col-span-12 md:col-span-4 flex flex-col gap-4 px-4 md:px-0">
-                <IconQuote className="text-secondary" />
+              <div className="col-span-12 md:col-span-4 flex flex-col gap-4 px-4 md:px-0 space-y-3">
+                <IconQuote className="text-secondary " />
                 <h3 className="text-gray-900 text-[40px] font-normal leading-[50px]">
                   {item.author}
                 </h3>
