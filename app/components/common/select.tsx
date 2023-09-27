@@ -28,7 +28,7 @@ const Select: React.FC<TextFieldProp> = ({
     <div className='mb-6'>
       <Field name="mySelect" component="select" validate={validate}
         className={clsx(
-          'input focus:outline-offset-0 focus:outline-w-[1px] focus:outline-1 rounded-sm input-primary w-full text-primary-950  border-gray-400 ',
+          'select focus:ring-transparent rounded-sm input-primary w-full text-primary-950  border-gray-400 ',
           inputErrorClassName,
           className
         )}
