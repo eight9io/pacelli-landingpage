@@ -91,6 +91,9 @@ shop-pay-button {
   .base-container {
     @apply container mx-auto max-w-7xl p-4 md:p-6 lg:px-8;
   }
+  .header-container {
+    @apply container mx-auto max-w-[90rem] p-4 md:p-6 lg:px-8;
+  }
 
   a.active {
     @apply border-b;
