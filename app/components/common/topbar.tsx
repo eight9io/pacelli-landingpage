@@ -13,7 +13,7 @@ interface TopbarProps {
 const Topbar = ({children}: TopbarProps) => {
   return (
     <div className="hidden md:block bg-gray-100">
-      <div className="base-container !py-1">
+      <div className="!py-1 px-4 lg:px-8">
         <div className="flex gap-x-8 gap-y-4 flex-wrap text-sm">
           <Link
             to="tel:0123456789"

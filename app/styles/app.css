@@ -95,6 +95,19 @@ shop-pay-button {
     @apply container mx-auto max-w-[90rem] p-4 md:p-6 lg:px-8;
   }
 
+  .before-content-1 {
+    @apply before:content-["01"];
+  }
+  .before-content-2 {
+    @apply before:content-["02"];
+  }
+  .before-content-3 {
+    @apply before:content-["03"];
+  }
+  .before-content-4 {
+    @apply before:content-["04"];
+  }
+
   a.active {
     @apply border-b;
   }
