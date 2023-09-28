@@ -51,10 +51,10 @@ const Brands: React.FC<BrandsProps> = ({
   return (
     <section className={clsx(className)}>
       <div className="base-container !pt-0">
-        <div className="grid grid-cols-12 gap-0 gap-y-8">
+        <div className="grid grid-cols-12 gap-0 gap-y-6">
           <div
             className={clsx(
-              'col-span-12 md:col-span-4 bg-base-100 pt-[120px] pb-6 md:mb-[120px] px-4 md:px-8',
+              'col-span-12 lg:col-span-4 bg-base-100 pt-[100px] pb-6 md:mb-[120px] px-4 md:px-8',
               showDescription ? '' : 'hidden',
             )}
           >
@@ -74,7 +74,7 @@ const Brands: React.FC<BrandsProps> = ({
           <div
             className={clsx(
               'md:mb-[120px] flex items-center',
-              showDescription ? 'col-span-12 md:col-span-8' : 'col-span-12',
+              showDescription ? 'col-span-12 lg:col-span-8' : 'col-span-12',
             )}
           >
             <div
