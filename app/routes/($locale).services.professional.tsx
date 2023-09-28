@@ -1,14 +1,8 @@
 import { defer, type LoaderArgs } from '@shopify/remix-oxygen';
-import { useLoaderData } from '@remix-run/react';
 import { AnalyticsPageType } from '@shopify/hydrogen';
 
 import { seoPayload } from '~/lib/seo.server';
 import { routeHeaders } from '~/data/cache';
-import Hero from '~/components/about/hero';
-import Mission from '~/components/about/mission';
-import Reason from '~/components/about/reason';
-import StrongPoint from '~/components/about/strong-point';
-import History from '~/components/about/history';
 import HeroPartnerships from '~/components/services/partnerships/HeroPartnerships';
 import Contact from '~/components/services/partnerships/Contact';
 import BeforeAfter from '~/components/services/partnerships/BeforeAfter';
