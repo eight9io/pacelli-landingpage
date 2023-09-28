@@ -5,9 +5,15 @@ interface IconProps extends React.SVGProps<SVGSVGElement> {
   className?: string;
 }
 
-const Icon: React.FC<IconProps> = ({ className = '', ...props }) => {
+const Icon: React.FC<IconProps> = ({className = '', ...props}) => {
   return (
-    <BaseIcon width="24" height="24" className={clsx(className)} viewBox="0 0 24 24" {...props}>
+    <BaseIcon
+      width="24"
+      height="24"
+      className={clsx(className)}
+      viewBox="0 0 24 24"
+      {...props}
+    >
       <g id="phone">
         <path
           id="Vector"

@@ -1,12 +1,10 @@
-'use client';
-
 import * as React from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
-import { forwardRef, useState, useCallback } from 'react';
-import { default as RDDatePicker, ReactDatePickerProps } from 'react-datepicker';
-import { Field, FieldProps, FieldRenderProps } from 'react-final-form';
+import {forwardRef, useState} from 'react';
+import {default as RDDatePicker, ReactDatePickerProps} from 'react-datepicker';
+import {Field, FieldProps, FieldRenderProps} from 'react-final-form';
 import clsx from 'clsx';
-import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import {ChevronDownIcon} from '@heroicons/react/24/outline';
 
 function CoreDatePicker(props: any) {
   const tomorrow = new Date();
@@ -70,8 +68,16 @@ function InputGroup6({
 
 const CustomInputField = forwardRef(
   (
-    { name, value, label, onClick, disabled, inputClassName, icon = <ChevronDownIcon className="w-4 h-4" /> }: any,
-    ref: any
+    {
+      name,
+      value,
+      label,
+      onClick,
+      disabled,
+      inputClassName,
+      icon = <ChevronDownIcon className="w-4 h-4" />,
+    }: any,
+    ref: any,
   ) => (
     <button className="w-full " onClick={onClick} ref={ref} disabled={disabled}>
       <InputGroup6
@@ -84,14 +90,19 @@ const CustomInputField = forwardRef(
         inputClassName={inputClassName}
       />
     </button>
-  )
+  ),
 );
 
 interface DatePickerProp extends Omit<ReactDatePickerProps, 'onChange'> {
   className?: string;
   name: string;
   label?: string;
-  validate?: FieldProps<any, FieldRenderProps<any, HTMLElement, any>, HTMLElement, any>;
+  validate?: FieldProps<
+    any,
+    FieldRenderProps<any, HTMLElement, any>,
+    HTMLElement,
+    any
+  >;
   inputClassName?: string;
   inputErrorClassName?: string;
 }
@@ -108,8 +119,11 @@ const DatePicker: React.FC<DatePickerProp> = ({
 
   return (
     <Field name={name}>
-      {({ input, meta }) => (
-        <label htmlFor={`id-${name}`} className={clsx('group relative pb-6', className)}>
+      {({input, meta}) => (
+        <label
+          htmlFor={`id-${name}`}
+          className={clsx('group relative pb-6', className)}
+        >
           <CoreDatePicker
             id={`id-${name}`}
             selected={startDate}
@@ -123,9 +137,11 @@ const DatePicker: React.FC<DatePickerProp> = ({
                 label={label}
                 inputClassName={clsx(
                   'input focus:outline-offset-0 focus:outline-w-[1px] focus:outline-1 rounded-sm input-primary w-full focus:!bg-transparent [&+div]:!bg-transparent [&+div]:!border-none [&+div]:!border-b-2 [&+div]:!border-b-red-500',
-                  meta.error && meta.touched && 'focus:outline-red-500 border-red-500',
+                  meta.error &&
+                    meta.touched &&
+                    'focus:outline-red-500 border-red-500',
                   meta.error && meta.touched && inputErrorClassName,
-                  inputClassName
+                  inputClassName,
                 )}
               />
             }
@@ -144,6 +160,6 @@ const DatePicker: React.FC<DatePickerProp> = ({
   );
 };
 
-export { CoreDatePicker };
+export {CoreDatePicker};
 
 export default DatePicker;
