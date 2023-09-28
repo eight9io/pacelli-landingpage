@@ -1,9 +1,9 @@
-import {defer, type LoaderArgs} from '@shopify/remix-oxygen';
-import {useLoaderData} from '@remix-run/react';
-import {AnalyticsPageType} from '@shopify/hydrogen';
+import { defer, type LoaderArgs } from '@shopify/remix-oxygen';
+import { useLoaderData } from '@remix-run/react';
+import { AnalyticsPageType } from '@shopify/hydrogen';
 
-import {seoPayload} from '~/lib/seo.server';
-import {routeHeaders} from '~/data/cache';
+import { seoPayload } from '~/lib/seo.server';
+import { routeHeaders } from '~/data/cache';
 import Brands from '~/components/home/brands';
 import Booking from '~/components/home/booking';
 import FeaturedPost from '~/components/home/featured-post';
@@ -11,12 +11,12 @@ import Hero from '~/components/home/hero';
 import SocialProof from '~/components/home/social-proof';
 import About from '~/components/home/about';
 
-import {FEATURED_BLOG_QUERY} from '~/graphql/blogs';
+import { FEATURED_BLOG_QUERY } from '~/graphql/blogs';
 
 export const headers = routeHeaders;
 
-export async function loader({params, context}: LoaderArgs) {
-  const {language, country} = context.storefront.i18n;
+export async function loader({ params, context }: LoaderArgs) {
+  const { language, country } = context.storefront.i18n;
 
   console.log('params', params);
 
@@ -26,11 +26,11 @@ export async function loader({params, context}: LoaderArgs) {
   ) {
     // If the locale URL param is defined, yet we still are on `EN-US`
     // the the locale param must be invalid, send to the 404 page
-    throw new Response(null, {status: 404});
+    throw new Response(null, { status: 404 });
   }
 
-  const {articles} = await context.storefront.query(FEATURED_BLOG_QUERY, {
-    variables: {first: 3},
+  const { articles } = await context.storefront.query(FEATURED_BLOG_QUERY, {
+    variables: { first: 3 },
   });
   const seo = seoPayload.home();
 
@@ -44,7 +44,7 @@ export async function loader({params, context}: LoaderArgs) {
 }
 
 export default function Homepage() {
-  const {articles} = useLoaderData<typeof loader>();
+  const { articles } = useLoaderData<typeof loader>();
 
   return (
     <>
