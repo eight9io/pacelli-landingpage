@@ -13,7 +13,7 @@ const variantClasses = {
   h3: 'text-gray-600 text-[32px] md:text-5xl font-semibold leading-[48px] md:leading-[72px] md:tracking-tight',
   h4: 'text-gray-600 text-[40px] font-semibold leading-[34px] md:leading-[50px]',
   h5: 'text-gray-600 text-2xl font-bold leading-9',
-  h6: 'text-base font-semibold leading-6',
+  h6: 'md:text-base font-semibold leading-6',
 };
 
 const Heading: React.FC<HeadingProps> = ({
