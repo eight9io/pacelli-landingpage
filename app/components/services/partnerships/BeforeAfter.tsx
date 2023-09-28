@@ -5,6 +5,7 @@ import services2 from '~/assets/services/services-1.png';
 import { Button } from '~/components/snippets';
 
 import ArrowRight from '~/components/common/icons/arrow-right';
+import { Link } from '@remix-run/react';
 
 interface BeforeAfterProps {
   className?: string;
@@ -21,10 +22,11 @@ const BeforeAfter: React.FC<BeforeAfterProps> = ({ className = '' }) => {
             <p className="  text-base font-normal leading-7 ">
               Siamo entusiasti di mostrarti alcuni dei progetti che abbiamo realizzato, tutti personalizzati per soddisfare le esigenze dei nostri clienti. La trasformazione è incredibile, e siamo pronti a portare anche il tuo spazio al livello successivo. Contattaci ora per vedere come possiamo migliorare il tuo ambiente!
             </p>
-            <Button className="rounded-sm uppercase mt-8 flex gap-3" size="md">
-              Learn more
-              <ArrowRight className="text-secondary w-5 h-5 stroke-secondary origin-center stroke-2" />
-            </Button>
+            <Link to='/gallery'>
+              <Button className="rounded-sm uppercase mt-8 flex gap-3" size="md">
+                Learn more
+                <ArrowRight className="text-secondary w-5 h-5 stroke-secondary origin-center stroke-2" />
+              </Button></Link>
           </div>
           <div className="col-span-12 md:col-span-4">
             <img

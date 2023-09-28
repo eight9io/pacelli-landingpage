@@ -9,11 +9,11 @@ import clsx from 'clsx';
 import {contactValidate} from '~/validation/contact';
 import {validateFormValues} from '~/validation';
 
-interface ContactFormProps {
+interface BookingFormProps {
   className?: string;
 }
 
-const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
+const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
   const onSubmit = (values: any) => {
     console.log('values', values);
   };
@@ -34,18 +34,45 @@ const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
               )}
               inputErrorClassName="focus:border-b-red-500"
             />
-
+            <TextField
+              name="phone"
+              label="Phone Number *"
+              inputClassName={clsx(
+                'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent   focus:border-b-2',
+              )}
+            />
             <TextField
               name="email"
               label="Email *"
               inputClassName={clsx(
-                'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
+                'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent   focus:border-b-2',
               )}
               inputErrorClassName="focus:border-b-red-500"
             />
+            <div className="grid grid-cols-12 gap-y-8 md:gap-y-8 mb-6">
+              <div className="col-span-12 md:col-span-6">
+                <DatePicker
+                  name="date"
+                  label="Date"
+                  inputClassName={clsx(
+                    'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
+                  )}
+                />
+              </div>
+              <div className="col-span-12 md:col-span-6">
+                <DatePicker
+                  name="time"
+                  label="Time"
+                  inputClassName={clsx(
+                    'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
+                  )}
+                  dateFormat="h:mm aa"
+                />
+              </div>
+            </div>
             <TextArea
-              name="message"
-              label="Message"
+              name="note"
+              label="Note"
               rows={1}
               inputClassName={clsx(
                 'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
@@ -61,4 +88,4 @@ const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
   );
 };
 
-export default ContactForm;
+export default BookingForm;
