@@ -53,7 +53,7 @@ export function HeaderSection() {
     >
       <Topbar />
       <nav
-        className="header-container  flex items-center justify-between p-4 lg:px-8"
+        className="flex items-center justify-between p-4 lg:px-8"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
@@ -91,7 +91,7 @@ export function HeaderSection() {
       >
         <div className="fixed inset-0 z-[9999]" />
         <Dialog.Panel className="fixed z-[9999] inset-0 w-full overflow-y-auto bg-primary p-4 md:pt-10 md:p-[96px] sm:max-w-screen sm:ring-1 sm:ring-gray-900/10">
-          <div className="base-container flow-root relative px-0">
+          <div className="flow-root relative px-0">
             <button
               type="button"
               className="absolute z-50 rounded-md text-gray-700 flex items-center gap-2 right-0 md:right-6"
