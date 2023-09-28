@@ -1,4 +1,4 @@
-/* eslint-disable */
+
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
 import Phone from '~/components/common/icons/phone';
