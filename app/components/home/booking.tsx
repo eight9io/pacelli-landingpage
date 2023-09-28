@@ -1,5 +1,5 @@
+import ContactForm from '~/components/common/form/booking-form';
 import clsx from 'clsx';
-import ContactForm from '~/components/common/form/contact-form';
 import {useTranslation} from 'react-i18next';
 
 interface BookingProps {
