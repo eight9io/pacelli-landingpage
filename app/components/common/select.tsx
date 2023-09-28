@@ -1,55 +1,100 @@
-
 import clsx from 'clsx';
-import { Field, FieldProps, FieldRenderProps } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
+import { CartForm } from '@shopify/hydrogen';
+import { CartBuyerIdentityInput } from '@shopify/hydrogen/storefront-api-types';
+/* eslint-disable */
+import { Button } from '~/components';
+import type { Locale, Localizations, selectOccupation } from '~/lib/type';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useFetcher, useLocation, useMatches } from '@remix-run/react';
 
-interface TextFieldProp {
+import { DEFAULT_LOCALE } from '~/lib/utils';
+import { useInView } from 'react-intersection-observer';
+import AngleDown from '../icons/angle-down';
+import { ArrSelectOccupation } from '~/data/selectOccupation';
+
+interface LanguagesSelectorProps {
   className?: string;
-  name: string;
+  handleChangeValue: (e: any, value: string) => void;
   label?: string;
-  validate?: FieldProps<any, FieldRenderProps<any, HTMLElement, any>, HTMLElement, any>;
-  inputClassName?: string;
-  inputErrorClassName?: string;
+  value?: any;
 }
 
-const Select: React.FC<TextFieldProp> = ({
+const LanguagesSelector: React.FC<LanguagesSelectorProps> = ({
   className = '',
-  name,
-  label = '',
-  inputClassName = '',
-  inputErrorClassName = '',
+  handleChangeValue,
+  label,
+  value
 }) => {
-  const validate = (value: any) => {
-    if (!value) {
-      return 'select an option.';
-    }
-    return undefined; // Không có lỗi
-  };
+  console.log(111, value);
+
+  const observerRef = useRef(null);
+  const closeRef = useRef<HTMLDetailsElement>(null);
+  const closeDropdown = useCallback(() => {
+
+    closeRef.current?.removeAttribute('open');
+  }, []);
+
+
   return (
-    <div className='mb-6'>
-      <Field name="mySelect" component="select" validate={validate}
-        className={clsx(
-          'input focus:outline-offset-0 focus:outline-w-[1px] focus:outline-1 rounded-sm input-primary w-full text-primary-950  border-gray-400 ',
-          inputErrorClassName,
-          className
-        )}
-      >
-        <option disabled hidden value="" >{label}</option>
-        <option value="architetto">Architetto</option>
-        <option value="arredatore_d’interni">Arredatore d’interni</option>
+    <div
+      ref={observerRef}
+      className={clsx('flex gap-4 justify-center z-10', className)}
+      onMouseLeave={closeDropdown}
+    >
 
-      </Field>
+      <div className="relative w-full border-[0px] border-b border-gray-400 focus:outline-transparent focus:border-b-2">
+        <details className="group rounded-none" ref={closeRef}>
+          <summary className="flex items-center justify-between px-4 py-1 text-sm md:text-base cursor-pointer">
+            {value ? value : "Chi sei?"}
+            <AngleDown className="group-open:rotate-180 transition duration-150 ml-1" />
+          </summary>
+          <div className="py-1 z-20 transition duration-150 absolute w-full top-full right-0 rounded overflow-auto bg-white max-w-full space-y-1">
+            {
+              ArrSelectOccupation.map((item, index) => <SelectItem key={index} selectOccupation={item}
+                closeDropdown={closeDropdown}
 
-      <Field name="mySelect">
-        {({ meta }) => (
-          meta.error && meta.touched ? (
-            <span className="text-red-500 text-sm  text-left mt-2 pl-2 left-1 bottom-0">{meta.error}</span>
-          ) : null
-        )}
-      </Field>
-
+                handleChangeValue={handleChangeValue}
+              />)}
+          </div>
+        </details>
+      </div>
     </div>
-
   );
 };
 
-export default Select;
+export default LanguagesSelector;
+
+function SelectItem({
+  selectOccupation,
+  closeDropdown
+  ,
+  handleChangeValue
+}: {
+  handleChangeValue: (e: any, value: string) => void;
+  selectOccupation: selectOccupation
+  setValue: (value: string) => void;
+  closeDropdown: () => void;
+}) {
+  return (
+
+    <Button
+      className={clsx([
+        'z-20 bg-white w-full  transition flex justify-start',
+        'items-center text-left text-base cursor-pointer py-2 px-4 leading-4',
+        'hover:bg-gray-100',
+      ])}
+      type="submit"
+      variant="primary"
+      onClick={(e: any) => {
+        handleChangeValue(e, selectOccupation.name)
+        closeDropdown()
+      }}
+    >
+      {selectOccupation.name}
+    </Button>
+
+  );
+}
+
+

@@ -47,7 +47,7 @@ export function HeaderSection() {
   return (
     <header
       className={clsx(
-        'bg-transparent inset-x-0 top-0 z-50 transition-all duration-200',
+        'bg-transparent inset-x-0 top-0 z-50 transition-all duration-200 ',
         isSticky ? 'fixed bg-white shadow-lg' : 'absolute',
       )}
     >
@@ -225,10 +225,6 @@ const mainMenuItems: MenuItem[] = [
     text: 'Services',
     href: '/services',
     items: [
-      {
-        text: 'Partnerships services',
-        href: '/services/partnerships',
-      },
       {
         text: 'Professional services',
         href: '/services/professional',
