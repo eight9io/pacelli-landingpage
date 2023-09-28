@@ -52,15 +52,13 @@ function InputGroup6({
         type={type}
         placeholder={label}
         aria-label={label}
-        className={`peer block w-full p-3 text-gray-600  border border-r-0 focus:border-red-400 focus:bg-white focus:outline-none focus:ring-0 appearance-none rounded-tr-none rounded-br-none rounded transition-colors duration-300 ${
-          disabled ? 'bg-gray-200' : ''
-        } ${inputClassName}`}
+        className={` placeholder:text-primary-950   peer block w-full p-3 text-gray-600  border border-r-0 focus:border-red-400 focus:bg-white focus:outline-none focus:ring-0 appearance-none rounded-tr-none rounded-br-none rounded transition-colors duration-300 ${disabled ? 'bg-gray-200' : ''
+          } ${inputClassName}`}
         disabled={disabled}
       />
       <div
-        className={`absolute right-0 top-1 flex items-center rounded-tl-none rounded-bl-none rounded pr-3 py-3 text-gray-600 bg-gray-100 border border-l-0 peer-focus:border-red-400 peer-focus:bg-white transition-colors duration-300 ${
-          disabled ? 'bg-gray-200' : ''
-        } ${decorationClassName}`}
+        className={`absolute right-0 top-1 flex items-center rounded-tl-none rounded-bl-none rounded pr-3 py-3 text-gray-600 bg-gray-100 border border-l-0 peer-focus:border-red-400 peer-focus:bg-white transition-colors duration-300 ${disabled ? 'bg-gray-200' : ''
+          } ${decorationClassName}`}
       >
         {decoration}
       </div>
@@ -122,7 +120,7 @@ const DatePicker: React.FC<DatePickerProp> = ({
                 name={name}
                 label={label}
                 inputClassName={clsx(
-                  'input focus:outline-offset-0 focus:outline-w-[1px] focus:outline-1 rounded-sm input-primary w-full focus:!bg-transparent [&+div]:!bg-transparent [&+div]:!border-none [&+div]:!border-b-2 [&+div]:!border-b-red-500',
+                  'border-gray-400  input focus:outline-offset-0 focus:outline-w-[1px] focus:outline-1 rounded-sm input-primary w-full focus:!bg-transparent [&+div]:!bg-transparent [&+div]:!border-none [&+div]:!border-b-2 [&+div]:!border-b-red-500',
                   meta.error && meta.touched && 'focus:outline-red-500 border-red-500',
                   meta.error && meta.touched && inputErrorClassName,
                   inputClassName
