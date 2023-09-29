@@ -24,7 +24,7 @@ const Contact: React.FC<ContactProps> = ({className = ''}) => {
           </p>
           <div className="h-[1.5px] bg-gray-300"></div>
           <p className="  text-base  leading-7 font-bold">Chiamaci al</p>
-          <div className="flex gap-4 text-neutral-600 font-normal text-base">
+          <div className="flex gap-4 text-gray-600 font-normal text-base">
             <Phone className="text-secondary w-6 h-6 stroke-secondary origin-center rotate-[270deg] stroke-2" />
             +39 0824/948533
           </div>

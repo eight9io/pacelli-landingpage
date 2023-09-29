@@ -78,7 +78,10 @@ interface InfoItemProps {
 const InfoItem: React.FC<InfoItemProps> = ({title, value, icon}) => {
   return (
     <li className="flex flex-col">
-      <Heading className="font-bold md:text-base mb-4" variant="h5">
+      <Heading
+        className="font-bold md:text-base mb-4 text-primary"
+        variant="h5"
+      >
         {title}
       </Heading>
       <div className="md:text-base flex items-center gap-4">
