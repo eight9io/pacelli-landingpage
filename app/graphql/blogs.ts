@@ -35,6 +35,11 @@ export const FEATURED_BLOG_QUERY = `#graphql
       width
       url(transform: {})
     }
+    blog {
+      id
+      handle
+      title
+    }
     content(truncateAt: 200)
   }
 ` as const;

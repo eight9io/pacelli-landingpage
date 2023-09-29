@@ -1,8 +1,8 @@
-import { defer, type LoaderArgs } from '@shopify/remix-oxygen';
-import { AnalyticsPageType } from '@shopify/hydrogen';
+import {defer, type LoaderArgs} from '@shopify/remix-oxygen';
+import {AnalyticsPageType} from '@shopify/hydrogen';
 
-import { seoPayload } from '~/lib/seo.server';
-import { routeHeaders } from '~/data/cache';
+import {seoPayload} from '~/lib/seo.server';
+import {routeHeaders} from '~/data/cache';
 import HeroPartnerships from '~/components/services/partnerships/HeroPartnerships';
 import Contact from '~/components/services/partnerships/Contact';
 import BeforeAfter from '~/components/services/partnerships/BeforeAfter';
@@ -11,7 +11,7 @@ import SocialProof from '~/components/home/social-proof';
 
 export const headers = routeHeaders;
 
-export async function loader({ params, context }: LoaderArgs) {
+export async function loader({params, context}: LoaderArgs) {
   // const {language, country} = context.storefront.i18n;
 
   // if (
@@ -36,11 +36,10 @@ export async function loader({ params, context }: LoaderArgs) {
 export default function PartnershipServicesPage() {
   return (
     <>
-
       <HeroPartnerships />
       <Contact />
       <BeforeAfter />
-      <Brands className=' mt-[60px] md:mt-[90px]' />
+      <Brands className=" mt-[60px] md:mt-[90px]" />
       <SocialProof />
     </>
   );
