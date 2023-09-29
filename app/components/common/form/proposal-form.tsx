@@ -1,16 +1,11 @@
-'use client';
-/* eslint-disable */
 import {Button} from '~/components/snippets';
-import DatePicker from '../date-picker';
 import {Field, Form} from 'react-final-form';
-import TextArea from '~/components/common/text-area';
 import TextField from '~/components/common/textfield';
 import clsx from 'clsx';
-import {contactValidate} from '~/validation/contact';
 import {validateFormValues} from '~/validation';
 import Select from '../select';
-import LocaleSwitcher from '~/components/common/languages-selector';
 import {proposalValidate} from '~/validation/proposal';
+import Heading from '../heading';
 interface ProposalFormProps {
   className?: string;
 }
@@ -32,9 +27,12 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
           // console.log("🚀 ~ file: proposal-form.tsx:31 ~ submitErrors:", values)
           return (
             <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
-              <h2 className="text-[32px] md:text-[42px] font-semibold text-[#142423] text-center mb-14">
+              <Heading
+                className="font-semibold text-primary text-center mb-14"
+                variant="h3"
+              >
                 Ricevere una proposta
-              </h2>
+              </Heading>
               <div className="relative">
                 <Field name="occupation">
                   {({input, meta}) => (
