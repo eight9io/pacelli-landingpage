@@ -6,9 +6,9 @@ import Headphone from '~/components/common/icons/headphone';
 import Pig from '~/components/common/icons/pig';
 import Preventivo from '~/components/common/icons/preventivo';
 import Promo from '~/components/common/icons/promo';
-import {Button} from '~/components/snippets';
+import { Button } from '~/components/snippets';
 
-/* eslint-disable */
+
 interface BookAppointmentProps {
   className?: string;
 }
@@ -57,7 +57,7 @@ const arr = [
       "Offriamo finanziamenti personalizzabili per un acquisto senza preoccupazioni. Grazie a queste opzioni di finanziamento, potrai scegliere l'arredamento che più ami e pagarlo comodamente a rate.",
   },
 ];
-const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
+const BookAppointment: React.FC<BookAppointmentProps> = ({ className = '' }) => {
   return (
     <section className={clsx(className)}>
       <div className="base-container !pt-0  mt-[40px] mb-[120px]">
