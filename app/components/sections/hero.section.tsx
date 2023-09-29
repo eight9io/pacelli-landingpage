@@ -1,6 +1,6 @@
 'use client';
 
-import { shopClient } from 'libs/shopify-client';
+import {shopClient} from 'libs/shopify-client';
 import Link from 'next/link';
 
 export function HeroSection() {
@@ -21,10 +21,14 @@ export function HeroSection() {
         </div>
       </div>
       <div className="text-center">
-        <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Next Shopify Storefront</h1>
+        <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+          Next Shopify Storefront
+        </h1>
         <p className="mt-6 text-lg leading-8 text-gray-600">
-          A <b>Shopping Cart</b> built with <b>TypeScript</b>, <b>Tailwind CSS</b>, <b>Headless UI</b>, <b>Next.js</b>,{' '}
-          <b>React.js</b>, <b>Shopify Hydrogen React</b>,... and <b>Shopify Storefront GraphQL API</b>.
+          A <b>Shopping Cart</b> built with <b>TypeScript</b>,{' '}
+          <b>Tailwind CSS</b>, <b>Headless UI</b>, <b>Next.js</b>,{' '}
+          <b>React.js</b>, <b>Shopify Hydrogen React</b>,... and{' '}
+          <b>Shopify Storefront GraphQL API</b>.
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">
           <Link

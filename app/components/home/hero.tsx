@@ -1,9 +1,8 @@
-import clsx from 'clsx';
 import Carousel from '~/components/common/carousel';
-
-import {useTranslation} from 'react-i18next';
 import Link from '~/components/Link';
 import arrowRight from '~/assets/icons/arrow-right.svg';
+import clsx from 'clsx';
+import {useTranslation} from 'react-i18next';
 
 interface HeroProps {
   className?: string;
@@ -28,7 +27,35 @@ const mockData = [
     src: 'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero3.png',
     title: 'home:hero.item3.title',
     subtitle: 'home:hero.item3.subtitle',
-    link: '/',
+    link: '/about',
+  },
+  {
+    id: 'item4',
+    src: 'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero3.png',
+    title: 'home:hero.item4.title',
+    subtitle: 'home:hero.item4.subtitle',
+    link: '/brand',
+  },
+  {
+    id: 'item5',
+    src: 'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero3.png',
+    title: 'home:hero.item5.title',
+    subtitle: 'home:hero.item5.subtitle',
+    link: '/services/professional',
+  },
+  {
+    id: 'item6',
+    src: 'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero3.png',
+    title: 'home:hero.item6.title',
+    subtitle: 'home:hero.item6.subtitle',
+    link: '/services/private',
+  },
+  {
+    id: 'item7',
+    src: 'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero3.png',
+    title: 'home:hero.item7.title',
+    desc: 'home:hero.item7.desc',
+    link: '/showroom',
   },
 ];
 
@@ -59,8 +86,17 @@ const Hero: React.FC<HeroProps> = ({className = ''}) => {
                 <h2>
                   {t(item.title)}
                   <br />
-                  <span className="text-primary">{t([item.subtitle, ''])}</span>
+                  {item.subtitle ? (
+                    <span className="text-primary">
+                      {t([item.subtitle, ''])}
+                    </span>
+                  ) : null}
                 </h2>
+                {item.desc ? (
+                  <span className="block text-gray-900 font-normal text-base">
+                    {t([item.desc, ''])}
+                  </span>
+                ) : null}
                 {item.link && (
                   <Link
                     to={item.link}

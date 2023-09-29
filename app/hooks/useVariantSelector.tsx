@@ -1,8 +1,12 @@
 // import { Product, ProductOption, ProductVariantConnection } from 'graphql/graphql';
 
-import { Product, ProductOption, ProductVariantConnection } from '@shopify/hydrogen-react/storefront-api-types';
+import {
+  Product,
+  ProductOption,
+  ProductVariantConnection,
+} from '@shopify/hydrogen-react/storefront-api-types';
 import lodash from 'lodash';
-import { useState } from 'react';
+import {useState} from 'react';
 
 declare type Options = {
   name: string;
@@ -15,7 +19,7 @@ declare type Options = {
 
 const transformOptions = (options: Array<ProductOption>) => {
   return options.map((item, optionIndex) => {
-    const { name, values } = item;
+    const {name, values} = item;
 
     return {
       name: name,
@@ -30,7 +34,11 @@ const transformOptions = (options: Array<ProductOption>) => {
   });
 };
 
-const getAvailableValues = (variants: ProductVariantConnection, draftOptions: Options, currentIndex: number) => {
+const getAvailableValues = (
+  variants: ProductVariantConnection,
+  draftOptions: Options,
+  currentIndex: number,
+) => {
   const selectedOptions = draftOptions
     .map((item) => ({
       name: item.name,
@@ -54,7 +62,8 @@ const getAvailableValues = (variants: ProductVariantConnection, draftOptions: Op
   availabileVariants.forEach((_ref5) => {
     var selectedOptions = _ref5.selectedOptions;
     selectedOptions.forEach((selectedOption) => {
-      if (draftOptions[currentIndex].name === selectedOption.name) nextValues.push(selectedOption.value);
+      if (draftOptions[currentIndex].name === selectedOption.name)
+        nextValues.push(selectedOption.value);
     });
   });
   return lodash.uniq(nextValues);
@@ -69,7 +78,11 @@ export const useVariantSelector = (product: Product) => {
       return draftOption.name === name;
     });
     draftOptions.forEach((draftOption, optionIndex: number) => {
-      var availableValues = getAvailableValues(product.variants, draftOptions, optionIndex);
+      var availableValues = getAvailableValues(
+        product.variants,
+        draftOptions,
+        optionIndex,
+      );
       draftOption.values.forEach(function (draftValue) {
         if (availableValues.includes(draftValue.value)) {
           draftValue.disabled = false;
@@ -107,7 +120,9 @@ export const useVariantSelector = (product: Product) => {
       product.variants.nodes.find((variant) => {
         const selecteds = [...variant.selectedOptions];
         selecteds.map((i) => delete i.__typename);
-        return variant.availableForSale && lodash.isEqual(selecteds, selectedOptions);
+        return (
+          variant.availableForSale && lodash.isEqual(selecteds, selectedOptions)
+        );
       })?.id || null;
     setVariantId(variantId);
     setOptions(draftOptions);

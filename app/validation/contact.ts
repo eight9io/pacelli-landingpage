@@ -6,7 +6,10 @@ const phoneRegExp =
 export const contactValidate = yup.object({
   email: yup.string().email().required(),
   name: yup.string().min(2).required(),
-  phone: yup.string().matches(phoneRegExp, 'Phone number is not valid').required(),
+  phone: yup
+    .string()
+    .matches(phoneRegExp, 'Phone number is not valid')
+    .required(),
   date: yup.date().min(new Date()),
   time: yup.string(),
   note: yup.string(),
