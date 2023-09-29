@@ -23,7 +23,7 @@ const BeforeAfter: React.FC<BeforeAfterProps> = ({className = ''}) => {
             >
               Cosa facciamo guarda il prima e il dopo
             </Heading>
-            <p className="  text-base font-normal leading-7 ">
+            <p className=" text-gray-900 text-base font-normal leading-7 ">
               Siamo entusiasti di mostrarti alcuni dei progetti che abbiamo
               realizzato, tutti personalizzati per soddisfare le esigenze dei
               nostri clienti. La trasformazione è incredibile, e siamo pronti a

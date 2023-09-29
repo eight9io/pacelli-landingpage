@@ -74,7 +74,7 @@ const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
                 <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9 ">
                   {item.title}
                 </p>
-                <p className="  text-base font-normal leading-7 ">
+                <p className=" text-gray-900 text-base font-normal leading-7 ">
                   {item.description}
                 </p>
               </div>
@@ -92,7 +92,7 @@ const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
                 <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9 ">
                   {item.title}
                 </p>
-                <p className="  text-base font-normal leading-7 ">
+                <p className=" text-gray-900 text-base font-normal leading-7 ">
                   {item.description}
                 </p>
               </div>
@@ -110,7 +110,7 @@ const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
                 <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9 ">
                   {item.title}
                 </p>
-                <p className="  text-base font-normal leading-7 ">
+                <p className=" text-gray-900 text-base font-normal leading-7 ">
                   {item.description}
                 </p>
               </div>
