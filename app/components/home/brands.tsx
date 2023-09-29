@@ -38,6 +38,7 @@ import mobilgam from '~/assets/brands/mobilgam.png';
 import penta from '~/assets/brands/penta.png';
 import prandina from '~/assets/brands/prandina.png';
 import ronda_design from '~/assets/brands/ronda_design.png';
+import Heading from '../common/heading';
 
 interface BrandsProps {
   className?: string;
@@ -58,9 +59,9 @@ const Brands: React.FC<BrandsProps> = ({
               showDescription ? '' : 'hidden',
             )}
           >
-            <h2 className="text-gray-900 text-[40px] md:text-[64px] font-semibold leading-[60px] md:leading-[78px] mb-4 md:mb-6">
+            <Heading className="mb-4 md:mb-6">
               Insieme ai migliori Brands
-            </h2>
+            </Heading>
             <p className="text-gray-900 leading-7">
               Siamo orgogliosi di affermare che le Aziende di cui siamo
               rifornitori sono considerate le migliori nel mercato del mobile.
