@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import {ArticleConnection} from '@shopify/hydrogen/storefront-api-types';
+import Tag from '~/components/common/icons/tag';
 
 dayjs.extend(localizedFormat);
 
@@ -44,9 +45,17 @@ const FeaturedPosts: React.FC<FeaturedPostsProps> = ({
                 height={380}
                 className="object-cover mb-6 w-full h-[190px] md:h-[380px]"
               />
-              <span className="text-neutral-400 block text-sm mb-2 uppercase">
-                {dayjs(article.publishedAt).format('LL')}
-              </span>
+              <div className="flex flex-wrap justify-start gap-8">
+                <span className="text-gray-400 block text-sm mb-2 uppercase">
+                  {dayjs(article.publishedAt).format('LL')}
+                </span>
+                {article.blog?.title ? (
+                  <span className="text-gray-400 flex text-sm mb-2 uppercase items-center gap-2">
+                    <Tag className="text-gray-400" />
+                    {article.blog?.title}
+                  </span>
+                ) : null}
+              </div>
 
               <h4 className="font-bold text-gray-900 text-2xl line-clamp-2 mb-2">
                 {article.title}

@@ -35,7 +35,9 @@ const TextField: React.FC<TextFieldProp> = ({
             placeholder={label}
             className={clsx(
               'border-gray-400  input focus:outline-offset-0 focus:outline-w-[1px] focus:outline-1 rounded-sm input-primary w-full focus:ring-transparent placeholder:text-primary-950',
-              meta.error && meta.touched && 'focus:outline-red-500 border-red-500',
+              meta.error &&
+                meta.touched &&
+                'focus:outline-red-500 border-red-500',
               meta.error && meta.touched && inputErrorClassName,
               inputClassName,
             )}

@@ -1,5 +1,6 @@
-import clsx from 'clsx';
+import Heading from '../common/heading';
 import bullhorm from '~/assets/icons/icon_home_about_1.svg';
+import clsx from 'clsx';
 import handshake from '~/assets/icons/icon_home_about_2.svg';
 import star from '~/assets/icons/icon_home_about_3.svg';
 
@@ -11,9 +12,7 @@ const About: React.FC<AboutProps> = ({className = ''}) => {
   return (
     <section className={clsx(className)}>
       <div className="base-container !pt-16 mb-8">
-        <h2 className="text-gray-900 text-[64px] font-semibold leading-[78px] mb-8 md:mb-6">
-          Chi siamo
-        </h2>
+        <Heading className="mb-8 md:mb-6">Chi siamo</Heading>
         <div className="grid grid-cols-12 gap-0 gap-y-8">
           <div className="col-span-12 md:col-span-7 flex flex-col gap-6">
             <div className="md:w-3/4">
@@ -25,7 +24,7 @@ const About: React.FC<AboutProps> = ({className = ''}) => {
                 />
                 Mission
               </h3>
-              <p className="text-base">
+              <p className="text-base text-gray-900">
                 La nostra missione è creare ambienti straordinari che soddisfino
                 le esigenze e i gusti individuali di ogni cliente, trasformando
                 così le loro visioni in realtà. Con la nostra competenza e
@@ -43,13 +42,13 @@ const About: React.FC<AboutProps> = ({className = ''}) => {
                 />
                 Perché noi
               </h3>
-              <p className="text-base">
+              <p className="text-base text-gray-900">
                 Scegliere Pacelli Arredamenti è molto più di una semplice
                 decisione d&apos;acquisto; è un&apos;affermazione del tuo
                 impegno per la qualità e il tuo apprezzamento per il design
                 ineguagliabile.
               </p>
-              <p className="text-base">
+              <p className="text-base text-gray-900">
                 Con Pacelli Arredamenti, non c&apos;è bisogno di compromessi.
                 Qui, la qualità e la convenienza si fondono armoniosamente,
                 offrendoti l&apos;opportunità di realizzare i tuoi sogni
@@ -66,7 +65,7 @@ const About: React.FC<AboutProps> = ({className = ''}) => {
                 />
                 Punti di forza
               </h3>
-              <p className="text-base">
+              <p className="text-base text-gray-900">
                 Il nostro successo è guidato da tre pilastri fondamentali: una
                 vasta selezione di prodotti da aziende di alta qualità, la
                 nostra costante attenzione alla precisione e un forte impegno

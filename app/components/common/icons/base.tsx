@@ -13,7 +13,7 @@ const IconShellOutline = (props: any) => {
   );
 };
 
-const Icon = ({ children, ...props }: any) => {
+const Icon = ({children, ...props}: any) => {
   return <IconShellOutline {...props}>{children}</IconShellOutline>;
 };
 
