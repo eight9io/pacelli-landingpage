@@ -7,6 +7,7 @@ import {routeHeaders} from '~/data/cache';
 import clsx from 'clsx';
 import Heading from '~/components/common/heading';
 import {useMemo, useState} from 'react';
+import Hero from '~/components/blogs/hero';
 
 export const headers = routeHeaders;
 
@@ -36,35 +37,9 @@ export default function FaqsPage() {
   const [activeFaq, setActiveFaq] = useState<number>();
 
   return (
-    <section
-      className={clsx(
-        'overflow-hidden relative pt-20 md:pt-[160px] mb-15 md:mb-28',
-      )}
-    >
-      <div className="grid grid-cols-10 base-container gap-4">
-        <div className="col-span-10 md:col-span-3">
-          <Heading
-            className="text-gray-900 !text-[32px] md:!text-5xl"
-            variant="h2"
-          >
-            Frequently Asked Question
-          </Heading>
-        </div>
-        <div className="col-span-10 md:col-span-7">
-          <div className="join join-vertical w-full rounded-none md:pl-4">
-            {faqItems.map((item: any, index: number) => (
-              <AccordionItem
-                key={item.question}
-                {...item}
-                index={index + 1}
-                onClick={() => setActiveFaq(index)}
-                isActive={activeFaq === index}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
+    <>
+      <Hero />
+    </>
   );
 }
 
@@ -113,7 +88,7 @@ const AccordionItem = ({
       <input type="radio" name="my-accordion-4" checked={isActive} />
       <Heading
         className={clsx(
-          'collapse-title !text-[22px] md:!text-2xl !font-bold text-secondary pl-[68px]',
+          'collapse-title !text-[22px] !font-bold text-secondary pl-[68px]',
           'before:absolute before:top-4 md:before:top-1/2 before:right-0 before:w-10 before:h-10 md:before:w-12 md:before:h-12 before:bg-gray-100 md:before:-translate-y-1/2',
           'after:!top-9 after:!right-5 after:!w-3 after:!h-3',
         )}
@@ -123,7 +98,7 @@ const AccordionItem = ({
         {question}
       </Heading>
       <div className="collapse-content pl-[68px]">
-        <p className="whitespace-pre-wrap	text-gray-600">{anwser}</p>
+        <p className="whitespace-pre-wrap	">{anwser}</p>
       </div>
     </div>
   );

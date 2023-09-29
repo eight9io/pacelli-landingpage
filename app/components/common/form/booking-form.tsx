@@ -19,7 +19,7 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
   };
 
   return (
-    <div className={clsx('bg-gray-200 px-4 md:px-8 py-16', className)}>
+    <div className={clsx('bg-gray-100 px-4 md:px-8 py-16', className)}>
       <Form
         onSubmit={onSubmit}
         validate={validateFormValues(contactValidate)}

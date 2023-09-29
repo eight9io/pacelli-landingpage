@@ -4,11 +4,12 @@ interface HeroPartnershipsProps {
   className?: string;
 }
 
-const HeroPartnerships: React.FC<HeroPartnershipsProps> = ({ className = '' }) => {
+const HeroPartnerships: React.FC<HeroPartnershipsProps> = ({
+  className = '',
+}) => {
   return (
     <section className={clsx(' py-[30px] md:py-[90px] mt-12', className)}>
       <div className="base-container">
-
         <div className="grid grid-cols-12 ">
           <div className="col-span-12 lg:col-span-9">
             <img
@@ -16,20 +17,13 @@ const HeroPartnerships: React.FC<HeroPartnershipsProps> = ({ className = '' }) =
               alt="Mission"
               width={821}
               height={600}
-              className='h-[600px] w-full object-cover object-center'
-
+              className="h-[600px] w-full object-cover object-center"
             />
-
           </div>
-
         </div>
       </div>
     </section>
   );
 };
-
-
-
-
 
 export default HeroPartnerships;
