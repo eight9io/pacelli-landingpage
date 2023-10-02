@@ -21,7 +21,7 @@ const Plan: React.FC<PlanProps> = ({className = ''}) => {
             Stai pianificando qualcosa di speciale per la tua casa o per la tua
             nuova attività?
           </h2>
-          <p className="  text-base font-normal leading-7 ">
+          <p className=" text-gray-900 text-base font-normal leading-7 ">
             Prendi ora un appuntamento per una consulenza personalizzata
             gratuita e lascia che il nostro team di esperti ti assista nella
             trasformazione dei tuoi sogni in realtà. Siamo qui per rendere
