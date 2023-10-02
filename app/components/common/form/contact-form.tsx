@@ -28,7 +28,7 @@ const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
           <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
             <TextField
               name="name"
-              label="Name *"
+              label="Full name *"
               inputClassName={clsx(
                 'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
               )}
