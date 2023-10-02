@@ -33,8 +33,8 @@ export default function PartnershipServicesPage() {
        nostri clienti. La trasformazione è incredibile, e siamo pronti a
        portare anche il tuo spazio al livello successivo. Contattaci ora
        per vedere come possiamo migliorare il tuo ambiente!"
-        afterImg={services1}
-        beforeImg={services2}
+        afterImg={services2}
+        beforeImg={services1}
 
       />
       <Brands className=" mt-[60px] md:mt-[90px]" />

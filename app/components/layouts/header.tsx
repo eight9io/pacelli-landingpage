@@ -53,8 +53,9 @@ export function HeaderSection() {
     >
       <Topbar />
       <nav
-        className="flex items-center justify-between p-4 lg:px-8"
+        className="flex items-center justify-between p-4 lg:px-8 "
         aria-label="Global"
+        id="nav-header"
       >
         <div className="flex lg:flex-1">
           <Logo className="w-[95px] h-[30px] md:w-auto md:h-auto" />
