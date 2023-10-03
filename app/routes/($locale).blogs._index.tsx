@@ -1,7 +1,7 @@
 import {defer, json, type LoaderArgs} from '@shopify/remix-oxygen';
 import {useLoaderData} from '@remix-run/react';
 import {routeHeaders} from '~/data/cache';
-import Hero from '~/components/blogs/hero';
+import Hero from '~/components/blogs/pinned-article';
 import invariant from 'tiny-invariant';
 import {NonNullableFields} from '~/lib/type';
 import {
@@ -48,13 +48,25 @@ export async function loader({request, context: {storefront}}: LoaderArgs) {
 
   // const seo = seoPayload.policies({policies, url: request.url});
 
+  const articles = selectedBlog.blog
+    ? selectedBlog.blog?.articles.nodes
+    : articleData?.articles?.nodes
+    ? articleData.articles.nodes
+    : [];
+
+  const pageInfo = selectedBlog.blog?.articles?.pageInfo
+    ? selectedBlog.blog?.articles?.pageInfo
+    : articleData?.articles?.pageInfo
+    ? articleData.articles?.pageInfo
+    : {
+        hasNextPage: false,
+        hasPreviousPage: false,
+      };
+
   return json({
     blogs,
-    articles: selectedBlog.blog
-      ? selectedBlog.blog?.articles.nodes
-      : articleData?.articles?.nodes
-      ? articleData.articles.nodes
-      : [],
+    articles,
+    pageInfo,
     selectedBlog: selectedBlog.blog,
     // seo
   });
@@ -65,7 +77,7 @@ export default function BlogPage() {
 
   return (
     <>
-      <Hero />
+      <Hero article={articles[0]} />
       <ArticlesPagination articles={articles as Array<Article>} />
     </>
   );

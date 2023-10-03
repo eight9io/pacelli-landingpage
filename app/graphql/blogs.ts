@@ -44,6 +44,53 @@ export const FEATURED_BLOG_QUERY = `#graphql
   }
 ` as const;
 
+export const ARTICLES_PAGINATION_QUERY = `#graphql
+  query ArticlesPagination(
+    $language: LanguageCode,
+    $first: Int = 10,
+    $after: String
+  ) @inContext( language: $language) {
+    articles(first: $first, after: $after) {
+      pageInfo {
+        hasNextPage
+        endCursor
+        hasPreviousPage
+        startCursor
+      }
+      nodes {
+        ...Article
+      }
+    }
+  }
+
+  fragment Article on Article {
+    id
+    handle
+    onlineStoreUrl
+    publishedAt
+    tags
+    title
+    trackingParameters
+    seo {
+      description
+      title
+    }
+    image {
+      altText
+      height
+      id
+      width
+      url(transform: {})
+    }
+    blog {
+      id
+      handle
+      title
+    }
+    content(truncateAt: 200)
+  }
+` as const;
+
 export const BLOG_LIST_QUERY = `#graphql
   query BlogsList {
       blogs(first: 10) {
