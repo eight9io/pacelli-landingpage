@@ -35,7 +35,9 @@ export default async function handleRequest(
     });
 
   // App
-  const {nonce, header, NonceProvider} = createContentSecurityPolicy();
+  const {nonce, header, NonceProvider} = createContentSecurityPolicy({
+    frameSrc: ['https://www.google.com/'],
+  });
   const body = await renderToReadableStream(
     <NonceProvider>
       <I18nextProvider i18n={instance}>

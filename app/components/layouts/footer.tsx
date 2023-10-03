@@ -39,13 +39,13 @@ const FooterSection = () => {
             <div className="text-white text-base font-normal">
               CONTACT WITH US
             </div>
-            <p className="text-white text-xs md:text-[15px] font-normal leading-[21px] mt-6">
+            <p className="text-white text-xs md:text-sm font-normal leading-[21px] mt-6">
               Hotline:{' '}
               <Link to="tel:0824948533" className="">
                 (0824) 948533
               </Link>
             </p>
-            <p className="text-white text-xs md:text-[15px] font-normal leading-[21px] mt-6">
+            <p className="text-white text-xs md:text-sm font-normal leading-[21px] mt-6">
               Address: Via Volturno, 11, San Salvatore Telesino (BN)
             </p>
           </div>

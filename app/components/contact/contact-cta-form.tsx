@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import ContactForm from '~/components/common/form/contact-form';
-import {useTranslation} from 'react-i18next';
 import React from 'react';
 import Heading from '~/components/common/heading';
 import Phone from '~/components/common/icons/phone-contact';
@@ -10,12 +9,20 @@ import Link from '~/components/Link';
 import Facebook from '~/components/common/icons/facebook';
 import Instagram from '~/components/common/icons/instagram';
 import Youtube from '~/components/common/icons/youtube';
-
 interface ContactCTAFormProps {
   className?: string;
 }
+export const InfoContact = (containerStyle: { containerStyle?: string }) => {
+  return <>
+    <ul className={clsx("flex flex-col  pb-8 gap-8", containerStyle)}>
+      {infoItems.map((item) => (
+        <InfoItem key={item.title} {...item} />
+      ))}
+    </ul>
 
-const ContactCTAForm: React.FC<ContactCTAFormProps> = ({className = ''}) => {
+  </>
+}
+const ContactCTAForm: React.FC<ContactCTAFormProps> = ({ className = '' }) => {
   return (
     <section className={clsx('base-container py-24 md:py-32', className)}>
       <h2 className="text-[40px] md:text-[64px] font-semibold leading-[50px] md:leading-[78px]">
@@ -23,11 +30,7 @@ const ContactCTAForm: React.FC<ContactCTAFormProps> = ({className = ''}) => {
       </h2>
       <div className="grid grid-cols-12 gap-8 pt-6">
         <div className="col-span-12 md:col-span-6">
-          <ul className="flex flex-col border-b pb-8 gap-8">
-            {infoItems.map((item) => (
-              <InfoItem key={item.title} {...item} />
-            ))}
-          </ul>
+          <InfoContact containerStyle='border-b ' />
           <div>
             <Heading className="font-bold md:text-base mb-4 mt-8" variant="h5">
               Connect with us
@@ -75,10 +78,13 @@ interface InfoItemProps {
   icon: React.ReactNode;
 }
 
-const InfoItem: React.FC<InfoItemProps> = ({title, value, icon}) => {
+const InfoItem: React.FC<InfoItemProps> = ({ title, value, icon }) => {
   return (
     <li className="flex flex-col">
-      <Heading className="font-bold md:text-base mb-4" variant="h5">
+      <Heading
+        className="font-bold md:text-base mb-4 text-primary"
+        variant="h5"
+      >
         {title}
       </Heading>
       <div className="md:text-base flex items-center gap-4">

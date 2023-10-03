@@ -7,7 +7,12 @@ export interface BrandIconProps {
   alt?: string;
 }
 
-const BrandIcon: React.FC<BrandIconProps & { src: any }> = ({ link = '', alt = '', className, src }) => {
+const BrandIcon: React.FC<BrandIconProps & {src: any}> = ({
+  link = '',
+  alt = '',
+  className,
+  src,
+}) => {
   return link ? (
     <Link href={link} className={className} target="_blank">
       <Image priority src={src} alt={alt} className="w-full h-full" />

@@ -187,7 +187,7 @@ shop-pay-button {
       height: 1.5px;
       left: -4%;
       top: 50%;
-      transform: translateY(-50%);
+      opacity: translateY(-50%);
       background: rgb(var(--color-primary));
       box-shadow: 0.5px 0.5px 0px 0.5px rgb(var(--color-contrast));
     }
@@ -1045,4 +1045,18 @@ shop-pay-button {
 .react-datepicker__portal .react-datepicker__navigation--next--disabled:hover {
   border-left-color: #e6e6e6;
   cursor: default;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+@keyframes popup {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.show-popup {
+  animation: popup 0.5s 1;
 }

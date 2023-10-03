@@ -35,19 +35,26 @@ export function CartSection() {
                 <div>
                   <div className="flex justify-between text-base font-medium text-gray-900">
                     <h3>
-                      <Link href={'/products/' + line?.merchandise?.product?.handle}>
+                      <Link
+                        href={'/products/' + line?.merchandise?.product?.handle}
+                      >
                         {line?.merchandise?.product?.title}
                       </Link>
                     </h3>
-                    <Money className="ml-4" data={line?.cost?.totalAmount!}></Money>
+                    <Money
+                      className="ml-4"
+                      data={line?.cost?.totalAmount!}
+                    ></Money>
                   </div>
                   <p className="mt-1 text-sm text-gray-500">
-                    {line?.merchandise?.selectedOptions?.map((option, index) => (
-                      <span key={option?.name}>
-                        {index ? ' / ' : ''}
-                        {option?.value}
-                      </span>
-                    ))}
+                    {line?.merchandise?.selectedOptions?.map(
+                      (option, index) => (
+                        <span key={option?.name}>
+                          {index ? ' / ' : ''}
+                          {option?.value}
+                        </span>
+                      ),
+                    )}
                   </p>
                 </div>
 
@@ -81,7 +88,9 @@ export function CartSection() {
             <CartCost amountType="subtotal" />
           </div>
         </div>
-        <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
+        <p className="mt-0.5 text-sm text-gray-500">
+          Shipping and taxes calculated at checkout.
+        </p>
         <div className="mt-6 flex">
           <CartCheckoutButton className="flex-1 rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">
             Checkout
@@ -91,7 +100,10 @@ export function CartSection() {
           <p>
             <span>or</span>
             <span> </span>
-            <Link href="/products" className="font-medium text-indigo-600 hover:text-indigo-500">
+            <Link
+              href="/products"
+              className="font-medium text-indigo-600 hover:text-indigo-500"
+            >
               Continue Shopping
               <span aria-hidden="true"> &rarr;</span>
             </Link>
