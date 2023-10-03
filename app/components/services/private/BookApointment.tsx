@@ -102,9 +102,7 @@ const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
             {arr.slice(4, 6).map((item) => (
               <div
                 key={item.id}
-                className=" border-neutral-50 border-[1px] w-max-[395px] overflow-hidden shadow-md space-y-4 p-8 px-4 md:px-8 
-                    
-                    "
+                className=" border-neutral-50 border-[1px] w-max-[395px] overflow-hidden shadow-md space-y-4 p-8 px-4 md:px-8"
               >
                 {item.img}
                 <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9 ">

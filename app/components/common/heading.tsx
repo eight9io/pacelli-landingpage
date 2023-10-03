@@ -10,7 +10,7 @@ interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
 const variantClasses = {
   h1: 'text-gray-900 text-[84px] font-bold leading-[100px]',
   h2: 'text-primary text-[40px] md:text-[64px] font-semibold leading-[60px] md:leading-[78px] tracking-tight',
-  h3: 'text-gray-600 text-[32px] md:text-5xl font-semibold leading-[48px] md:leading-[72px] md:tracking-tight',
+  h3: 'text-primary text-[32px] md:text-5xl font-semibold leading-[48px] md:leading-[72px] md:tracking-tight',
   h4: 'text-gray-600 text-[40px] font-semibold leading-[34px] md:leading-[50px]',
   h5: 'text-gray-600 text-2xl font-bold leading-9',
   h6: 'md:text-base font-semibold leading-6',

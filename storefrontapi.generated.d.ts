@@ -146,6 +146,99 @@ export type ArticleFragment = Pick<
   blog: Pick<StorefrontAPI.Blog, 'id' | 'handle' | 'title'>;
 };
 
+export type BlogsListQueryVariables = StorefrontAPI.Exact<{
+  [key: string]: never;
+}>;
+
+export type BlogsListQuery = {
+  blogs: {
+    nodes: Array<
+      Pick<StorefrontAPI.Blog, 'title' | 'onlineStoreUrl' | 'id' | 'handle'> & {
+        seo?: StorefrontAPI.Maybe<
+          Pick<StorefrontAPI.Seo, 'description' | 'title'>
+        >;
+      }
+    >;
+  };
+};
+
+export type BlogQueryQueryVariables = StorefrontAPI.Exact<{
+  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
+  handle?: StorefrontAPI.InputMaybe<StorefrontAPI.Scalars['String']>;
+  id?: StorefrontAPI.InputMaybe<StorefrontAPI.Scalars['ID']>;
+  articlesFirst?: StorefrontAPI.InputMaybe<StorefrontAPI.Scalars['Int']>;
+  articlesAfter?: StorefrontAPI.InputMaybe<StorefrontAPI.Scalars['String']>;
+}>;
+
+export type BlogQueryQuery = {
+  blog?: StorefrontAPI.Maybe<
+    Pick<StorefrontAPI.Blog, 'title' | 'onlineStoreUrl' | 'id' | 'handle'> & {
+      seo?: StorefrontAPI.Maybe<
+        Pick<StorefrontAPI.Seo, 'description' | 'title'>
+      >;
+      articles: {
+        nodes: Array<
+          Pick<
+            StorefrontAPI.Article,
+            | 'id'
+            | 'handle'
+            | 'onlineStoreUrl'
+            | 'publishedAt'
+            | 'tags'
+            | 'title'
+            | 'trackingParameters'
+            | 'content'
+          > & {
+            seo?: StorefrontAPI.Maybe<
+              Pick<StorefrontAPI.Seo, 'description' | 'title'>
+            >;
+            image?: StorefrontAPI.Maybe<
+              Pick<
+                StorefrontAPI.Image,
+                'altText' | 'height' | 'id' | 'width' | 'url'
+              >
+            >;
+            blog: Pick<StorefrontAPI.Blog, 'id' | 'handle' | 'title'>;
+          }
+        >;
+      };
+    }
+  >;
+};
+
+export type BlogFragment = Pick<
+  StorefrontAPI.Blog,
+  'title' | 'onlineStoreUrl' | 'id' | 'handle'
+> & {
+  seo?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Seo, 'description' | 'title'>>;
+  articles: {
+    nodes: Array<
+      Pick<
+        StorefrontAPI.Article,
+        | 'id'
+        | 'handle'
+        | 'onlineStoreUrl'
+        | 'publishedAt'
+        | 'tags'
+        | 'title'
+        | 'trackingParameters'
+        | 'content'
+      > & {
+        seo?: StorefrontAPI.Maybe<
+          Pick<StorefrontAPI.Seo, 'description' | 'title'>
+        >;
+        image?: StorefrontAPI.Maybe<
+          Pick<
+            StorefrontAPI.Image,
+            'altText' | 'height' | 'id' | 'width' | 'url'
+          >
+        >;
+        blog: Pick<StorefrontAPI.Blog, 'id' | 'handle' | 'title'>;
+      }
+    >;
+  };
+};
+
 export type LayoutQueryVariables = StorefrontAPI.Exact<{
   language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
   headerMenuHandle: StorefrontAPI.Scalars['String'];
@@ -708,6 +801,14 @@ interface GeneratedQueryTypes {
   '#graphql\n  query Articles(\n    $language: LanguageCode,\n    $first: Int = 10,\n  ) @inContext( language: $language) {\n    articles(first: $first) {\n      pageInfo {\n        hasNextPage\n        endCursor\n        hasPreviousPage\n        startCursor\n      }\n      nodes {\n        ...Article\n      }\n    }\n  }\n\n  fragment Article on Article {\n    id\n    handle\n    onlineStoreUrl\n    publishedAt\n    tags\n    title\n    trackingParameters\n    seo {\n      description\n      title\n    }\n    image {\n      altText\n      height\n      id\n      width\n      url(transform: {})\n    }\n    blog {\n      id\n      handle\n      title\n    }\n    content(truncateAt: 200)\n  }\n': {
     return: ArticlesQuery;
     variables: ArticlesQueryVariables;
+  };
+  '#graphql\n  query BlogsList {\n      blogs(first: 10) {\n      nodes {\n        title\n        seo {\n          description\n          title\n        }\n        onlineStoreUrl\n        id\n        handle\n      }\n    }\n  }\n': {
+    return: BlogsListQuery;
+    variables: BlogsListQueryVariables;
+  };
+  '#graphql\n  query BlogQuery(\n    $language: LanguageCode,\n    $handle: String,\n    $id: ID,\n    $articlesFirst: Int = 8,\n    $articlesAfter: String\n  ) @inContext( language: $language){\n    blog(handle: $handle, id: $id) {\n      ...Blog\n    }\n  }\n\n  fragment Blog on Blog {\n    title\n    seo {\n      description\n      title\n    }\n    onlineStoreUrl\n    id\n    handle\n    articles(first: $articlesFirst, after: $articlesAfter) {\n      nodes {\n        ...Article\n      }\n    }\n  }\n\n  fragment Article on Article {\n    id\n    handle\n    onlineStoreUrl\n    publishedAt\n    tags\n    title\n    trackingParameters\n    seo {\n      description\n      title\n    }\n    image {\n      altText\n      height\n      id\n      width\n      url(transform: {})\n    }\n    blog {\n      id\n      handle\n      title\n    }\n    content(truncateAt: 200)\n  }\n': {
+    return: BlogQueryQuery;
+    variables: BlogQueryQueryVariables;
   };
   '#graphql\n  query layout(\n    $language: LanguageCode\n    $headerMenuHandle: String!\n    $footerMenuHandle: String!\n    $menu1Handle: String!\n    $menu2Handle: String!\n  ) @inContext(language: $language) {\n    shop {\n      ...Shop\n    }\n    headerMenu: menu(handle: $headerMenuHandle) {\n      ...Menu\n    }\n    footerMenu: menu(handle: $footerMenuHandle) {\n      ...Menu\n    }\n    menu1: menu(handle: $menu1Handle) {\n      ...Menu\n    }\n    menu2: menu(handle: $menu2Handle) {\n      ...Menu\n    }\n  }\n  fragment Shop on Shop {\n    id\n    name\n    description\n    primaryDomain {\n      url\n    }\n    brand {\n      logo {\n        image {\n          url\n        }\n      }\n    }\n  }\n  fragment MenuItem on MenuItem {\n    id\n    resourceId\n    tags\n    title\n    type\n    url\n  }\n  fragment ChildMenuItem on MenuItem {\n    ...MenuItem\n  }\n  fragment ParentMenuItem on MenuItem {\n    ...MenuItem\n    items {\n      ...ChildMenuItem\n    }\n  }\n  fragment Menu on Menu {\n    id\n    items {\n      ...ParentMenuItem\n    }\n  }\n': {
     return: LayoutQuery;
