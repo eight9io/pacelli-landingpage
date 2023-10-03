@@ -79,21 +79,21 @@ const FooterSection = () => {
           >
             <Link
               to=""
-              className="w-8 h-8 p-2 bg-white rounded-full object-contain"
+              className="w-10 h-10 p-2 bg-white rounded-full object-contain"
             >
-              <Facebook className="text-secondary w-4 h-4 stroke-secondary" />
+              <Facebook className="text-secondary w-6 h-6 stroke-secondary" />
             </Link>
             <Link
               to=""
-              className="w-8 h-8 p-2 bg-white rounded-full object-contain"
+              className="w-10 h-10 p-2 bg-white rounded-full object-contain"
             >
-              <Instagram className="text-secondary w-4 h-4 stroke-secondary" />
+              <Instagram className="text-secondary w-6 h-6 stroke-secondary" />
             </Link>
             <Link
               to=""
-              className="w-8 h-8 p-2 bg-white rounded-full object-contain"
+              className="w-10 h-10 p-2 bg-white rounded-full object-contain"
             >
-              <Youtube className="text-secondary w-4 h-4 " />
+              <Youtube className="text-secondary w-6 h-6 " />
             </Link>
           </div>
         </div>
