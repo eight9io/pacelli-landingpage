@@ -1,30 +1,32 @@
 'use client';
 
-import {Button} from '~/components/snippets';
+import { Button } from '~/components/snippets';
 import DatePicker from '../date-picker';
-import {Form} from 'react-final-form';
+import { Form } from 'react-final-form';
 import TextArea from '~/components/common/text-area';
 import TextField from '~/components/common/textfield';
 import clsx from 'clsx';
-import {contactValidate} from '~/validation/contact';
-import {validateFormValues} from '~/validation';
+import { contactValidate } from '~/validation/contact';
+import { validateFormValues } from '~/validation';
 
 interface BookingFormProps {
   className?: string;
+  handleSubmitForm?: any
 }
 
-const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
+const BookingForm: React.FC<BookingFormProps> = ({ className = '', handleSubmitForm }) => {
   const onSubmit = (values: any) => {
+    handleSubmitForm()
     console.log('values', values);
   };
 
   return (
-    <div className={clsx('bg-gray-200 px-4 md:px-8 py-16', className)}>
+    <div className={clsx('bg-gray-100 px-4 md:px-8 py-16', className)}>
       <Form
         onSubmit={onSubmit}
         validate={validateFormValues(contactValidate)}
         validateOnBlur={false}
-        render={({handleSubmit}) => (
+        render={({ handleSubmit }) => (
           <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
             <TextField
               name="name"

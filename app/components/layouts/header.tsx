@@ -47,14 +47,15 @@ export function HeaderSection() {
   return (
     <header
       className={clsx(
-        'bg-transparent inset-x-0 top-0 z-50 transition-all duration-200 ',
+        'bg-transparent inset-x-0 top-0 z-10 transition-all duration-200 ',
         isSticky ? 'fixed bg-white shadow-lg' : 'absolute',
       )}
     >
       <Topbar />
       <nav
-        className="flex items-center justify-between p-4 lg:px-8"
+        className="flex items-center justify-between p-4 lg:px-8 "
         aria-label="Global"
+        id="nav-header"
       >
         <div className="flex lg:flex-1">
           <Logo className="w-[95px] h-[30px] md:w-auto md:h-auto" />

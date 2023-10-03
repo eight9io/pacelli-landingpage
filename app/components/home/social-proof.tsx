@@ -1,17 +1,16 @@
 import Carousel from '~/components/common/carousel';
 import IconQuote from '~/components/common/icons/quote';
 import clsx from 'clsx';
+import Heading from '../common/heading';
 
 interface SocialProofProps {
   className?: string;
 }
 
-const SocialProof: React.FC<SocialProofProps> = ({ className = '' }) => {
+const SocialProof: React.FC<SocialProofProps> = ({className = ''}) => {
   return (
     <section className={clsx('pt-[60px] bg-base-100', className)}>
-      <h2 className="text-center text-gray-900 text-[40px] md:text-[64px] font-semibold tracking-tight">
-        Cosa dicono di noi
-      </h2>
+      <Heading className="text-center">Cosa dicono di noi</Heading>
       <div className="base-container px-0 relative">
         <Carousel
           className="relative"
@@ -32,10 +31,10 @@ const SocialProof: React.FC<SocialProofProps> = ({ className = '' }) => {
               </div>
               <div className="col-span-12 md:col-span-4 flex flex-col gap-4 px-4 md:px-0 space-y-3">
                 <IconQuote className="text-secondary " />
-                <h3 className="text-gray-900 text-[40px] font-normal leading-[50px]">
+                <h3 className="text-primary text-[40px] font-normal leading-[50px]">
                   {item.author}
                 </h3>
-                <p className=" text-gray-600 text-base font-normal leading-7">
+                <p className=" text-gray-900 text-base font-normal leading-7">
                   {item.quote}
                 </p>
               </div>

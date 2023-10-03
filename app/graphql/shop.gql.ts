@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import {gql} from '@apollo/client';
 
 export const GET_SHOP_INFO = gql`
   query Shop($cursor: String) {
@@ -12,7 +12,7 @@ export const GET_SHOP_INFO = gql`
           id
           image {
             altText
-            url(transform: { maxHeight: 100 })
+            url(transform: {maxHeight: 100})
           }
           mediaContentType
         }

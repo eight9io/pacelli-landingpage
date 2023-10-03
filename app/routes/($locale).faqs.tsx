@@ -113,7 +113,7 @@ const AccordionItem = ({
       <input type="radio" name="my-accordion-4" checked={isActive} />
       <Heading
         className={clsx(
-          'collapse-title !text-[22px] !font-bold text-secondary pl-[68px]',
+          'collapse-title !text-[22px] md:!text-2xl !font-bold text-secondary pl-[68px]',
           'before:absolute before:top-4 md:before:top-1/2 before:right-0 before:w-10 before:h-10 md:before:w-12 md:before:h-12 before:bg-gray-100 md:before:-translate-y-1/2',
           'after:!top-9 after:!right-5 after:!w-3 after:!h-3',
         )}
@@ -123,7 +123,7 @@ const AccordionItem = ({
         {question}
       </Heading>
       <div className="collapse-content pl-[68px]">
-        <p className="whitespace-pre-wrap	">{anwser}</p>
+        <p className="whitespace-pre-wrap	text-gray-600">{anwser}</p>
       </div>
     </div>
   );

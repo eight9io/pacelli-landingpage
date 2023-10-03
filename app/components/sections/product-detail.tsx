@@ -1,16 +1,22 @@
 'use client';
 
-import { AddToCartButton, Image, ProductPrice, ProductProvider, useCart } from '@shopify/hydrogen-react';
+import {
+  AddToCartButton,
+  Image,
+  ProductPrice,
+  ProductProvider,
+  useCart,
+} from '@shopify/hydrogen-react';
 
-import { Button } from '~/components/snippets';
-import { Product } from '@shopify/hydrogen-react/storefront-api-types';
+import {Button} from '~/components/snippets';
+import {Product} from '@shopify/hydrogen-react/storefront-api-types';
 import clsx from 'clsx';
 // import Image from 'next/image';
 // import { Product } from 'graphql/graphql';
-import { useVariantSelector } from 'hooks/useVariantSelector';
+import {useVariantSelector} from 'hooks/useVariantSelector';
 
-export function ProductSingleSection({ product }: { product: Product }) {
-  const { variantId, options, selectOption } = useVariantSelector(product);
+export function ProductSingleSection({product}: {product: Product}) {
+  const {variantId, options, selectOption} = useVariantSelector(product);
 
   return (
     <ProductProvider data={product}>
@@ -32,22 +38,28 @@ export function ProductSingleSection({ product }: { product: Product }) {
             <div className="mt-4 pt-5 md:pt-10">
               <h2 className="sr-only">Product information</h2>
 
-              <h1 className="mb-5 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{product.title}</h1>
+              <h1 className="mb-5 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+                {product.title}
+              </h1>
 
-              <p className="mb-5 text-base text-gray-900">{product.description}</p>
+              <p className="mb-5 text-base text-gray-900">
+                {product.description}
+              </p>
 
               <div className="mb-5 text-3xl tracking-tight text-gray-900">
                 <ProductPrice data={product}></ProductPrice>
               </div>
 
               <div className="mb-2">
-                {options?.map(({ name, values }) => (
+                {options?.map(({name, values}) => (
                   <div className="mb-3" key={name}>
                     <div className="flex items-center justify-between">
-                      <h3 className="mb-1 text-lg font-medium text-gray-900">{name}</h3>
+                      <h3 className="mb-1 text-lg font-medium text-gray-900">
+                        {name}
+                      </h3>
                     </div>
 
-                    {values?.map(({ value, selected, disabled }) => {
+                    {values?.map(({value, selected, disabled}) => {
                       return (
                         <Button
                           className="mr-1"
@@ -72,7 +84,7 @@ export function ProductSingleSection({ product }: { product: Product }) {
                 variantId={variantId}
                 className={clsx(
                   'mt-10 flex w-full cursor-pointer items-center justify-center rounded-md border border-transparent bg-primary-600 p-3 text-base font-semibold text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:bg-gray-700',
-                  variantId ? '' : 'opacity-50 pointer-events-none'
+                  variantId ? '' : 'opacity-50 pointer-events-none',
                 )}
               >
                 Add to Cart
