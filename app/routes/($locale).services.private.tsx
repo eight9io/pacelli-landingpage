@@ -27,7 +27,7 @@ export default function PartnershipServicesPage() {
       <Plan />
       <BookAppointment />
       <BeforeAfter
-        title="Cosa facciamo guarda il prima e il dopo"
+        title="Guarda la trasformazione: Prima e Dopo "
         description="   Siamo entusiasti di mostrarti alcuni dei progetti che abbiamo
        realizzato, tutti personalizzati per soddisfare le esigenze dei
        nostri clienti. La trasformazione è incredibile, e siamo pronti a
