@@ -187,7 +187,7 @@ shop-pay-button {
       height: 1.5px;
       left: -4%;
       top: 50%;
-      transform: translateY(-50%);
+      opacity: translateY(-50%);
       background: rgb(var(--color-primary));
       box-shadow: 0.5px 0.5px 0px 0.5px rgb(var(--color-contrast));
     }
