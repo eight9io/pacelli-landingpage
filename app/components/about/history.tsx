@@ -22,7 +22,7 @@ const History: React.FC<HistoryProps> = ({className = ''}) => {
             />
           </div>
           <div className="col-span-12 md:col-span-7">
-            <Text as="p" className="mb-8 max-w-auto leading-7">
+            <Text as="p" className="text-gray-900 mb-8 max-w-auto leading-7">
               La progettazione di interni per Pacelli è una testimonianza di
               dedizione e passione che ha attraversato più di tre generazioni.
               Fin dal dopoguerra, questa famiglia ha contribuito in modo
@@ -42,7 +42,7 @@ const History: React.FC<HistoryProps> = ({className = ''}) => {
               sottostante a un grande spazio agibile in prefabbricato, uno dei
               primi di tutta la zona.
             </Text>
-            <Text as="p" className="mb-8 max-w-auto leading-7">
+            <Text as="p" className="text-gray-900 mb-8 max-w-auto leading-7">
               Questa sede rappresentava l&apos;impegno e la determinazione della
               famiglia Pacelli nel settore dell&apos;arredamento. I risultati di
               tanta dedizione e impegno non si fecero attendere, e appena dieci
