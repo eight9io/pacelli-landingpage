@@ -44,6 +44,45 @@ export const FEATURED_BLOG_QUERY = `#graphql
   }
 ` as const;
 
+export const ARTICLE_BY_ID_QUERY = `#graphql
+  query Article(
+    $language: LanguageCode,
+    $id: ID!,
+  ) @inContext( language: $language) {
+    article(id: $id) {
+      ...Article
+    }
+  }
+
+  fragment Article on Article {
+    trackingParameters
+    title
+    tags
+    publishedAt
+    onlineStoreUrl
+    id
+    handle
+    contentHtml
+    excerptHtml
+    excerpt
+    content
+    seo {
+      description
+      title
+    }
+    image {
+      url(transform: {})
+    }
+    blog {
+      id
+      handle
+      title
+    }
+    excerptHtml
+    excerpt
+  }
+` as const;
+
 export const ARTICLES_PAGINATION_QUERY = `#graphql
   query ArticlesPagination(
     $language: LanguageCode,
@@ -162,5 +201,60 @@ export const BLOG_QUERY = `#graphql
       title
     }
     content(truncateAt: 200)
+  }
+` as const;
+
+export const BLOG_ARTICLE_DETAIL_QUERY = `#graphql
+  query BlogArticleDetailQuery(
+    $language: LanguageCode,
+    $handle: String,
+    $id: ID,
+    $articleHandle: String!,
+  ) @inContext( language: $language){
+    blog(handle: $handle, id: $id) {
+      ...Blog
+    }
+  }
+
+  fragment Blog on Blog {
+    title
+    seo {
+      description
+      title
+    }
+    onlineStoreUrl
+    id
+    handle
+    articleByHandle(handle: $articleHandle) {
+      ...Article
+    }
+  }
+
+  fragment Article on Article {
+    trackingParameters
+    title
+    tags
+    publishedAt
+    onlineStoreUrl
+    id
+    handle
+    contentHtml
+    excerptHtml
+    excerpt
+    content
+    seo {
+      description
+      title
+    }
+    image {
+      url(transform: {})
+    }
+    blog {
+      id
+      handle
+      title
+    }
+    excerptHtml
+    excerpt
   }
 ` as const;

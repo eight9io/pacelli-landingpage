@@ -4,7 +4,12 @@ import PinterestGallery from '~/components/common/pinterest-gallery/gallery';
 import {Article} from '@shopify/hydrogen/storefront-api-types';
 import ArticleCard from '~/components/common/article-card';
 import Heading from '../common/heading';
-import {useFetcher, useLoaderData, useSearchParams} from '@remix-run/react';
+import {
+  useFetcher,
+  useLoaderData,
+  useNavigate,
+  useSearchParams,
+} from '@remix-run/react';
 import {loader} from '~/routes/($locale).blogs._index';
 import {useCallback, useEffect, useRef, useState} from 'react';
 import AngleDown from '~/components/common/icons/angle-full-down';
@@ -120,7 +125,8 @@ interface FilterProps {
 
 const Filter: React.FC<FilterProps> = ({className = '', selected, items}) => {
   const closeRef = useRef<HTMLDetailsElement>(null);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+  // const [searchParams, setSearchParams] = useSearchParams();
 
   const {ref} = useInView({
     threshold: 0,
@@ -159,10 +165,7 @@ const Filter: React.FC<FilterProps> = ({className = '', selected, items}) => {
               ])}
               onClick={() => {
                 closeDropdown();
-                searchParams.delete('blog');
-                setSearchParams(searchParams, {
-                  preventScrollReset: true,
-                });
+                navigate('/blogs');
               }}
             >
               All
@@ -183,12 +186,7 @@ const Filter: React.FC<FilterProps> = ({className = '', selected, items}) => {
                     ])}
                     onClick={() => {
                       closeDropdown();
-                      setSearchParams(
-                        {blog: item.handle},
-                        {
-                          preventScrollReset: true,
-                        },
-                      );
+                      navigate(`/blogs/${item.handle}`);
                     }}
                   >
                     {item.title}

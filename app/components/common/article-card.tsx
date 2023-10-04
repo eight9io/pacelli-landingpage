@@ -1,8 +1,8 @@
 import {Article} from '@shopify/hydrogen/storefront-api-types';
-import clsx from 'clsx';
 import {Link} from '~/components/Link';
-import dayjs from 'dayjs';
 import Tag from '~/components/common/icons/tag';
+import clsx from 'clsx';
+import dayjs from 'dayjs';
 
 interface ArticleCardProps {
   className?: string;
@@ -25,7 +25,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
     <>
       {article ? (
         <Link
-          to={`/blog/${article.handle}`}
+          to={`/blog/${article.blog.handle}/${article.handle}`}
           className={clsx(
             'overflow-hidden col-span-3 md:col-span-1',
             className,
