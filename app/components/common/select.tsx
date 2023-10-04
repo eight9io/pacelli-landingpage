@@ -13,21 +13,19 @@ import {useInView} from 'react-intersection-observer';
 import AngleDown from '../icons/angle-down';
 import {ArrSelectOccupation} from '~/data/selectOccupation';
 
-interface LanguagesSelectorProps {
+interface SelectorProps {
   className?: string;
   handleChangeValue: (e: any, value: string) => void;
   label?: string;
   value?: any;
 }
 
-const LanguagesSelector: React.FC<LanguagesSelectorProps> = ({
+const Select: React.FC<SelectorProps> = ({
   className = '',
   handleChangeValue,
   label,
   value,
 }) => {
-  console.log(111, value);
-
   const observerRef = useRef(null);
   const closeRef = useRef<HTMLDetailsElement>(null);
   const closeDropdown = useCallback(() => {
@@ -62,7 +60,7 @@ const LanguagesSelector: React.FC<LanguagesSelectorProps> = ({
   );
 };
 
-export default LanguagesSelector;
+export default Select;
 
 function SelectItem({
   selectOccupation,
