@@ -149,8 +149,6 @@ export function ErrorBoundary({error}: {error: Error}) {
     if (routeError.status === 404) pageType = routeError.data || pageType;
   }
 
-  console.log('error', routeError);
-
   return (
     <html lang={locale.language}>
       <head>
