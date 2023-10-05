@@ -55,7 +55,7 @@ const ArticleContent: React.FC<ArticleContentProps> = ({
         />
       </article>
       <Button
-        className="rounded-sm uppercase flex gap-2 items-center h-[44px] px-4 bg-secondary text-white hover:bg-secondary group"
+        className="rounded-sm uppercase flex gap-2 items-center h-[44px] px-4 bg-secondary text-white hover:bg-secondary group mt-8"
         size="md"
         onClick={goBack}
       >
