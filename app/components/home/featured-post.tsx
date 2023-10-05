@@ -1,10 +1,10 @@
 import {Article} from '@shopify/hydrogen-react/storefront-api-types';
+import {ArticleConnection} from '@shopify/hydrogen/storefront-api-types';
 import Link from '~/components/Link';
+import Tag from '~/components/common/icons/tag';
 import clsx from 'clsx';
 import dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
-import {ArticleConnection} from '@shopify/hydrogen/storefront-api-types';
-import Tag from '~/components/common/icons/tag';
 
 dayjs.extend(localizedFormat);
 
@@ -34,7 +34,7 @@ const FeaturedPosts: React.FC<FeaturedPostsProps> = ({
         <div className="grid grid-cols-3 gap-8">
           {articles.map((article) => (
             <Link
-              to={`/blog/${article.handle}`}
+              to={`/blog/${article.blog.handle}/${article.handle}`}
               className="col-span-3 md:col-span-1"
               key={article.id}
             >

@@ -1,5 +1,4 @@
 import {Button} from './Button';
-import {FeaturedSection} from './FeaturedSection';
 import {PageHeader, Text} from './Text';
 
 export function NotFound({type = 'page'}: {type?: string}) {
@@ -7,7 +6,7 @@ export function NotFound({type = 'page'}: {type?: string}) {
   const description = `We couldn’t find the ${type} you’re looking for. Try checking the URL or heading back to the home page.`;
 
   return (
-    <>
+    <section className="base-container h-[70vh]">
       <PageHeader heading={heading}>
         <Text width="narrow" as="p">
           {description}
@@ -16,7 +15,6 @@ export function NotFound({type = 'page'}: {type?: string}) {
           Take me to the home page
         </Button>
       </PageHeader>
-      <FeaturedSection />
-    </>
+    </section>
   );
 }
