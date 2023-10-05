@@ -9,6 +9,8 @@ import {useLoaderData} from '@remix-run/react';
 export async function loader({request, context: {storefront}}: LoaderArgs) {
   const data = await storefront.query(PROJECT_GALERRY_QUERY);
   let projects = parseObject(data, 'metaobjects.nodes');
+  const pageInfo = parseObject(data, 'metaobjects.pageInfo');
+
   if (!projects) {
     throw new Response(null, {
       status: 404,
@@ -33,13 +35,13 @@ export async function loader({request, context: {storefront}}: LoaderArgs) {
     return handledProject;
   });
 
-  return json({projects});
+  return json({projects, pageInfo});
 }
 
 export default function Homepage() {
-  const {projects} = useLoaderData<typeof loader>();
+  const {projects, pageInfo} = useLoaderData<typeof loader>();
 
-  console.log(projects);
+  console.log(projects, pageInfo);
 
   return (
     <>
