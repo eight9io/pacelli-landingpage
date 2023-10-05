@@ -47,7 +47,7 @@ export default function BlogDetailPage() {
       <Image
         src={article.image?.url}
         {...article.image}
-        className="base-container"
+        className="base-container max-h-[600px] object-cover"
       />
       <div className="base-container grid grid-cols-12 gap-10">
         <div className="col-span-12 md:col-span-9">
