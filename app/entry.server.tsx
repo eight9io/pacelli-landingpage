@@ -37,6 +37,12 @@ export default async function handleRequest(
   // App
   const {nonce, header, NonceProvider} = createContentSecurityPolicy({
     frameSrc: ['https://www.google.com/'],
+    defaultSrc: [
+      "'self'",
+      'https://cdn.shopify.com',
+      'https://shopify.com',
+      'https://flowbite.s3.amazonaws.com/',
+    ],
   });
   const body = await renderToReadableStream(
     <NonceProvider>
