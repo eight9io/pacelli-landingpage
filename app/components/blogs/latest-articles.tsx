@@ -22,7 +22,7 @@ const LatestArticles: React.FC<LatestArticlesProps> = ({
         {articles?.map((article) => (
           <Link
             key={article.id}
-            to={`/article/${article.handle}`}
+            to={`/blog/${article.blog.handle}/${article.handle}`}
             className="text-gray-900 border-b py-2 pb-6"
           >
             <span className="text-gray-400 block text-sm uppercase mb-1">
