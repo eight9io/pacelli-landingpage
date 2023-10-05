@@ -27,7 +27,7 @@ const FeaturedPosts: React.FC<FeaturedPostsProps> = ({
             News
           </h2>
           <Link
-            to="/blog"
+            to="/blogs"
             className="underline text-xl md:text-[32px] text-secondary font-light"
           >
             View all
