@@ -1,13 +1,13 @@
 import ContactForm from '~/components/common/form/booking-form';
 import clsx from 'clsx';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 
 interface BookingProps {
   className?: string;
 }
 
-const Booking: React.FC<BookingProps> = ({ className = '' }) => {
-  const { t } = useTranslation('home');
+const Booking: React.FC<BookingProps> = ({className = ''}) => {
+  const {t} = useTranslation('home');
 
   return (
     <section
@@ -19,9 +19,12 @@ const Booking: React.FC<BookingProps> = ({ className = '' }) => {
             Fissa un incontro con noi
           </h2>
           <p className=" text-gray-600 text-base font-normal leading-7">
-            Hai un progetto in testa per la tua casa? Prendi appuntamento per
-            una consulenza personalizzata gratuita Ti aiuteremo a chiarirti le
-            idee.
+            Desideri un ambiente che rifletta la tua personalità e soddisfi le
+            tue esigenze? Prenota un appuntamento con noi, e saremo lieti di
+            aiutarti nella valutazione iniziale dei tuoi spazi da arredare. Il
+            nostro team di esperti ti assisterà nella progettazione della
+            soluzione migliore per te. Rendiamo i tuoi sogni di arredamento una
+            realtà. Contattaci oggi stesso!
           </p>
         </div>
         <div className="col-span-12 md:col-span-7">
