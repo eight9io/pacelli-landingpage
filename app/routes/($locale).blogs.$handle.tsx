@@ -5,12 +5,14 @@ import Hero from '~/components/blogs/pinned-article';
 import invariant from 'tiny-invariant';
 import {NonNullableFields} from '~/lib/type';
 import {
+  ARTICLE_BY_ID_QUERY,
   BLOG_LIST_QUERY,
   BLOG_QUERY,
   FEATURED_BLOG_QUERY,
 } from '~/graphql/blogs';
 import ArticlesPagination from '~/components/blogs/articles-pagination';
 import {Article} from '@shopify/hydrogen/storefront-api-types';
+import {parseObject} from '~/lib/utils';
 
 export const headers = routeHeaders;
 
@@ -21,6 +23,10 @@ export async function loader({
 }: LoaderArgs) {
   const {handle} = params as {handle: string};
   let articleData: any;
+
+  const pinnedArticleData = await storefront.query(ARTICLE_BY_ID_QUERY, {
+    variables: {id: 'gid://shopify/Article/606763745578'},
+  });
 
   const data = await storefront.query(BLOG_LIST_QUERY);
   const selectedBlog = await storefront.query(BLOG_QUERY, {
@@ -67,21 +73,24 @@ export async function loader({
         hasPreviousPage: false,
       };
 
+  const pinnedArticle = parseObject(pinnedArticleData, 'article');
+
   return json({
     blogs,
     articles,
     pageInfo,
     selectedBlog: selectedBlog.blog,
+    pinnedArticle,
     // seo
   });
 }
 
 export default function BlogPage() {
-  const {articles} = useLoaderData<typeof loader>();
+  const {articles, pinnedArticle} = useLoaderData<typeof loader>();
 
   return (
     <>
-      <Hero article={articles[0]} />
+      <Hero article={pinnedArticle} />
       <ArticlesPagination articles={articles as Array<Article>} />
     </>
   );
