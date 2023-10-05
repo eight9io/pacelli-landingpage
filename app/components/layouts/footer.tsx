@@ -9,8 +9,8 @@ const FooterSection = () => {
   return (
     <footer className="bg-primary-950">
       <div className="base-container py-0 flex justify-between">
-        <div className="grid grid-cols-12 py-16 gap-y-8">
-          <div className="col-span-12 md:col-span-3">
+        <div className="grid grid-cols-12 pb-11 pt-15 gap-y-4 md:gap-y-8">
+          <div className="col-span-12 md:col-span-3 mb-4">
             <Logo className="invert-[1] brightness-0" />
           </div>
           <div className="col-span-12 md:col-span-3">
@@ -35,7 +35,7 @@ const FooterSection = () => {
               ))}
             </ul>
           </div>
-          <div className="col-span-12 md:col-span-3">
+          <div className="col-span-12 md:col-span-3 mt-4 md:mt-0">
             <div className="text-white text-base font-normal">
               CONTACT WITH US
             </div>
