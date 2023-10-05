@@ -5,12 +5,12 @@ import { useTranslation } from 'react-i18next';
 interface IntroProps {
     className?: string;
     title: string;
-    subTitle: string;
+    excerpt: string;
     client: string;
-    imageIntro: Array<string>;
+    imageCover: Array<string>;
 }
 
-const Intro: React.FC<IntroProps> = ({ className = '', title, subTitle, client, imageIntro
+const Intro: React.FC<IntroProps> = ({ className = '', title, excerpt, client, imageCover
 
 }) => {
     const { t } = useTranslation('home');
@@ -27,7 +27,7 @@ const Intro: React.FC<IntroProps> = ({ className = '', title, subTitle, client, 
                     <div >
 
                         <p className="  text-base font-normal leading-7 text-neutral-800 mb-8">
-                            {subTitle}
+                            {excerpt}
                         </p>
                         <p className="  text-base font-normal leading-7 text-neutral-600 ">
                             Client
@@ -37,34 +37,34 @@ const Intro: React.FC<IntroProps> = ({ className = '', title, subTitle, client, 
                         </h3>
                     </div>
                 </div>
-                <div className="col-span-12 md:col-span-7 lg:col-span-9 space-y-6  ">
+                {imageCover && imageCover.length > 0 && <div className="col-span-12 md:col-span-7 lg:col-span-9 space-y-6  ">
                     <img
-                        src={imageIntro[0]}
+                        src={imageCover[0]}
                         alt="Mission"
                         width={927}
                         height={600}
                         className="h-[600px]"
                     />
-                </div>
+                </div>}
             </div>
             <div className="grid grid-cols-12 md:gap-6 lg:gap-8 gap-y-8 py-14  border-b  border-neutral-300">
                 <div className="col-span-12 md:col-span-6  flex flex-col justify-end ">
-                    <img
-                        src={imageIntro[1]}
+                    {imageCover && imageCover.length > 1 && <img
+                        src={imageCover[1]}
                         alt="Mission"
                         width={607}
                         height={350}
                         className="h-[350px]"
-                    />
+                    />}
                 </div>
                 <div className="col-span-12 md:col-span-6 space-y-6  ">
-                    <img
-                        src={imageIntro[2]}
+                    {imageCover && imageCover.length > 2 && <img
+                        src={imageCover[2]}
                         alt="Mission"
                         width={607}
                         height={600}
                         className="h-[600px]"
-                    />
+                    />}
                 </div>
             </div>
         </section >

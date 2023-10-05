@@ -7,14 +7,14 @@ interface DetailProps {
     title: string;
     subTitle: string;
     imgPosition?: 'left' | 'right';
-    imageIntro: Array<string>;
+    image: Array<string>;
 }
 
 const Detail: React.FC<DetailProps> = ({
     className = '',
     title,
     subTitle,
-    imageIntro,
+    image,
     imgPosition = "right",
 }) => {
     const { t } = useTranslation('home');
@@ -42,13 +42,14 @@ const Detail: React.FC<DetailProps> = ({
                             {subTitle}
                         </p>
                     ) : (
-                        <img
-                            src={imageIntro[0]}
-                            alt="Mission"
-                            width={715}
-                            height={600}
-                            className="h-[600px] w-full "
-                        />
+                        image ?
+                            <img
+                                src={image[0]}
+                                alt="Mission"
+                                width={715}
+                                height={600}
+                                className="h-[600px] w-full "
+                            /> : null
                     )}
                 </div>
                 <div
@@ -60,13 +61,14 @@ const Detail: React.FC<DetailProps> = ({
                     )}
                 >
                     {imgPosition === 'right' ? (
-                        <img
-                            src={imageIntro[0]}
-                            alt="Mission"
-                            width={715}
-                            height={600}
-                            className="h-[600px] w-full "
-                        />
+                        image ?
+                            <img
+                                src={image[0]}
+                                alt="Mission"
+                                width={715}
+                                height={600}
+                                className="h-[600px] w-full "
+                            /> : null
                     ) : (
                         <p className="  text-base font-normal leading-7 text-neutral-800 mb-8">
                             {subTitle}
