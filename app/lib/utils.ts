@@ -342,3 +342,15 @@ export function getCartId(request: Request) {
   const cookies = parseCookie(request.headers.get('Cookie') || '');
   return cookies.cart ? `gid://shopify/Cart/${cookies.cart}` : undefined;
 }
+
+export const parseObject = (object: any, path: string) => {
+  const parts = path.split('.');
+  let result = object;
+  for (const part of parts) {
+    if (result === undefined) {
+      break;
+    }
+    result = result[part];
+  }
+  return result;
+};

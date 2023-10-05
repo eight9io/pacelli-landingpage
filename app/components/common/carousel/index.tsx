@@ -1,5 +1,5 @@
 'use client';
-
+/* eslint-disable */
 import clsx from 'clsx';
 import {useCallback, useRef, useState} from 'react';
 import {useDebounce} from 'usehooks-ts';

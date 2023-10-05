@@ -1,17 +1,25 @@
 import clsx from 'clsx';
 import Heading from '~/components/common/heading';
-import services1 from '~/assets/services/services-2.png';
-import services2 from '~/assets/services/services-1.png';
-import {Button} from '~/components/snippets';
+import { Button } from '~/components/snippets';
 
 import ArrowRight from '~/components/common/icons/arrow-right';
-import {Link} from '@remix-run/react';
+import { Link } from '@remix-run/react';
 
 interface BeforeAfterProps {
   className?: string;
+  title: string;
+  description: string;
+  beforeImg: string;
+  afterImg: string;
 }
 
-const BeforeAfter: React.FC<BeforeAfterProps> = ({className = ''}) => {
+const BeforeAfter: React.FC<BeforeAfterProps> = ({ className = '',
+  title,
+  description,
+  beforeImg,
+  afterImg
+
+}) => {
   return (
     <section className={clsx('bg-gray-100 py-[60px] md:py-[90px]', className)}>
       <div className="base-container">
@@ -21,14 +29,10 @@ const BeforeAfter: React.FC<BeforeAfterProps> = ({className = ''}) => {
               className="mb-4 md:mb-8 text-[48px]  text-primary-950"
               variant="h3"
             >
-              Cosa facciamo guarda il prima e il dopo
+              {title}
             </Heading>
             <p className=" text-gray-900 text-base font-normal leading-7 ">
-              Siamo entusiasti di mostrarti alcuni dei progetti che abbiamo
-              realizzato, tutti personalizzati per soddisfare le esigenze dei
-              nostri clienti. La trasformazione è incredibile, e siamo pronti a
-              portare anche il tuo spazio al livello successivo. Contattaci ora
-              per vedere come possiamo migliorare il tuo ambiente!
+              {description}
             </p>
             <Link to="/gallery">
               <Button
@@ -42,7 +46,7 @@ const BeforeAfter: React.FC<BeforeAfterProps> = ({className = ''}) => {
           </div>
           <div className="col-span-12 md:col-span-4">
             <img
-              src={services1}
+              src={beforeImg}
               alt="Mission"
               width={394}
               height={600}
@@ -51,7 +55,7 @@ const BeforeAfter: React.FC<BeforeAfterProps> = ({className = ''}) => {
           </div>
           <div className="col-span-12 md:col-span-4">
             <img
-              src={services2}
+              src={afterImg}
               alt="Mission"
               width={394}
               height={600}

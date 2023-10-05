@@ -23,7 +23,6 @@ const Mission: React.FC<MissionProps> = ({className = ''}) => {
               </p>
             </div>
             <div className="border-b md:borer-b-0 md:border-b pb-8 flex gap-6 items-end">
-              <p className="hidden md:block md:w-[15%]"></p>
               <img src={icon2} alt="Mission" className="h-20 md:h-auto" />
               <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9">
                 Trasformare le visioni dei clienti in realtà
