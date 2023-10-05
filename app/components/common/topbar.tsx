@@ -23,7 +23,7 @@ const Topbar = ({children}: TopbarProps) => {
             )}
           >
             <Phone className="w-4 h-4 stroke-secondary" />
-            (0824) 948533
+            +39 0824/948533
           </Link>
           <Link
             to="/"

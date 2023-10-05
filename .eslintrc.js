@@ -8,6 +8,12 @@ module.exports = {
     'plugin:hydrogen/typescript',
   ],
   rules: {
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/naming-convention': 'off',
     'hydrogen/prefer-image-component': 'off',
@@ -17,6 +23,7 @@ module.exports = {
     // TODO: Remove jest plugin from hydrogen/eslint-plugin
     'jest/no-deprecated-functions': 'off',
     '@typescript-eslint/consistent-type-imports': 'off',
+
     'import/order': [
       'off',
       {
