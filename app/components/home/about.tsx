@@ -27,9 +27,12 @@ const About: React.FC<AboutProps> = ({className = ''}) => {
               <p className="text-base text-gray-900">
                 La nostra missione è creare ambienti straordinari che soddisfino
                 le esigenze e i gusti individuali di ogni cliente, trasformando
-                così le loro visioni in realtà. Con la nostra competenza e
-                dedizione, siamo qui per garantire che ogni progetto sia
-                un&apos;esperienza straordinaria e di successo
+                così le loro visioni in realtà.
+              </p>
+              <p className="text-base text-gray-900">
+                Con la nostra competenza e dedizione, siamo qui per garantire
+                che ogni progetto sia un&apos;esperienza straordinaria e di
+                successo
               </p>
             </div>
             <hr className="md:w-[calc(100%-32px)]" />
@@ -44,15 +47,10 @@ const About: React.FC<AboutProps> = ({className = ''}) => {
               </h3>
               <p className="text-base text-gray-900">
                 Scegliere Pacelli Arredamenti è molto più di una semplice
-                decisione d&apos;acquisto; è un&apos;affermazione del tuo
-                impegno per la qualità e il tuo apprezzamento per il design
-                ineguagliabile.
-              </p>
-              <p className="text-base text-gray-900">
-                Con Pacelli Arredamenti, non c&apos;è bisogno di compromessi.
-                Qui, la qualità e la convenienza si fondono armoniosamente,
-                offrendoti l&apos;opportunità di realizzare i tuoi sogni
-                d&apos;arredo in un unico, straordinario luogo
+                decisione d&apos;acquisto. Qui, la qualità e la convenienza si
+                fondono armoniosamente, offrendoti l&apos;opportunità di
+                realizzare i tuoi sogni d&apos;arredo in un unico, straordinario
+                luogo
               </p>
             </div>
             <hr className="md:w-[calc(100%-32px)]" />
