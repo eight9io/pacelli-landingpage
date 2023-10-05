@@ -158,5 +158,5 @@ export default {
       },
     ],
   },
-  plugins: [formsPlugin, typographyPlugin, daisyui],
+  plugins: [formsPlugin, typographyPlugin({className: 'html-block'}), daisyui],
 };
