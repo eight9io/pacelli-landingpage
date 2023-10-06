@@ -3,10 +3,14 @@ const SENDGRID_ENDPOINT = 'https://api.sendgrid.com/v3/mail/send';
 export const send = async (data: any) => {
   const {to, subject, html, from, apiKey} = data;
 
+  const toEmails = to
+    .split(',')
+    .map((email: string) => ({email, name: 'Pacelli'}));
+
   const body = {
     personalizations: [
       {
-        to: [{email: to, name: 'Pacelli'}],
+        to: toEmails,
         subject: subject || 'Pacelli',
       },
     ],

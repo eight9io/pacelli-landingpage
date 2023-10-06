@@ -28,7 +28,7 @@ export const action: ActionFunction = async ({request, context}) => {
       const adminMailHtml = render(<AdminTemplate data={fields} />);
       const mailToAdmin = {
         from: env.PUBLIC_MAIL_FROM,
-        to: (env.PUBLIC_ADMIN_MAIL_DESTINATION || '').split(',').join(', '),
+        to: data.adminMail || env.PUBLIC_ADMIN_MAIL_DESTINATION,
         html: adminMailHtml,
         apiKey: env.PUBLIC_SENDGRID_API_KEY,
       };
