@@ -8,14 +8,33 @@ import TextField from '~/components/common/textfield';
 import clsx from 'clsx';
 import {contactValidate} from '~/validation/contact';
 import {validateFormValues} from '~/validation';
+import {useFetcher} from '@remix-run/react';
 
 interface ContactFormProps {
   className?: string;
 }
 
+interface ContactFormValidation {
+  fullname: string;
+  email: string;
+  message?: string;
+}
+
 const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
-  const onSubmit = (values: any) => {
-    console.log('values', values);
+  const fetcher = useFetcher();
+
+  const onSubmit = (values: ContactFormValidation) => {
+    const newData = {
+      fullname: values.fullname,
+      email: values.email,
+      message: values.message,
+    };
+    fetch('/api/contact', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {Accept: 'application/json'},
+      body: JSON.stringify(newData),
+    });
   };
 
   return (
