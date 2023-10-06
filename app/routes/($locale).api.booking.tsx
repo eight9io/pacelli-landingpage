@@ -58,7 +58,11 @@ export const action: ActionFunction = async ({request, context}) => {
   //   return json({ok: false, error});
   // }
 
-  return json(res);
+  return json({
+    ok: true,
+    mailToCustomer,
+    res,
+  });
   // } catch (error) {
   //   return json({ok: false, error});
   // }
