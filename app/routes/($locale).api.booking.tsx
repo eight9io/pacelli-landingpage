@@ -52,12 +52,13 @@ export const action: ActionFunction = async ({request, context}) => {
     apiKey: env.PUBLIC_SENDGRID_API_KEY,
   };
 
-  await send(mailToCustomer);
+  let res: any = await send(mailToCustomer);
+  res = await res.json();
   // } catch (error) {
   //   return json({ok: false, error});
   // }
 
-  return json({ok: true});
+  return json(res);
   // } catch (error) {
   //   return json({ok: false, error});
   // }
