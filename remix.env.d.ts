@@ -21,6 +21,9 @@ declare global {
     PRIVATE_STOREFRONT_API_TOKEN: string;
     PUBLIC_STORE_DOMAIN: string;
     PUBLIC_STOREFRONT_ID: string;
+    PUBLIC_SENDGRID_API_KEY: string;
+    PUBLIC_ADMIN_MAIL_DESTINATION: string;
+    PUBLIC_MAIL_FROM: string;
   }
 }
 
