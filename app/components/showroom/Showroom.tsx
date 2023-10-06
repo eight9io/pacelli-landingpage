@@ -33,7 +33,7 @@ const Showroom: React.FC<ShowroomProps> = ({ className = '' }) => {
 
   return (
     <section
-      className={clsx(' py-[30px] lg:py-[90px] base-container mt-12', className)}
+      className={clsx('  py-24 md:py-32 lg:py-[90px] base-container mt-12', className)}
     >
       <div className="grid grid-cols-12 lg:gap-11 gap-y-8">
         <div className="col-span-12 lg:col-span-7 space-y-6  ">
