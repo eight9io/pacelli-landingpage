@@ -40,7 +40,7 @@ const PinnedArticle: React.FC<PinnedArticleProps> = ({
                 {article.title}
               </Heading>
               <Link
-                to={''}
+                to={`/blog/${article.blog.handle}/${article.handle}`}
                 className="btn bg-secondary rounded-none text-white hover:bg-secondary group border-none"
               >
                 Read more
