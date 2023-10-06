@@ -18,7 +18,9 @@ const FeaturedPosts: React.FC<FeaturedPostsProps> = ({
   articles = [],
 }) => {
   return (
-    <section className={clsx('bg-base-100 py-[90px]', className)}>
+    <section
+      className={clsx('bg-white md:bg-base-100 md:py-[90px] pb-15', className)}
+    >
       <div className="base-container">
         <div className="flex justify-between items-center mb-4 md:mb-12">
           <h2 className="font-semibold text-[40px] md:text-[64px] text-gray-900 text-center">

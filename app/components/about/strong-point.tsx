@@ -12,7 +12,7 @@ const StrongPoint: React.FC<StrongPointProps> = ({className = ''}) => {
         <Heading className="mb-4 md:mb-8">Punti di forza</Heading>
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-12 md:col-span-8">
-            <p>
+            <p className="text-gray-900">
               Il nostro successo è alimentato da tre pilastri fondamentali: una
               vasta selezione di prodotti selezionati da aziende di alta
               qualità, una costante attenzione alla precisione e un forte
