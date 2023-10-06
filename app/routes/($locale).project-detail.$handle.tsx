@@ -48,38 +48,70 @@ export async function loader({ request, params, context }: LoaderArgs) {
 
 export default function ProjectDetail() {
   const { project } = useLoaderData<typeof loader>();
-  const item = project.fields
+  const item = project.fields.reduce((acc: any, entry: any) => {
+    if (entry.type == "list.url") {
+      acc[entry.key] = JSON.parse(entry.value)
+    } else {
+      acc[entry.key] = entry.value;
+    }
+    return acc;
+  }, {});
+  console.log("🚀 ~ file: ($locale).project-detail.$handle.tsx:59 ~ item ~ item:", item)
+
+
+
+
   return (
     <>
 
-      <Intro title={item[11].value}
-        excerpt={item[5].value}
-        client={item[2].value}
-        imageCover={item[3].value}
+      <Intro title={item.title}
+        excerpt={item.excerpt}
+        client={item.client}
+        imageCover={item.cover_images}
       />
       <Detail title="The challenge to face"
-        subTitle={item[0].value}
-        image={item[1].value[0]}
+        subTitle={item.challenge_description}
+        image={item.challenge_images}
         imgPosition="right"
       />
       <Detail title="The solution found"
-        subTitle={item[9].value}
-        image={item[10].value[0]}
+        subTitle={item.solution_description}
+        image={item.solution_images}
         imgPosition="left"
       />
       <Detail title="The result obtained"
-        subTitle={item[7].value}
-        image={item[8].value[0]}
+        subTitle={item.result_description}
+        image={item.result_images}
         imgPosition="left"
       />
+      <div className='base-container '>
 
-      {item[6].value[0] && <img
-        src={item[6].value[0]}
-        alt="Mission"
-        width={1030}
-        height={580}
-        className="mt-28 mx-auto h-[580px] base-container  "
-      />}
+        {item.video_multi_media === "false" ?
+          <video
+            width="1030" height="580"
+            controls
+            muted
+            autoPlay
+            playsInline
+            loop
+            className="mx-auto h-[580px]   "
+
+          >
+            <source
+              type="video/mp4"
+              src="https://e9-cms.sgp1.digitaloceanspaces.com/MA_Sheva_UnstoppableEnergy_Main.mp4"
+            />
+            Your browser does not support the video tag.
+          </video> : <img
+            src={item.multimedia}
+            alt="Mission"
+            width={1030}
+            height={580}
+            className="mt-28 mx-auto h-[580px]   "
+          />
+        }
+
+      </div>
       <Booking />
 
     </>

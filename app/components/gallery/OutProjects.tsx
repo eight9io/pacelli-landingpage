@@ -51,7 +51,7 @@ const OutProjects: React.FC<ContactProps> = ({ className = '' }) => {
 
   return (
     <section
-      className={clsx(' py-[30px] lg:pt-[90px] base-container mt-12', className)}
+      className={clsx('  py-24 md:py-32 lg:pt-[90px] base-container mt-12', className)}
     >
       <h2 className="text-[40px] md:text-[64px] font-semibold leading-[50px] md:leading-[78px] text-[#142423] lg:w-1/2">
         Our projects <br />
