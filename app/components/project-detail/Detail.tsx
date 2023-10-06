@@ -48,7 +48,7 @@ const Detail: React.FC<DetailProps> = ({
                                 alt="Mission"
                                 width={715}
                                 height={600}
-                                className="h-[600px] w-full "
+                                className="w-full h-full"
                             /> : null
                     )}
                 </div>

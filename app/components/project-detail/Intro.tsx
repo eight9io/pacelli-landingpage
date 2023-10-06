@@ -17,7 +17,7 @@ const Intro: React.FC<IntroProps> = ({ className = '', title, excerpt, client, i
 
     return (
         <section
-            className={clsx(' py-[30px] lg:py-[90px] base-container ', className)}
+            className={clsx(' md:py-24 lg:py-[90px] base-container ', className)}
         >
             <h2 className="text-[40px] md:text-[64px] font-semibold leading-[50px] md:leading-[78px] text-primary-950 my-12 lg:mb-[138px]">
                 {title}
@@ -54,7 +54,7 @@ const Intro: React.FC<IntroProps> = ({ className = '', title, excerpt, client, i
                         alt="Mission"
                         width={607}
                         height={350}
-                        className="h-[350px]"
+                        className="h-[350px] "
                     />}
                 </div>
                 <div className="col-span-12 md:col-span-6 space-y-6  ">
