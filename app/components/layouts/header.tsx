@@ -1,16 +1,16 @@
-import { useEffect, useRef, useState } from 'react';
+import {useEffect, useRef, useState} from 'react';
 
-import { Dialog } from '@headlessui/react';
-import { Link } from '~/components/Link';
+import {Dialog} from '@headlessui/react';
+import {Link} from '~/components/Link';
 import Logo from '~/components/common/logo';
 import Topbar from '~/components/common/topbar';
-import { ChevronDownIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import {ChevronDownIcon, XMarkIcon} from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import home from '~/assets/icons/home.svg';
 import menu from '~/assets/icons/menu.svg';
 import useScrollPosition from '~/hooks/useScrollPosition';
 import LocaleSwitcher from '~/components/common/languages-selector';
-import { useLocation } from '@remix-run/react';
+import {useLocation} from '@remix-run/react';
 import Phone from '../common/icons/phone';
 import Facebook from '../common/icons/facebook';
 import Instagram from '../common/icons/instagram';
@@ -21,7 +21,7 @@ const STICKY_OFFSET = 0;
 
 export function HeaderSection() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { pathname } = useLocation();
+  const {pathname} = useLocation();
   const subMenuRef = useRef<HTMLDivElement>(null);
 
   const scrollPosition = useScrollPosition();
@@ -30,20 +30,26 @@ export function HeaderSection() {
   useEffect(() => {
     if (!isSticky && scrollPosition > STICKY_OFFSET) setIsSticky(true);
     else if (isSticky && scrollPosition <= STICKY_OFFSET) setIsSticky(false);
-  }, [scrollPosition]);
+
+    if (
+      pathname === '/services/professional' ||
+      pathname === '/services/private'
+    )
+      setMobileMenuOpen(false);
+  }, [scrollPosition, pathname]);
 
   const isMenuItemActive = (href: string) => {
-    const { pathname: path } = new URL('https://x' + href);
+    const {pathname: path} = new URL('https://x' + href);
 
     return pathname?.startsWith(path);
   };
 
   const onToggleSubMenu = (e: any) => {
     e.preventDefault();
+    e.stopPropagation();
     const target = e.target;
     target.closest('ul')?.querySelector('.submenu')?.classList.toggle('hidden');
   };
-
   return (
     <header
       className={clsx(
@@ -103,18 +109,20 @@ export function HeaderSection() {
             </button>
             <div className="flex relative mt-4">
               <ul className="space-y-4 py-6 w-full md:w-1/2 flex-col md:block">
-                {mainMenuItems.map(({ text, href, items }) => (
+                {mainMenuItems.map(({text, href, items}) => (
                   <li key={href}>
                     <Link
                       className={clsx(
                         'flex justify-between items-center md:block rounded-none box-border pt-2 pb-1 md:pt-4 md:pb-2 text-[32px] md:text-[40px] leading-8 text-white border-b border-b-transparent hover:border-b-slate-400 ',
                         isMenuItemActive(href) &&
-                        'text-white border-b-slate-400',
+                          'text-white border-b-slate-400',
                         'peer hover:[&+div]:block max-w-[395px]',
                       )}
                       key={href}
                       to={href}
-                      onClick={() => setMobileMenuOpen(false)}
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                      }}
                     >
                       {text}
                       {items && items.length ? (
@@ -126,12 +134,12 @@ export function HeaderSection() {
                     </Link>
                     {items && items.length && (
                       <div className="hidden flex-col md:absolute h-full top-0 left-[395px] md:hidden md:peer-hover:!flex pl-4 md:pl-0 submenu">
-                        {items.map(({ text, href }) => (
+                        {items.map(({text, href}) => (
                           <Link
                             className={clsx(
                               'block rounded-none box-border pt-2 pb-1 md:pt-4 md:pb-2 text-2xl md:text-[32px] leading-7 text-white border-b border-b-transparent hover:border-b-slate-400 max-w-[395px]',
                               isMenuItemActive(href) &&
-                              'text-white border-b-slate-400',
+                                'text-white border-b-slate-400',
                             )}
                             key={href}
                             to={href}
@@ -146,7 +154,7 @@ export function HeaderSection() {
               </ul>
             </div>
 
-            <div className="flex gap-y-4 flex-wrap text-xs text-white border-t border-t-gray-500 fixed bottom-10 pt-6 md:hidden w-[calc(100%-32px)]">
+            <div className="flex gap-y-4 flex-col text-xs text-white border-t border-t-gray-500 fixed bottom-10 pt-6 md:hidden w-[calc(100%-32px)]">
               <Link
                 to="tel:0123456789"
                 className={clsx(
@@ -180,7 +188,7 @@ export function HeaderSection() {
                   to=""
                   className="w-8 h-8 p-2 bg-secondary rounded-full object-contain"
                 >
-                  <Facebook className="text-secondary w-4 h-4 stroke-white" />
+                  <Facebook className="w-4 h-4 stroke-white invert brightness-0" />
                 </Link>
                 <Link
                   to=""

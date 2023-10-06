@@ -41,11 +41,9 @@ export async function loader({request, context: {storefront}}: LoaderArgs) {
 export default function Homepage() {
   const {projects, pageInfo} = useLoaderData<typeof loader>();
 
-  console.log(projects, pageInfo);
-
   return (
     <>
-      <OutProjects />
+      <OutProjects projects={projects} pageInfo={pageInfo} />
       <Booking />
       <SocialProof />
       {/* <FeaturedPost articles={articles as any} /> */}
