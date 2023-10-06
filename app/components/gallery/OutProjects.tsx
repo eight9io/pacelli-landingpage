@@ -1,10 +1,10 @@
 import clsx from 'clsx';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import project1 from '~/assets/gallery/project-1.png';
 import project2 from '~/assets/gallery/project-2.png';
 import project3 from '~/assets/gallery/project-3.png';
 import CardImg from '../CardImg';
-import {useState} from 'react';
+import { useState } from 'react';
 interface ContactProps {
   className?: string;
   projects: any[];
@@ -18,7 +18,7 @@ const OutProjects: React.FC<ContactProps> = ({
   projects,
   pageInfo,
 }) => {
-  const {t} = useTranslation('home');
+  const { t } = useTranslation('home');
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   const totalProjects = projects.length;
