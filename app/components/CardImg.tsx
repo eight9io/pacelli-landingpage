@@ -1,10 +1,12 @@
 import React from 'react';
 import {Button} from './Button';
 import ArrowRight from '~/components/common/icons/arrow-right';
+import {Link} from '@remix-run/react';
 /* eslint-disable */
 interface ICard {
   item: {
     id: string;
+    handle: string;
     title: string;
     description: string;
     cover_images: string[];
@@ -25,13 +27,15 @@ const CardImg = ({item}: ICard) => {
         <p className=" text-gray-900 text-base font-normal line-clamp-3 leading-7 mt-3">
           {item.description}
         </p>
-        <Button
-          className="uppercase mt-8 flex gap-3  bg-secondary-900 font-bold text-center py-2.5 px-4 text-white my-4 hover:bg-secondary-800  "
-          size="md"
-        >
-          VIEW more
-          <ArrowRight className="text-secondary w-5 h-5 stroke-secondary origin-center stroke-2" />
-        </Button>
+        <Link to={`/project-detail/${item.handle}`}>
+          <Button
+            className="uppercase mt-8 flex gap-3  bg-secondary-900 font-bold text-center py-2.5 px-4 text-white my-4 hover:bg-secondary-800  "
+            size="md"
+          >
+            VIEW more
+            <ArrowRight className="text-secondary w-5 h-5 stroke-secondary origin-center stroke-2" />
+          </Button>
+        </Link>
       </div>
     </div>
   );
