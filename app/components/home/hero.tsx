@@ -11,48 +11,48 @@ interface HeroProps {
 const mockData = [
   {
     id: 'item1',
-    src: 'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero_1.png',
+    src: 'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero.png',
     title: 'home:hero.item1.title',
     subtitle: 'home:hero.item1.subtitle',
   },
   {
     id: 'item2',
-    src: 'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero_2.png',
+    src: 'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero_6.png',
     title: 'home:hero.item2.title',
     subtitle: 'home:hero.item2.subtitle',
     link: '/',
   },
   {
     id: 'item3',
-    src: 'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero3.png',
+    src: 'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero_5.png',
     title: 'home:hero.item3.title',
     subtitle: 'home:hero.item3.subtitle',
     link: '/about',
   },
   {
     id: 'item4',
-    src: 'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero3.png',
+    src: 'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero_4.png',
     title: 'home:hero.item4.title',
     subtitle: 'home:hero.item4.subtitle',
     link: '/brand',
   },
   {
     id: 'item5',
-    src: 'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero3.png',
+    src: 'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero_3.png',
     title: 'home:hero.item5.title',
     subtitle: 'home:hero.item5.subtitle',
     link: '/services/professional',
   },
   {
     id: 'item6',
-    src: 'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero3.png',
+    src: 'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero2.png',
     title: 'home:hero.item6.title',
     subtitle: 'home:hero.item6.subtitle',
     link: '/services/private',
   },
   {
     id: 'item7',
-    src: 'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero3.png',
+    src: 'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero1.png',
     title: 'home:hero.item7.title',
     desc: 'home:hero.item7.desc',
     link: '/showroom',
@@ -65,7 +65,7 @@ const Hero: React.FC<HeroProps> = ({className = ''}) => {
   return (
     <section
       className={clsx(
-        'h-[100vh] overflow-hidden max-h-[820px] bg-gray-300 relative',
+        'h-[100vh] overflow-hidden max-h-[820px] relative',
         className,
       )}
     >
