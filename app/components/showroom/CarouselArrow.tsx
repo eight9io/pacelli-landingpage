@@ -1,7 +1,6 @@
-
 import clsx from 'clsx';
 import CarouselArrow from '../common/carousel/carouselShowroom';
-import { Button } from '../Button';
+import {Button} from '../Button';
 import image1 from '~/assets/showroom/image-1.png';
 import image2 from '~/assets/showroom/image-2.png';
 import image3 from '~/assets/showroom/image-3.png';
@@ -13,15 +12,24 @@ import image8 from '~/assets/showroom/image-8.png';
 import image9 from '~/assets/showroom/image-9.png';
 import showroom7 from '~/assets/showroom/showroom7.png';
 
-
-
 interface CarouselShowroomProps {
   className?: string;
 }
 
-const CarouselShowroom: React.FC<CarouselShowroomProps> = ({ className = '' }) => {
-  const arrImg = [image1, image2, image3, image4, image5, image6, image7, image8, image9]
-
+const CarouselShowroom: React.FC<CarouselShowroomProps> = ({
+  className = '',
+}) => {
+  const arrImg = [
+    image1,
+    image2,
+    image3,
+    image4,
+    image5,
+    image6,
+    image7,
+    image8,
+    image9,
+  ];
 
   return (
     <section className={clsx('pt-[60px] base-container', className)}>
@@ -44,19 +52,24 @@ const CarouselShowroom: React.FC<CarouselShowroomProps> = ({ className = '' }) =
                 />
                 <p>{item.author}</p>
               </div>
-
             </div>
           )}
           data={arrImg}
-
           renderIndicator={(item, index, active, onClick) => (
-            <div className='mx-auto space-x-4'>
-              <Button className="rounded-sm uppercase mt-6 bg-red-100 py-3 px-4" size="md">
+            <div className="mx-auto space-x-4">
+              <Button
+                className="rounded-sm uppercase mt-6 bg-red-100 py-3 px-4"
+                size="md"
+              >
                 &larr;
               </Button>
-              <Button className="rounded-sm uppercase mt-6 bg-red-100 py-3 px-4" size="md">
+              <Button
+                className="rounded-sm uppercase mt-6 bg-red-100 py-3 px-4"
+                size="md"
+              >
                 &rarr;
-              </Button></div>
+              </Button>
+            </div>
           )}
         />
       </div>
@@ -68,7 +81,6 @@ const CarouselShowroom: React.FC<CarouselShowroomProps> = ({ className = '' }) =
         height={580}
         className="mt-28 mx-auto h-[580px]  "
       />
-
     </section>
   );
 };
@@ -81,4 +93,3 @@ interface SocialProofItemProps {
   author: string;
   quote: string;
 }
-
