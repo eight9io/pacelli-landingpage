@@ -1,63 +1,34 @@
-
 import clsx from 'clsx';
 import CarouselArrow from '../common/carousel/carouselShowroom';
-import { Button } from '../Button';
+import {Button} from '../Button';
+import image1 from '~/assets/showroom/image-1.png';
+import image2 from '~/assets/showroom/image-2.png';
+import image3 from '~/assets/showroom/image-3.png';
+import image4 from '~/assets/showroom/image-4.png';
+import image5 from '~/assets/showroom/image-5.png';
+import image6 from '~/assets/showroom/image-6.png';
+import image7 from '~/assets/showroom/image-7.png';
+import image8 from '~/assets/showroom/image-8.png';
+import image9 from '~/assets/showroom/image-9.png';
 import showroom7 from '~/assets/showroom/showroom7.png';
-import showroom2 from '~/assets/showroom/showroom2.png';
-import showroom3 from '~/assets/showroom/showroom3.png';
-import showroom4 from '~/assets/showroom/showroom4.png';
-
 
 interface CarouselShowroomProps {
   className?: string;
 }
 
-const CarouselShowroom: React.FC<CarouselShowroomProps> = ({ className = '' }) => {
-  const mockData: SocialProofItemProps[] = [
-    {
-      id: 'item-proof1',
-      image: showroom2,
-      author: 'Geltrude',
-      quote:
-        'Felice di essermi affidata a voi che siete stati super professionali e siete riusciti ad incontrare il mio gusto creando con molto garbo il laboratorio che ho sempre sognato.',
-    },
-    {
-      id: 'item-proof2',
-      image: showroom3,
-      author: 'Maria',
-      quote:
-        'Paolo un grande professionista. Sa consigliarti sempre con garbo e consapevolezza del suo sapere!',
-    },
-    {
-      id: 'item-proof3',
-      image: showroom4,
-      author: 'Marajà',
-      quote:
-        'Grazie Paolo che hai realizzato perfettamente la nostra idea. Complimenti per la professionalità, la gentilezza e la precisione. Grazie angora da tutta la famiglia Marajà.',
-    },
-    {
-      id: 'item-proof4',
-      image:
-        'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero_1.png',
-      author: 'Franco',
-      quote:
-        'Grazie ad  Arredamenti Pacelli per la professionalità e competenza nella progettazione e montaggio della mia nuova cucina , ho ricevuto tantissimi complimenti dai miei amici.',
-    },
-    {
-      id: 'item-proof5',
-      image:
-        'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero_1.png',
-      author: 'Lino',
-      quote:
-        'La professionalità fatta persona, persona bellissima. Ho avuto il piacere di collaborare con loro, passione sensa fine.',
-    },
-    {
-      id: 'item-proof6',
-      image:
-        'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero_1.png',
-      author: 'Agostino',
-      quote: 'Grazie per l’immensa professionalità.',
-    },
+const CarouselShowroom: React.FC<CarouselShowroomProps> = ({
+  className = '',
+}) => {
+  const arrImg = [
+    image1,
+    image2,
+    image3,
+    image4,
+    image5,
+    image6,
+    image7,
+    image8,
+    image9,
   ];
 
   return (
@@ -81,19 +52,24 @@ const CarouselShowroom: React.FC<CarouselShowroomProps> = ({ className = '' }) =
                 />
                 <p>{item.author}</p>
               </div>
-
             </div>
           )}
-          data={mockData}
-
+          data={arrImg}
           renderIndicator={(item, index, active, onClick) => (
-            <div className='mx-auto space-x-4'>
-              <Button className="rounded-sm uppercase mt-6 bg-red-100 py-3 px-4" size="md">
+            <div className="mx-auto space-x-4">
+              <Button
+                className="rounded-sm uppercase mt-6 bg-red-100 py-3 px-4"
+                size="md"
+              >
                 &larr;
               </Button>
-              <Button className="rounded-sm uppercase mt-6 bg-red-100 py-3 px-4" size="md">
+              <Button
+                className="rounded-sm uppercase mt-6 bg-red-100 py-3 px-4"
+                size="md"
+              >
                 &rarr;
-              </Button></div>
+              </Button>
+            </div>
           )}
         />
       </div>
@@ -105,7 +81,6 @@ const CarouselShowroom: React.FC<CarouselShowroomProps> = ({ className = '' }) =
         height={580}
         className="mt-28 mx-auto h-[580px]  "
       />
-
     </section>
   );
 };
@@ -118,4 +93,3 @@ interface SocialProofItemProps {
   author: string;
   quote: string;
 }
-
