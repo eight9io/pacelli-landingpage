@@ -1,17 +1,17 @@
 import clsx from 'clsx';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import services4 from '~/assets/services/services-4.png';
 interface PlanProps {
   className?: string;
 }
 
-const Plan: React.FC<PlanProps> = ({className = ''}) => {
-  const {t} = useTranslation('home');
+const Plan: React.FC<PlanProps> = ({ className = '' }) => {
+  const { t } = useTranslation('home');
 
   return (
     <section
       className={clsx(
-        ' py-[30px] lg:py-[90px] base-container mt-12',
+        '  py-24 md:py-32 lg:py-[90px] base-container mt-12',
         className,
       )}
     >
