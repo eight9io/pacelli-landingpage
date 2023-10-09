@@ -1,7 +1,7 @@
 import { defer, type LoaderArgs } from '@shopify/remix-oxygen';
 import { AnalyticsPageType } from '@shopify/hydrogen';
-import services1 from '~/assets/services/services-2.png';
-import services2 from '~/assets/services/services-1.png';
+import services1 from '~/assets/services/services-1.png';
+import services2 from '~/assets/services/services-2.png';
 import { seoPayload } from '~/lib/seo.server';
 import { routeHeaders } from '~/data/cache';
 import Brands from '~/components/home/brands';
