@@ -203,4 +203,7 @@ shop-pay-button {
       @apply aspect-[inherit] w-full object-cover;
     }
   }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
