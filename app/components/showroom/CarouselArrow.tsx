@@ -1,18 +1,18 @@
-
 import clsx from 'clsx';
 import CarouselArrow from '../common/carousel/carouselShowroom';
-import { Button } from '../Button';
+import {Button} from '../Button';
 import showroom7 from '~/assets/showroom/showroom7.png';
 import showroom2 from '~/assets/showroom/showroom2.png';
 import showroom3 from '~/assets/showroom/showroom3.png';
 import showroom4 from '~/assets/showroom/showroom4.png';
 
-
 interface CarouselShowroomProps {
   className?: string;
 }
 
-const CarouselShowroom: React.FC<CarouselShowroomProps> = ({ className = '' }) => {
+const CarouselShowroom: React.FC<CarouselShowroomProps> = ({
+  className = '',
+}) => {
   const mockData: SocialProofItemProps[] = [
     {
       id: 'item-proof1',
@@ -81,19 +81,24 @@ const CarouselShowroom: React.FC<CarouselShowroomProps> = ({ className = '' }) =
                 />
                 <p>{item.author}</p>
               </div>
-
             </div>
           )}
           data={mockData}
-
           renderIndicator={(item, index, active, onClick) => (
-            <div className='mx-auto space-x-4'>
-              <Button className="rounded-sm uppercase mt-6 bg-red-100 py-3 px-4" size="md">
+            <div className="mx-auto space-x-4">
+              <Button
+                className="rounded-sm uppercase mt-6 bg-red-100 py-3 px-4"
+                size="md"
+              >
                 &larr;
               </Button>
-              <Button className="rounded-sm uppercase mt-6 bg-red-100 py-3 px-4" size="md">
+              <Button
+                className="rounded-sm uppercase mt-6 bg-red-100 py-3 px-4"
+                size="md"
+              >
                 &rarr;
-              </Button></div>
+              </Button>
+            </div>
           )}
         />
       </div>
@@ -105,7 +110,6 @@ const CarouselShowroom: React.FC<CarouselShowroomProps> = ({ className = '' }) =
         height={580}
         className="mt-28 mx-auto h-[580px]  "
       />
-
     </section>
   );
 };
@@ -118,4 +122,3 @@ interface SocialProofItemProps {
   author: string;
   quote: string;
 }
-
