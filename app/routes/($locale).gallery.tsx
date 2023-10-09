@@ -2,12 +2,12 @@ import Booking from '~/components/home/booking';
 import SocialProof from '~/components/home/social-proof';
 import OutProjects from '~/components/gallery/OutProjects';
 import {LoaderArgs, json} from '@shopify/remix-oxygen';
-import {PROJECT_GALERRY_QUERY} from '~/graphql/gallery';
+import {PROJECT_GALLERY_QUERY} from '~/graphql/gallery';
 import {parseObject} from '~/lib/utils';
 import {useLoaderData} from '@remix-run/react';
 
 export async function loader({request, context: {storefront}}: LoaderArgs) {
-  const data = await storefront.query(PROJECT_GALERRY_QUERY);
+  const data = await storefront.query(PROJECT_GALLERY_QUERY);
   let projects = parseObject(data, 'metaobjects.nodes');
   const pageInfo = parseObject(data, 'metaobjects.pageInfo');
 
