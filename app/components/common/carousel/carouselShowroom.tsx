@@ -5,6 +5,7 @@ import { UIEvent, useRef, useState } from 'react';
 import { Button } from '~/components/Button';
 import ArrowLeft from "~/components/common/icons/arrow-slide-left";
 import ArrowRight from "~/components/common/icons/arrow-slide-right";
+import Carousel from '.';
 interface CarouselProps {
   className?: string;
   data?: any[];
@@ -55,17 +56,17 @@ const CarouselArrow: React.FC<CarouselProps> = ({
           className="snap-x snap-mandatory overflow-x-scroll overscroll-x-contain whitespace-nowrap scrollbar-hide"
         >
           <div className=" gap-4 align-top lg:gap-8 space-x-4">
-            {data.map((item) => {
+            {data.map((item, index) => {
               if (!item) return null;
               return (
                 <div
-                  key={item.id}
+                  key={index}
                   className="inline-block snap-start  "
                 >
                   <img
                     className=" h-[540px]"
-                    src={item.image}
-                    alt={item.author}
+                    src={item}
+                    alt="Carousel"
                     width={395}
                     height={540}
                   />

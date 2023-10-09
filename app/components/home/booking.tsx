@@ -1,6 +1,6 @@
-import ContactForm from '~/components/common/form/booking-form';
 import clsx from 'clsx';
 import {useTranslation} from 'react-i18next';
+import BookingForm from '~/components/common/form/booking-form';
 
 interface BookingProps {
   className?: string;
@@ -28,7 +28,7 @@ const Booking: React.FC<BookingProps> = ({className = ''}) => {
           </p>
         </div>
         <div className="col-span-12 md:col-span-7">
-          <ContactForm />
+          <BookingForm />
         </div>
       </div>
     </section>
