@@ -5,7 +5,7 @@ import {AnalyticsPageType} from '@shopify/hydrogen';
 import {seoPayload} from '~/lib/seo.server';
 import {routeHeaders} from '~/data/cache';
 import ContactCTAForm from '~/components/contact/contact-cta-form';
-import EmbledMap from '~/components/contact/embled-map';
+import EmbledMap from '~/components/contact/map-embled';
 
 export const headers = routeHeaders;
 
