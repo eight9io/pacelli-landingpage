@@ -36,7 +36,7 @@ const About: React.FC<AboutProps> = ({className = ''}) => {
               </p>
             </div>
             <hr className="md:w-[calc(100%-32px)]" />
-            <div className="md:w-3/4 md:translate-x-1/4">
+            <div className="md:w-3/4">
               <h3 className="text-secondary text-[32px] md:text-[40px] font-semibold flex items-center">
                 <img
                   src={handshake}
