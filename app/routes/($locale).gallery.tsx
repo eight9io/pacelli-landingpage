@@ -46,7 +46,6 @@ export default function Homepage() {
       <OutProjects projects={projects} pageInfo={pageInfo} />
       <Booking />
       <SocialProof />
-      {/* <FeaturedPost articles={articles as any} /> */}
     </>
   );
 }

@@ -1049,3 +1049,29 @@ shop-pay-button {
   border-left-color: #e6e6e6;
   cursor: default;
 }
+
+.react-datepicker__tab-loop {
+  position: relative;
+}
+
+.react-datepicker__aria-live {
+  display: none;
+}
+
+.react-datepicker-popper[data-placement^=bottom] {
+  margin-top: 0px;
+  transform: translate(0px, 0px) !important;
+  inset: auto !important;
+}
+
+.react-datepicker__time-container {
+  width: 200px;
+  max-width: 200px;
+}
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
+  width: 200px;
+  max-width: 200px;
+}
+.react-datepicker__header--time {
+  display: none;
+}

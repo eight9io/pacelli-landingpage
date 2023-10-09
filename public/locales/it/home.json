@@ -4,7 +4,7 @@
   },
   "hero": {
     "item1": {
-      "title": "The Italian tradition\nof quality furnishings"
+      "title": "La tradizione italiana\n dell’arredamento di\n qualità"
     },
     "item2": {
       "title": "100+",
@@ -45,7 +45,7 @@
     "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
   },
   "blog": {
-    "title": "Blogs",
-    "view_all": "View all"
+    "title": "News",
+    "view_all": "Vedi tutti"
   }
 }
