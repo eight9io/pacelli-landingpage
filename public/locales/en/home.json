@@ -4,7 +4,7 @@
   },
   "hero": {
     "item1": {
-      "title": "The Italian tradition\nof quality furnishings"
+      "title": "La tradizione italiana\ndell’arredamento di\nqualità"
     },
     "item2": {
       "title": "100+",
@@ -12,7 +12,7 @@
     },
     "item3": {
       "title": "50+",
-      "subtitle": "Years in business"
+      "subtitle": "Anni di attività"
     },
     "item4": {
       "title": "50+",
@@ -28,7 +28,7 @@
     },
     "item7": {
       "title": "L’arredamento\nche stai cercando",
-      "desc": "Pacelli Arredamenti è il punto di riferimento dove trovare la migliore selezione di cucine, camere da letto, camerette, soggiorni, divani, poltrone, tendaggi, materassi e reti, illuminazione, arredo ufficio e decorazioni."
+      "desc": "Pacelli Arredamenti è il punto di riferimento dove trovare la migliore selezione di cucine,\n camere da letto, camerette, soggiorni, divani, poltrone, tendaggi, materassi e reti,\nilluminazione, arredo ufficio e decorazioni."
     },
     "learn_more": "Learn more"
   },
@@ -45,7 +45,7 @@
     "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
   },
   "blog": {
-    "title": "Blogs",
-    "view_all": "View all"
+    "title": "News",
+    "view_all": "Vedi tutti"
   }
 }

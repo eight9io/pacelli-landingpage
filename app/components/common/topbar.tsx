@@ -45,19 +45,19 @@ const Topbar = ({children}: TopbarProps) => {
           </div>
           <div className={clsx('flex gap-3 items-center relative')}>
             <Link
-              to=""
+              to="https://www.facebook.com/arredamentipacelli/?locale=it_IT"
               className="w-8 h-8 p-2 bg-transparent rounded-full object-contain"
             >
               <Facebook className="text-secondary w-4 h-4 stroke-secondary" />
             </Link>
             <Link
-              to=""
+              to="https://www.instagram.com/pacelliarredamenti"
               className="w-8 h-8 p-2 bg-transparent rounded-full object-contain"
             >
               <Instagram className="text-secondary w-4 h-4 stroke-secondary" />
             </Link>
             <Link
-              to=""
+              to="https://www.youtube.com/@arredamentipacelli4456/featured"
               className="w-8 h-8 p-2 bg-transparent rounded-full object-contain"
             >
               <Youtube className="text-secondary w-4 h-4" />
