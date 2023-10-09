@@ -61,12 +61,13 @@ export const PROJECT_DETAIL_QUERY = `#graphql
   }
 ` as const;
 
-export const PROJECT_GALERRY_QUERY = `#graphql
+export const PROJECT_GALLERY_QUERY = `#graphql
   query ProjectGalleryQuery(
     $language: LanguageCode,
-    $first: Int = 8,
+    $first: Int = 6,
+    $after: String,
   ) @inContext( language: $language) {
-    metaobjects(type: "project", first: $first) {
+    metaobjects(type: "project", first: $first, reverse: true, after: $after) {
       pageInfo {
         hasNextPage
         endCursor
