@@ -63,12 +63,7 @@ export const links: LinksFunction = () => {
       rel: 'preconnect',
       href: 'https://shop.app',
     },
-    // {rel: 'icon', type: 'image/svg+xml', href: favicon},
-    {
-      rel: 'icon',
-      type: 'image/png',
-      href: 'https://cdn.shopify.com/s/files/1/0622/9511/3954/files/32x32.png?v=1671002587',
-    },
+    {rel: 'icon', type: 'image/svg+xml', href: favicon},
   ];
 };
 

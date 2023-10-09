@@ -42,7 +42,7 @@ const ArticleContent: React.FC<ArticleContentProps> = ({
         </div>
         <Heading
           variant="h1"
-          className="text-primary text-[64px] leading-[78px] font-semibold mb-6"
+          className="text-primary text-[40px] md:text-[64px] leading-[60px] md:leading-[78px] font-semibold mb-6"
         >
           {article.title}
         </Heading>

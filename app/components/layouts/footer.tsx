@@ -9,7 +9,7 @@ const FooterSection = () => {
   return (
     <footer className="bg-primary-950">
       <div className="base-container py-0 flex justify-between">
-        <div className="grid grid-cols-12 pb-11 pt-15 gap-y-4 md:gap-y-8">
+        <div className="grid grid-cols-12 pb-11 pt-15 gap-y-4 md:gap-y-8 w-full">
           <div className="col-span-12 md:col-span-3 mb-4">
             <Logo className="invert-[1] brightness-0" />
           </div>
@@ -39,14 +39,15 @@ const FooterSection = () => {
             <div className="text-white text-base font-normal">
               CONTACT WITH US
             </div>
-            <p className="text-white text-xs md:text-sm font-normal leading-[21px] mt-6">
-              Hotline:{' '}
-              <Link to="tel:0824948533" className="">
-                (0824) 948533
-              </Link>
+            <p className="text-white text-xs md:text-sm font-normal leading-[21px] mt-6 flex gap-2">
+              Hotline: <span className="">+39 0824/948533</span>
             </p>
-            <p className="text-white text-xs md:text-sm font-normal leading-[21px] mt-6">
-              Address: Via Volturno, 11, San Salvatore Telesino (BN)
+            <p className="text-white text-xs md:text-sm font-normal leading-[21px] mt-6 flex gap-2">
+              Address:{' '}
+              <span>
+                Via Volturno, 11, San Salvatore <br />
+                Telesino (BN)
+              </span>
             </p>
           </div>
         </div>
@@ -78,19 +79,19 @@ const FooterSection = () => {
             )}
           >
             <Link
-              to=""
+              to="https://www.facebook.com/arredamentipacelli/?locale=it_IT"
               className="w-10 h-10 p-2 bg-white rounded-full object-contain"
             >
               <Facebook className="text-secondary w-6 h-6 stroke-secondary" />
             </Link>
             <Link
-              to=""
+              to="https://www.instagram.com/pacelliarredamenti"
               className="w-10 h-10 p-2 bg-white rounded-full object-contain"
             >
               <Instagram className="text-secondary w-6 h-6 stroke-secondary" />
             </Link>
             <Link
-              to=""
+              to="https://www.youtube.com/@arredamentipacelli4456/featured"
               className="w-10 h-10 p-2 bg-white rounded-full object-contain"
             >
               <Youtube className="text-secondary w-6 h-6 " />
@@ -148,14 +149,14 @@ const footerMenus2 = [
 const footerMenus3 = [
   {
     text: 'Privacy Policy',
-    href: '/policy',
+    href: '/pages/privacy-poplicy',
   },
   {
-    text: 'Terms & Conditions',
-    href: '/terms',
+    text: 'Term and Conditions',
+    href: '/pages/terms-conditions',
   },
   {
     text: 'Cookies Policy',
-    href: '/cookies',
+    href: '/pages/cookies-policy',
   },
 ];
