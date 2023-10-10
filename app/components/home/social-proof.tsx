@@ -12,7 +12,7 @@ interface SocialProofProps {
   className?: string;
 }
 
-const SocialProof: React.FC<SocialProofProps> = ({ className = '' }) => {
+const SocialProof: React.FC<SocialProofProps> = ({className = ''}) => {
   return (
     <section className={clsx('pt-[60px] bg-base-100', className)}>
       <Heading className="text-center">Cosa dicono di noi</Heading>
@@ -27,7 +27,7 @@ const SocialProof: React.FC<SocialProofProps> = ({ className = '' }) => {
             >
               <div className="col-span-12 md:col-span-8 px-4 md:px-0">
                 <img
-                  className="h-[400px]"
+                  className="h-[400px] object-cover"
                   src={item.image}
                   alt={item.author}
                   width={754}
