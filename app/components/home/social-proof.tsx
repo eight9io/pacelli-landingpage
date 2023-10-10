@@ -16,38 +16,40 @@ const SocialProof: React.FC<SocialProofProps> = ({ className = '' }) => {
   return (
     <section className={clsx('pt-[60px] bg-base-100', className)}>
       <Heading className="text-center">Cosa dicono di noi</Heading>
-      <div className="base-container px-0 relative">
-        <Carousel
-          className="relative"
-          renderItem={(item, index) => (
-            <div
-              id={item.id}
-              key={item.id}
-              className="base-container px-0 carousel-item grid grid-cols-12 gap-y-6 md:gap-16 mb-16 overflow-hidden"
-            >
-              <div className="col-span-12 md:col-span-8 px-4 md:px-0">
-                <img
-                  className="h-[400px]"
-                  src={item.image}
-                  alt={item.author}
-                  width={754}
-                  height={400}
-                />
+      <div className=" px-0 relative ">
+        <div className='base-container'>
+          <Carousel
+            className="relative "
+            renderItem={(item, index) => (
+              <div
+                id={item.id}
+                key={item.id}
+                className="base-container px-0 carousel-item grid grid-cols-12 gap-y-6 md:gap-16 mb-16 overflow-hidden"
+              >
+                <div className="col-span-12 md:col-span-8 px-4 md:px-0">
+                  <img
+                    className="h-[400px]"
+                    src={item.image}
+                    alt={item.author}
+                    width={754}
+                    height={400}
+                  />
+                </div>
+                <div className="col-span-12 md:col-span-4 flex flex-col gap-4 px-4 md:px-0 space-y-3">
+                  <IconQuote className="text-secondary " />
+                  <h3 className="text-primary text-[40px] font-normal leading-[50px]">
+                    {item.author}
+                  </h3>
+                  <p className=" text-gray-900 text-base font-normal leading-7">
+                    {item.quote}
+                  </p>
+                </div>
               </div>
-              <div className="col-span-12 md:col-span-4 flex flex-col gap-4 px-4 md:px-0 space-y-3">
-                <IconQuote className="text-secondary " />
-                <h3 className="text-primary text-[40px] font-normal leading-[50px]">
-                  {item.author}
-                </h3>
-                <p className=" text-gray-900 text-base font-normal leading-7">
-                  {item.quote}
-                </p>
-              </div>
-            </div>
-          )}
-          data={mockData}
-          indicatorClassName="bottom-8 md:left-1/2 md:-translate-x-1/2 justify-center !w-[200px]"
-        />
+            )}
+            data={mockData}
+            indicatorClassName="bottom-8 md:left-1/2 md:-translate-x-1/2 justify-center !w-[200px]"
+          />
+        </div>
       </div>
     </section>
   );

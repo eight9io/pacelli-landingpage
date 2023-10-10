@@ -5,7 +5,7 @@ import { UIEvent, useRef, useState } from 'react';
 import { Button } from '~/components/Button';
 import ArrowLeft from "~/components/common/icons/arrow-slide-left";
 import ArrowRight from "~/components/common/icons/arrow-slide-right";
-import Carousel from '.';
+import Carousel from '../common/carousel';
 interface CarouselProps {
   className?: string;
   data?: any[];
@@ -78,14 +78,14 @@ const CarouselArrow: React.FC<CarouselProps> = ({
       </div>
       <div className="flex justify-end gap-8">
         <Button className={clsx("rounded-sm uppercase mt-6 bg-neutral-100 p-4 0", isDisabledPrev && "bg-neutral-50 hover:bg-neutral-50")} size="md" onClick={handlePrev}>
-          <ArrowLeft />
+          <ArrowLeft className='fill-[#9CA3AF] ' />
         </Button>
         <Button className={clsx("rounded-sm uppercase mt-6 bg-neutral-100 p-4 0", isDisabledNext && "bg-neutral-50 hover:bg-neutral-50")} size="md"
           onClick={handleNext}
           disabled={isDisabledNext}
 
         >
-          <ArrowRight />
+          <ArrowRight className='fill-[#9CA3AF] ' />
         </Button>
       </div>
 
