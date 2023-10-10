@@ -1,9 +1,11 @@
 'use client';
 /* eslint-disable */
 import clsx from 'clsx';
-import {useCallback, useRef, useState} from 'react';
-import {useDebounce} from 'usehooks-ts';
-
+import { useCallback, useRef, useState } from 'react';
+import { useDebounce } from 'usehooks-ts';
+import { Button } from '~/components/Button';
+import ArrowLeft from '~/components/common/icons/arrow-slide-left';
+import ArrowRight from '~/components/common/icons/arrow-slide-right';
 interface CarouselProps {
   className?: string;
   data?: any[];
@@ -41,7 +43,22 @@ const Carousel: React.FC<CarouselProps> = ({
       setCurrentIndex(index);
     }
   };
-
+  const handleNext = () => {
+    if (carouselRef.current && currentIndex < data.length - 1) {
+      carouselRef.current.scroll({
+        left: carouselRef.current.scrollLeft + screen.width,
+        behavior: 'smooth',
+      });
+    }
+  };
+  const handlePrev = () => {
+    if (carouselRef.current && currentIndex > 0) {
+      carouselRef.current.scroll({
+        left: carouselRef.current.scrollLeft - screen.width,
+        behavior: 'smooth',
+      });
+    }
+  };
   const defaultRenderIndicator: (
     item?: any,
     index?: number,
@@ -76,7 +93,10 @@ const Carousel: React.FC<CarouselProps> = ({
     <>
       <div
         ref={carouselRef}
-        className={clsx('carousel w-full h-full', className)}
+        className={clsx(
+          'carousel w-full h-full ',
+          className,
+        )}
         onScroll={(e) => {
           const scrollLeft = (e.target as HTMLDivElement).scrollLeft;
           // const scrollWidth = (e.target as HTMLDivElement).scrollWidth;
@@ -86,6 +106,7 @@ const Carousel: React.FC<CarouselProps> = ({
           setCurrentIndex(index);
         }}
       >
+
         {data.map((item, index) =>
           renderItem ? (
             renderItem(item, index)
@@ -98,14 +119,15 @@ const Carousel: React.FC<CarouselProps> = ({
             </div>
           ),
         )}
+
       </div>
       <div
         className={clsx(
-          'absolute z-100 bottom-24 left-0 w-full',
+          'absolute bottom-24 left-0 w-full z-50',
           indicatorClassName,
         )}
       >
-        <div className={clsx('base-container flex justify-start py-2 gap-2')}>
+        <div className={clsx('base-container flex justify-start py-2 gap-2 ')}>
           {data.map((item, index) =>
             (renderIndicator ?? defaultRenderIndicator)(
               item,
@@ -114,6 +136,27 @@ const Carousel: React.FC<CarouselProps> = ({
               onIndicatorClick,
             ),
           )}
+        </div>
+      </div>
+      <div className="group/rooms  flex   absolute w-full top-0 h-full left-0  items-center  justify-between ">
+        <div>
+          {currentIndex > 0 && <Button
+            className={clsx('rounded-sm uppercase   p-0  bg-transparent group-hover/rooms:opacity-100 opacity-0   transition-all duration-500 ',)}
+            size="md"
+            onClick={handlePrev}
+          >
+            <ArrowLeft className='  w-16 h-16  fill-secondary ' />
+          </Button>}
+        </div>
+        <div>
+
+          {currentIndex < data.length - 1 && <Button
+            className={clsx('rounded-sm uppercase   p-0  bg-transparent group-hover/rooms:opacity-100 opacity-0   transition-all duration-500 ')}
+            size="md"
+            onClick={handleNext}
+          >
+            <ArrowRight className='  w-16 h-16  fill-secondary ' />
+          </Button>}
         </div>
       </div>
     </>
