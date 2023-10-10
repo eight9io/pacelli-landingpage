@@ -28,7 +28,12 @@ const FooterSection = () => {
             <ul className="flex flex-col gap-4">
               {footerMenus2.map((menu) => (
                 <li key={`footer_${menu.href}`}>
-                  <Link to={menu.href} className="uppercase text-white">
+                  <Link
+                    to={menu.href}
+                    className={clsx('uppercase text-white', {
+                      'normal-case': menu.text === 'FAQs',
+                    })}
+                  >
                     {menu.text}
                   </Link>
                 </li>
@@ -44,10 +49,7 @@ const FooterSection = () => {
             </p>
             <p className="text-white text-xs md:text-sm font-normal leading-[21px] mt-6 flex gap-2">
               Address:{' '}
-              <span>
-                Via Volturno, 11, San Salvatore <br />
-                Telesino (BN)
-              </span>
+              <span>Via Volturno, 11, San Salvatore Telesino (BN)</span>
             </p>
           </div>
         </div>
@@ -142,7 +144,7 @@ const footerMenus2 = [
   },
   {
     text: 'Contacts',
-    href: '/contacts',
+    href: '/contact',
   },
 ];
 
