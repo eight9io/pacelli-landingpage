@@ -1,13 +1,13 @@
 import Intro from '~/components/project-detail/Intro';
 import Detail from '~/components/project-detail/Detail';
 import Booking from '~/components/home/booking';
-import { LoaderArgs, json } from '@shopify/remix-oxygen';
+import {LoaderArgs, json} from '@shopify/remix-oxygen';
 import invariant from 'tiny-invariant';
-import { useLoaderData } from '@remix-run/react';
-import { parseObject } from '~/lib/utils';
-import { PROJECT_DETAIL_QUERY } from '~/graphql/gallery';
+import {useLoaderData} from '@remix-run/react';
+import {parseObject} from '~/lib/utils';
+import {PROJECT_DETAIL_QUERY} from '~/graphql/gallery';
 
-export async function loader({ request, params, context }: LoaderArgs) {
+export async function loader({request, params, context}: LoaderArgs) {
   invariant(params.handle, 'id is required');
   const data = await context.storefront.query(PROJECT_DETAIL_QUERY, {
     variables: {
@@ -42,11 +42,11 @@ export async function loader({ request, params, context }: LoaderArgs) {
     });
   }
 
-  return json({ project: handledProject });
+  return json({project: handledProject});
 }
 
 export default function ProjectDetail() {
-  const { project } = useLoaderData<typeof loader>();
+  const {project} = useLoaderData<typeof loader>();
 
   return (
     <>

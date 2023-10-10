@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import Heading from '~/components/common/heading';
-import { Button } from '~/components/snippets';
+import {Button} from '~/components/snippets';
 
 import ArrowRight from '~/components/common/icons/arrow-right';
-import { Link } from '@remix-run/react';
+import {Link} from '@remix-run/react';
 
 interface BeforeAfterProps {
   className?: string;
@@ -13,12 +13,12 @@ interface BeforeAfterProps {
   afterImg: string;
 }
 
-const BeforeAfter: React.FC<BeforeAfterProps> = ({ className = '',
+const BeforeAfter: React.FC<BeforeAfterProps> = ({
+  className = '',
   title,
   description,
   beforeImg,
-  afterImg
-
+  afterImg,
 }) => {
   return (
     <section className={clsx('bg-gray-100 py-[60px] md:py-[90px]', className)}>

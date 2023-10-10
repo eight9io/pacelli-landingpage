@@ -10,7 +10,7 @@ interface ICard {
     handle: string;
   };
 }
-const CardImg = ({ item }: ICard) => {
+const CardImg = ({item}: ICard) => {
   return (
     <div className="overflow-hidden shadow-lg h-full">
       <img

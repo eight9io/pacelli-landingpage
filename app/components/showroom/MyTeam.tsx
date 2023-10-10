@@ -3,18 +3,18 @@ import Heading from '~/components/common/heading';
 import showroom6 from '~/assets/showroom/showroom6.png';
 import showroom5 from '~/assets/showroom/showroom5.png';
 
-import { Button } from '~/components/snippets';
+import {Button} from '~/components/snippets';
 /* eslint-disable */
 import ArrowRight from '~/components/common/icons/arrow-right';
-import { InfoContact } from '../contact/contact-cta-form';
+import {InfoContact} from '../contact/contact-cta-form';
 import BookingForm from '../common/form/booking-form';
-import { useState } from 'react';
+import {useState} from 'react';
 
 interface MyTeamProps {
   className?: string;
 }
 
-const MyTeam: React.FC<MyTeamProps> = ({ className = '' }) => {
+const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
   const [openForm, setOpenForm] = useState(false);
   const openPopup = () => {
     setOpenForm(true);

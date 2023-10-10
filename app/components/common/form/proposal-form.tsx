@@ -1,16 +1,16 @@
-import { Button } from '~/components/snippets';
-import { Field, Form } from 'react-final-form';
+import {Button} from '~/components/snippets';
+import {Field, Form} from 'react-final-form';
 import TextField from '~/components/common/textfield';
 import clsx from 'clsx';
-import { validateFormValues } from '~/validation';
+import {validateFormValues} from '~/validation';
 import Select from '../select';
-import { proposalValidate } from '~/validation/proposal';
+import {proposalValidate} from '~/validation/proposal';
 import Heading from '../heading';
 interface ProposalFormProps {
   className?: string;
 }
 
-const ProposalForm: React.FC<ProposalFormProps> = ({ className = '' }) => {
+const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
   const onSubmit = (values: any) => {
     console.log('values', values);
   };
@@ -23,7 +23,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({ className = '' }) => {
         onSubmit={onSubmit}
         validate={validateFormValues(proposalValidate)}
         validateOnBlur={false}
-        render={({ handleSubmit, values, form }) => {
+        render={({handleSubmit, values, form}) => {
           return (
             <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
               <Heading
@@ -34,7 +34,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({ className = '' }) => {
               </Heading>
               <div className="relative">
                 <Field name="occupation">
-                  {({ input, meta }) => (
+                  {({input, meta}) => (
                     <div className="pb-6">
                       <Select
                         value={values?.occupation}
