@@ -37,7 +37,7 @@ export default function PartnershipServicesPage() {
         beforeImg={services1}
 
       />
-      <Brands className=" mt-[60px] md:mt-[90px]" />
+      <Brands className="mt-[60px] md:mt-[90px]" />
       <SocialProof />
     </>
   );

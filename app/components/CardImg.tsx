@@ -10,9 +10,9 @@ interface ICard {
     handle: string;
   };
 }
-const CardImg = ({item}: ICard) => {
+const CardImg = ({ item }: ICard) => {
   return (
-    <div className=" overflow-hidden shadow-lg h-full">
+    <div className="overflow-hidden shadow-lg h-full">
       <img
         className="w-full h-[225px] md:h-[400px] object-cover"
         src={item.cover && item.cover.length ? item.cover[0] : ''}
@@ -20,10 +20,10 @@ const CardImg = ({item}: ICard) => {
       />
 
       <div className="px-8 py-5">
-        <h3 className="text-primary text-[40px] line-clamp-1 font-semibold leading-[50px]">
+        <h3 className="text-primary md:text-[40px] line-clamp-1 font-semibold md:leading-[50px] text-[28px] leading-[60px]">
           {item.title}
         </h3>
-        <p className=" text-gray-900 text-base font-normal line-clamp-3 leading-7 mt-3">
+        <p className="text-gray-900 text-base font-normal line-clamp-3 leading-7 mt-3">
           {item.description}
         </p>
         <Link
