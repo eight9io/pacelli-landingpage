@@ -1,17 +1,20 @@
 import clsx from 'clsx';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 import Phone from '~/components/common/icons/phone';
 import ProposalForm from '~/components/common/form/proposal-form';
 interface ContactProps {
   className?: string;
 }
 
-const Contact: React.FC<ContactProps> = ({ className = '' }) => {
-  const { t } = useTranslation('home');
+const Contact: React.FC<ContactProps> = ({className = ''}) => {
+  const {t} = useTranslation('home');
 
   return (
     <section
-      className={clsx('  py-24 md:py-32 lg:py-[90px] base-container', className)}
+      className={clsx(
+        '  py-24 md:py-32 lg:py-[90px] base-container',
+        className,
+      )}
     >
       <div className="grid grid-cols-12 lg:gap-8 gap-y-8">
         <div className="col-span-12 lg:col-span-6 space-y-6  ">
@@ -29,7 +32,7 @@ const Contact: React.FC<ContactProps> = ({ className = '' }) => {
             +39 0824/948533
           </div>
         </div>
-        <div className="col-span-12 lg:col-span-6 lg:ml-12">
+        <div className="col-span-12 lg:col-span-6">
           <ProposalForm />
         </div>
       </div>
