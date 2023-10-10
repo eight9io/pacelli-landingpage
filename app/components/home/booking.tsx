@@ -18,7 +18,7 @@ const Booking: React.FC<BookingProps> = ({className = ''}) => {
           <h2 className="text-[40px] md:text-[64px] font-semibold leading-[50px] md:leading-[78px] text-primary-950">
             Fissa un incontro con noi
           </h2>
-          <p className=" text-gray-600 text-base font-normal leading-7">
+          <p className="text-gray-600 text-base font-normal leading-7">
             Desideri un ambiente che rifletta la tua personalità e soddisfi le
             tue esigenze? Prenota un appuntamento con noi, e saremo lieti di
             aiutarti nella valutazione iniziale dei tuoi spazi da arredare. Il

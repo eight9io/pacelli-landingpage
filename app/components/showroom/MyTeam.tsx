@@ -42,13 +42,13 @@ const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
         </Heading>
         <div className="grid grid-cols-12 gap-5 lg:gap-8">
           <div className="col-span-12 md:col-span-4 space-y-8">
-            <p className="  text-base font-normal leading-7 ">
+            <p className="text-base font-normal leading-7">
               La nostra squadra di architetti e progettisti d'interni è pronta a
               fornirti la consulenza di cui hai bisogno per rendere il tuo
               progetto una realtà.Saranno al tuo fianco in ogni fase del
               processo, garantendoti il massimo supporto e expertise
             </p>
-            <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9 ">
+            <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9">
               Contacts
             </p>
             <InfoContact />
@@ -69,7 +69,7 @@ const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
               Bruno
             </h3>
 
-            <p className="  text-base font-normal leading-7 ">
+            <p className="text-base font-normal leading-7">
               Ciao, sono Bruno, interior desing di Pacelli. Disegnamo un
               progetto 3D dei tuoi mobili!
             </p>
@@ -100,7 +100,7 @@ const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
               Ernesto
             </h3>
 
-            <p className="  text-base font-normal leading-7 ">
+            <p className="text-base font-normal leading-7">
               Ciao, sono Ernesto, architetto di Pacelli. Nei nostri showroom
               puoi vedere, toccare, provare mobili in varie configurazioni,
               tessuti e colori.

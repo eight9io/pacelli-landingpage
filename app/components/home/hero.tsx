@@ -70,6 +70,7 @@ const Hero: React.FC<HeroProps> = ({className = ''}) => {
       )}
     >
       <Carousel
+        isShowArrow={true}
         renderItem={(item, index) => (
           <div
             id={item.id}

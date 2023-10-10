@@ -33,7 +33,7 @@ const PasswordField: React.FC<PasswordFieldProps> = ({
             )}
             {...input}
           />
-          <span className="hidden group-focus:block ">{label}</span>
+          <span className="hidden group-focus:block">{label}</span>
           <span
             className="w-6 h-6 absolute right-3 top-3 cursor-pointer"
             onClick={(e) => {

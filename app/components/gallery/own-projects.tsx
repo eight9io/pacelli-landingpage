@@ -50,7 +50,7 @@ const OwnProjects: React.FC<ContactProps> = (props) => {
         100+ <br />
         completed projects
       </h2>
-      <div className="grid grid-cols-12 gap-y-8 lg:gap-8 mt-11 ">
+      <div className="grid grid-cols-12 gap-y-8 lg:gap-8 mt-11">
         {projects && projects.length
           ? projects.map((item, index) => (
               <div className="col-span-12 lg:col-span-6" key={item.id}>
@@ -64,7 +64,7 @@ const OwnProjects: React.FC<ContactProps> = (props) => {
           <button
             onClick={onLoadMore}
             className={clsx(
-              'text-secondary cursor-pointer font-normal my-8 mx-auto text-4xl leading-10 underline',
+              'text-secondary cursor-pointer font-normal my-8 mx-auto text-[24px] md:text-[32px] leading-[48px]  underline',
             )}
           >
             Load more

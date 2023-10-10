@@ -16,7 +16,7 @@ const SocialProof: React.FC<SocialProofProps> = ({className = ''}) => {
   return (
     <section className={clsx('pt-[60px] bg-base-100', className)}>
       <Heading className="text-center">Cosa dicono di noi</Heading>
-      <div className=" px-0 relative ">
+      <div className="px-0 relative">
         <div className="base-container">
           <Carousel
             className="relative "
@@ -40,7 +40,7 @@ const SocialProof: React.FC<SocialProofProps> = ({className = ''}) => {
                   <h3 className="text-primary text-[40px] font-normal leading-[50px]">
                     {item.author}
                   </h3>
-                  <p className=" text-gray-900 text-base font-normal leading-7">
+                  <p className="text-gray-900 text-base font-normal leading-7">
                     {item.quote}
                   </p>
                 </div>
