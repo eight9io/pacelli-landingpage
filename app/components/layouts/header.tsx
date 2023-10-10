@@ -1,16 +1,16 @@
-import {useEffect, useRef, useState} from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-import {Dialog} from '@headlessui/react';
-import {Link} from '~/components/Link';
+import { Dialog } from '@headlessui/react';
+import { Link } from '~/components/Link';
 import Logo from '~/components/common/logo';
 import Topbar from '~/components/common/topbar';
-import {ChevronDownIcon, XMarkIcon} from '@heroicons/react/24/outline';
+import { ChevronDownIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import home from '~/assets/icons/home.svg';
 import menu from '~/assets/icons/menu.svg';
 import useScrollPosition from '~/hooks/useScrollPosition';
 import LocaleSwitcher from '~/components/common/languages-selector';
-import {useLocation} from '@remix-run/react';
+import { useLocation } from '@remix-run/react';
 import Phone from '../common/icons/phone';
 import Facebook from '../common/icons/facebook';
 import Instagram from '../common/icons/instagram';
@@ -21,7 +21,7 @@ const STICKY_OFFSET = 0;
 
 export function HeaderSection() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
   const subMenuRef = useRef<HTMLDivElement>(null);
 
   const scrollPosition = useScrollPosition();
@@ -39,7 +39,7 @@ export function HeaderSection() {
   }, [scrollPosition, pathname]);
 
   const isMenuItemActive = (href: string) => {
-    const {pathname: path} = new URL('https://x' + href);
+    const { pathname: path } = new URL('https://x' + href);
 
     return pathname?.startsWith(path);
   };
@@ -109,13 +109,13 @@ export function HeaderSection() {
             </button>
             <div className="flex relative mt-4">
               <ul className="space-y-4 py-6 w-full md:w-1/2 flex-col md:block">
-                {mainMenuItems.map(({text, href, items}) => (
+                {mainMenuItems.map(({ text, href, items }) => (
                   <li key={href}>
                     <Link
                       className={clsx(
                         'flex justify-between items-center md:block rounded-none box-border pt-2 pb-1 md:pt-4 md:pb-2 text-[32px] md:text-[40px] leading-8 text-white border-b border-b-transparent hover:border-b-slate-400 ',
                         isMenuItemActive(href) &&
-                          'text-white border-b-slate-400',
+                        'text-white border-b-slate-400',
                         'peer hover:[&+div]:block max-w-[395px]',
                       )}
                       key={href}
@@ -134,12 +134,12 @@ export function HeaderSection() {
                     </Link>
                     {items && items.length && (
                       <div className="hidden flex-col md:absolute h-full top-0 left-[395px] md:hidden md:peer-hover:!flex pl-4 md:pl-0 submenu">
-                        {items.map(({text, href}) => (
+                        {items.map(({ text, href }) => (
                           <Link
                             className={clsx(
                               'block rounded-none box-border pt-2 pb-1 md:pt-4 md:pb-2 text-2xl md:text-[32px] leading-7 text-white border-b border-b-transparent hover:border-b-slate-400 max-w-[395px]',
                               isMenuItemActive(href) &&
-                                'text-white border-b-slate-400',
+                              'text-white border-b-slate-400',
                             )}
                             key={href}
                             to={href}
@@ -194,7 +194,7 @@ export function HeaderSection() {
                   to=""
                   className="w-8 h-8 p-2 bg-secondary rounded-full object-contain"
                 >
-                  <Instagram className=" w-4 h-4 stroke-white invert brightness-0" />
+                  <Instagram className="w-4 h-4 stroke-white invert brightness-0" />
                 </Link>
                 <Link
                   to=""

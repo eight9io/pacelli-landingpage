@@ -138,7 +138,7 @@ const Carousel: React.FC<CarouselProps> = ({
           )}
         </div>
       </div>
-      <div className="group/rooms  flex   absolute w-full top-0 h-full left-0  items-center  justify-between ">
+      <div className="group/rooms  flex   absolute w-full top-0 h-full left-0  items-center  justify-between">
         <div>
           {currentIndex > 0 && <Button
             className={clsx('rounded-sm uppercase   p-0  bg-transparent group-hover/rooms:opacity-100 opacity-0   transition-all duration-500 ',)}

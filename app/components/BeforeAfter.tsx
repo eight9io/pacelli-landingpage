@@ -31,7 +31,7 @@ const BeforeAfter: React.FC<BeforeAfterProps> = ({ className = '',
             >
               {title}
             </Heading>
-            <p className=" text-gray-900 text-base font-normal leading-7 ">
+            <p className="text-gray-900 text-base font-normal leading-7">
               {description}
             </p>
             <Link to="/gallery">

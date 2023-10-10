@@ -10,7 +10,7 @@ const HeroPartnerships: React.FC<HeroPartnershipsProps> = ({
   return (
     <section className={clsx('  py-24 md:py-32 md:py-[90px] mt-12', className)}>
       <div className="base-container">
-        <div className="grid grid-cols-12 ">
+        <div className="grid grid-cols-12">
           <div className="col-span-12 lg:col-span-9">
             <img
               src={services}

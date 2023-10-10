@@ -47,7 +47,7 @@ const CarouselArrow: React.FC<CarouselProps> = ({
   const isDisabledPrev = ref.current ? ref.current.scrollLeft === 0 : true;
 
   return (
-    <div className=" relative base-container">
+    <div className="relative base-container">
       <div className="overflow-hidden">
         <div
 
@@ -55,7 +55,7 @@ const CarouselArrow: React.FC<CarouselProps> = ({
           onScroll={handleScroll}
           className="snap-x snap-mandatory overflow-x-scroll overscroll-x-contain whitespace-nowrap scrollbar-hide"
         >
-          <div className=" gap-4 align-top lg:gap-8 space-x-4">
+          <div className="gap-4 align-top lg:gap-8 space-x-4">
             {data.map((item, index) => {
               if (!item) return null;
               return (
@@ -64,7 +64,7 @@ const CarouselArrow: React.FC<CarouselProps> = ({
                   className="inline-block snap-start  "
                 >
                   <img
-                    className=" h-[540px]"
+                    className="h-[540px]"
                     src={item}
                     alt="Carousel"
                     width={395}

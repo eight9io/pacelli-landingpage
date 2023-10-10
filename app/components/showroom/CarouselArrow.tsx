@@ -33,7 +33,7 @@ const CarouselShowroom: React.FC<CarouselShowroomProps> = ({
 
   return (
     <section className={clsx('pt-[60px] base-container ', className)}>
-      <div className=" px-0 relative">
+      <div className="px-0 relative">
         <CarouselArrow
           // className="relative"
           renderItem={(item, index) => (

@@ -19,7 +19,7 @@ const Detail: React.FC<DetailProps> = ({
     <section
       className={clsx(' pt-[30px] lg:pt-[60px] base-container ', className)}
     >
-      <h2 className="text-[40px] md:text-[64px] font-semibold leading-[50px] md:leading-[78px] text-primary-950 ">
+      <h2 className="text-[40px] md:text-[64px] font-semibold leading-[50px] md:leading-[78px] text-primary-950">
         {title}
       </h2>
       <div
@@ -34,7 +34,7 @@ const Detail: React.FC<DetailProps> = ({
           )}
         >
           {imgPosition === 'right' ? (
-            <p className="  text-base font-normal leading-7 text-neutral-800 mb-8">
+            <p className="text-base font-normal leading-7 text-neutral-800 mb-8">
               {subTitle}
             </p>
           ) : image ? (
@@ -66,7 +66,7 @@ const Detail: React.FC<DetailProps> = ({
               />
             ) : null
           ) : (
-            <p className="  text-base font-normal leading-7 text-neutral-800 mb-8">
+            <p className="text-base font-normal leading-7 text-neutral-800 mb-8">
               {subTitle}
             </p>
           )}

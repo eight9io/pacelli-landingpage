@@ -44,7 +44,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({ className = '' }) => {
                         }
                       />
                       {meta.touched && meta.error && (
-                        <span className="absolute text-red-500 text-sm left-1 bottom-0 text-left pl-3 ">
+                        <span className="absolute text-red-500 text-sm left-1 bottom-0 text-left pl-3">
                           {' '}
                           {meta.error}
                         </span>
