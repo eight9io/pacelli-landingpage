@@ -74,7 +74,7 @@ export default function ProjectDetail() {
         image={project.result_image}
         imgPosition="left"
       />
-      <div className="base-container ">
+      <div className="base-container">
         {project.media && project.media.previewImage ? (
           <>
             <video

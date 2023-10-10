@@ -1,14 +1,15 @@
 'use client';
 /* eslint-disable */
 import clsx from 'clsx';
-import { useCallback, useRef, useState } from 'react';
-import { useDebounce } from 'usehooks-ts';
-import { Button } from '~/components/Button';
+import {useCallback, useRef, useState} from 'react';
+import {useDebounce} from 'usehooks-ts';
+import {Button} from '~/components/Button';
 import ArrowLeft from '~/components/common/icons/arrow-slide-left';
 import ArrowRight from '~/components/common/icons/arrow-slide-right';
 interface CarouselProps {
   className?: string;
   data?: any[];
+  isShowArrow?: boolean;
   renderItem?: (
     item?: any,
     index?: number,
@@ -29,6 +30,7 @@ const Carousel: React.FC<CarouselProps> = ({
   renderItem,
   renderIndicator,
   indicatorClassName = '',
+  isShowArrow = false,
 }) => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -93,10 +95,7 @@ const Carousel: React.FC<CarouselProps> = ({
     <>
       <div
         ref={carouselRef}
-        className={clsx(
-          'carousel w-full h-full ',
-          className,
-        )}
+        className={clsx('carousel w-full h-full ', className)}
         onScroll={(e) => {
           const scrollLeft = (e.target as HTMLDivElement).scrollLeft;
           // const scrollWidth = (e.target as HTMLDivElement).scrollWidth;
@@ -106,7 +105,6 @@ const Carousel: React.FC<CarouselProps> = ({
           setCurrentIndex(index);
         }}
       >
-
         {data.map((item, index) =>
           renderItem ? (
             renderItem(item, index)
@@ -119,7 +117,6 @@ const Carousel: React.FC<CarouselProps> = ({
             </div>
           ),
         )}
-
       </div>
       <div
         className={clsx(
@@ -138,27 +135,38 @@ const Carousel: React.FC<CarouselProps> = ({
           )}
         </div>
       </div>
-      <div className="group/rooms  flex   absolute w-full top-0 h-full left-0  items-center  justify-between ">
-        <div>
-          {currentIndex > 0 && <Button
-            className={clsx('rounded-sm uppercase   p-0  bg-transparent group-hover/rooms:opacity-100 opacity-0   transition-all duration-500 ',)}
-            size="md"
-            onClick={handlePrev}
-          >
-            <ArrowLeft className='  w-16 h-16  fill-secondary ' />
-          </Button>}
+      {isShowArrow && (
+        <div className="group/rooms     absolute w-full top-0 h-full left-0  items-center  justify-between hidden md:flex">
+          <div>
+            <Button
+              className={clsx(
+                'rounded-sm uppercase mt-6 bg-neutral-100 p-2 ml-4',
+                currentIndex == 0 &&
+                  'bg-neutral-50 hover:bg-neutral-50 opacity-50',
+              )}
+              size="md"
+              onClick={handlePrev}
+              disabled={currentIndex == 0}
+            >
+              <ArrowLeft className="fill-[#9CA3AF] " />
+            </Button>
+          </div>
+          <div>
+            <Button
+              className={clsx(
+                'rounded-sm uppercase mt-6 bg-neutral-100 p-2 mr-4',
+                currentIndex == data.length - 1 &&
+                  'bg-neutral-50 hover:bg-neutral-50 opacity-50',
+              )}
+              size="md"
+              onClick={handleNext}
+              disabled={currentIndex == data.length - 1}
+            >
+              <ArrowRight className="fill-[#9CA3AF] " />
+            </Button>
+          </div>
         </div>
-        <div>
-
-          {currentIndex < data.length - 1 && <Button
-            className={clsx('rounded-sm uppercase   p-0  bg-transparent group-hover/rooms:opacity-100 opacity-0   transition-all duration-500 ')}
-            size="md"
-            onClick={handleNext}
-          >
-            <ArrowRight className='  w-16 h-16  fill-secondary ' />
-          </Button>}
-        </div>
-      </div>
+      )}
     </>
   );
 };

@@ -12,17 +12,18 @@ import Youtube from '~/components/common/icons/youtube';
 interface ContactCTAFormProps {
   className?: string;
 }
-export const InfoContact = (containerStyle: { containerStyle?: string }) => {
-  return <>
-    <ul className={clsx("flex flex-col  pb-8 gap-8", containerStyle)}>
-      {infoItems.map((item) => (
-        <InfoItem key={item.title} {...item} />
-      ))}
-    </ul>
-
-  </>
-}
-const ContactCTAForm: React.FC<ContactCTAFormProps> = ({ className = '' }) => {
+export const InfoContact = (containerStyle: {containerStyle?: string}) => {
+  return (
+    <>
+      <ul className={clsx('flex flex-col  pb-8 gap-8', containerStyle)}>
+        {infoItems.map((item) => (
+          <InfoItem key={item.title} {...item} />
+        ))}
+      </ul>
+    </>
+  );
+};
+const ContactCTAForm: React.FC<ContactCTAFormProps> = ({className = ''}) => {
   return (
     <section className={clsx('base-container py-24 md:py-32', className)}>
       <h2 className="text-[40px] md:text-[64px] font-semibold leading-[50px] md:leading-[78px]">
@@ -30,7 +31,7 @@ const ContactCTAForm: React.FC<ContactCTAFormProps> = ({ className = '' }) => {
       </h2>
       <div className="grid grid-cols-12 gap-8 pt-6">
         <div className="col-span-12 md:col-span-6">
-          <InfoContact containerStyle='border-b ' />
+          <InfoContact containerStyle="border-b " />
           <div>
             <Heading className="font-bold md:text-base mb-4 mt-8" variant="h5">
               Connect with us
@@ -78,7 +79,7 @@ interface InfoItemProps {
   icon: React.ReactNode;
 }
 
-const InfoItem: React.FC<InfoItemProps> = ({ title, value, icon }) => {
+const InfoItem: React.FC<InfoItemProps> = ({title, value, icon}) => {
   return (
     <li className="flex flex-col">
       <Heading
