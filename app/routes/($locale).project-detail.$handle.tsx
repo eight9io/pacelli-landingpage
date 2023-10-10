@@ -86,7 +86,7 @@ export default function ProjectDetail() {
       />
       <div className='base-container '>
 
-        {item.video_multi_media === "false" ?
+        {item.video_multi_media === "true" ?
           <video
             width="1030" height="580"
             controls
@@ -99,7 +99,7 @@ export default function ProjectDetail() {
           >
             <source
               type="video/mp4"
-              src="https://e9-cms.sgp1.digitaloceanspaces.com/MA_Sheva_UnstoppableEnergy_Main.mp4"
+              src={item.multimedia}
             />
             Your browser does not support the video tag.
           </video> : <img
