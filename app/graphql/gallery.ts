@@ -11,51 +11,35 @@ export const PROJECT_DETAIL_QUERY = `#graphql
       fields {
         key
         value
-        type
-      }
-      title: field(key: "title") {
-        key
-        value
-      }
-      cover_images: field(key: "cover_images") {
-        key
-        value
-      }
-      challenge_description: field(key: "challenge_description") {
-        key
-        value
-      }
-      challenge_images: field(key: "challenge_images") {
-        key
-        value
-      }
-      client: field(key: "client") {
-        key
-        value
-      }
-      description: field(key: "description") {
-        key
-        value
-      }
-      excerpt: field(key: "excerpt") {
-        key
-        value
-      }
-      result_description: field(key: "result_description") {
-        key
-        value
-      }
-      result_images: field(key: "result_images") {
-        key
-        value
-      }
-      solution_description: field(key: "solution_description") {
-        key
-        value
-      }
-      solution_images: field(key: "solution_images") {
-        key
-        value
+        type 
+        reference {
+          ... on MediaImage {
+              image {
+                url
+              }
+            }
+            ... on Video {
+              previewImage {
+                url
+              }
+              sources {
+                url
+                mimeType
+                width
+                height
+                format
+              }
+            }
+        }
+        references(first: 10) {
+          nodes {
+            ... on MediaImage {
+              image {
+                url
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -67,7 +51,7 @@ export const PROJECT_GALLERY_QUERY = `#graphql
     $first: Int = 6,
     $after: String,
   ) @inContext( language: $language) {
-    metaobjects(type: "project", first: $first, reverse: true, after: $after) {
+    metaobjects(type: "project", first: $first, after: $after, reverse: true) {
       pageInfo {
         hasNextPage
         endCursor
@@ -83,6 +67,34 @@ export const PROJECT_GALLERY_QUERY = `#graphql
           key
           value
           type 
+          reference {
+            ... on MediaImage {
+                image {
+                  url
+                }
+              }
+              ... on Video {
+                previewImage {
+                  url
+                }
+                sources {
+                  url
+                  mimeType
+                  width
+                  height
+                  format
+                }
+              }
+          }
+          references(first: 10) {
+            nodes {
+              ... on MediaImage {
+                image {
+                  url
+                }
+              }
+            }
+          }
         }
       }
     }
