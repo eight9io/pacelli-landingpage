@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 import Tag from '~/components/common/icons/tag';
 import Share from '../common/icons/share';
 import {FacebookShareButton} from 'react-share';
-import {useNavigate} from '@remix-run/react';
+import {useLocation, useNavigate} from '@remix-run/react';
 import arrowRight from '~/assets/icons/arrow-right.svg';
 import {Button} from '~/components/snippets';
 
@@ -18,6 +18,8 @@ const ArticleContent: React.FC<ArticleContentProps> = ({
   className = '',
   article,
 }) => {
+  const location = useLocation();
+
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
   return (
@@ -33,7 +35,9 @@ const ArticleContent: React.FC<ArticleContentProps> = ({
               {article.blog?.title}
             </span>
           ) : null}
-          <FacebookShareButton url={''}>
+          <FacebookShareButton
+            url={`${window.location.protocol}//${window.location.hostname}${location}`}
+          >
             <span className="text-gray-400 flex text-sm uppercase items-center gap-2">
               <Share className="text-gray-400 w-4 h-4 " />
               SHARE
@@ -47,7 +51,10 @@ const ArticleContent: React.FC<ArticleContentProps> = ({
           {article.title}
         </Heading>
         {article.excerptHtml ? (
-          <HTMLContent className="mb-6" htmlString={article.excerptHtml} />
+          <HTMLContent
+            className="mb-6 text-gray-900"
+            htmlString={article.excerptHtml}
+          />
         ) : null}
         <HTMLContent
           className="max-w-[80ch]"
