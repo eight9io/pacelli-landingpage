@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import CardImg from '../CardImg';
-import { useState } from 'react';
+import {useState} from 'react';
 interface ContactProps {
   className?: string;
   projects: any[];
@@ -32,7 +32,7 @@ const OwnProjects: React.FC<ContactProps> = (props) => {
 
   const onLoadMore = async () => {
     const data = await fetch('/api/projects?after=' + pageInfo.endCursor);
-    const { projects: newProjects, pageInfo: newPageInfo } =
+    const {projects: newProjects, pageInfo: newPageInfo} =
       (await data.json()) as any;
     setProjects([...projects, ...newProjects]);
     setPageInfo(newPageInfo);
@@ -53,10 +53,10 @@ const OwnProjects: React.FC<ContactProps> = (props) => {
       <div className="grid grid-cols-12 gap-y-8 lg:gap-8 mt-11">
         {projects && projects.length
           ? projects.map((item, index) => (
-            <div className="col-span-12 lg:col-span-6" key={item.id}>
-              <CardImg item={item} />
-            </div>
-          ))
+              <div className="col-span-12 lg:col-span-6" key={item.id}>
+                <CardImg item={item} />
+              </div>
+            ))
           : null}
       </div>
       {pageInfo.hasNextPage === true && (

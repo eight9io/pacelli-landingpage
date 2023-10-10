@@ -1,13 +1,13 @@
 import clsx from 'clsx';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 import Phone from '~/components/common/icons/phone';
 import ProposalForm from '~/components/common/form/proposal-form';
 interface ContactProps {
   className?: string;
 }
 
-const Contact: React.FC<ContactProps> = ({ className = '' }) => {
-  const { t } = useTranslation('home');
+const Contact: React.FC<ContactProps> = ({className = ''}) => {
+  const {t} = useTranslation('home');
 
   return (
     <section

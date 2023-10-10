@@ -1058,7 +1058,7 @@ shop-pay-button {
   display: none;
 }
 
-.react-datepicker-popper[data-placement^=bottom] {
+.react-datepicker-popper[data-placement^='bottom'] {
   margin-top: 0px;
   transform: translate(0px, 0px) !important;
   inset: auto !important;
@@ -1068,7 +1068,9 @@ shop-pay-button {
   width: 200px;
   max-width: 200px;
 }
-.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box {
   width: 200px;
   max-width: 200px;
 }
