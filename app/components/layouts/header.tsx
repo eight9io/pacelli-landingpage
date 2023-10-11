@@ -199,7 +199,7 @@ export function HeaderSection() {
                   target="_blank"
                   className="w-8 h-8 p-2 bg-secondary rounded-full object-contain"
                 >
-                  <Instagram className=" w-4 h-4 stroke-white invert brightness-0" />
+                  <Instagram className="w-4 h-4 stroke-white invert brightness-0" />
                 </Link>
                 <Link
                   to="https://www.youtube.com/@arredamentipacelli4456/featured"

@@ -1,6 +1,6 @@
 import Booking from '~/components/home/booking';
 import SocialProof from '~/components/home/social-proof';
-import OutProjects from '~/components/gallery/OutProjects';
+import OwnProjects from '~/components/gallery/own-projects';
 import {LoaderArgs, json} from '@shopify/remix-oxygen';
 import {PROJECT_GALLERY_QUERY} from '~/graphql/gallery';
 import {parseObject} from '~/lib/utils';
@@ -26,9 +26,17 @@ export async function loader({request, context: {storefront}}: LoaderArgs) {
     if (project.fields) {
       project.fields.forEach((field: any) => {
         if (!field.type.includes('list.')) {
-          handledProject[field.key] = field.value;
+          if (field.type === 'file_reference') {
+            handledProject[field.key] = parseObject(field, 'reference');
+          } else handledProject[field.key] = field.value;
         } else {
-          handledProject[field.key] = JSON.parse(field.value);
+          if (field.type === 'list.file_reference') {
+            let listImage = parseObject(field, 'references.nodes');
+            listImage = listImage.map((image: any) =>
+              parseObject(image, 'image.url'),
+            );
+            handledProject[field.key] = listImage;
+          } else handledProject[field.key] = JSON.parse(field.value);
         }
       });
     }
@@ -43,7 +51,7 @@ export default function Homepage() {
 
   return (
     <>
-      <OutProjects projects={projects} pageInfo={pageInfo} />
+      <OwnProjects projects={projects} pageInfo={pageInfo} />
       <Booking />
       <SocialProof />
     </>
