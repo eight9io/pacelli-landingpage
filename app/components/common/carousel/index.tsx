@@ -1,8 +1,8 @@
 'use client';
 import clsx from 'clsx';
-import {useCallback, useRef, useState} from 'react';
-import {useDebounce} from 'usehooks-ts';
-import {Button} from '~/components/Button';
+import { useCallback, useRef, useState } from 'react';
+import { useDebounce } from 'usehooks-ts';
+import { Button } from '~/components/Button';
 import ArrowLeft from '~/components/common/icons/arrow-slide-left';
 import ArrowRight from '~/components/common/icons/arrow-slide-right';
 interface CarouselProps {
@@ -46,7 +46,7 @@ const Carousel: React.FC<CarouselProps> = ({
   const handleNext = () => {
     if (carouselRef.current && currentIndex < data.length - 1) {
       carouselRef.current.scroll({
-        left: carouselRef.current.scrollLeft + screen.width,
+        left: carouselRef.current.scrollLeft + carouselRef.current.clientWidth,
         behavior: 'smooth',
       });
     }
@@ -54,7 +54,7 @@ const Carousel: React.FC<CarouselProps> = ({
   const handlePrev = () => {
     if (carouselRef.current && currentIndex > 0) {
       carouselRef.current.scroll({
-        left: carouselRef.current.scrollLeft - screen.width,
+        left: carouselRef.current.scrollLeft - carouselRef.current.clientWidth,
         behavior: 'smooth',
       });
     }
@@ -141,7 +141,7 @@ const Carousel: React.FC<CarouselProps> = ({
               className={clsx(
                 'rounded-sm uppercase mt-6 bg-neutral-100 p-2 ml-4',
                 currentIndex == 0 &&
-                  'bg-neutral-50 hover:bg-neutral-50 opacity-50',
+                'bg-neutral-50 hover:bg-neutral-50 opacity-50',
               )}
               size="md"
               onClick={handlePrev}
@@ -155,7 +155,7 @@ const Carousel: React.FC<CarouselProps> = ({
               className={clsx(
                 'rounded-sm uppercase mt-6 bg-neutral-100 p-2 mr-4',
                 currentIndex == data.length - 1 &&
-                  'bg-neutral-50 hover:bg-neutral-50 opacity-50',
+                'bg-neutral-50 hover:bg-neutral-50 opacity-50',
               )}
               size="md"
               onClick={handleNext}
