@@ -164,11 +164,12 @@ function ChangeLocaleForm({
   buyerIdentity: CartBuyerIdentityInput;
   redirectTo: string;
 }) {
+  const fetcher = useFetcher();
   return (
-    <>
+    <fetcher.Form method="post" action="/locale">
       <input type="hidden" name="redirectTo" value={redirectTo} />
       {children}
-    </>
+    </fetcher.Form>
   );
 }
 
