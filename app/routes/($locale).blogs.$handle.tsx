@@ -43,6 +43,7 @@ export async function loader({
   if (!handle) {
     articleData = await storefront.query(FEATURED_BLOG_QUERY, {
       variables: {first: 8},
+      cache: storefront.CacheShort(),
     });
   }
 

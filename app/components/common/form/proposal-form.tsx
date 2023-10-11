@@ -45,7 +45,6 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
                       />
                       {meta.touched && meta.error && (
                         <span className="absolute text-red-500 text-sm left-1 bottom-0 text-left pl-3">
-                          {' '}
                           {meta.error}
                         </span>
                       )}
@@ -55,7 +54,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
               </div>
               <TextField
                 name="name"
-                label="Nome  *"
+                label="Name  *"
                 inputClassName={clsx(
                   'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2 ',
                 )}
