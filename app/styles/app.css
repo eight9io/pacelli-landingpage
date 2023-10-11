@@ -615,7 +615,8 @@ shop-pay-button {
   ul.react-datepicker__time-list
   li.react-datepicker__time-list-item:hover {
   cursor: pointer;
-  background-color: #f0f0f0;
+  background-color: #03554d;
+  color: white;
 }
 
 .react-datepicker__time-container
@@ -623,7 +624,7 @@ shop-pay-button {
   .react-datepicker__time-box
   ul.react-datepicker__time-list
   li.react-datepicker__time-list-item--selected {
-  background-color: #216ba5;
+  background-color: #03554d;
   color: white;
   font-weight: bold;
 }
@@ -633,7 +634,7 @@ shop-pay-button {
   .react-datepicker__time-box
   ul.react-datepicker__time-list
   li.react-datepicker__time-list-item--selected:hover {
-  background-color: #216ba5;
+  background-color: #03554d;
 }
 
 .react-datepicker__time-container
