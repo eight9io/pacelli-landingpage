@@ -1,5 +1,4 @@
 'use client';
-/* eslint-disable */
 import clsx from 'clsx';
 import {useCallback, useRef, useState} from 'react';
 import {useDebounce} from 'usehooks-ts';
@@ -36,9 +35,8 @@ const Carousel: React.FC<CarouselProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const debounceIndex = useDebounce(currentIndex, 20);
 
-  const onIndicatorClick = (id: string, index: number = 0) => {
+  const onIndicatorClick = (id: string, index = 0) => {
     if (carouselRef.current) {
-      console.log(document.getElementById(id)?.offsetLeft);
       carouselRef.current.scrollTo({
         left: document.getElementById(id)?.offsetLeft,
       });
@@ -112,6 +110,7 @@ const Carousel: React.FC<CarouselProps> = ({
             <div id={item.id} key={item.id} className="carousel-item w-full">
               <img
                 src={item.src}
+                alt=""
                 className="w-full object-cover object-center"
               />
             </div>
@@ -136,35 +135,31 @@ const Carousel: React.FC<CarouselProps> = ({
         </div>
       </div>
       {isShowArrow && (
-        <div className="group/rooms     absolute w-full top-0 h-full left-0  items-center  justify-between hidden md:flex">
-          <div>
-            <Button
-              className={clsx(
-                'rounded-sm uppercase mt-6 bg-neutral-100 p-2 ml-4',
-                currentIndex == 0 &&
-                  'bg-neutral-50 hover:bg-neutral-50 opacity-50',
-              )}
-              size="md"
-              onClick={handlePrev}
-              disabled={currentIndex == 0}
-            >
-              <ArrowLeft className="fill-[#9CA3AF] " />
-            </Button>
-          </div>
-          <div>
-            <Button
-              className={clsx(
-                'rounded-sm uppercase mt-6 bg-neutral-100 p-2 mr-4',
-                currentIndex == data.length - 1 &&
-                  'bg-neutral-50 hover:bg-neutral-50 opacity-50',
-              )}
-              size="md"
-              onClick={handleNext}
-              disabled={currentIndex == data.length - 1}
-            >
-              <ArrowRight className="fill-[#9CA3AF] " />
-            </Button>
-          </div>
+        <div className="group/rooms absolute w-full top-0 h-full left-0  items-center  justify-between hidden md:flex">
+          <Button
+            className={clsx(
+              'rounded-sm uppercase mt-6 bg-neutral-100 p-2 ml-4',
+              currentIndex == 0 &&
+                'bg-neutral-50 hover:bg-neutral-50 opacity-50 !invisible',
+            )}
+            size="md"
+            onClick={handlePrev}
+            disabled={currentIndex == 0}
+          >
+            <ArrowLeft className="fill-[#9CA3AF]" />
+          </Button>
+          <Button
+            className={clsx(
+              'rounded-sm uppercase mt-6 bg-neutral-100 p-2 mr-4',
+              currentIndex == data.length - 1 &&
+                'bg-neutral-50 hover:bg-neutral-50 opacity-50 invisible',
+            )}
+            size="md"
+            onClick={handleNext}
+            disabled={currentIndex == data.length - 1}
+          >
+            <ArrowRight className="fill-[#9CA3AF]" />
+          </Button>
         </div>
       )}
     </>

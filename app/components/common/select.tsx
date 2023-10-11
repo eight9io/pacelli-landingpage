@@ -44,7 +44,7 @@ const Select: React.FC<SelectorProps> = ({
             {value ? value : 'Chi sei?'}
             <AngleDown className="group-open:rotate-180 transition duration-150 ml-1" />
           </summary>
-          <div className="py-1 z-20 transition duration-150 absolute w-full top-full right-0 rounded overflow-auto bg-white max-w-full space-y-1">
+          <div className="py-1 z-20 transition duration-150 absolute w-full top-full right-0 rounded overflow-auto bg-white max-w-full space-y-1 shadow">
             {ArrSelectOccupation.map((item, index) => (
               <SelectItem
                 key={index}
@@ -73,20 +73,18 @@ function SelectItem({
   closeDropdown: () => void;
 }) {
   return (
-    <Button
+    <span
       className={clsx([
         'z-20 bg-white w-full  transition flex justify-start',
         'items-center text-left text-base cursor-pointer py-2 px-4 leading-4',
         'hover:bg-gray-100',
       ])}
-      type="submit"
-      variant="primary"
       onClick={(e: any) => {
         handleChangeValue(e, selectOccupation.name);
         closeDropdown();
       }}
     >
       {selectOccupation.name}
-    </Button>
+    </span>
   );
 }

@@ -69,15 +69,15 @@ export function HeaderSection() {
 
         <div className="flex flex-1 justify-end">
           <LocaleSwitcher showLabel={false} />
-          <button
-            type="button"
+          <Link
+            to="/"
             className="ml-5 inline-flex items-center justify-center rounded-md text-gray-700"
           >
             <span className="sr-only">Open main menu</span>
             <span className="relative inline-block">
               <img src={home} alt="menu" width={24} height={24} />
             </span>
-          </button>
+          </Link>
           <button
             type="button"
             className="ml-5 inline-flex items-center justify-center rounded-md text-gray-700"
