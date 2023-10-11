@@ -54,7 +54,7 @@ const FooterSection = () => {
           </div>
         </div>
       </div>
-      <div className="md:border-t-2 border-t-gray-400">
+      <div className="md:border-t border-t-gray-400">
         <div className="base-container flex flex-col-reverse md:flex-row justify-between py-2 gap-y-2">
           <ul className="text-xs md:text-sm text-white flex">
             {/* © {new Date().getFullYear()},{' '}
@@ -82,18 +82,21 @@ const FooterSection = () => {
           >
             <Link
               to="https://www.facebook.com/arredamentipacelli/?locale=it_IT"
+              target="_blank"
               className="w-10 h-10 p-2 bg-white rounded-full object-contain"
             >
               <Facebook className="text-secondary w-6 h-6 stroke-secondary" />
             </Link>
             <Link
               to="https://www.instagram.com/pacelliarredamenti"
+              target="_blank"
               className="w-10 h-10 p-2 bg-white rounded-full object-contain"
             >
               <Instagram className="text-secondary w-6 h-6 stroke-secondary" />
             </Link>
             <Link
               to="https://www.youtube.com/@arredamentipacelli4456/featured"
+              target="_blank"
               className="w-10 h-10 p-2 bg-white rounded-full object-contain"
             >
               <Youtube className="text-secondary w-6 h-6 " />

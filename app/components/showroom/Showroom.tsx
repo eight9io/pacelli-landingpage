@@ -42,7 +42,7 @@ const Showroom: React.FC<ShowroomProps> = ({className = ''}) => {
           <h2 className="text-[40px] md:text-[64px] font-semibold leading-[50px] md:leading-[78px] text-primary-950">
             Showroom
           </h2>
-          <p className="text-base font-normal leading-7">
+          <p className="text-base font-normal leading-7 text-neutral-800">
             Il nostro Showroom non è solo un luogo espositivo, ma anche un
             laboratorio di progettazione e design d'interni. Il nostro team di
             architetti e designer è il partner ideale per creare realizzazioni
@@ -65,7 +65,7 @@ const Showroom: React.FC<ShowroomProps> = ({className = ''}) => {
                 )}
               >
                 <div className="flex flex-col i justify-center">
-                  <p className="text-[40px] md:text-[64px] font-semibold leading-[50px] md:leading-[78px] text-secondary-950">
+                  <p className="text-[40px] md:text-[64px] font-semibold leading-[50px] md:leading-[78px] text-secondary-900">
                     {item.number}
                   </p>
                   <p className="text-base font-normal leading-7">{item.text}</p>

@@ -90,7 +90,7 @@ const InfoItem: React.FC<InfoItemProps> = ({title, value, icon}) => {
       </Heading>
       <div className="md:text-base flex items-center gap-4">
         {icon}
-        <span>{value}</span>
+        <span className="text-neutral-600">{value}</span>
       </div>
     </li>
   );
