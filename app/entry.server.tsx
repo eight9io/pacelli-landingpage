@@ -1,13 +1,13 @@
-import type {EntryContext} from '@shopify/remix-oxygen';
-import {RemixServer} from '@remix-run/react';
+import type { EntryContext } from '@shopify/remix-oxygen';
+import { RemixServer } from '@remix-run/react';
 import isbot from 'isbot';
-import {renderToReadableStream, renderToString} from 'react-dom/server';
-import {createContentSecurityPolicy} from '@shopify/hydrogen';
+import { renderToReadableStream, renderToString } from 'react-dom/server';
+import { createContentSecurityPolicy } from '@shopify/hydrogen';
 
-import {createInstance} from 'i18next';
-import {I18nextProvider, initReactI18next} from 'react-i18next';
+import { createInstance } from 'i18next';
+import { I18nextProvider, initReactI18next } from 'react-i18next';
 import Backend from 'i18next-fs-backend';
-import {resolve} from 'path';
+import { resolve } from 'path';
 import i18nextOptions from '../i18nextOptions';
 import i18n from '../i18n.server';
 
@@ -35,7 +35,7 @@ export default async function handleRequest(
     });
 
   // App
-  const {nonce, header, NonceProvider} = createContentSecurityPolicy({
+  const { nonce, header, NonceProvider } = createContentSecurityPolicy({
     frameSrc: ['https://www.google.com/'],
     defaultSrc: [
       "'self'",
@@ -44,6 +44,11 @@ export default async function handleRequest(
       'https://flowbite.s3.amazonaws.com/',
       'https://e9-cms.sgp1.digitaloceanspaces.com',
     ],
+    contentSrc: [
+      "'self'",
+      'https://cdn.shopify.com',
+
+    ]
   });
   const body = await renderToReadableStream(
     <NonceProvider>
