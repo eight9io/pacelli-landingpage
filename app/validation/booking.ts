@@ -10,7 +10,7 @@ export const bookingValidate = yup.object({
     .string()
     .matches(phoneRegExp, 'Phone number is not valid')
     .required(),
-  date: yup.date().min(new Date()).required(),
+  date: yup.date().min(new Date()).required().nullable(),
   time: yup.string().required(),
   message: yup.string(),
 });
