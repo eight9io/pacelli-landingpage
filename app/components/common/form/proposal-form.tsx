@@ -6,17 +6,37 @@ import {validateFormValues} from '~/validation';
 import Select from '../select';
 import {proposalValidate} from '~/validation/proposal';
 import Heading from '../heading';
+
 interface ProposalFormProps {
   className?: string;
 }
-
+const pdfLink =
+  'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/pacelii.pdf';
+/* eslint-disable */
 const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
-  const onSubmit = (values: any) => {
+  const onSubmit = (values: any, form: any) => {
     console.log('values', values);
+    handleDownloadPDF();
+    // form.reset();
   };
   const handleChangeValue = (e: any, value: string, form: any) => {
     form.change('occupation', value);
   };
+
+  const handleDownloadPDF = () => {
+    fetch(pdfLink)
+      .then((response) => response.blob())
+      .then((blob) => {
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const linkTag = document.createElement('a');
+        linkTag.href = url;
+        linkTag.setAttribute('download', 'proposta.pdf');
+        document.body.appendChild(linkTag);
+        linkTag.click();
+        document.body.removeChild(linkTag);
+      });
+  };
+
   return (
     <div className={clsx('bg-base-100 px-4 md:px-8 py-14', className)}>
       <Form
