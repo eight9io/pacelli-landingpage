@@ -6,7 +6,7 @@ import Headphone from '~/components/common/icons/headphone';
 import Pig from '~/components/common/icons/pig';
 import Preventivo from '~/components/common/icons/preventivo';
 import Promo from '~/components/common/icons/promo';
-import { Button } from '~/components/snippets';
+import {Button} from '~/components/snippets';
 /* eslint-disable */
 
 interface BookAppointmentProps {
@@ -102,77 +102,79 @@ const arrMobileScreen = [
       "Offriamo finanziamenti personalizzabili per un acquisto senza preoccupazioni. Grazie a queste opzioni di finanziamento, potrai scegliere l'arredamento che più ami e pagarlo comodamente a rate.",
   },
 ];
-const BookAppointment: React.FC<BookAppointmentProps> = ({ className = '' }) => {
+const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
   return (
     <section className={clsx(className)}>
       <div className="base-container !pt-0  mt-[40px] mb-[120px]">
-        <div className=" grid-cols-12   lg:gap-8 gap-y-8 hidden lg:grid">
-          <div className="col-span-12 lg:col-span-4 space-y-6 items-center justify-center ">
+        <div className="grid-cols-12   lg:gap-8 gap-y-8 hidden lg:grid">
+          <div className="col-span-12 lg:col-span-4 space-y-6 items-center justify-center">
             {arrLgScreen.slice(0, 2).map((item) => (
               <div
                 key={item.id}
-                className=" border-neutral-50 border-[1px]  overflow-hidden shadow-md space-y-4 p-8  "
+                className="border-neutral-50 border-[1px]  overflow-hidden shadow-md space-y-4 p-8  "
               >
                 {item.img}
-                <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9 ">
+                <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9">
                   {item.title}
                 </p>
-                <p className=" text-gray-900 text-base font-normal leading-7 ">
+                <p className="text-gray-900 text-base font-normal leading-7">
                   {item.description}
                 </p>
               </div>
             ))}
           </div>
-          <div className="col-span-12 lg:col-span-4 space-y-8  ">
+          <div className="col-span-12 lg:col-span-4 space-y-8">
             {arrLgScreen.slice(2, 4).map((item) => (
               <div
                 key={item.id}
-                className=" border-neutral-50 border-[1px] w-max-[395px] overflow-hidden shadow-md space-y-4 p-8 px-4 md:px-8 
+                className="border-neutral-50 border-[1px] w-max-[395px] overflow-hidden shadow-md space-y-4 p-8 px-4 md:px-8 
                     
                     "
               >
                 {item.img}
-                <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9 ">
+                <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9">
                   {item.title}
                 </p>
-                <p className=" text-gray-900 text-base font-normal leading-7 ">
+                <p className="text-gray-900 text-base font-normal leading-7">
                   {item.description}
                 </p>
               </div>
             ))}
           </div>
-          <div className="col-span-12 lg:col-span-4 space-y-8  ">
+          <div className="col-span-12 lg:col-span-4 space-y-8">
             {arrLgScreen.slice(4, 6).map((item) => (
               <div
                 key={item.id}
-                className=" border-neutral-50 border-[1px] w-max-[395px] overflow-hidden shadow-md space-y-4 p-8 px-4 md:px-8"
+                className="border-neutral-50 border-[1px] w-max-[395px] overflow-hidden shadow-md space-y-4 p-8 px-4 md:px-8"
               >
                 {item.img}
-                <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9 ">
+                <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9">
                   {item.title}
                 </p>
-                <p className=" text-gray-900 text-base font-normal leading-7 ">
+                <p className="text-gray-900 text-base font-normal leading-7">
                   {item.description}
                 </p>
               </div>
             ))}
           </div>
         </div>
-        <div className='block lg:hidden space-y-8'>
-          {arrMobileScreen.map((item) => <div
-            key={item.id}
-            className=" border-neutral-50 border-[1px] w-max-[395px] overflow-hidden shadow-md space-y-4 p-8 px-4 md:px-8 
+        <div className="block lg:hidden space-y-8">
+          {arrMobileScreen.map((item) => (
+            <div
+              key={item.id}
+              className="border-neutral-50 border-[1px] w-max-[395px] overflow-hidden shadow-md space-y-4 p-8 px-4 md:px-8 
                     
                     "
-          >
-            {item.img}
-            <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9 ">
-              {item.title}
-            </p>
-            <p className=" text-gray-900 text-base font-normal leading-7 ">
-              {item.description}
-            </p>
-          </div>)}
+            >
+              {item.img}
+              <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9">
+                {item.title}
+              </p>
+              <p className="text-gray-900 text-base font-normal leading-7">
+                {item.description}
+              </p>
+            </div>
+          ))}
         </div>
         <Button
           className="rounded-sm uppercase mt-8 flex gap-3 mx-auto"

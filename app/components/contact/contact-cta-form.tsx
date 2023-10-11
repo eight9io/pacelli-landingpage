@@ -13,15 +13,16 @@ interface ContactCTAFormProps {
   className?: string;
 }
 export const InfoContact = (containerStyle: { containerStyle?: string }) => {
-  return <>
-    <ul className={clsx("flex flex-col  pb-8 gap-8", containerStyle)}>
-      {infoItems.map((item) => (
-        <InfoItem key={item.title} {...item} />
-      ))}
-    </ul>
-
-  </>
-}
+  return (
+    <>
+      <ul className={clsx('flex flex-col  pb-8 gap-8', containerStyle)}>
+        {infoItems.map((item) => (
+          <InfoItem key={item.title} {...item} />
+        ))}
+      </ul>
+    </>
+  );
+};
 const ContactCTAForm: React.FC<ContactCTAFormProps> = ({ className = '' }) => {
   return (
     <section className={clsx('base-container py-24 md:py-32', className)}>
@@ -30,7 +31,7 @@ const ContactCTAForm: React.FC<ContactCTAFormProps> = ({ className = '' }) => {
       </h2>
       <div className="grid grid-cols-12 gap-8 pt-6">
         <div className="col-span-12 md:col-span-6">
-          <InfoContact containerStyle='border-b ' />
+          <InfoContact containerStyle="border-b " />
           <div>
             <Heading className="font-bold md:text-base mb-4 mt-8" variant="h5">
               Connect with us
@@ -89,7 +90,7 @@ const InfoItem: React.FC<InfoItemProps> = ({ title, value, icon }) => {
       </Heading>
       <div className="md:text-base flex items-center gap-4">
         {icon}
-        <span>{value}</span>
+        <span className='text-neutral-600'>{value}</span>
       </div>
     </li>
   );
