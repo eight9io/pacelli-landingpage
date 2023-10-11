@@ -2,7 +2,6 @@ import {defer, json, type LoaderArgs} from '@shopify/remix-oxygen';
 import {useLoaderData} from '@remix-run/react';
 import {routeHeaders} from '~/data/cache';
 import {
-  ARTICLE_BY_ID_QUERY,
   BLOG_ARTICLE_DETAIL_QUERY,
   BLOG_LIST_QUERY,
   FEATURED_BLOG_QUERY,
@@ -36,6 +35,7 @@ export async function loader({
     blog: blogArticleData?.blog,
     article: blogArticleData?.blog?.articleByHandle,
     latestArticles: latestArticlesData?.articles.nodes,
+    currentUrl: request.url,
   };
 }
 
