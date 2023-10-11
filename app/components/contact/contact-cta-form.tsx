@@ -12,7 +12,7 @@ import Youtube from '~/components/common/icons/youtube';
 interface ContactCTAFormProps {
   className?: string;
 }
-export const InfoContact = (containerStyle: { containerStyle?: string }) => {
+export const InfoContact = (containerStyle: {containerStyle?: string}) => {
   return (
     <>
       <ul className={clsx('flex flex-col  pb-8 gap-8', containerStyle)}>
@@ -23,7 +23,7 @@ export const InfoContact = (containerStyle: { containerStyle?: string }) => {
     </>
   );
 };
-const ContactCTAForm: React.FC<ContactCTAFormProps> = ({ className = '' }) => {
+const ContactCTAForm: React.FC<ContactCTAFormProps> = ({className = ''}) => {
   return (
     <section className={clsx('base-container py-24 md:py-32', className)}>
       <h2 className="text-[40px] md:text-[64px] font-semibold leading-[50px] md:leading-[78px]">
@@ -79,7 +79,7 @@ interface InfoItemProps {
   icon: React.ReactNode;
 }
 
-const InfoItem: React.FC<InfoItemProps> = ({ title, value, icon }) => {
+const InfoItem: React.FC<InfoItemProps> = ({title, value, icon}) => {
   return (
     <li className="flex flex-col">
       <Heading
@@ -90,7 +90,7 @@ const InfoItem: React.FC<InfoItemProps> = ({ title, value, icon }) => {
       </Heading>
       <div className="md:text-base flex items-center gap-4">
         {icon}
-        <span className='text-neutral-600'>{value}</span>
+        <span className="text-neutral-600">{value}</span>
       </div>
     </li>
   );

@@ -1,9 +1,8 @@
 'use client';
-/* eslint-disable */
 import clsx from 'clsx';
-import { useCallback, useRef, useState } from 'react';
-import { useDebounce } from 'usehooks-ts';
-import { Button } from '~/components/Button';
+import {useCallback, useRef, useState} from 'react';
+import {useDebounce} from 'usehooks-ts';
+import {Button} from '~/components/Button';
 import ArrowLeft from '~/components/common/icons/arrow-slide-left';
 import ArrowRight from '~/components/common/icons/arrow-slide-right';
 interface CarouselProps {
@@ -36,9 +35,8 @@ const Carousel: React.FC<CarouselProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const debounceIndex = useDebounce(currentIndex, 20);
 
-  const onIndicatorClick = (id: string, index: number = 0) => {
+  const onIndicatorClick = (id: string, index = 0) => {
     if (carouselRef.current) {
-      console.log(document.getElementById(id)?.offsetLeft);
       carouselRef.current.scrollTo({
         left: document.getElementById(id)?.offsetLeft,
       });
@@ -112,6 +110,7 @@ const Carousel: React.FC<CarouselProps> = ({
             <div id={item.id} key={item.id} className="carousel-item w-full">
               <img
                 src={item.src}
+                alt=""
                 className="w-full object-cover object-center"
               />
             </div>
@@ -137,12 +136,12 @@ const Carousel: React.FC<CarouselProps> = ({
       </div>
       {isShowArrow && (
         <>
-          <div className='absolute top-1/2 hidden md:block'>
+          <div className="absolute top-1/2 hidden md:block">
             <Button
               className={clsx(
                 'rounded-sm uppercase mt-6 bg-neutral-100 p-2 ml-4',
                 currentIndex == 0 &&
-                'bg-neutral-50 hover:bg-neutral-50 opacity-50',
+                  'bg-neutral-50 hover:bg-neutral-50 opacity-50',
               )}
               size="md"
               onClick={handlePrev}
@@ -150,13 +149,13 @@ const Carousel: React.FC<CarouselProps> = ({
             >
               <ArrowLeft className="fill-[#9CA3AF] " />
             </Button>
-          </div >
-          <div className='absolute top-1/2 hidden md:block right-0'>
+          </div>
+          <div className="absolute top-1/2 hidden md:block right-0">
             <Button
               className={clsx(
                 'rounded-sm uppercase mt-6 bg-neutral-100 p-2 mr-4',
                 currentIndex == data.length - 1 &&
-                'bg-neutral-50 hover:bg-neutral-50 opacity-50',
+                  'bg-neutral-50 hover:bg-neutral-50 opacity-50',
               )}
               size="md"
               onClick={handleNext}
@@ -164,7 +163,8 @@ const Carousel: React.FC<CarouselProps> = ({
             >
               <ArrowRight className="fill-[#9CA3AF] " />
             </Button>
-          </div></>
+          </div>
+        </>
       )}
     </>
   );

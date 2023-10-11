@@ -3,7 +3,7 @@ export const FEATURED_BLOG_QUERY = `#graphql
     $language: LanguageCode,
     $first: Int = 10,
   ) @inContext( language: $language) {
-    articles(first: $first, reverse: true) {
+    articles(first: $first, reverse: true, query: "tag:__pacelli") {
       pageInfo {
         hasNextPage
         endCursor
@@ -89,7 +89,7 @@ export const ARTICLES_PAGINATION_QUERY = `#graphql
     $first: Int = 10,
     $after: String
   ) @inContext( language: $language) {
-    articles(first: $first, after: $after, reverse: true) {
+    articles(first: $first, after: $after, reverse: true, query: "tag:__pacelli") {
       pageInfo {
         hasNextPage
         endCursor
@@ -169,9 +169,15 @@ export const BLOG_QUERY = `#graphql
     onlineStoreUrl
     id
     handle
-    articles(first: $articlesFirst, after: $articlesAfter, reverse: true) {
+    articles(first: $articlesFirst, after: $articlesAfter, reverse: true, query: "tag:__pacelli") {
       nodes {
         ...Article
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
+        hasPreviousPage
+        startCursor
       }
     }
   }

@@ -2,7 +2,7 @@ import Carousel from '~/components/common/carousel';
 import Link from '~/components/Link';
 import arrowRight from '~/assets/icons/arrow-right.svg';
 import clsx from 'clsx';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 
 interface HeroProps {
   className?: string;
@@ -59,8 +59,8 @@ const mockData = [
   },
 ];
 
-const Hero: React.FC<HeroProps> = ({ className = '' }) => {
-  const { t } = useTranslation('home');
+const Hero: React.FC<HeroProps> = ({className = ''}) => {
+  const {t} = useTranslation('home');
 
   return (
     <section
@@ -84,7 +84,7 @@ const Hero: React.FC<HeroProps> = ({ className = '' }) => {
             />
             <div className="absolute z-100 top-1/2 -translate-y-1/2 left-0 w-full">
               <div className="base-container mx-auto text-secondary text-5xl md:text-[84px] font-bold md:whitespace-break-spaces leading-tight">
-                <h2>
+                <h2 className="md:max-w-[820px]">
                   {t(item.title)}
                   <br />
                   {item.subtitle ? (
