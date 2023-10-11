@@ -1,42 +1,13 @@
-import clsx from 'clsx';
-import Carousel from '~/components/common/carousel';
-
-import {useTranslation} from 'react-i18next';
-import Link from '~/components/Link';
-import arrowRight from '~/assets/icons/arrow-right.svg';
 import Heading from '../common/heading';
 import {Text} from '../Text';
+import clsx from 'clsx';
+import hero_background from '~/assets/images/image_brand_hero.png';
 
 interface HeroProps {
   className?: string;
 }
 
-const mockData = [
-  {
-    id: 'item1',
-    src: 'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero_1.png',
-    title: 'home:hero.item1.title',
-    subtitle: 'home:hero.item1.subtitle',
-  },
-  {
-    id: 'item2',
-    src: 'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero_2.png',
-    title: 'home:hero.item2.title',
-    subtitle: 'home:hero.item2.subtitle',
-    link: '/',
-  },
-  {
-    id: 'item3',
-    src: 'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero3.png',
-    title: 'home:hero.item3.title',
-    subtitle: 'home:hero.item3.subtitle',
-    link: '/',
-  },
-];
-
 const Hero: React.FC<HeroProps> = ({className = ''}) => {
-  const {t} = useTranslation('home');
-
   return (
     <section
       className={clsx(
@@ -72,8 +43,8 @@ const Hero: React.FC<HeroProps> = ({className = ''}) => {
         <div className="col-span-12 md:col-span-5">
           {/* todo: change image */}
           <img
-            src="https://cdn.shopify.com/s/files/1/0816/1971/4346/files/image_none.png?v=1695609670"
-            alt=""
+            src={hero_background}
+            alt="brand"
             width={500}
             height={600}
             className="h-[600px]"
