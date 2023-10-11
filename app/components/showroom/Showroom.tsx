@@ -1,6 +1,6 @@
 /* eslint-disable */
 import clsx from 'clsx';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import showroom1 from '~/assets/showroom/showroom1.png';
 interface ShowroomProps {
   className?: string;
@@ -27,8 +27,8 @@ const arrShowroom = [
     text: 'Clienti saddisfatti',
   },
 ];
-const Showroom: React.FC<ShowroomProps> = ({className = ''}) => {
-  const {t} = useTranslation('home');
+const Showroom: React.FC<ShowroomProps> = ({ className = '' }) => {
+  const { t } = useTranslation('home');
 
   return (
     <section
@@ -42,7 +42,7 @@ const Showroom: React.FC<ShowroomProps> = ({className = ''}) => {
           <h2 className="text-[40px] md:text-[64px] font-semibold leading-[50px] md:leading-[78px] text-primary-950">
             Showroom
           </h2>
-          <p className="text-base font-normal leading-7">
+          <p className="text-base font-normal leading-7 text-neutral-800">
             Il nostro Showroom non è solo un luogo espositivo, ma anche un
             laboratorio di progettazione e design d'interni. Il nostro team di
             architetti e designer è il partner ideale per creare realizzazioni
@@ -61,11 +61,11 @@ const Showroom: React.FC<ShowroomProps> = ({className = ''}) => {
                   'col-span-6 lg:col-span-4  space-y-4  items-center justify-center  py-4 border-neutral-100  border-y-[1px]',
                   index === 3 && ' lg:col-start-9 border-y-[0px]',
                   index === 2 &&
-                    ' border-y-[0px] lg:border-neutral-100  lg:border-y-[1px]',
+                  ' border-y-[0px] lg:border-neutral-100  lg:border-y-[1px]',
                 )}
               >
                 <div className="flex flex-col i justify-center">
-                  <p className="text-[40px] md:text-[64px] font-semibold leading-[50px] md:leading-[78px] text-secondary-950">
+                  <p className="text-[40px] md:text-[64px] font-semibold leading-[50px] md:leading-[78px] text-secondary-900">
                     {item.number}
                   </p>
                   <p className="text-base font-normal leading-7">{item.text}</p>
