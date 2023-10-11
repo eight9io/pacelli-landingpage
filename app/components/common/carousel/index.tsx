@@ -135,32 +135,36 @@ const Carousel: React.FC<CarouselProps> = ({
         </div>
       </div>
       {isShowArrow && (
-        <div className="group/rooms absolute w-full top-0 h-full left-0  items-center  justify-between hidden md:flex">
-          <Button
-            className={clsx(
-              'rounded-sm uppercase mt-6 bg-neutral-100 p-2 ml-4',
-              currentIndex == 0 &&
-                'bg-neutral-50 hover:bg-neutral-50 opacity-50 !invisible',
-            )}
-            size="md"
-            onClick={handlePrev}
-            disabled={currentIndex == 0}
-          >
-            <ArrowLeft className="fill-[#9CA3AF]" />
-          </Button>
-          <Button
-            className={clsx(
-              'rounded-sm uppercase mt-6 bg-neutral-100 p-2 mr-4',
-              currentIndex == data.length - 1 &&
-                'bg-neutral-50 hover:bg-neutral-50 opacity-50 invisible',
-            )}
-            size="md"
-            onClick={handleNext}
-            disabled={currentIndex == data.length - 1}
-          >
-            <ArrowRight className="fill-[#9CA3AF]" />
-          </Button>
-        </div>
+        <>
+          <div className="absolute top-1/2 hidden md:block">
+            <Button
+              className={clsx(
+                'rounded-sm uppercase mt-6 bg-neutral-100 p-2 ml-4',
+                currentIndex == 0 &&
+                  'bg-neutral-50 hover:bg-neutral-50 opacity-50',
+              )}
+              size="md"
+              onClick={handlePrev}
+              disabled={currentIndex == 0}
+            >
+              <ArrowLeft className="fill-[#9CA3AF] " />
+            </Button>
+          </div>
+          <div className="absolute top-1/2 hidden md:block right-0">
+            <Button
+              className={clsx(
+                'rounded-sm uppercase mt-6 bg-neutral-100 p-2 mr-4',
+                currentIndex == data.length - 1 &&
+                  'bg-neutral-50 hover:bg-neutral-50 opacity-50',
+              )}
+              size="md"
+              onClick={handleNext}
+              disabled={currentIndex == data.length - 1}
+            >
+              <ArrowRight className="fill-[#9CA3AF] " />
+            </Button>
+          </div>
+        </>
       )}
     </>
   );

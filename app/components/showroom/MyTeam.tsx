@@ -32,7 +32,7 @@ const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
     if (header) header.classList.remove('lg:pr-[47px]');
   };
   return (
-    <section className={clsx('bg-white  py-[60px] md:py-[90px]', className)}>
+    <section className={clsx('bg-white  py-[60px] md:py-[90px] ', className)}>
       <div className="base-container">
         <Heading
           className="mb-4 md:mb-8 text-[48px]  text-primary-950"
@@ -42,13 +42,13 @@ const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
         </Heading>
         <div className="grid grid-cols-12 gap-5 lg:gap-8">
           <div className="col-span-12 md:col-span-4 space-y-8">
-            <p className="text-base font-normal leading-7">
+            <p className="text-base font-normal leading-7 text-neutral-800 ">
               La nostra squadra di architetti e progettisti d'interni è pronta a
               fornirti la consulenza di cui hai bisogno per rendere il tuo
               progetto una realtà.Saranno al tuo fianco in ogni fase del
               processo, garantendoti il massimo supporto e expertise
             </p>
-            <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9">
+            <p className="text-primary-950 text-[22px] md:text-2xl font-bold leading-9">
               Contacts
             </p>
             <InfoContact />
@@ -69,7 +69,7 @@ const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
               Bruno
             </h3>
 
-            <p className="text-base font-normal leading-7">
+            <p className="text-base font-normal leading-7 text-neutral-800 ">
               Ciao, sono Bruno, interior desing di Pacelli. Disegnamo un
               progetto 3D dei tuoi mobili!
             </p>
@@ -100,14 +100,14 @@ const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
               Ernesto
             </h3>
 
-            <p className="text-base font-normal leading-7">
+            <p className="text-base font-normal leading-7 text-neutral-800">
               Ciao, sono Ernesto, architetto di Pacelli. Nei nostri showroom
               puoi vedere, toccare, provare mobili in varie configurazioni,
               tessuti e colori.
             </p>
             <div className="w-full mt-auto">
               <Button
-                className="rounded-sm uppercase flex gap-3 mt-12  "
+                className="rounded-sm uppercase flex gap-3 mt-12 bg-se  "
                 size="md"
                 onClick={openPopup}
               >

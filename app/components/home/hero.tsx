@@ -20,7 +20,7 @@ const mockData = [
     src: 'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/home_hero_6.png',
     title: 'home:hero.item2.title',
     subtitle: 'home:hero.item2.subtitle',
-    link: '/',
+    link: '/gallery',
   },
   {
     id: 'item3',
@@ -75,7 +75,7 @@ const Hero: React.FC<HeroProps> = ({className = ''}) => {
           <div
             id={item.id}
             key={item.id}
-            className="carousel-item w-full h-full relative"
+            className="carousel-item w-full h-full relative "
           >
             <img
               src={item.src}
@@ -83,7 +83,7 @@ const Hero: React.FC<HeroProps> = ({className = ''}) => {
               alt={item.title}
             />
             <div className="absolute z-100 top-1/2 -translate-y-1/2 left-0 w-full">
-              <div className="base-container mx-auto text-secondary text-5xl md:text-[84px] font-bold whitespace-break-spaces leading-tight">
+              <div className="base-container mx-auto text-secondary text-5xl md:text-[84px] font-bold md:whitespace-break-spaces leading-tight">
                 <h2 className="md:max-w-[820px]">
                   {t(item.title)}
                   <br />
@@ -101,7 +101,7 @@ const Hero: React.FC<HeroProps> = ({className = ''}) => {
                 {item.link && (
                   <Link
                     to={item.link}
-                    className="btn bg-secondary rounded-none text-white hover:bg-secondary group "
+                    className="btn bg-secondary rounded-none text-white hover:bg-secondary group  "
                   >
                     {t('home:hero.learn_more')}
                     <img
