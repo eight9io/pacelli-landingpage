@@ -122,7 +122,7 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
               )}
             />
             <Button
-              className="rounded-sm uppercase"
+              className="rounded-sm uppercase mt-4"
               size="md"
               disabled={loading}
             >

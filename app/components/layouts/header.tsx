@@ -75,7 +75,9 @@ export function HeaderSection() {
           >
             <span className="sr-only">Open main menu</span>
             <span className="relative inline-block">
-              <img src={home} alt="menu" width={24} height={24} />
+              <Link to={'/'}>
+                <img src={home} alt="menu" width={24} height={24} />
+              </Link>
             </span>
           </button>
           <button
@@ -166,7 +168,8 @@ export function HeaderSection() {
                 (0824) 948533
               </Link>
               <Link
-                to="/"
+                to="https://www.google.com/maps/place/Via+Volturno,+11,+82030+San+Salvatore+Telesino+BN,+%C3%9D/@41.2338572,14.4944365,17z/data=!3m1!4b1!4m6!3m5!1s0x133a449f754d3625:0xe78f82b5f51c1467!8m2!3d41.2338532!4d14.4970114!16s%2Fg%2F11c5m20g6r?hl=vi-VN&entry=ttu"
+                target="_blank"
                 className={clsx(
                   'flex gap-3 items-center relative',
                   "after:absolute after:content-[''] after:w-[2px] after:h-5",
@@ -185,19 +188,22 @@ export function HeaderSection() {
               </div>
               <div className={clsx('flex gap-3 items-center relative')}>
                 <Link
-                  to=""
+                  to="https://www.facebook.com/arredamentipacelli/?locale=it_IT"
+                  target="_blank"
                   className="w-8 h-8 p-2 bg-secondary rounded-full object-contain"
                 >
                   <Facebook className="w-4 h-4 stroke-white invert brightness-0" />
                 </Link>
                 <Link
-                  to=""
+                  to="https://www.instagram.com/pacelliarredamenti"
+                  target="_blank"
                   className="w-8 h-8 p-2 bg-secondary rounded-full object-contain"
                 >
                   <Instagram className=" w-4 h-4 stroke-white invert brightness-0" />
                 </Link>
                 <Link
-                  to=""
+                  to="https://www.youtube.com/@arredamentipacelli4456/featured"
+                  target="_blank"
                   className="w-8 h-8 p-2 bg-secondary rounded-full object-contain"
                 >
                   <Youtube className="text-white w-4 h-4 invert brightness-0" />

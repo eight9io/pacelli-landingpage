@@ -366,7 +366,7 @@ shop-pay-button {
 
 .react-datepicker__header {
   text-align: center;
-  background-color: #f0f0f0;
+  background-color: #e5e7eb;
   border-bottom: 1px solid #aeaeae;
   border-top-left-radius: 0.3rem;
   border-top-right-radius: 0.3rem;
@@ -486,6 +486,7 @@ shop-pay-button {
 
 .react-datepicker__month-container {
   float: left;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .react-datepicker__month {
@@ -771,7 +772,7 @@ shop-pay-button {
 .react-datepicker__day--keyboard-selected,
 .react-datepicker__month-text--keyboard-selected {
   border-radius: 0.3rem;
-  background-color: #2a87d0;
+  background-color: #03554d;
   color: #fff;
 }
 
@@ -814,7 +815,7 @@ shop-pay-button {
 
 .react-datepicker__input-container {
   position: relative;
-  display: inline-block;
+  display: block;
 }
 
 .react-datepicker__year-read-view,
@@ -1058,7 +1059,7 @@ shop-pay-button {
   display: none;
 }
 
-.react-datepicker-popper[data-placement^=bottom] {
+.react-datepicker-popper[data-placement^='bottom'] {
   margin-top: 0px;
   transform: translate(0px, 0px) !important;
   inset: auto !important;
@@ -1068,7 +1069,9 @@ shop-pay-button {
   width: 200px;
   max-width: 200px;
 }
-.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box {
   width: 200px;
   max-width: 200px;
 }
