@@ -24,6 +24,7 @@ declare global {
     PUBLIC_SENDGRID_API_KEY: string;
     PUBLIC_ADMIN_MAIL_DESTINATION: string;
     PUBLIC_MAIL_FROM: string;
+    PUBLIC_PINNDED_ARTICLE_ID: string;
   }
 }
 

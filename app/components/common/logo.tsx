@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import {Link} from '@remix-run/react';
 
 import logo from '~/assets/images/logo.png';
+import Link from '../Link';
 
 interface LogoProps {
   className?: string;

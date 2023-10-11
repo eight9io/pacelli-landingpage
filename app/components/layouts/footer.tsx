@@ -136,7 +136,7 @@ const footerMenus2 = [
   },
   {
     text: 'Blog',
-    href: '/blog',
+    href: '/blogs',
   },
   {
     text: 'FAQs',

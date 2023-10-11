@@ -84,7 +84,7 @@ const Hero: React.FC<HeroProps> = ({className = ''}) => {
             />
             <div className="absolute z-100 top-1/2 -translate-y-1/2 left-0 w-full">
               <div className="base-container mx-auto text-secondary text-5xl md:text-[84px] font-bold whitespace-break-spaces leading-tight">
-                <h2>
+                <h2 className="md:max-w-[820px]">
                   {t(item.title)}
                   <br />
                   {item.subtitle ? (

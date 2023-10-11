@@ -85,7 +85,7 @@ const LanguagesSelector: React.FC<LanguagesSelectorProps> = ({
             {selectedLocale.language}
             <AngleDown className="group-open:rotate-180 transition duration-150 ml-1" />
           </summary>
-          <div className="transition duration-150 absolute w-full top-full right-0 rounded overflow-auto bg-white max-w-full">
+          <div className="transition duration-150 absolute w-full top-full right-0 rounded overflow-auto bg-white max-w-full shadow-md">
             {availableLocales &&
               Object.keys(availableLocales).map((countryPath) => {
                 const countryLocale = availableLocales[countryPath];
