@@ -91,7 +91,7 @@ export async function loader({request, context}: LoaderArgs) {
 export const handle = {
   // In the handle export, we could add a i18n key with namespaces our route
   // will need to load. This key can be a single string or an array of strings.
-  i18n: ['common', 'home'],
+  i18n: ['common', 'home', 'header'],
 };
 
 export default function App() {
