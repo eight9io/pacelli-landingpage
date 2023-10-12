@@ -4,28 +4,13 @@ import AdminTemplate from '~/lib/email/templates/proposal.admin';
 // import CustomerTemplate from '~/lib/email/templates/booking.customer';
 import {render} from '@react-email/render';
 import {send} from '~/lib/email/instance';
+import {fetchGoogleVerification} from '~/lib/utils';
 
 const FIELDS_MAP: any = {
   name: 'Name',
   email: 'Email',
 };
 
-type ResponseGoogleVerification = {
-  success: boolean;
-  challenge_ts: string;
-  hostname: string;
-};
-
-async function fetchGoogleVerification(
-  token: string,
-  key: any,
-): Promise<ResponseGoogleVerification> {
-  const url = `https://www.google.com/recaptcha/api/siteverify?secret=${key}&response=${token}`;
-  const response = await fetch(url, {method: 'post'});
-  const gResponse = await response.json();
-
-  return gResponse as ResponseGoogleVerification;
-}
 export const action: ActionFunction = async ({request, context}) => {
   const env = context.env as any;
   // check gg recaptcha validate

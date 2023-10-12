@@ -10,6 +10,7 @@ import Heading from '../heading';
 import ReCAPTCHA from 'react-google-recaptcha';
 import {SITE_RECAPTCHA_KEY} from '~/lib/const';
 import {useRef, useState} from 'react';
+import {useRootContext} from '~/hooks/useRootContext';
 
 interface ProposalFormProps {
   className?: string;
@@ -26,6 +27,8 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
   const onChange = () => {
     setReCaptchaDone(true);
   };
+
+  const {ENV} = useRootContext();
 
   const onSubmit = (values: any, form: any) => {
     console.log('values', values);
@@ -137,7 +140,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
               <ReCAPTCHA
                 onChange={onChange}
                 className="[&_iframe]:w-full"
-                sitekey={SITE_RECAPTCHA_KEY || ''}
+                sitekey={ENV.PUBLIC_SITE_RECAPTCHA_KEY || ''}
                 ref={recaptchaRef}
               />
               {!reCaptchaDone && (

@@ -12,6 +12,8 @@ import {useRef, useState} from 'react';
 import {FormApi} from 'final-form';
 import ReCAPTCHA from 'react-google-recaptcha';
 import {SITE_RECAPTCHA_KEY} from '~/lib/const';
+import {useTranslation} from 'react-i18next';
+import {useRootContext} from '~/hooks/useRootContext';
 
 interface BookingFormProps {
   className?: string;
@@ -35,6 +37,8 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
   const onChange = () => {
     setReCaptchaDone(true);
   };
+  const {t} = useTranslation('common');
+  const {ENV} = useRootContext();
 
   const onSubmit = (
     values: any,
@@ -81,13 +85,13 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
     <div className={clsx('bg-gray-100 px-4 md:px-8 py-16 relative', className)}>
       <Form
         onSubmit={onSubmit}
-        validate={validateFormValues(bookingValidate)}
+        validate={validateFormValues(bookingValidate(t))}
         validateOnBlur={false}
         render={({handleSubmit}) => (
           <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
             <TextField
               name="fullname"
-              label="Name *"
+              label={`${t('common:form.name.label')} *`}
               inputClassName={clsx(
                 'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
               )}
@@ -95,14 +99,14 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
             />
             <TextField
               name="phone"
-              label="Phone Number *"
+              label={`${t('common:form.phone.label')} *`}
               inputClassName={clsx(
                 'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
               )}
             />
             <TextField
               name="email"
-              label="Email *"
+              label={`${t('common:form.email.label')} *`}
               inputClassName={clsx(
                 'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
               )}
@@ -113,7 +117,7 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
                 <DatePicker
                   id="date"
                   name="date"
-                  label="Date *"
+                  label={`${t('common:form.date.label')} *`}
                   inputClassName={clsx(
                     'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
                   )}
@@ -123,7 +127,7 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
                 <DatePicker
                   id="time"
                   name="time"
-                  label="Time *"
+                  label={`${t('common:form.time.label')} *`}
                   inputClassName={clsx(
                     'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
                   )}
@@ -144,7 +148,7 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
             <ReCAPTCHA
               onChange={onChange}
               className="[&_iframe]:w-full"
-              sitekey={SITE_RECAPTCHA_KEY || ''}
+              sitekey={ENV.PUBLIC_SITE_RECAPTCHA_KEY}
               ref={recaptchaRef}
             />
             {!reCaptchaDone && (

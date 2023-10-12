@@ -12,6 +12,7 @@ import {useRef, useState} from 'react';
 import {FormApi} from 'final-form';
 import ReCAPTCHA from 'react-google-recaptcha';
 import {SITE_RECAPTCHA_KEY} from '~/lib/const';
+import {useRootContext} from '~/hooks/useRootContext';
 
 interface ContactFormProps {
   className?: string;
@@ -32,7 +33,7 @@ const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
   const onChange = () => {
     setReCaptchaDone(true);
   };
-
+  const {ENV} = useRootContext();
   const onSubmit = (
     values: ContactFormValidation,
     form: FormApi<ContactFormValidation, Partial<ContactFormValidation>>,
@@ -106,7 +107,7 @@ const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
             <ReCAPTCHA
               onChange={onChange}
               className="[&_iframe]:w-full"
-              sitekey={SITE_RECAPTCHA_KEY || ''}
+              sitekey={ENV.PUBLIC_SITE_RECAPTCHA_KEY || ''}
               ref={recaptchaRef}
             />
             {!reCaptchaDone && (
