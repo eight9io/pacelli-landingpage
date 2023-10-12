@@ -10,12 +10,41 @@ const FIELDS_MAP: any = {
   email: 'Email',
   message: 'Message',
 };
+
+type ResponseGoogleVerification = {
+  success: boolean;
+  challenge_ts: string;
+  hostname: string;
+};
+
+async function fetchGoogleVerification(
+  token: string,
+  key: any,
+): Promise<ResponseGoogleVerification> {
+  const url = `https://www.google.com/recaptcha/api/siteverify?secret=${key}&response=${token}`;
+  const response = await fetch(url, {method: 'post'});
+  const gResponse = await response.json();
+
+  return gResponse as ResponseGoogleVerification;
+}
+
 export const action: ActionFunction = async ({request, context}) => {
   const env = context.env as any;
+  //check gg recaptcha
+  const data = (await request.json()) as any;
+
+  const {reCaptcha} = data;
+  if (!reCaptcha) return json({ok: false});
+
+  const {success} = await fetchGoogleVerification(
+    data.reCaptcha || '',
+    env.PUBLIC_SECRET_RECAPTCHA_KEY,
+  );
+  delete data.reCaptcha;
+
+  if (!success) return json({ok: false});
 
   try {
-    const data = (await request.json()) as any;
-
     const fields = Object.keys(data).map((key) => {
       return {
         name: FIELDS_MAP[key] || key,

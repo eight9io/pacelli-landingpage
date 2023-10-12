@@ -8,9 +8,10 @@ import TextField from '~/components/common/textfield';
 import clsx from 'clsx';
 import {contactValidate} from '~/validation/contact';
 import {validateFormValues} from '~/validation';
-import {useFetcher} from '@remix-run/react';
-import {useState} from 'react';
+import {useRef, useState} from 'react';
 import {FormApi} from 'final-form';
+import ReCAPTCHA from 'react-google-recaptcha';
+import {SITE_RECAPTCHA_KEY} from '~/lib/const';
 
 interface ContactFormProps {
   className?: string;
@@ -25,21 +26,32 @@ interface ContactFormValidation {
 const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [reCaptchaDone, setReCaptchaDone] = useState(false);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+
+  const onChange = () => {
+    setReCaptchaDone(true);
+  };
 
   const onSubmit = (
     values: ContactFormValidation,
     form: FormApi<ContactFormValidation, Partial<ContactFormValidation>>,
   ) => {
+    const recaptchaValue = recaptchaRef.current!.getValue();
+
     const newData = {
       fullname: values.fullname,
       email: values.email,
       message: values.message,
+      reCaptcha: recaptchaValue,
     };
+    if (!reCaptchaDone) return;
+
     setLoading(true);
     fetch('/api/contact', {
       method: 'POST',
       mode: 'no-cors',
-      headers: {Accept: 'application/json'},
+      headers: {Accept: 'application/json', Authentication: recaptchaValue!},
       body: JSON.stringify(newData),
     })
       .then(() => {
@@ -48,6 +60,11 @@ const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
           form.change(key, undefined);
           form.resetFieldState(key);
         });
+        recaptchaRef.current?.reset();
+      })
+      .catch((err) => {
+        console.log(err);
+        recaptchaRef.current?.reset();
       })
       .finally(() => setLoading(false));
   };
@@ -85,10 +102,21 @@ const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
                 'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
               )}
             />
+
+            <ReCAPTCHA
+              onChange={onChange}
+              className="[&_iframe]:w-full"
+              sitekey={SITE_RECAPTCHA_KEY || ''}
+              ref={recaptchaRef}
+            />
+            {!reCaptchaDone && (
+              <p className="text-sm text-[#ef4444]">ReCaptcha is required</p>
+            )}
+
             <Button
               className="rounded-sm uppercase"
               size="md"
-              disabled={loading}
+              disabled={loading || submitted}
             >
               send
             </Button>

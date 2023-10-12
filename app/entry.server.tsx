@@ -44,6 +44,11 @@ export default async function handleRequest(
       'https://flowbite.s3.amazonaws.com/',
       'https://e9-cms.sgp1.digitaloceanspaces.com',
     ],
+    scriptSrc: [
+      "'self'",
+      'https://www.google.com/recaptcha/',
+      'https://www.gstatic.com/recaptcha/',
+    ],
   });
   const body = await renderToReadableStream(
     <NonceProvider>
