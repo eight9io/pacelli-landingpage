@@ -11,6 +11,7 @@ import {validateFormValues} from '~/validation';
 import {useState} from 'react';
 import {FormApi} from 'final-form';
 import {useTranslation} from 'react-i18next';
+import {useRootContext} from '~/hooks/useRootContext';
 
 interface BookingFormProps {
   className?: string;
@@ -30,6 +31,9 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const {t} = useTranslation('common');
+  const {ENV} = useRootContext();
+
+  console.log('ENV', ENV);
 
   const onSubmit = (
     values: any,
