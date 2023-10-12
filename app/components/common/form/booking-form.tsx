@@ -10,6 +10,7 @@ import {bookingValidate} from '~/validation/booking';
 import {validateFormValues} from '~/validation';
 import {useState} from 'react';
 import {FormApi} from 'final-form';
+import {useTranslation} from 'react-i18next';
 
 interface BookingFormProps {
   className?: string;
@@ -28,6 +29,7 @@ interface BookingFormValidation {
 const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const {t} = useTranslation('common');
 
   const onSubmit = (
     values: any,
@@ -62,13 +64,13 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
     <div className={clsx('bg-gray-100 px-4 md:px-8 py-16 relative', className)}>
       <Form
         onSubmit={onSubmit}
-        validate={validateFormValues(bookingValidate)}
+        validate={validateFormValues(bookingValidate(t))}
         validateOnBlur={false}
         render={({handleSubmit}) => (
           <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
             <TextField
               name="fullname"
-              label="Name *"
+              label={`${t('common:form.name.label')} *`}
               inputClassName={clsx(
                 'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
               )}
@@ -76,14 +78,14 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
             />
             <TextField
               name="phone"
-              label="Phone Number *"
+              label={`${t('common:form.phone.label')} *`}
               inputClassName={clsx(
                 'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
               )}
             />
             <TextField
               name="email"
-              label="Email *"
+              label={`${t('common:form.email.label')} *`}
               inputClassName={clsx(
                 'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
               )}
@@ -94,7 +96,7 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
                 <DatePicker
                   id="date"
                   name="date"
-                  label="Date *"
+                  label={`${t('common:form.date.label')} *`}
                   inputClassName={clsx(
                     'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
                   )}
@@ -104,7 +106,7 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
                 <DatePicker
                   id="time"
                   name="time"
-                  label="Time *"
+                  label={`${t('common:form.time.label')} *`}
                   inputClassName={clsx(
                     'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
                   )}
