@@ -9,7 +9,7 @@ import {I18nextProvider, initReactI18next} from 'react-i18next';
 import i18nextOptions from '../i18nextOptions';
 import i18n from '../i18n.server';
 import resourcesToBackend from 'i18next-resources-to-backend';
-import {resources} from './lib/locale.resources';
+import {resources} from '~/lib/locale.resources';
 
 export default async function handleRequest(
   request: Request,
