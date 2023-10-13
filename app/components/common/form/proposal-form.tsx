@@ -1,4 +1,3 @@
-'use client';
 import {Button} from '~/components/snippets';
 import {Field, Form} from 'react-final-form';
 import TextField from '~/components/common/textfield';
@@ -8,7 +7,6 @@ import Select from '../select';
 import {proposalValidate} from '~/validation/proposal';
 import Heading from '../heading';
 import ReCAPTCHA from 'react-google-recaptcha';
-import {SITE_RECAPTCHA_KEY} from '~/lib/const';
 import {useRef, useState} from 'react';
 import {useRootContext} from '~/hooks/useRootContext';
 
