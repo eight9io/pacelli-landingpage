@@ -9,6 +9,7 @@ import {fetchGoogleVerification} from '~/lib/utils';
 const FIELDS_MAP: any = {
   name: 'Name',
   email: 'Email',
+  phone: 'Phone number',
 };
 
 export const action: ActionFunction = async ({request, context}) => {

@@ -46,7 +46,7 @@ export function HeaderSection() {
 
   const onToggleSubMenu = (e: any) => {
     e.preventDefault();
-    e.stopPropagation();
+    // e.stopPropagation();
     const target = e.target;
     target.closest('ul')?.querySelector('.submenu')?.classList.toggle('hidden');
   };
@@ -113,42 +113,77 @@ export function HeaderSection() {
               <ul className="space-y-4 py-6 w-full md:w-1/2 flex-col md:block">
                 {mainMenuItems.map(({text, href, items}) => (
                   <li key={href}>
-                    <Link
-                      className={clsx(
-                        'flex justify-between items-center md:block rounded-none box-border pt-2 pb-1 md:pt-4 md:pb-2 text-[32px] md:text-[40px] leading-8 text-white border-b border-b-transparent hover:border-b-slate-400 ',
-                        isMenuItemActive(href) &&
-                          'text-white border-b-slate-400',
-                        'peer hover:[&+div]:block max-w-[395px]',
-                      )}
-                      key={href}
-                      to={href}
-                      onClick={() => {
-                        setMobileMenuOpen(false);
-                      }}
-                    >
-                      {text}
-                      {items && items.length ? (
-                        <ChevronDownIcon
-                          className="stroke-white w-6 h-6 md:!hidden"
-                          onClick={onToggleSubMenu}
-                        />
-                      ) : undefined}
-                    </Link>
+                    {href ? (
+                      <Link
+                        className={clsx(
+                          'flex justify-between items-center md:block rounded-none box-border pt-2 pb-1 md:pt-4 md:pb-2 text-[32px] md:text-[40px] leading-8 text-white border-b border-b-transparent hover:border-b-slate-400 ',
+                          {'cursor-default': href === '#'},
+                          isMenuItemActive(href) &&
+                            'text-white border-b-slate-400',
+                          'peer hover:[&+div]:block max-w-[395px]',
+                        )}
+                        key={href}
+                        to={href}
+                        onClick={(event) => {
+                          if (href === '#') {
+                            event.preventDefault();
+                          }
+                          setMobileMenuOpen(false);
+                        }}
+                      >
+                        {text}
+                        {items && items.length ? (
+                          <ChevronDownIcon
+                            className="stroke-white w-6 h-6 md:!hidden"
+                            onClick={onToggleSubMenu}
+                          />
+                        ) : undefined}
+                      </Link>
+                    ) : (
+                      <span
+                        className={clsx(
+                          'flex justify-between items-center md:block rounded-none box-border pt-2 pb-1 md:pt-4 md:pb-2 text-[32px] md:text-[40px] leading-8 text-white border-b border-b-transparent hover:border-b-slate-400 ',
+                          'peer hover:[&+div]:block max-w-[395px]',
+                        )}
+                      >
+                        {text}
+                        {items && items.length ? (
+                          <ChevronDownIcon
+                            className="stroke-white w-6 h-6 md:!hidden"
+                            onClick={onToggleSubMenu}
+                          />
+                        ) : undefined}
+                      </span>
+                    )}
+
                     {items && items.length && (
-                      <div className="hidden flex-col md:absolute h-full top-0 left-[395px] md:hidden md:peer-hover:!flex pl-4 md:pl-0 submenu">
-                        {items.map(({text, href}) => (
-                          <Link
-                            className={clsx(
-                              'block rounded-none box-border pt-2 pb-1 md:pt-4 md:pb-2 text-2xl md:text-[32px] leading-7 text-white border-b border-b-transparent hover:border-b-slate-400 max-w-[395px]',
-                              isMenuItemActive(href) &&
-                                'text-white border-b-slate-400',
-                            )}
-                            key={href}
-                            to={href}
-                          >
-                            {text}
-                          </Link>
-                        ))}
+                      <div className="block flex-col md:absolute h-full top-0 left-[395px] md:hidden md:peer-hover:!flex pl-4 md:pl-0 submenu">
+                        {items.map(({text, href}) => {
+                          return href ? (
+                            <Link
+                              className={clsx(
+                                'block rounded-none box-border pt-2 pb-1 md:pt-4 md:pb-2 text-2xl md:text-[32px] leading-7 text-white border-b border-b-transparent hover:border-b-slate-400 max-w-[395px]',
+                                isMenuItemActive(href) &&
+                                  'text-white border-b-slate-400',
+                              )}
+                              key={href}
+                              to={href}
+                              onClick={() => {
+                                setMobileMenuOpen(false);
+                              }}
+                            >
+                              {text}
+                            </Link>
+                          ) : (
+                            <span
+                              className={clsx(
+                                'block rounded-none box-border pt-2 pb-1 md:pt-4 md:pb-2 text-2xl md:text-[32px] leading-7 text-white border-b border-b-transparent hover:border-b-slate-400 max-w-[395px]',
+                              )}
+                            >
+                              {text}
+                            </span>
+                          );
+                        })}
                       </div>
                     )}
                   </li>
@@ -219,7 +254,7 @@ export function HeaderSection() {
 
 interface MenuItem {
   text: string;
-  href: string;
+  href?: string;
   items?: MenuItem[];
 }
 
@@ -238,7 +273,6 @@ const mainMenuItems: MenuItem[] = [
   },
   {
     text: 'Services',
-    href: '/services',
     items: [
       {
         text: 'Professional services',

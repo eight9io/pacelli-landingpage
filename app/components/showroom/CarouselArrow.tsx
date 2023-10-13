@@ -11,6 +11,7 @@ import image7 from '~/assets/showroom/image-7.png';
 import image8 from '~/assets/showroom/image-8.png';
 import image9 from '~/assets/showroom/image-9.png';
 import showroom7 from '~/assets/showroom/showroom7.png';
+import ReactPlayer from 'react-player/youtube';
 
 interface CarouselShowroomProps {
   className?: string;
@@ -72,14 +73,14 @@ const CarouselShowroom: React.FC<CarouselShowroomProps> = ({
           )}
         />
       </div>
-
-      <img
-        src={showroom7}
-        alt="Mission"
-        width={1030}
-        height={580}
-        className="mt-28 mx-auto h-[580px]  "
-      />
+      <div className="flex items-center justify-center">
+        <ReactPlayer
+          url="https://www.youtube.com/watch?v=LBzT3pllAAY"
+          width={1030}
+          height={580}
+          playing
+        />
+      </div>
     </section>
   );
 };

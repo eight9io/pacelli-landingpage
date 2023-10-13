@@ -51,8 +51,9 @@ export default async function handleRequest(
       "'self'",
       'https://cdn.shopify.com',
       'https://shopify.com',
-      'https://www.google.com/recaptcha/',
-      'https://www.gstatic.com/recaptcha/',
+      'https://www.google.com/',
+      'https://www.gstatic.com/',
+      'https://www.youtube.com/',
     ],
   });
   const body = await renderToReadableStream(
