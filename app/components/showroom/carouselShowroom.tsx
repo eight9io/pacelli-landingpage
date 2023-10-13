@@ -1,8 +1,8 @@
 'use client';
 /* eslint-disable */
 import clsx from 'clsx';
-import {UIEvent, useRef, useState} from 'react';
-import {Button} from '~/components/Button';
+import { UIEvent, useEffect, useRef, useState } from 'react';
+import { Button } from '~/components/Button';
 import ArrowLeft from '~/components/common/icons/arrow-slide-left';
 import ArrowRight from '~/components/common/icons/arrow-slide-right';
 import Carousel from '../common/carousel';
@@ -23,67 +23,55 @@ interface CarouselProps {
   indicatorClassName?: string;
 }
 
-const CarouselArrow: React.FC<CarouselProps> = ({data = []}) => {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const [scrollPosition, setScrollPosition] = useState(0);
+const CarouselArrow: React.FC<CarouselProps> = ({ data = [] }) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  console.log("🚀 ~ file: carouselShowroom.tsx:28 ~ currentSlide:", currentSlide)
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     handleNext();
+  //   }, 5000);
+
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, [currentSlide]);
+
   const handleNext = () => {
-    if (ref.current) {
-      ref.current.scroll({
-        left: ref.current.scrollLeft + 395,
-        behavior: 'smooth',
-      });
-    }
+    setCurrentSlide((currentSlide + 1) % (data.length - 2));
   };
+
   const handlePrev = () => {
-    if (ref.current) {
-      ref.current.scroll({
-        left: ref.current.scrollLeft - 395,
-        behavior: 'smooth',
-      });
-    }
+    setCurrentSlide((currentSlide - 3 + data.length) % (data.length - 2));
   };
-
-  const handleScroll = (e: UIEvent<HTMLDivElement, globalThis.UIEvent>) => {
-    setScrollPosition(e.currentTarget.scrollLeft);
-  };
-
-  const isDisabledNext = ref.current
-    ? scrollPosition >= ref.current.scrollWidth - ref.current.clientWidth
-    : false;
-
-  const isDisabledPrev = ref.current ? ref.current.scrollLeft === 0 : true;
-
   return (
-    <div className="relative base-container">
-      <div className="overflow-hidden">
+    <div className="relative ">
+      <div className="carousel">
         <div
-          ref={ref}
-          onScroll={handleScroll}
-          className="snap-x snap-mandatory overflow-x-scroll overscroll-x-contain whitespace-nowrap scrollbar-hide"
+          className={clsx("whitespace-nowrap  align-top  space-x-4 transition-all duration-700 ease-in-out")}
+          style={{
+            transform: `translateX(-${currentSlide * 410}px)`,
+          }}
         >
-          <div className="gap-4 align-top lg:gap-8 space-x-4">
-            {data.map((item, index) => {
-              if (!item) return null;
-              return (
-                <div key={index} className="inline-block snap-start  ">
-                  <img
-                    className="h-[540px]"
-                    src={item}
-                    alt="Carousel"
-                    width={395}
-                    height={540}
-                  />
-                </div>
-              );
-            })}
-          </div>
+          {data.map((item, index) => (
+            <div className='carousel-slide basis-auto grow-0 shrink-0 inline-block '>
+              <img
+                key={index}
+                className="h-[540px]"
+                src={item}
+                alt="Carousel"
+                width={395}
+                height={540}
+              />
+            </div>
+          ))}
         </div>
       </div>
+
       <div className="flex justify-end gap-8">
         <Button
           className={clsx(
             'rounded-sm uppercase mt-6 bg-neutral-100 p-4 0',
-            isDisabledPrev && 'bg-neutral-50 hover:bg-neutral-50',
+
           )}
           size="md"
           onClick={handlePrev}
@@ -93,11 +81,11 @@ const CarouselArrow: React.FC<CarouselProps> = ({data = []}) => {
         <Button
           className={clsx(
             'rounded-sm uppercase mt-6 bg-neutral-100 p-4 0',
-            isDisabledNext && 'bg-neutral-50 hover:bg-neutral-50',
+
           )}
           size="md"
           onClick={handleNext}
-          disabled={isDisabledNext}
+
         >
           <ArrowRight className="fill-[#9CA3AF] " />
         </Button>
