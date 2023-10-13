@@ -4,18 +4,31 @@ import AdminTemplate from '~/lib/email/templates/contact.admin';
 import CustomerTemplate from '~/lib/email/templates/contact.customer';
 import {render} from '@react-email/render';
 import {send} from '~/lib/email/instance';
+import {fetchGoogleVerification} from '~/lib/utils';
 
 const FIELDS_MAP: any = {
   fullname: 'Full Name',
   email: 'Email',
   message: 'Message',
 };
+
 export const action: ActionFunction = async ({request, context}) => {
   const env = context.env as any;
+  //check gg recaptcha
+  const data = (await request.json()) as any;
+
+  const {reCaptcha} = data;
+  if (!reCaptcha) return json({ok: false});
+
+  const {success} = await fetchGoogleVerification(
+    data.reCaptcha || '',
+    env.PUBLIC_SECRET_RECAPTCHA_KEY,
+  );
+  delete data.reCaptcha;
+
+  if (!success) return json({ok: false});
 
   try {
-    const data = (await request.json()) as any;
-
     const fields = Object.keys(data).map((key) => {
       return {
         name: FIELDS_MAP[key] || key,

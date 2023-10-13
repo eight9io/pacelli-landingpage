@@ -354,3 +354,20 @@ export const parseObject = (object: any, path: string) => {
   }
   return result;
 };
+
+type ResponseGoogleVerification = {
+  success: boolean;
+  challenge_ts: string;
+  hostname: string;
+};
+
+export async function fetchGoogleVerification(
+  token: string,
+  key: any,
+): Promise<ResponseGoogleVerification> {
+  const url = `https://www.google.com/recaptcha/api/siteverify?secret=${key}&response=${token}`;
+  const response = await fetch(url, {method: 'post'});
+  const gResponse = await response.json();
+
+  return gResponse as ResponseGoogleVerification;
+}
