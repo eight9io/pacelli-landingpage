@@ -23,7 +23,7 @@ const Reason: React.FC<ReasonProps> = ({className = ''}) => {
             unico, straordinario luogo.
           </p>
           <img
-            src="https://cdn.shopify.com/s/files/1/0816/1971/4346/files/image_about_reason1.png"
+            src="https://cdn.shopify.com/s/files/1/0816/1971/4346/files/image_about_reason2.png?v=1697187338"
             alt="Reason"
             width={467}
             height={365}
@@ -32,7 +32,7 @@ const Reason: React.FC<ReasonProps> = ({className = ''}) => {
         </div>
         <div className="col-span-12 md:col-span-7">
           <img
-            src="https://cdn.shopify.com/s/files/1/0816/1971/4346/files/image_about_reason2.png"
+            src="https://cdn.shopify.com/s/files/1/0816/1971/4346/files/image_about_reason1.png?v=1697187331"
             alt="Reason"
             width={715}
             height={600}

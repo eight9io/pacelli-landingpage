@@ -61,7 +61,7 @@ const StrongPoint: React.FC<StrongPointProps> = ({className = ''}) => {
           </div>
           <div className="col-span-12 md:col-span-4">
             <img
-              src="https://cdn.shopify.com/s/files/1/0816/1971/4346/files/image_about_strongpoint.png?v=1695265674"
+              src="https://cdn.shopify.com/s/files/1/0816/1971/4346/files/image_about_strongpoint.png?v=1697187562"
               alt="Mission"
               width={500}
               height={640}

@@ -55,6 +55,7 @@ export default {
         shopPay: 'rgb(var(--color-shop-pay) / <alpha-value>)',
       },
       screens: {
+        xs: '380px',
         sm: '32em',
         md: '48em',
         lg: '64em',
