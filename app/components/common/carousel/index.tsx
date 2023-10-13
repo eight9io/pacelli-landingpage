@@ -133,7 +133,7 @@ const Carousel: React.FC<CarouselProps> = ({
       </div>
       <div
         className={clsx(
-          'absolute bottom-24 left-0 w-full z-50 ',
+          'absolute bottom-24 left-0 w-full z-40',
           indicatorClassName,
         )}
       >

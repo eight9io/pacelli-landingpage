@@ -18,7 +18,7 @@ const VIDEO_SRC = 'https://www.youtube.com/watch?v=L8BzYFjHJDU';
 const Hero: React.FC<HeroProps> = ({className = ''}) => {
   return (
     <section className={clsx('overflow-hidden relative', className)}>
-      <div className="mb-20 h-[calc(100vh-40px)]">
+      <div className="mb-20 w-full md:h-[800px]">
         <ReactPlayer url={VIDEO_SRC} width="full" height={800} playing />
       </div>
     </section>
