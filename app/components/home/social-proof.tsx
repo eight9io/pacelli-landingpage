@@ -8,6 +8,9 @@ import franco from '~/assets/carousel/franco.png';
 import lino from '~/assets/carousel/lino.png';
 import agostino from '~/assets/carousel/agostino.png';
 import geltrude from '~/assets/carousel/geltrude.png';
+import vincenzo from '~/assets/carousel/vincenzo.png';
+import claudia from '~/assets/carousel/claudia.png';
+
 interface SocialProofProps {
   className?: string;
 }
@@ -106,5 +109,18 @@ const mockData: SocialProofItemProps[] = [
     image: agostino,
     author: 'Agostino',
     quote: 'Grazie per l’immensa professionalità.',
+  },
+  {
+    id: 'item-proof7',
+    image: claudia,
+    author: 'Claudia',
+    quote: 'Arrivano ovunque e ti portano un pezzo di casa.',
+  },
+  {
+    id: 'item-proof8',
+    image: vincenzo,
+    author: 'Vincenzo',
+    quote:
+      'Grazie mille a te Paolo e al tuo staff per la grande professionalità e la disponibilità, anche per me è stato un vero piacere collaborare con te.',
   },
 ];
