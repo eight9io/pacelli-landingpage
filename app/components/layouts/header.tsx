@@ -53,7 +53,7 @@ export function HeaderSection() {
   return (
     <header
       className={clsx(
-        'bg-transparent inset-x-0 top-0 z-10 transition-all duration-200 ',
+        'bg-transparent inset-x-0 top-0 z-50 transition-all duration-200 ',
         isSticky ? 'fixed bg-white shadow-lg' : 'absolute',
       )}
     >
@@ -122,7 +122,7 @@ export function HeaderSection() {
                             'text-white border-b-slate-400',
                           'peer hover:[&+div]:block max-w-[395px]',
                         )}
-                        key={href}
+                        key={`${href}-${text}`}
                         to={href}
                         onClick={(event) => {
                           if (href === '#') {
@@ -145,6 +145,7 @@ export function HeaderSection() {
                           'flex justify-between items-center md:block rounded-none text-sm box-border pt-2 pb-1 md:pt-4 md:pb-2 xs:text-[32px] md:text-[40px] leading-8 text-white border-b border-b-transparent hover:border-b-slate-400 ',
                           'peer hover:[&+div]:block max-w-[395px]',
                         )}
+                        key={`${href}-${text}`}
                       >
                         {text}
                         {items && items.length ? (
@@ -166,7 +167,7 @@ export function HeaderSection() {
                                 isMenuItemActive(href) &&
                                   'text-white border-b-slate-400',
                               )}
-                              key={href}
+                              key={`${href}-${text}`}
                               to={href}
                               onClick={() => {
                                 setMobileMenuOpen(false);
@@ -179,6 +180,7 @@ export function HeaderSection() {
                               className={clsx(
                                 'block rounded-none box-border pt-2 pb-1 text-xs md:pt-4 md:pb-2 xs:text-2xl md:text-[32px] leading-7 text-white border-b border-b-transparent hover:border-b-slate-400 max-w-[395px]',
                               )}
+                              key={`${href}-${text}`}
                             >
                               {text}
                             </span>

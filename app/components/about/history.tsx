@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import Heading from '../common/heading';
 import {Text} from '../Text';
+import history from '~/assets/images/image_about_history.png';
 
 interface HistoryProps {
   className?: string;
@@ -14,7 +15,7 @@ const History: React.FC<HistoryProps> = ({className = ''}) => {
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-12 md:col-span-5">
             <img
-              src="https://cdn.shopify.com/s/files/1/0816/1971/4346/files/image_about_history.png?v=1695266697"
+              src={history}
               alt="History"
               width={500}
               height={870}
