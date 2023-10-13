@@ -11,7 +11,6 @@ import {validateFormValues} from '~/validation';
 import {useRef, useState} from 'react';
 import {FormApi} from 'final-form';
 import ReCAPTCHA from 'react-google-recaptcha';
-import {SITE_RECAPTCHA_KEY} from '~/lib/const';
 import {useTranslation} from 'react-i18next';
 import {useRootContext} from '~/hooks/useRootContext';
 
