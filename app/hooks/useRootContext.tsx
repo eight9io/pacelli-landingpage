@@ -1,7 +1,11 @@
 import {createContext, useContext} from 'react';
 
-export const RootContext = createContext({
+interface RootContextProps {
+  ENV: any;
+}
+const initContextValue: RootContextProps = {
   ENV: {},
-});
+};
+export const RootContext = createContext(initContextValue);
 
 export const useRootContext = () => useContext(RootContext);

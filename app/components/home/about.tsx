@@ -37,7 +37,7 @@ const About: React.FC<AboutProps> = ({className = ''}) => {
             </div>
             <hr className="md:w-[calc(100%-32px)]" />
             <div className="md:w-3/4">
-              <h3 className="text-secondary text-[32px] md:text-[40px] font-semibold flex items-center">
+              <h3 className="text-secondary mt-9 text-[32px] md:text-[40px] font-semibold flex items-center">
                 <img
                   src={handshake}
                   alt="Mission"
@@ -55,7 +55,7 @@ const About: React.FC<AboutProps> = ({className = ''}) => {
             </div>
             <hr className="md:w-[calc(100%-32px)]" />
             <div className="md:w-[56%]">
-              <h3 className="text-secondary text-[32px] md:text-[40px] font-semibold flex items-center">
+              <h3 className="text-secondary mt-9 text-[32px] md:text-[40px] font-semibold flex items-center">
                 <img
                   src={star}
                   alt="Mission"
