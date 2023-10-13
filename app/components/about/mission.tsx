@@ -38,7 +38,7 @@ const Mission: React.FC<MissionProps> = ({className = ''}) => {
         </div>
         <div className="col-span-12 md:col-span-6 md:order-0">
           <img
-            src="https://cdn.shopify.com/s/files/1/0816/1971/4346/files/image_home_about_3eeb2b7e-dd39-4162-b554-b16526eaef49.png"
+            src="https://cdn.shopify.com/s/files/1/0816/1971/4346/files/image_home_about_3.png"
             alt="Mission"
             width={500}
             height={640}
