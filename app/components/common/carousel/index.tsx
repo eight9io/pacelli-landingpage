@@ -1,15 +1,15 @@
 'use client';
 /* eslint-disable */
 import clsx from 'clsx';
-import { useCallback, useRef, useState } from 'react';
-import { useDebounce } from 'usehooks-ts';
-import { Button } from '~/components/Button';
+import {useCallback, useRef, useState} from 'react';
+import {useDebounce} from 'usehooks-ts';
+import {Button} from '~/components/Button';
 import ArrowLeft from '~/components/common/icons/arrow-slide-left';
 import ArrowRight from '~/components/common/icons/arrow-slide-right';
 interface CarouselProps {
   className?: string;
   data?: any[];
-  positionArrow?: 'center' | 'bottom'
+  positionArrow?: 'center' | 'bottom';
   renderItem?: (
     item?: any,
     index?: number,
@@ -30,7 +30,7 @@ const Carousel: React.FC<CarouselProps> = ({
   renderItem,
   renderIndicator,
   indicatorClassName = '',
-  positionArrow
+  positionArrow,
 }) => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -58,7 +58,6 @@ const Carousel: React.FC<CarouselProps> = ({
         left: 0,
         behavior: 'smooth',
       });
-
     }
   };
   const handlePrev = () => {
@@ -66,14 +65,13 @@ const Carousel: React.FC<CarouselProps> = ({
       carouselRef.current.scroll({
         left: carouselRef.current.scrollLeft - carouselRef.current.clientWidth,
         behavior: 'smooth',
-      })
+      });
     } else if (carouselRef.current && currentIndex == 0) {
       carouselRef.current.scroll({
         left: carouselRef.current.scrollWidth - carouselRef.current.clientWidth,
         behavior: 'smooth',
-      })
+      });
     }
-
   };
   const defaultRenderIndicator: (
     item?: any,
@@ -156,11 +154,9 @@ const Carousel: React.FC<CarouselProps> = ({
             <Button
               className={clsx(
                 'rounded-sm uppercase mt-6 bg-neutral-100 p-2 ml-4',
-
               )}
               size="md"
               onClick={handlePrev}
-
             >
               <ArrowLeft className="fill-[#9CA3AF] " />
             </Button>
@@ -172,36 +168,34 @@ const Carousel: React.FC<CarouselProps> = ({
               )}
               size="md"
               onClick={handleNext}
-
             >
               <ArrowRight className="fill-[#9CA3AF] " />
             </Button>
           </div>
         </>
       )}
-      {positionArrow == 'bottom' && <div className="flex  gap-8 absolute   base-container md:bottom-0 w-auto  right-10 md:left-0 bottom-3">
-        <Button
-          className={clsx(
-            'rounded-sm uppercase mt-6 bg-[#e6e7eb] p-4 hover:bg-neutral-300 transition-all duration-300',
-
-          )}
-          size="md"
-          onClick={handlePrev}
-        >
-          <ArrowLeft className="fill-[#9CA3AF] " />
-        </Button>
-        <Button
-          className={clsx(
-            'rounded-sm uppercase mt-6 bg-[#e6e7eb] p-4 hover:bg-neutral-300 transition-all duration-300',
-
-          )}
-          size="md"
-          onClick={handleNext}
-
-        >
-          <ArrowRight className="fill-[#9CA3AF] " />
-        </Button>
-      </div>}
+      {positionArrow == 'bottom' && (
+        <div className="flex  gap-8 absolute   base-container md:bottom-0 w-auto  right-10 md:left-0 bottom-3">
+          <Button
+            className={clsx(
+              'rounded-sm uppercase mt-6 bg-[#e6e7eb] p-4 hover:bg-neutral-300 transition-all duration-300',
+            )}
+            size="md"
+            onClick={handlePrev}
+          >
+            <ArrowLeft className="fill-[#9CA3AF] " />
+          </Button>
+          <Button
+            className={clsx(
+              'rounded-sm uppercase mt-6 bg-[#e6e7eb] p-4 hover:bg-neutral-300 transition-all duration-300',
+            )}
+            size="md"
+            onClick={handleNext}
+          >
+            <ArrowRight className="fill-[#9CA3AF] " />
+          </Button>
+        </div>
+      )}
     </>
   );
 };
