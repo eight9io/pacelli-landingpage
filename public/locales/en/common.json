@@ -35,5 +35,18 @@
     "collections": "Collections",
     "contact_us": "Contact us"
   },
-  "language": "Language"
+  "language": "Language",
+  "validate": {
+    "required": "{{label}} is required",
+    "email": "Please enter a valid email address",
+    "phone": "Please enter a valid phone number",
+    "name": "Please enter a valid name",
+    "message": "Please enter a valid message"
+  },
+  "form": {
+    "email": {
+      "label": "Email",
+      "placeholder": "Enter your email"
+    }
+  }
 }

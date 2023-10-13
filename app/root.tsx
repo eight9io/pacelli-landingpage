@@ -32,6 +32,7 @@ import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
 import {useAnalytics} from './hooks/useAnalytics';
 import {useChangeLanguage} from 'remix-i18next';
 import {LAYOUT_QUERY} from './graphql/common';
+import {RootContext} from './hooks/useRootContext';
 
 // This is important to avoid re-fetching root queries on sub-navigations
 export const shouldRevalidate: ShouldRevalidateFunction = ({
@@ -68,7 +69,7 @@ export const links: LinksFunction = () => {
 };
 
 export async function loader({request, context}: LoaderArgs) {
-  const {session, storefront, cart} = context;
+  const {session, storefront, cart, env} = context;
   const [customerAccessToken, layout] = await Promise.all([
     session.get('customerAccessToken'),
     getLayoutData(context),
@@ -86,12 +87,13 @@ export async function loader({request, context}: LoaderArgs) {
       shopId: layout.shop.id,
     },
     seo,
+    ENV: env,
   });
 }
 export const handle = {
   // In the handle export, we could add a i18n key with namespaces our route
   // will need to load. This key can be a single string or an array of strings.
-  i18n: ['common', 'home'],
+  i18n: ['common', 'home', 'header'],
 };
 
 export default function App() {
@@ -118,12 +120,18 @@ export default function App() {
         <Links />
       </head>
       <body className="bg-white">
-        <Layout key={`${locale.language}-${locale.country}`}>
-          <Outlet />
-        </Layout>
-        <ScrollRestoration nonce={nonce} />
-        <Scripts nonce={nonce} />
-        <LiveReload nonce={nonce} />
+        <RootContext.Provider
+          value={{
+            ENV: data.ENV,
+          }}
+        >
+          <Layout key={`${locale.language}-${locale.country}`}>
+            <Outlet />
+          </Layout>
+          <ScrollRestoration nonce={nonce} />
+          <Scripts nonce={nonce} />
+          <LiveReload nonce={nonce} />
+        </RootContext.Provider>
       </body>
     </html>
   );

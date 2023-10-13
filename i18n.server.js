@@ -12,6 +12,7 @@ export default new RemixI18Next({
     // This is the language you want to use in case the user language is not
     // listed above
     fallbackLanguage: i18nextOptions.fallbackLng,
+    lng: 'it',
   },
   // This is the configuration for i18next used when translating messages server
   // side only

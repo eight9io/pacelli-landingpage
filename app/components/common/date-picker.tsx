@@ -111,6 +111,7 @@ const DatePicker: React.FC<DatePickerProp> = ({
               </div>
             }
             startDate={startDate}
+            minDate={new Date()}
             popperClassName="some-custom-class"
             popperModifiers={[
               {

@@ -4,12 +4,19 @@ import isbot from 'isbot';
 import { renderToReadableStream, renderToString } from 'react-dom/server';
 import { createContentSecurityPolicy } from '@shopify/hydrogen';
 
+<<<<<<< HEAD
 import { createInstance } from 'i18next';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
 import Backend from 'i18next-fs-backend';
 import { resolve } from 'path';
+=======
+import {createInstance} from 'i18next';
+import {I18nextProvider, initReactI18next} from 'react-i18next';
+>>>>>>> f090d6120ff954a2a42537fd3fe2b60142323a34
 import i18nextOptions from '../i18nextOptions';
 import i18n from '../i18n.server';
+import resourcesToBackend from 'i18next-resources-to-backend';
+import { resources } from '~/lib/locale.resources';
 
 export default async function handleRequest(
   request: Request,
@@ -24,14 +31,16 @@ export default async function handleRequest(
 
   await instance
     .use(initReactI18next) // Tell our instance to use react-i18next
-    .use(Backend) // Setup our backend.init({
+
+    .use(resourcesToBackend(resources))
+    // .use(Backend) // Setup our backend.init({
     .init({
       ...i18nextOptions, // use the same configuration as in your client side.
       lng, // The locale we detected above
       ns, // The namespaces the routes about to render want to use
-      backend: {
-        loadPath: resolve('../public/locales/{{lng}}/{{ns}}.json'),
-      },
+      // backend: {
+      //   loadPath: resolve('../public/locales/{{lng}}/{{ns}}.json'),
+      // },
     });
 
   // App
@@ -48,7 +57,14 @@ export default async function handleRequest(
       "'self'",
       'https://cdn.shopify.com',
 
-    ]
+    ],
+    scriptSrc: [
+      "'self'",
+      'https://cdn.shopify.com',
+      'https://shopify.com',
+      'https://www.google.com/recaptcha/',
+      'https://www.gstatic.com/recaptcha/',
+    ],
   });
   const body = await renderToReadableStream(
     <NonceProvider>
@@ -73,6 +89,7 @@ export default async function handleRequest(
 
   responseHeaders.set('Content-Type', 'text/html');
   responseHeaders.set('Content-Security-Policy', header);
+  console.log('header', header);
   return new Response(body, {
     headers: responseHeaders,
     status: responseStatusCode,
