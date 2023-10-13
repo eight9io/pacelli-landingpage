@@ -3,6 +3,7 @@ import bullhorm from '~/assets/icons/icon_home_about_1.svg';
 import clsx from 'clsx';
 import handshake from '~/assets/icons/icon_home_about_2.svg';
 import star from '~/assets/icons/icon_home_about_3.svg';
+import about_image from '~/assets/images/image_home_about.png';
 
 interface AboutProps {
   className?: string;
@@ -73,9 +74,7 @@ const About: React.FC<AboutProps> = ({className = ''}) => {
           </div>
           <div className="col-span-12 md:col-span-5 md:mb-[120px]">
             <img
-              src={
-                'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/image_home_about_3eeb2b7e-dd39-4162-b554-b16526eaef49.png?v=1695108927'
-              }
+              src={about_image}
               alt="About us"
               width={500}
               height={640}
