@@ -23,6 +23,7 @@ interface ProposalFormValidation {
 }
 const pdfLink =
   'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/pacelii.pdf';
+
 /* eslint-disable */
 const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
   const [submitted, setSubmitted] = useState(false);
@@ -82,17 +83,12 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
   };
 
   const handleDownloadPDF = () => {
-    fetch(pdfLink)
-      .then((response) => response.blob())
-      .then((blob) => {
-        const url = window.URL.createObjectURL(new Blob([blob]));
-        const linkTag = document.createElement('a');
-        linkTag.href = url;
-        linkTag.setAttribute('download', 'proposta.pdf');
-        document.body.appendChild(linkTag);
-        linkTag.click();
-        document.body.removeChild(linkTag);
-      });
+    const linkTag = document.createElement('a');
+    linkTag.href = pdfLink;
+    linkTag.setAttribute('download', 'proposta.pdf');
+    document.body.appendChild(linkTag);
+    linkTag.click();
+    document.body.removeChild(linkTag);
   };
 
   return (
