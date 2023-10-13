@@ -1,10 +1,10 @@
-import { Button } from '~/components/snippets';
-import { Field, Form } from 'react-final-form';
+import {Button} from '~/components/snippets';
+import {Field, Form} from 'react-final-form';
 import TextField from '~/components/common/textfield';
 import clsx from 'clsx';
-import { validateFormValues } from '~/validation';
+import {validateFormValues} from '~/validation';
 import Select from '../select';
-import { proposalValidate } from '~/validation/proposal';
+import {proposalValidate} from '~/validation/proposal';
 import Heading from '../heading';
 import ReCAPTCHA from 'react-google-recaptcha';
 import {useRef, useState} from 'react';
@@ -13,11 +13,8 @@ import {useRootContext} from '~/hooks/useRootContext';
 interface ProposalFormProps {
   className?: string;
 }
-const pdfLink = '/proposta.pdf'
+const pdfLink = '/proposta.pdf';
 /* eslint-disable */
-<<<<<<< HEAD
-const ProposalForm: React.FC<ProposalFormProps> = ({ className = '' }) => {
-=======
 const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -30,7 +27,6 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
 
   const {ENV} = useRootContext();
 
->>>>>>> f090d6120ff954a2a42537fd3fe2b60142323a34
   const onSubmit = (values: any, form: any) => {
     console.log('values', values);
     const recaptchaValue = recaptchaRef.current!.getValue();
@@ -74,7 +70,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
 
   const handleDownloadPDF = () => {
     const linkTag = document.createElement('a');
-    linkTag.href = pdfLink
+    linkTag.href = pdfLink;
     linkTag.setAttribute('download', 'proposta.pdf');
     document.body.appendChild(linkTag);
     linkTag.click();
@@ -87,7 +83,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
         onSubmit={onSubmit}
         validate={validateFormValues(proposalValidate)}
         validateOnBlur={false}
-        render={({ handleSubmit, values, form }) => {
+        render={({handleSubmit, values, form}) => {
           return (
             <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
               <Heading
@@ -98,7 +94,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
               </Heading>
               <div className="relative">
                 <Field name="occupation">
-                  {({ input, meta }) => (
+                  {({input, meta}) => (
                     <div className="pb-6">
                       <Select
                         value={values?.occupation}
@@ -177,11 +173,9 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
                 </span>
               )}
             </form>
-
           );
         }}
       ></Form>
-
     </div>
   );
 };
