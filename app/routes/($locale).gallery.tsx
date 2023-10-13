@@ -53,7 +53,6 @@ export default function Homepage() {
     <>
       <OwnProjects projects={projects} pageInfo={pageInfo} />
       <Booking />
-      <SocialProof />
     </>
   );
 }

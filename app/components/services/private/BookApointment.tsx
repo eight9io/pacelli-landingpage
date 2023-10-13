@@ -1,4 +1,6 @@
 import clsx from 'clsx';
+import {useState} from 'react';
+import BookingForm from '~/components/common/form/booking-form';
 import ThreeD from '~/components/common/icons/3d';
 import ArrowRight from '~/components/common/icons/arrow-right';
 import Car from '~/components/common/icons/car';
@@ -103,6 +105,22 @@ const arrMobileScreen = [
   },
 ];
 const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
+  const [openForm, setOpenForm] = useState(false);
+  const openPopup = () => {
+    setOpenForm(true);
+    document.body.style.overflow = 'hidden';
+    document.body.classList.add('lg:pr-[15px]');
+    var header = document.getElementById('nav-header');
+    if (header) header.classList.add('lg:pr-[47px]');
+  };
+
+  const closePopup = () => {
+    setOpenForm(false);
+    document.body.style.overflow = 'auto';
+    document.body.classList.remove('lg:pr-[15px]');
+    var header = document.getElementById('nav-header');
+    if (header) header.classList.remove('lg:pr-[47px]');
+  };
   return (
     <section className={clsx(className)}>
       <div className="base-container !pt-0  mt-[40px] mb-[120px]">
@@ -127,8 +145,8 @@ const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
             {arrLgScreen.slice(2, 4).map((item) => (
               <div
                 key={item.id}
-                className="border-neutral-50 border-[1px] w-max-[395px] overflow-hidden shadow-md space-y-4 p-8 px-4 md:px-8 
-                    
+                className="border-neutral-50 border-[1px] w-max-[395px] overflow-hidden shadow-md space-y-4 p-8 px-4 md:px-8
+
                     "
               >
                 {item.img}
@@ -162,8 +180,8 @@ const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
           {arrMobileScreen.map((item) => (
             <div
               key={item.id}
-              className="border-neutral-50 border-[1px] w-max-[395px] overflow-hidden shadow-md space-y-4 p-8 px-4 md:px-8 
-                    
+              className="border-neutral-50 border-[1px] w-max-[395px] overflow-hidden shadow-md space-y-4 p-8 px-4 md:px-8
+
                     "
             >
               {item.img}
@@ -179,11 +197,28 @@ const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
         <Button
           className="rounded-sm uppercase mt-8 flex gap-3 mx-auto"
           size="md"
+          onClick={openPopup}
         >
           Book appointment
           <ArrowRight className="text-secondary w-5 h-5 stroke-secondary origin-center stroke-2" />
         </Button>
       </div>
+      {openForm && (
+        <div
+          className={clsx(
+            'fixed  w-screen h-screen bg-[#57575799] top-0 left-0 z-20 flex justify-center items-center overflow-x-hidden  ',
+            openForm ? 'show-popup active' : 'hide-popup',
+          )}
+          onClick={closePopup}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="max-w-[608px] base-container z-50 absolute"
+          >
+            <BookingForm handleSubmitForm={closePopup} />
+          </div>
+        </div>
+      )}
     </section>
   );
 };

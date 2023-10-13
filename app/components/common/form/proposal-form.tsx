@@ -9,9 +9,17 @@ import Heading from '../heading';
 import ReCAPTCHA from 'react-google-recaptcha';
 import {useRef, useState} from 'react';
 import {useRootContext} from '~/hooks/useRootContext';
+import {FormApi} from 'final-form';
 
 interface ProposalFormProps {
   className?: string;
+}
+
+interface ProposalFormValidation {
+  name: string;
+  email: string;
+  phone: string;
+  occupation: string;
 }
 const pdfLink =
   'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/pacelii.pdf';
@@ -28,13 +36,17 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
 
   const {ENV} = useRootContext();
 
-  const onSubmit = (values: any, form: any) => {
+  const onSubmit = (
+    values: any,
+    form: FormApi<ProposalFormValidation, Partial<ProposalFormValidation>>,
+  ) => {
     console.log('values', values);
     const recaptchaValue = recaptchaRef.current!.getValue();
 
     const newData = {
       name: values.name,
       email: values.email,
+      phone: values.phone,
       reCaptcha: recaptchaValue,
     };
     if (!reCaptchaDone) return;
@@ -126,7 +138,14 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
                 )}
                 inputErrorClassName="focus:border-b-red-500"
               />
-
+              <TextField
+                name="phone"
+                label="Numero di telefono *"
+                inputClassName={clsx(
+                  'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent   focus:border-b-2',
+                )}
+                inputErrorClassName="focus:border-b-red-500"
+              />
               <TextField
                 name="email"
                 label="Email *"

@@ -38,7 +38,7 @@ const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
           className="mb-4 md:mb-8 text-[48px]  text-primary-950"
           variant="h3"
         >
-          Il nostro Tem di esperti
+          Il nostro Team di esperti
         </Heading>
         <div className="grid grid-cols-12 gap-5 lg:gap-8">
           <div className="col-span-12 md:col-span-4 space-y-8">
@@ -53,10 +53,7 @@ const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
             </p>
             <InfoContact />
           </div>
-          <div
-            className="col-span-12 md:col-span-4  flex flex-col
-     "
-          >
+          <div className="col-span-12 md:col-span-4 flex flex-col">
             <img
               src={showroom5}
               alt="Mission"
@@ -70,8 +67,9 @@ const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
             </h3>
 
             <p className="text-base font-normal leading-7 text-neutral-800 ">
-              Ciao, sono Bruno, interior desing di Pacelli. Disegnamo un
-              progetto 3D dei tuoi mobili!
+              Con il suo straordinario talento nel rendering 3D, offre ai nostri
+              clienti un'esperienza visiva unica trasportandoli nella realtà dei
+              loro ambienti.
             </p>
             <div className="w-full mt-auto">
               <Button
@@ -84,10 +82,7 @@ const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
               </Button>
             </div>
           </div>
-          <div
-            className="col-span-12 md:col-span-4  flex flex-col justify-center items-center
-         "
-          >
+          <div className="col-span-12 md:col-span-4 flex flex-col">
             <img
               src={showroom6}
               alt="Mission"
@@ -101,9 +96,8 @@ const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
             </h3>
 
             <p className="text-base font-normal leading-7 text-neutral-800">
-              Ciao, sono Ernesto, architetto di Pacelli. Nei nostri showroom
-              puoi vedere, toccare, provare mobili in varie configurazioni,
-              tessuti e colori.
+              Architetto di lunga data che ha contribuito in modo significativo
+              alla crescita e al successo di Pacelli Arredamenti.
             </p>
             <div className="w-full mt-auto">
               <Button
