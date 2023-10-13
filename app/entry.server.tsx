@@ -38,7 +38,7 @@ export default async function handleRequest(
 
   // App
   const {nonce, header, NonceProvider} = createContentSecurityPolicy({
-    frameSrc: ['https://www.google.com/'],
+    frameSrc: ['https://www.google.com/', 'https://www.youtube.com/'],
     defaultSrc: [
       "'self'",
       'https://cdn.shopify.com',
@@ -53,7 +53,8 @@ export default async function handleRequest(
       'https://shopify.com',
       'https://www.google.com/',
       'https://www.gstatic.com/',
-      'https://www.youtube.com/',
+      'https://www.youtube.com/iframe_api',
+      'https://www.youtube.com/s/player/99faf012/www-widgetapi.vflset/www-widgetapi.js',
     ],
   });
   const body = await renderToReadableStream(

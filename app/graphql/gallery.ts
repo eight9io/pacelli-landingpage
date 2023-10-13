@@ -13,7 +13,7 @@ export const PROJECT_DETAIL_QUERY = `#graphql
         value
         type 
         reference {
-          ... on MediaImage {
+            ... on MediaImage {
               image {
                 url
               }
