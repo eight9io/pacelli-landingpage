@@ -1,4 +1,5 @@
 'use client';
+/* eslint-disable */
 import clsx from 'clsx';
 import {useCallback, useRef, useState} from 'react';
 import {useDebounce} from 'usehooks-ts';
@@ -8,7 +9,7 @@ import ArrowRight from '~/components/common/icons/arrow-slide-right';
 interface CarouselProps {
   className?: string;
   data?: any[];
-  isShowArrow?: boolean;
+  positionArrow?: 'center' | 'bottom';
   renderItem?: (
     item?: any,
     index?: number,
@@ -29,10 +30,11 @@ const Carousel: React.FC<CarouselProps> = ({
   renderItem,
   renderIndicator,
   indicatorClassName = '',
-  isShowArrow = false,
+  positionArrow,
 }) => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+
   const debounceIndex = useDebounce(currentIndex, 20);
 
   const onIndicatorClick = (id: string, index = 0) => {
@@ -44,9 +46,16 @@ const Carousel: React.FC<CarouselProps> = ({
     }
   };
   const handleNext = () => {
+    console.log(1111, currentIndex);
+
     if (carouselRef.current && currentIndex < data.length - 1) {
       carouselRef.current.scroll({
-        left: carouselRef.current.scrollLeft + screen.width,
+        left: carouselRef.current.scrollLeft + carouselRef.current.clientWidth,
+        behavior: 'smooth',
+      });
+    } else if (carouselRef.current && currentIndex == data.length - 1) {
+      carouselRef.current.scroll({
+        left: 0,
         behavior: 'smooth',
       });
     }
@@ -54,7 +63,12 @@ const Carousel: React.FC<CarouselProps> = ({
   const handlePrev = () => {
     if (carouselRef.current && currentIndex > 0) {
       carouselRef.current.scroll({
-        left: carouselRef.current.scrollLeft - screen.width,
+        left: carouselRef.current.scrollLeft - carouselRef.current.clientWidth,
+        behavior: 'smooth',
+      });
+    } else if (carouselRef.current && currentIndex == 0) {
+      carouselRef.current.scroll({
+        left: carouselRef.current.scrollWidth - carouselRef.current.clientWidth,
         behavior: 'smooth',
       });
     }
@@ -119,7 +133,7 @@ const Carousel: React.FC<CarouselProps> = ({
       </div>
       <div
         className={clsx(
-          'absolute bottom-24 left-0 w-full z-50',
+          'absolute bottom-24 left-0 w-full z-50 ',
           indicatorClassName,
         )}
       >
@@ -134,18 +148,15 @@ const Carousel: React.FC<CarouselProps> = ({
           )}
         </div>
       </div>
-      {isShowArrow && (
+      {positionArrow == 'center' && (
         <>
           <div className="absolute top-1/2 hidden md:block">
             <Button
               className={clsx(
                 'rounded-sm uppercase mt-6 bg-neutral-100 p-2 ml-4',
-                currentIndex == 0 &&
-                  'bg-neutral-50 hover:bg-neutral-50 opacity-50',
               )}
               size="md"
               onClick={handlePrev}
-              disabled={currentIndex == 0}
             >
               <ArrowLeft className="fill-[#9CA3AF] " />
             </Button>
@@ -154,17 +165,36 @@ const Carousel: React.FC<CarouselProps> = ({
             <Button
               className={clsx(
                 'rounded-sm uppercase mt-6 bg-neutral-100 p-2 mr-4',
-                currentIndex == data.length - 1 &&
-                  'bg-neutral-50 hover:bg-neutral-50 opacity-50',
               )}
               size="md"
               onClick={handleNext}
-              disabled={currentIndex == data.length - 1}
             >
               <ArrowRight className="fill-[#9CA3AF] " />
             </Button>
           </div>
         </>
+      )}
+      {positionArrow == 'bottom' && (
+        <div className="flex  gap-8 absolute   base-container md:bottom-0 w-auto  right-10 md:left-0 bottom-3">
+          <Button
+            className={clsx(
+              'rounded-sm uppercase mt-6 bg-[#e6e7eb] p-4 hover:bg-neutral-300 transition-all duration-300',
+            )}
+            size="md"
+            onClick={handlePrev}
+          >
+            <ArrowLeft className="fill-[#9CA3AF] " />
+          </Button>
+          <Button
+            className={clsx(
+              'rounded-sm uppercase mt-6 bg-[#e6e7eb] p-4 hover:bg-neutral-300 transition-all duration-300',
+            )}
+            size="md"
+            onClick={handleNext}
+          >
+            <ArrowRight className="fill-[#9CA3AF] " />
+          </Button>
+        </div>
       )}
     </>
   );
