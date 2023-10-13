@@ -35,5 +35,33 @@
     "collections": "Collections",
     "contact_us": "Contact us"
   },
-  "language": "Language"
+  "language": "Language",
+  "validate": {
+    "required": "{{label}} is required",
+    "email": "Invalid email address",
+    "phone": "Invalid phone number",
+    "min": "{{label}} must be at least {{min}} characters",
+    "after_today": "{{label}} must be after today"
+  },
+  "form": {
+    "email": {
+      "label": "Email",
+      "placeholder": "Enter your email"
+    },
+    "name": {
+      "label": "Name"
+    },
+    "phone": {
+      "label": "Phone Number"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "time": {
+      "label": "Time"
+    },
+    "note": {
+      "label": "Note"
+    }
+  }
 }
