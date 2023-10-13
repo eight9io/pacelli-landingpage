@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import CarouselArrow from './carouselShowroom';
-import { Button } from '../Button';
+import {Button} from '../Button';
 import image1 from '~/assets/showroom/image-1.png';
 import image2 from '~/assets/showroom/image-2.png';
 import image3 from '~/assets/showroom/image-3.png';
@@ -85,4 +85,3 @@ const CarouselShowroom: React.FC<CarouselShowroomProps> = ({
 };
 
 export default CarouselShowroom;
-

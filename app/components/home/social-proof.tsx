@@ -12,14 +12,14 @@ interface SocialProofProps {
   className?: string;
 }
 
-const SocialProof: React.FC<SocialProofProps> = ({ className = '' }) => {
+const SocialProof: React.FC<SocialProofProps> = ({className = ''}) => {
   return (
     <section className={clsx('pt-[60px] bg-[#f5f6f7]', className)}>
       <Heading className="text-center">Cosa dicono di noi</Heading>
       <div className="px-0 relative">
         <div className="base-container">
           <Carousel
-            positionArrow='bottom'
+            positionArrow="bottom"
             className="relative "
             renderItem={(item, index) => (
               <div
