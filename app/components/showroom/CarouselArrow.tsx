@@ -34,14 +34,13 @@ const CarouselShowroom: React.FC<CarouselShowroomProps> = ({
 
   return (
     <section className={clsx('pt-[60px] base-container ', className)}>
-      <div className="px-0 relative">
+      <div className="relative  ">
         <CarouselArrow
-          // className="relative"
           renderItem={(item, index) => (
             <div
               id={item.id}
               key={item.id}
-              className="base-container px-0 carousel-item grid grid-cols-12 gap-y-6 md:gap-16 mb-16 overflow-hidden"
+              className=" px-0 carousel-item grid grid-cols-12 gap-y-6 md:gap-16 mb-16 overflow-hidden"
             >
               <div className="col-span-12 md:col-span-4 px-4 md:px-0">
                 <img
@@ -87,10 +86,3 @@ const CarouselShowroom: React.FC<CarouselShowroomProps> = ({
 };
 
 export default CarouselShowroom;
-
-interface SocialProofItemProps {
-  id: string;
-  image: string;
-  author: string;
-  quote: string;
-}

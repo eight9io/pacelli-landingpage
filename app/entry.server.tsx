@@ -46,8 +46,11 @@ export default async function handleRequest(
       'https://flowbite.s3.amazonaws.com/',
       'https://e9-cms.sgp1.digitaloceanspaces.com',
     ],
+    contentSrc: ["'self'", 'https://cdn.shopify.com'],
     scriptSrc: [
       "'self'",
+      'https://cdn.shopify.com',
+      'https://shopify.com',
       'https://www.google.com/',
       'https://www.gstatic.com/',
       'https://www.youtube.com/',
@@ -76,6 +79,7 @@ export default async function handleRequest(
 
   responseHeaders.set('Content-Type', 'text/html');
   responseHeaders.set('Content-Security-Policy', header);
+  console.log('header', header);
   return new Response(body, {
     headers: responseHeaders,
     status: responseStatusCode,
