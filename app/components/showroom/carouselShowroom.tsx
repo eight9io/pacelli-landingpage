@@ -29,15 +29,15 @@ const CarouselArrow: React.FC<CarouselProps> = ({data = []}) => {
     '🚀 ~ file: carouselShowroom.tsx:28 ~ currentSlide:',
     currentSlide,
   );
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     handleNext();
-  //   }, 5000);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, 5000);
 
-  //   return () => {
-  //     clearInterval(interval);
-  //   };
-  // }, [currentSlide]);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [currentSlide]);
 
   const handleNext = () => {
     setCurrentSlide((currentSlide + 1) % (data.length - 2));

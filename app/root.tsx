@@ -3,6 +3,7 @@ import {
   type LinksFunction,
   type LoaderArgs,
   type AppLoadContext,
+  redirect,
 } from '@shopify/remix-oxygen';
 import {
   isRouteErrorResponse,
@@ -21,6 +22,7 @@ import {ShopifySalesChannel, Seo, useNonce} from '@shopify/hydrogen';
 import invariant from 'tiny-invariant';
 
 import Layout from '~/components/layouts/default';
+import ComingSoonLayout from '~/components/layouts/coming-soon';
 import {seoPayload} from '~/lib/seo.server';
 
 import favicon from '../public/favicon.svg';
@@ -77,6 +79,10 @@ export async function loader({request, context}: LoaderArgs) {
 
   const seo = seoPayload.root({shop: layout.shop, url: request.url});
 
+  if (!request.url.endsWith('/coming-soon') && env.PUBLIC_IS_COMING_SOON) {
+    return redirect('/coming-soon');
+  }
+
   return defer({
     isLoggedIn: Boolean(customerAccessToken),
     layout,
@@ -125,9 +131,15 @@ export default function App() {
             ENV: data.ENV,
           }}
         >
-          <Layout key={`${locale.language}-${locale.country}`}>
-            <Outlet />
-          </Layout>
+          {data.ENV.PUBLIC_IS_COMING_SOON ? (
+            <ComingSoonLayout key={`${locale.language}-${locale.country}`}>
+              <Outlet />
+            </ComingSoonLayout>
+          ) : (
+            <Layout key={`${locale.language}-${locale.country}`}>
+              <Outlet />
+            </Layout>
+          )}
           <ScrollRestoration nonce={nonce} />
           <Scripts nonce={nonce} />
           <LiveReload nonce={nonce} />
