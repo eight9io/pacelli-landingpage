@@ -73,7 +73,7 @@ const CarouselShowroom: React.FC<CarouselShowroomProps> = ({
           )}
         />
       </div>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center mt-32">
         <ReactPlayer
           url="https://www.youtube.com/watch?v=LBzT3pllAAY"
           width={1030}
