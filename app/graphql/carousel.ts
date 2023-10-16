@@ -1,5 +1,5 @@
-export const CAROUSEL_QUERY = `#graphql
-  query CarouselQuery(
+export const HOME_CAROUSEL_QUERY = `#graphql
+  query HomeCarouselQuery(
     $language: LanguageCode,
     $handle: String!,
     $firstItems: Int = 10,
@@ -17,6 +17,7 @@ export const CAROUSEL_QUERY = `#graphql
           nodes {
             ... on Metaobject {
               handle
+              id
               fields {
                 key
                 value
