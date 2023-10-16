@@ -3,6 +3,7 @@ import Heading from '../common/heading';
 import icon1 from '~/assets/icons/icon_about_mission1.svg';
 import icon2 from '~/assets/icons/icon_about_mission2.svg';
 import icon3 from '~/assets/icons/icon_about_mission3.svg';
+import mission from '~/assets/about/mission.png';
 
 interface MissionProps {
   className?: string;
@@ -38,7 +39,7 @@ const Mission: React.FC<MissionProps> = ({className = ''}) => {
         </div>
         <div className="col-span-12 md:col-span-6 md:order-0">
           <img
-            src="https://cdn.shopify.com/s/files/1/0816/1971/4346/files/image_home_about_3.png"
+            src={mission}
             alt="Mission"
             width={500}
             height={640}
