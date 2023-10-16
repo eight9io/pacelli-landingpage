@@ -1,8 +1,8 @@
 'use client';
 /* eslint-disable */
 import clsx from 'clsx';
-import {UIEvent, useEffect, useRef, useState} from 'react';
-import {Button} from '~/components/Button';
+import { UIEvent, useEffect, useRef, useState } from 'react';
+import { Button } from '~/components/Button';
 import ArrowLeft from '~/components/common/icons/arrow-slide-left';
 import ArrowRight from '~/components/common/icons/arrow-slide-right';
 import Carousel from '../common/carousel';
@@ -23,42 +23,49 @@ interface CarouselProps {
   indicatorClassName?: string;
 }
 
-const CarouselArrow: React.FC<CarouselProps> = ({data = []}) => {
+const CarouselArrow: React.FC<CarouselProps> = ({ data = [] }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  console.log(
-    '🚀 ~ file: carouselShowroom.tsx:28 ~ currentSlide:',
-    currentSlide,
-  );
+  const carouselRef = useRef<HTMLImageElement>(null);
+  const [divWidth, setDivWidth] = useState(0);
+  const updateDivWidth = () => {
+    if (carouselRef.current) {
+      const width = carouselRef.current.offsetWidth;
+      setDivWidth(width + 15);
+    }
+  };
   useEffect(() => {
+    updateDivWidth();
+    window.addEventListener('resize', updateDivWidth);
     const interval = setInterval(() => {
       handleNext();
     }, 5000);
-
     return () => {
+      window.removeEventListener('resize', updateDivWidth);
       clearInterval(interval);
     };
-  }, [currentSlide]);
-
-  const handleNext = () => {
-    setCurrentSlide((currentSlide + 1) % (data.length - 2));
-  };
-
+  }, []);
   const handlePrev = () => {
     setCurrentSlide((currentSlide - 3 + data.length) % (data.length - 2));
   };
+  const handleNext = () => {
+    setCurrentSlide((currentSlide + 1) % (data.length - 2));
+  }
+
   return (
     <div className="relative ">
       <div className="carousel">
         <div
           className={clsx(
-            'whitespace-nowrap  align-top  space-x-4 transition-all duration-700 ease-in-out',
+            'whitespace-nowrap  align-top  space-x-4 transition-all duration-700 ease-in-out ',
           )}
           style={{
-            transform: `translateX(-${currentSlide * 410}px)`,
+            transform: `translateX(-${currentSlide * divWidth}px)`,
           }}
         >
           {data.map((item, index) => (
-            <div className="carousel-slide basis-auto grow-0 shrink-0 inline-block ">
+            <div className="carousel-slide basis-auto grow-0 shrink-0 inline-block "
+
+            >
               <img
                 key={index}
                 className="h-[540px]"
@@ -66,6 +73,7 @@ const CarouselArrow: React.FC<CarouselProps> = ({data = []}) => {
                 alt="Carousel"
                 width={395}
                 height={540}
+                ref={carouselRef}
               />
             </div>
           ))}
