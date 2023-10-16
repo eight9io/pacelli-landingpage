@@ -26,6 +26,7 @@ declare global {
     PUBLIC_MAIL_FROM: string;
     PUBLIC_PINNDED_ARTICLE_ID: string;
     PUBLIC_IS_COMING_SOON: string;
+    PUBLIC_HOME_CAROUSEL_HANDLE: string;
   }
 }
 

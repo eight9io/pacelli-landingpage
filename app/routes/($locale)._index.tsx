@@ -19,11 +19,13 @@ import invariant from 'tiny-invariant';
 export const headers = routeHeaders;
 
 const getHomeCarousel = async (context: AppLoadContext) => {
+  const {env} = context;
   const data = await context.storefront.query(HOME_CAROUSEL_QUERY, {
-    variables: {handle: 'home'},
+    variables: {handle: env.PUBLIC_HOME_CAROUSEL_HANDLE || 'home'},
   });
 
   invariant(data, 'No carousel data found');
+  invariant(data.metaobject, 'No carousel data found');
 
   return parseCarousel(data.metaobject);
 };
