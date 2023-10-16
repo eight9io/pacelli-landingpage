@@ -35,7 +35,7 @@ const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
     <section className={clsx('bg-white  py-[60px] md:py-[90px] ', className)}>
       <div className="base-container">
         <Heading
-          className="mb-4 md:mb-8 text-[48px]  text-primary-950"
+          className="mb-4 md:mb-8 text-[48px] text-primary-950"
           variant="h3"
         >
           Il nostro Team di esperti
@@ -115,7 +115,7 @@ const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
       {openForm && (
         <div
           className={clsx(
-            'fixed  w-screen h-screen bg-[#57575799] top-0 left-0 z-20 flex justify-center items-center overflow-x-hidden  ',
+            'fixed w-screen h-screen bg-[#57575799] top-8 md:top-16 left-0 z-20 flex justify-center items-center overflow-x-hidden',
             openForm ? 'show-popup active' : 'hide-popup',
           )}
           onClick={closePopup}

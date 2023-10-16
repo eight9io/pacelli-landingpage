@@ -111,7 +111,7 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
               )}
               inputErrorClassName="focus:border-b-red-500"
             />
-            <div className="grid grid-cols-12 gap-y-8 md:gap-y-8 mb-6">
+            <div className="grid grid-cols-12 gap-y-4 md:gap-y-8 md:gap-x-8 mb-6">
               <div className="col-span-12 md:col-span-6">
                 <DatePicker
                   id="date"
