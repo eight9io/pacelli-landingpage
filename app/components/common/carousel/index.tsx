@@ -1,9 +1,9 @@
 'use client';
 /* eslint-disable */
 import clsx from 'clsx';
-import {useCallback, useRef, useState} from 'react';
-import {useDebounce} from 'usehooks-ts';
-import {Button} from '~/components/Button';
+import { useCallback, useRef, useState } from 'react';
+import { useDebounce } from 'usehooks-ts';
+import { Button } from '~/components/Button';
 import ArrowLeft from '~/components/common/icons/arrow-slide-left';
 import ArrowRight from '~/components/common/icons/arrow-slide-right';
 interface CarouselProps {
@@ -46,8 +46,6 @@ const Carousel: React.FC<CarouselProps> = ({
     }
   };
   const handleNext = () => {
-    console.log(1111, currentIndex);
-
     if (carouselRef.current && currentIndex < data.length - 1) {
       carouselRef.current.scroll({
         left: carouselRef.current.scrollLeft + carouselRef.current.clientWidth,
@@ -90,11 +88,11 @@ const Carousel: React.FC<CarouselProps> = ({
         onClick={() =>
           onClick ? onClick(item.id, index) : onIndicatorClick(item.id, index)
         }
-        className="py-1 w-10 cursor-pointer"
+        className="py-1 w-10 cursor-pointer  "
       >
         <span
           className={clsx(
-            'h-0.5 inline-block w-8 md:w-10 cursor-pointer shadow',
+            'h-0.5 inline-block md:w-10  w-9 cursor-pointer shadow',
             active ? 'bg-white' : 'bg-gray-400',
           )}
         ></span>
@@ -133,7 +131,7 @@ const Carousel: React.FC<CarouselProps> = ({
       </div>
       <div
         className={clsx(
-          'absolute bottom-24 left-0 w-full z-40',
+          'absolute bottom-24 left-0  z-4',
           indicatorClassName,
         )}
       >
@@ -175,7 +173,7 @@ const Carousel: React.FC<CarouselProps> = ({
         </>
       )}
       {positionArrow == 'bottom' && (
-        <div className="flex  gap-8 absolute   base-container md:bottom-0 w-auto  right-10 md:left-0 bottom-3">
+        <div className="  gap-8 absolute   base-container md:bottom-0 w-auto  right-10 md:left-0 hidden md:flex">
           <Button
             className={clsx(
               'rounded-sm uppercase mt-6 bg-[#e6e7eb] p-4 hover:bg-neutral-300 transition-all duration-300',
