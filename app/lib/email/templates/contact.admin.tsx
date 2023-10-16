@@ -6,6 +6,7 @@ import {
   Text,
   Section,
   Row,
+  Img,
 } from '@react-email/components';
 
 interface ContactAdminTemplateProps {
@@ -18,6 +19,12 @@ export const ContactAdminTemplate = ({data}: ContactAdminTemplateProps) => {
       <Head />
       <Body style={style.main}>
         <Container style={style.container}>
+          <Img
+            src="https://cdn.shopify.com/s/files/1/0816/1971/4346/files/logo.png"
+            width="153"
+            height="48"
+            alt="Pacelli"
+          />
           <Section style={style.header}>
             You received a new message from your online store contact form.
           </Section>
