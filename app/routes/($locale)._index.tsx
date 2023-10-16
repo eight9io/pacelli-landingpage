@@ -1,4 +1,4 @@
-import {defer, type LoaderArgs} from '@shopify/remix-oxygen';
+import {AppLoadContext, defer, type LoaderArgs} from '@shopify/remix-oxygen';
 import {useLoaderData} from '@remix-run/react';
 import {AnalyticsPageType} from '@shopify/hydrogen';
 
@@ -12,8 +12,21 @@ import SocialProof from '~/components/home/social-proof';
 import About from '~/components/home/about';
 
 import {FEATURED_BLOG_QUERY} from '~/graphql/blogs';
+import {HOME_CAROUSEL_QUERY} from '~/graphql/carousel';
+import {parseCarousel} from '~/lib/shopify';
+import invariant from 'tiny-invariant';
 
 export const headers = routeHeaders;
+
+const getHomeCarousel = async (context: AppLoadContext) => {
+  const data = await context.storefront.query(HOME_CAROUSEL_QUERY, {
+    variables: {handle: 'home'},
+  });
+
+  invariant(data, 'No carousel data found');
+
+  return parseCarousel(data.metaobject);
+};
 
 export async function loader({params, context}: LoaderArgs) {
   const {language, country} = context.storefront.i18n;
@@ -30,6 +43,9 @@ export async function loader({params, context}: LoaderArgs) {
   const {articles} = await context.storefront.query(FEATURED_BLOG_QUERY, {
     variables: {first: 3},
   });
+
+  const carousels = await getHomeCarousel(context);
+
   const seo = seoPayload.home();
 
   return defer({
@@ -37,6 +53,7 @@ export async function loader({params, context}: LoaderArgs) {
     analytics: {
       pageType: AnalyticsPageType.home,
     },
+    carousels,
     seo,
   });
 }
