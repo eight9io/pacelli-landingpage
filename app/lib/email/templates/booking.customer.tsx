@@ -5,6 +5,7 @@ import {
   Html,
   Section,
   Text,
+  Img,
 } from '@react-email/components';
 
 interface BookingCustomerTemplateProps {
@@ -28,6 +29,12 @@ export const BookingCustomerTemplate = ({
       <Head />
       <Body style={style.main}>
         <Container style={style.container}>
+          <Img
+            src="https://cdn.shopify.com/s/files/1/0816/1971/4346/files/logo.png"
+            width="153"
+            height="48"
+            alt="Pacelli"
+          />
           <Section style={style.header}>
             <Text style={style.text}>
               Dear <span style={style.textBold}>{fullname}</span>,
