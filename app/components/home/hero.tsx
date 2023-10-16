@@ -3,6 +3,8 @@ import Link from '~/components/Link';
 import arrowRight from '~/assets/icons/arrow-right.svg';
 import clsx from 'clsx';
 import {useTranslation} from 'react-i18next';
+import {loader} from '~/routes/($locale)._index';
+import {useLoaderData} from '@remix-run/react';
 
 interface HeroProps {
   className?: string;
@@ -61,6 +63,7 @@ const mockData = [
 
 const Hero: React.FC<HeroProps> = ({className = ''}) => {
   const {t} = useTranslation('home');
+  const {carousels} = useLoaderData<typeof loader>();
 
   return (
     <section
@@ -73,35 +76,33 @@ const Hero: React.FC<HeroProps> = ({className = ''}) => {
         positionArrow="center"
         renderItem={(item, index) => (
           <div
-            id={item.id}
-            key={item.id}
+            id={item.hero}
+            key={item.hero}
             className="carousel-item w-full h-full relative "
           >
             <img
-              src={item.src}
+              src={item.hero}
               className="w-full object-cover bg-no-repeat object-center"
               alt={item.title}
             />
             <div className="absolute z-100 top-1/2 -translate-y-1/2 left-0 w-full">
-              <div className="base-container mx-auto text-secondary text-5xl md:text-[84px] font-bold md:whitespace-break-spaces leading-tight">
-                <h2 className="md:max-w-[820px]">
-                  {t(item.title)}
+              <div className="base-container md:px-0 mx-auto text-secondary text-5xl md:text-[84px] font-bold md:whitespace-break-spaces leading-tight">
+                <h2 className="md:max-w-[880px]">
+                  {item.title}
                   <br />
                   {item.subtitle ? (
-                    <span className="text-primary">
-                      {t([item.subtitle, ''])}
-                    </span>
+                    <span className="text-primary">{item.subtitle}</span>
                   ) : null}
                 </h2>
-                {item.desc ? (
+                {item.description ? (
                   <span className="block text-gray-900 font-normal text-base">
-                    {t([item.desc, ''])}
+                    {item.description}
                   </span>
                 ) : null}
-                {item.link && (
+                {item.learn_more_url && (
                   <Link
-                    to={item.link}
-                    className="btn bg-secondary rounded-none text-white hover:bg-secondary group  "
+                    to={item.learn_more_url}
+                    className="btn bg-secondary rounded-none text-white hover:bg-secondary group  border-none"
                   >
                     {t('home:hero.learn_more')}
                     <img
@@ -115,7 +116,7 @@ const Hero: React.FC<HeroProps> = ({className = ''}) => {
             </div>
           </div>
         )}
-        data={mockData}
+        data={carousels.carousel_items || []}
         indicatorClassName="bottom-8"
       />
     </section>
