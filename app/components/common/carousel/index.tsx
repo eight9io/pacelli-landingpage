@@ -94,7 +94,7 @@ const Carousel: React.FC<CarouselProps> = ({
       >
         <span
           className={clsx(
-            'h-0.5 inline-block w-10 cursor-pointer shadow',
+            'h-0.5 inline-block w-8 md:w-10 cursor-pointer shadow',
             active ? 'bg-white' : 'bg-gray-400',
           )}
         ></span>
