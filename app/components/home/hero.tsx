@@ -62,7 +62,7 @@ const mockData = [
 ];
 
 const Hero: React.FC<HeroProps> = ({className = ''}) => {
-  const {t} = useTranslation('home');
+  const {t, ready} = useTranslation('home');
   const {carousels} = useLoaderData<typeof loader>();
 
   return (
@@ -86,7 +86,7 @@ const Hero: React.FC<HeroProps> = ({className = ''}) => {
               alt={item.title}
             />
             <div className="absolute z-100 top-1/2 -translate-y-1/2 left-0 w-full">
-              <div className="base-container md:px-0 mx-auto text-secondary text-5xl md:text-[84px] font-bold md:whitespace-break-spaces leading-tight">
+              <div className="base-container md:px-0 mx-auto text-secondary text-5xl md:text-[64px] font-bold md:whitespace-break-spaces leading-tight">
                 <h2 className="md:max-w-[880px]">
                   {item.title}
                   <br />

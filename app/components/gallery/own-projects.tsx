@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import CardImg from '../CardImg';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import {useState} from 'react';
+import ProjectCard from './project-card';
+import {useTranslation} from 'react-i18next';
 interface ContactProps {
   className?: string;
   projects: any[];
@@ -9,37 +9,18 @@ interface ContactProps {
 }
 
 const OwnProjects: React.FC<ContactProps> = (props) => {
-  // const {t} = useTranslation('home');
-  // const [currentPage, setCurrentPage] = useState<number>(1);
-
-  // const totalProjects = projects.length;
-  // const lastProjectIndex = currentPage * PROJECTS_PER_PAGE;
-  // const firstProjectIndex = 0;
-
-  // let pages = [];
-  // const nextPage = () => {
-  //   if (currentPage === pages.length) return;
-
-  //   setCurrentPage(currentPage + 1);
-  // };
-
-  // if (totalProjects)
-  //   for (let i = 1; i <= Math.ceil(totalProjects / PROJECTS_PER_PAGE); i++) {
-  //     pages.push(i);
-  //   }
-
   const [projects, setProjects] = useState(props.projects);
   const [pageInfo, setPageInfo] = useState(props.pageInfo);
 
   const onLoadMore = async () => {
     const data = await fetch('/api/projects?after=' + pageInfo.endCursor);
-    const { projects: newProjects, pageInfo: newPageInfo } =
+    const {projects: newProjects, pageInfo: newPageInfo} =
       (await data.json()) as any;
     setProjects([...projects, ...newProjects]);
     setPageInfo(newPageInfo);
   };
 
-  const { t } = useTranslation('gallery');
+  const {t} = useTranslation('gallery');
 
   return (
     <section
@@ -54,10 +35,10 @@ const OwnProjects: React.FC<ContactProps> = (props) => {
       <div className="grid grid-cols-12 gap-y-8 lg:gap-8 mt-11">
         {projects && projects.length
           ? projects.map((item, index) => (
-            <div className="col-span-12 lg:col-span-6" key={item.id}>
-              <CardImg item={item} />
-            </div>
-          ))
+              <div className="col-span-12 lg:col-span-6" key={item.id}>
+                <ProjectCard item={item} />
+              </div>
+            ))
           : null}
       </div>
       {pageInfo.hasNextPage === true && (
