@@ -8,4 +8,7 @@ export const proposalValidate = yup.object({
   name: yup.string().min(2).required('Name is required'),
   phone: yup.string().matches(phoneRegExp).required('Phone is required'),
   occupation: yup.string().required('Occupation is required'),
+  reCaptcha: yup
+    .boolean()
+    .required('The terms and conditions must be accepted.'),
 });
