@@ -11,7 +11,7 @@ const HTMLContent: React.FC<HTMLContentProps> = ({
 }) => {
   return (
     <div
-      className={clsx('html-block max-w-[80ch]', className)}
+      className={clsx('html-block md:max-w-[80ch]', className)}
       dangerouslySetInnerHTML={{__html: htmlString}}
     ></div>
   );
