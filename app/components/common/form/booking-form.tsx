@@ -1,22 +1,23 @@
 'use client';
 
-import {Button} from '~/components/snippets';
+import { Button } from '~/components/snippets';
 import DatePicker from '../date-picker';
-import {Field, Form} from 'react-final-form';
+import { Field, Form } from 'react-final-form';
 import TextArea from '~/components/common/text-area';
 import TextField from '~/components/common/textfield';
 import clsx from 'clsx';
-import {bookingValidate} from '~/validation/booking';
-import {validateFormValues} from '~/validation';
-import {useRef, useState} from 'react';
-import {FormApi} from 'final-form';
+import { bookingValidate } from '~/validation/booking';
+import { validateFormValues } from '~/validation';
+import { useRef, useState } from 'react';
+import { FormApi } from 'final-form';
 import ReCAPTCHA from 'react-google-recaptcha';
-import {useTranslation} from 'react-i18next';
-import {useRootContext} from '~/hooks/useRootContext';
+import { useTranslation } from 'react-i18next';
+import { useRootContext } from '~/hooks/useRootContext';
 
 interface BookingFormProps {
   className?: string;
-  handleSubmitForm?: any;
+  handleClose?: () => void;
+  closeButton?: React.ReactNode;
 }
 interface BookingFormValidation {
   fullname: string;
@@ -27,7 +28,7 @@ interface BookingFormValidation {
   message?: string;
 }
 
-const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
+const BookingForm: React.FC<BookingFormProps> = ({ className = '', handleClose, closeButton }) => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
@@ -35,8 +36,8 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
   const onChange = (form: any) => {
     form.change('reCaptcha', true);
   };
-  const {t} = useTranslation('common');
-  const {ENV} = useRootContext();
+  const { t } = useTranslation('common');
+  const { ENV } = useRootContext();
 
   const onSubmit = (
     values: any,
@@ -70,6 +71,7 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
           form.resetFieldState(key);
         });
         recaptchaRef.current?.reset();
+        handleClose && handleClose();
       })
       .catch((err) => {
         console.log(err);
@@ -79,12 +81,13 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
   };
 
   return (
-    <div className={clsx('bg-gray-100 px-4 md:px-8 py-16 relative', className)}>
+    <div className={clsx('bg-gray-100 px-4 md:px-8  py-8 md:py-16 relative', className)}>
+      {closeButton && closeButton}
       <Form
         onSubmit={onSubmit}
         validate={validateFormValues(bookingValidate(t))}
         validateOnBlur={false}
-        render={({handleSubmit, form}) => (
+        render={({ handleSubmit, form }) => (
           <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
             <TextField
               name="fullname"
@@ -109,7 +112,7 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
               )}
               inputErrorClassName="focus:border-b-red-500"
             />
-            <div className="grid grid-cols-12 gap-y-4 md:gap-y-8 md:gap-x-8 mb-6">
+            <div className="grid grid-cols-12  md:gap-y-8 md:gap-x-8  md:mb-6">
               <div className="col-span-12 md:col-span-6">
                 <DatePicker
                   id="date"
@@ -120,7 +123,7 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
                   )}
                 />
               </div>
-              <div className="col-span-12 md:col-span-6">
+              <div className="col-span-12 md:col-span-6 ">
                 <DatePicker
                   id="time"
                   name="time"
@@ -138,13 +141,13 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
               label="Note"
               rows={1}
               inputClassName={clsx(
-                'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
+                'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2 ',
               )}
             />
 
             <div className="relative">
               <Field name="reCaptcha">
-                {({input, meta}) => (
+                {({ input, meta }) => (
                   <>
                     <ReCAPTCHA
                       onChange={() => onChange(form)}
@@ -163,7 +166,7 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
             </div>
 
             <Button
-              className="rounded-sm uppercase mt-4"
+              className="rounded-sm uppercase mt-8"
               size="md"
               disabled={loading || submitted}
             >

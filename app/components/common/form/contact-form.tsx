@@ -1,17 +1,18 @@
 'use client';
 
-import {Button} from '~/components/snippets';
+import { Button } from '~/components/snippets';
 import DatePicker from '../date-picker';
-import {Field, Form, useForm} from 'react-final-form';
+import { Field, Form, useForm } from 'react-final-form';
 import TextArea from '~/components/common/text-area';
 import TextField from '~/components/common/textfield';
 import clsx from 'clsx';
-import {contactValidate} from '~/validation/contact';
-import {validateFormValues} from '~/validation';
-import {useRef, useState} from 'react';
-import {FormApi} from 'final-form';
+import { contactValidate } from '~/validation/contact';
+import { validateFormValues } from '~/validation';
+import { useRef, useState } from 'react';
+import { FormApi } from 'final-form';
 import ReCAPTCHA from 'react-google-recaptcha';
-import {useRootContext} from '~/hooks/useRootContext';
+import { useRootContext } from '~/hooks/useRootContext';
+import { useTranslation } from 'react-i18next';
 
 interface ContactFormProps {
   className?: string;
@@ -23,15 +24,15 @@ interface ContactFormValidation {
   message?: string;
 }
 
-const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
+const ContactForm: React.FC<ContactFormProps> = ({ className = '' }) => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
-
+  const { t } = useTranslation('common');
   const onChange = (form: any) => {
     form.change('reCaptcha', true);
   };
-  const {ENV} = useRootContext();
+  const { ENV } = useRootContext();
   const onSubmit = (
     values: ContactFormValidation,
     form: FormApi<ContactFormValidation, Partial<ContactFormValidation>>,
@@ -49,7 +50,7 @@ const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
     fetch('/api/contact', {
       method: 'POST',
       mode: 'no-cors',
-      headers: {Accept: 'application/json', Authentication: recaptchaValue!},
+      headers: { Accept: 'application/json', Authentication: recaptchaValue! },
       body: JSON.stringify(newData),
     })
       .then(() => {
@@ -71,9 +72,9 @@ const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
     <div className={clsx('bg-gray-200 px-4 md:px-8 py-16 relative', className)}>
       <Form
         onSubmit={onSubmit}
-        validate={validateFormValues(contactValidate)}
+        validate={validateFormValues(contactValidate(t))}
         validateOnBlur={false}
-        render={({handleSubmit, submitting, form}) => (
+        render={({ handleSubmit, submitting, form }) => (
           <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
             <TextField
               name="fullname"
@@ -103,7 +104,7 @@ const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
 
             <div className="relative mb-6">
               <Field name="reCaptcha">
-                {({input, meta}) => (
+                {({ input, meta }) => (
                   <>
                     <ReCAPTCHA
                       onChange={() => onChange(form)}
@@ -122,11 +123,11 @@ const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
             </div>
 
             <Button
-              className="rounded-sm uppercase"
+              className="rounded-sm uppercase mt-8"
               size="md"
               disabled={loading || submitted}
             >
-              send
+              {t("button.send")}
             </Button>
 
             {submitted && (
