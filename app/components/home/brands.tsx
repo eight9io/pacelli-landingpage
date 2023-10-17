@@ -39,6 +39,7 @@ import penta from '~/assets/brands/penta.png';
 import prandina from '~/assets/brands/prandina.png';
 import ronda_design from '~/assets/brands/ronda_design.png';
 import Heading from '../common/heading';
+import { useTranslation } from 'react-i18next';
 
 interface BrandsProps {
   className?: string;
@@ -49,6 +50,7 @@ const Brands: React.FC<BrandsProps> = ({
   className = '',
   showDescription = true,
 }) => {
+  const { t } = useTranslation('home');
   return (
     <section className={clsx(className)}>
       <div className="base-container !pt-0">
@@ -60,16 +62,10 @@ const Brands: React.FC<BrandsProps> = ({
             )}
           >
             <Heading className="mb-4 md:mb-6">
-              Insieme ai migliori Brands
+              {t('brand.title')}
             </Heading>
             <p className="text-gray-900 leading-7">
-              Siamo orgogliosi di affermare che le Aziende di cui siamo
-              rifornitori sono considerate le migliori nel mercato del mobile.
-              Aziende orientate alla ricerca di soluzioni moderne e creative e
-              attente ai cambiamenti del vivere la casa e l&apos;arredo. <br />
-              La qualità, l&apos;innovazione, l&apos;affidabilità e la
-              collaborazione sono i principi fondamentali su cui si basa la
-              nostra relazione con queste partner eccezionali.
+              {t('brand.subtitle')}
             </p>
           </div>
           <div
