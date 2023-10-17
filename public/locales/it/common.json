@@ -84,6 +84,10 @@
   },
   "button": {
     "download": "Download",
-    "learn_more": "Learn more"
+    "learn_more": "Learn more",
+    "read_more": "Read more",
+    "load_more": "Load more",
+    "all": "All",
+    "filter": "Filter"
   }
 }

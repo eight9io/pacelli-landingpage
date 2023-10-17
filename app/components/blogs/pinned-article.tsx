@@ -1,11 +1,11 @@
 import clsx from 'clsx';
 
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import Link from '~/components/Link';
 import arrowRight from '~/assets/icons/arrow-right.svg';
 import Heading from '../common/heading';
 import bg from '~/assets/images/image_blog_hero.png';
-import {Article} from '@shopify/hydrogen/storefront-api-types';
+import { Article } from '@shopify/hydrogen/storefront-api-types';
 import Tag from '../common/icons/tag';
 
 interface PinnedArticleProps {
@@ -17,7 +17,7 @@ const PinnedArticle: React.FC<PinnedArticleProps> = ({
   className = '',
   article,
 }) => {
-  const {t} = useTranslation('home');
+  const { t } = useTranslation('common');
 
   return (
     <>
@@ -43,11 +43,11 @@ const PinnedArticle: React.FC<PinnedArticleProps> = ({
                 to={`/blog/${article.blog.handle}/${article.handle}`}
                 className="btn bg-secondary rounded-none text-white hover:bg-secondary group border-none"
               >
-                Read more
+                {t('button.read_more')}
                 <img
                   className="group-hover:translate-x-1 duration-200"
                   src={arrowRight}
-                  alt={t('home:hero.learn_more')}
+                  alt={t('button.read_more')}
                 />
               </Link>
             </div>
