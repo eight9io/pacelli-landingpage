@@ -1,37 +1,37 @@
 {
   "plan": {
-    "title": "Stai pianificando qualcosa di speciale per la tua casa o per la tua nuova attività?",
-    "desc": "Prendi ora un appuntamento per una consulenza personalizzata gratuita e lascia che il nostro team di esperti ti assista nella trasformazione dei tuoi sogni in realtà. Siamo qui per rendere possibile ciò che desideri"
+    "title": "Are you planning something special for your home or new business?",
+    "desc": "Make an appointment now for a free personalized consultation and let our team of experts assist you in turning your dreams into reality. We are here to make what you want possible"
   },
   "before_after": {
-    "title": "Guarda la trasformazione: Prima e Dopo",
-    "desc": "Siamo entusiasti di mostrarti alcuni dei progetti che abbiamo realizzato, tutti personalizzati per soddisfare le esigenze dei nostri clienti. La trasformazione è incredibile, e siamo pronti a portare anche il tuo spazio al livello successivo. Contattaci ora per vedere come possiamo migliorare il tuo ambiente!"
+    "title": "Watch the transformation: Before and After",
+    "desc": "We're excited to show you some of the projects we've done, all customized to meet our clients' needs. The transformation is incredible, and we're ready to take your space to the next level, too. Contact us now to see how we can improve your environment!"
   },
   "arr_icon": {
     "item_1": {
-      "title": "Preventivo gratuito",
-      "desc": "Ricevi la tua consulenza personalizzata e ricevi un preventivo senza alcun costo."
+      "title": "Free quotation",
+      "desc": "Receive your personalized advice and receive a quote at no cost"
     },
     "item_2": {
-      "title": "Trasporto e montaggio",
-      "desc": "Offriamo servizi di trasporto e montaggio in Italia e all'estero, eseguiti dal nostro team altamente qualificato."
+      "title": "Transport and assembly",
+      "desc": "We offer transport and assembly services in Italy and abroad, performed by our highly qualified team"
     },
     "item_3": {
-      "title": "Progettazione 3D su misura",
-      "desc": "I nostri architetti sviluppano il tuo arredamento iniziando con un accurato rilievo delle misure e utilizzando le più avanzate tecnologie digitali. Grazie a strumenti all'avanguardia nel campo della digitalizzazione e della progettazione, ti offriamo l'opportunità di visualizzare in anteprima una rappresentazione estremamente realistica del tuo progetto."
+      "title": "Bespoke 3D design",
+      "desc": "Our architects develop your furniture starting with an accurate measurement of the measurements and using the most advanced digital technologies. Thanks to cutting-edge tools in the field of digitalization and design, we offer you the opportunity to preview an extremely realistic representation of your project"
     },
     "item_4": {
-      "title": "Promo speciali wedding",
-      "desc": "Abbiamo creato esclusivi pacchetti promozionali dedicati alle coppie di giovani sposi, offrendo loro l'opportunità di arredare i loro spazi con mobili e materiali di alta qualità a prezzi speciali e vantaggiosi."
+      "title": "Special wedding promos",
+      "desc": "We have created exclusive promotional packages dedicated to young married couples, offering them the opportunity to furnish their spaces with high quality furniture and materials at special and advantageous prices"
     },
     "item_5": {
-      "title": "Assistenza clienti",
-      "desc": "L'assistenza al cliente è da sempre la nostra priorità. Siamo al tuo fianco sin dalla fase iniziale della progettazione, durante la selezione dei tuoi arredi preferiti, durante l'installazione e anche nel periodo post-vendita. Il nostro impegno a supportarti è duraturo e costante."
+      "title": "Customer service",
+      "desc": "Customer service has always been our priority. We are by your side from the initial design phase, during the selection of your favorite furnishings, during installation and also in the after-sales period. Our commitment to supporting you is long-lasting and constant"
     },
     "item_6": {
-      "title": "Finanziamenti personalizzati",
-      "desc": "Offriamo finanziamenti personalizzabili per un acquisto senza preoccupazioni. Grazie a queste opzioni di finanziamento, potrai scegliere l'arredamento che più ami e pagarlo comodamente a rate."
+      "title": "Personalized financing",
+      "desc": "We offer customizable financing for a worry-free purchase. Thanks to these financing options, you will be able to choose the furniture you love most and pay for it comfortably in installments"
     }
   },
-  "book_appointment": "Book appointment"
+  "book_appointment": "Book an appointment"
 }

@@ -1,5 +1,4 @@
 {
-  "description": "This is a non-page component that requires its own namespace",
   "helpLocize": "With using <1>locize</1> you directly support the future of <3>i18next</3>.",
   "languageSwitcher": "Switch from <1>{{lng}}</1> to: ",
   "header": {
@@ -76,12 +75,12 @@
     },
     "phone": "Phone",
     "open": {
-      "label": "Address",
+      "label": "Open time",
       "Open": "Lunedì-Venerdì: 9:00 - 20:30 Sabato: 10:00 - 20:00"
     }
   },
   "proposal_form": {
-    "title": "Ricevere una proposta"
+    "title": "Receive a proposal"
   },
   "button": {
     "download": "Download",
