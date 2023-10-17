@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import CardImg from '../CardImg';
 import {useState} from 'react';
+import {useTranslation} from 'react-i18next';
 interface ContactProps {
   className?: string;
   projects: any[];
@@ -38,6 +39,8 @@ const OwnProjects: React.FC<ContactProps> = (props) => {
     setPageInfo(newPageInfo);
   };
 
+  const {t} = useTranslation('gallery');
+
   return (
     <section
       className={clsx(
@@ -46,9 +49,7 @@ const OwnProjects: React.FC<ContactProps> = (props) => {
       )}
     >
       <h2 className="text-[40px] md:text-[64px] font-semibold leading-[50px] md:leading-[78px] text-[#142423] lg:w-1/2">
-        Our projects <br />
-        100+ <br />
-        completed projects
+        {t('gallery:title')}
       </h2>
       <div className="grid grid-cols-12 gap-y-8 lg:gap-8 mt-11">
         {projects && projects.length
