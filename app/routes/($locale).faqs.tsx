@@ -150,3 +150,7 @@ const faqItems = [
     anwser: 'faqs:item4.answer',
   },
 ];
+
+export const handle = {
+  i18n: ['common', 'header', 'faqs'],
+};
