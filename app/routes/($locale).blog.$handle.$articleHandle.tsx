@@ -43,13 +43,13 @@ export default function BlogDetailPage() {
   const {article, blogs, latestArticles} = useLoaderData<typeof loader>();
 
   return (
-    <div className="mt-40 md:mb-32">
+    <div className="mt-12 md:mt-40 md:mb-32">
       <Image
         src={article.image?.url}
         {...article.image}
-        className="base-container max-h-[600px] object-cover"
+        className="base-container max-h-[600px] object-cover px-0"
       />
-      <div className="base-container grid grid-cols-12 gap-10">
+      <div className="md:base-container grid grid-cols-12 px-4 gap-y-10 md:gap-10">
         <div className="col-span-12 md:col-span-9">
           <ArticleContent article={article} />
         </div>
