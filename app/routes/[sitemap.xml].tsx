@@ -44,59 +44,59 @@ function xmlEncode(string: string) {
 }
 
 function shopSitemap({data, baseUrl}: {data: SitemapsQuery; baseUrl: string}) {
-  const productsData = flattenConnection(data.products)
-    .filter((product) => product.onlineStoreUrl)
-    .map((product) => {
-      const url = `${baseUrl}/products/${xmlEncode(product.handle)}`;
+  // const productsData = flattenConnection(data.products)
+  //   .filter((product) => product.onlineStoreUrl)
+  //   .map((product) => {
+  //     const url = `${baseUrl}/products/${xmlEncode(product.handle)}`;
 
-      const finalObject: ProductEntry = {
-        url,
-        lastMod: product.updatedAt,
-        changeFreq: 'daily',
-      };
+  //     const finalObject: ProductEntry = {
+  //       url,
+  //       lastMod: product.updatedAt,
+  //       changeFreq: 'daily',
+  //     };
 
-      if (product.featuredImage?.url) {
-        finalObject.image = {
-          url: xmlEncode(product.featuredImage.url),
-        };
+  //     if (product.featuredImage?.url) {
+  //       finalObject.image = {
+  //         url: xmlEncode(product.featuredImage.url),
+  //       };
 
-        if (product.title) {
-          finalObject.image.title = xmlEncode(product.title);
-        }
+  //       if (product.title) {
+  //         finalObject.image.title = xmlEncode(product.title);
+  //       }
 
-        if (product.featuredImage.altText) {
-          finalObject.image.caption = xmlEncode(product.featuredImage.altText);
-        }
-      }
+  //       if (product.featuredImage.altText) {
+  //         finalObject.image.caption = xmlEncode(product.featuredImage.altText);
+  //       }
+  //     }
 
-      return finalObject;
-    });
+  //     return finalObject;
+  //   });
 
-  const collectionsData = flattenConnection(data.collections)
-    .filter((collection) => collection.onlineStoreUrl)
-    .map((collection) => {
-      const url = `${baseUrl}/collections/${collection.handle}`;
+  // const collectionsData = flattenConnection(data.collections)
+  //   .filter((collection) => collection.onlineStoreUrl)
+  //   .map((collection) => {
+  //     const url = `${baseUrl}/collections/${collection.handle}`;
 
-      return {
-        url,
-        lastMod: collection.updatedAt,
-        changeFreq: 'daily',
-      };
-    });
+  //     return {
+  //       url,
+  //       lastMod: collection.updatedAt,
+  //       changeFreq: 'daily',
+  //     };
+  //   });
 
   const pagesData = flattenConnection(data.pages)
-    .filter((page) => page.onlineStoreUrl)
-    .map((page) => {
+    .filter((page: any) => page.onlineStoreUrl)
+    .map((page: any) => {
       const url = `${baseUrl}/pages/${page.handle}`;
 
       return {
         url,
         lastMod: page.updatedAt,
-        changeFreq: 'weekly',
+        changeFreq: 'daily',
       };
     });
 
-  const urlsDatas = [...productsData, ...collectionsData, ...pagesData];
+  const urlsDatas = [...pagesData];
 
   return `
     <urlset

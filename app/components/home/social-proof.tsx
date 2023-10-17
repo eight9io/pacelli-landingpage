@@ -34,7 +34,7 @@ const SocialProof: React.FC<SocialProofProps> = ({className = ''}) => {
               >
                 <div className="col-span-12 md:col-span-8 px-4 md:px-0">
                   <img
-                    className="h-[400px]"
+                    className="h-[400px] object-cover object-center"
                     src={item.image}
                     alt={item.author}
                     width={754}

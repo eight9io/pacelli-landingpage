@@ -46,7 +46,7 @@ export default async function handleRequest(
       'https://flowbite.s3.amazonaws.com/',
       'https://e9-cms.sgp1.digitaloceanspaces.com',
     ],
-    contentSrc: ["'self'", 'https://cdn.shopify.com'],
+    // contentSrc: ["'self'", 'https://cdn.shopify.com', 'https://shopify.com'],
     scriptSrc: [
       "'self'",
       'https://cdn.shopify.com',
