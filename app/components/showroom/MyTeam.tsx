@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import Heading from '~/components/common/heading';
 import showroom6 from '~/assets/showroom/showroom6.png';
 import showroom5 from '~/assets/showroom/showroom5.png';
-
+import { XMarkIcon } from '@heroicons/react/24/outline';
 import { Button } from '~/components/snippets';
 /* eslint-disable */
 import ArrowRight from '~/components/common/icons/arrow-right';
@@ -111,16 +111,20 @@ const MyTeam: React.FC<MyTeamProps> = ({ className = '' }) => {
       {openForm && (
         <div
           className={clsx(
-            'fixed w-screen h-screen bg-[#57575799] top-8 md:top-16 left-0 z-20 flex justify-center items-center overflow-x-hidden',
+            'fixed  w-screen h-screen bg-[#57575799] top-0 left-0 z-[100] flex justify-center items-center overflow-x-hidden  ',
             openForm ? 'show-popup active' : 'hide-popup',
           )}
           onClick={closePopup}
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="max-w-[608px] base-container z-50 absolute"
+            className="md:scale-[0.85] max-w-[608px] base-container z-50 absolute"
           >
-            <BookingForm handleSubmitForm={closePopup} />
+            <BookingForm handleClose={closePopup} closeButton={
+              <XMarkIcon stroke="gray" className="h-8 w-8  absolute top-5 right-5 cursor-pointer hover:scale-125 transition-all duration-300 z-[100]" aria-hidden="true"
+                onClick={closePopup}
+              />
+            } />
           </div>
         </div>
       )}

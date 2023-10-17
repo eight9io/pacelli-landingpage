@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import {Field, FieldProps, FieldRenderProps} from 'react-final-form';
+import { Field, FieldProps, FieldRenderProps } from 'react-final-form';
 
 interface TextFieldProp {
   className?: string;
@@ -20,11 +20,11 @@ const TextField: React.FC<TextFieldProp> = ({
 }) => {
   return (
     <Field name={name} validateFields={[]} validate={validate}>
-      {({input, meta}) => {
+      {({ input, meta }) => {
         return (
           <label
             htmlFor={`id-${name}`}
-            className={clsx('group relative pb-6  ', className)}
+            className={clsx('group relative pb-3 md:pb-6  ', className)}
           >
             <input
               id={`id-${name}`}
@@ -33,8 +33,8 @@ const TextField: React.FC<TextFieldProp> = ({
               className={clsx(
                 'border-gray-400  input focus:outline-offset-0 focus:outline-w-[1px] focus:outline-1 rounded-sm input-primary w-full focus:ring-transparent placeholder:text-primary-950',
                 meta.error &&
-                  meta.touched &&
-                  'focus:outline-red-500 border-red-500',
+                meta.touched &&
+                'focus:outline-red-500 border-red-500',
                 meta.error && meta.touched && inputErrorClassName,
                 inputClassName,
               )}
@@ -42,7 +42,7 @@ const TextField: React.FC<TextFieldProp> = ({
             />
             <span className="hidden group-focus:block">{label}</span>
             {meta.error && meta.touched && (
-              <span className="text-red-500 text-sm absolute text-left mt-2 pl-2 left-1 bottom-0">
+              <span className="text-red-500 text-sm absolute text-left md:mt-2 pl-2 left-1  -bottom-3 md:bottom-0  ">
                 {meta.error}
               </span>
             )}
