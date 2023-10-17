@@ -37,11 +37,11 @@ export async function loader({params, context}: LoaderArgs) {
 export default function AboutPage() {
   return (
     <>
-      <Hero />
       <Mission />
       <Reason />
       <StrongPoint />
       <History />
+      <Hero />
     </>
   );
 }

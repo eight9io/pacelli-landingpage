@@ -21,44 +21,38 @@ const arrLgScreen = [
     id: 1,
     img: <Preventivo width={64} height={64} />,
     title: 'arr_icon.item_1.title',
-    description:
-      'arr_icon.item_1.desc',
+    description: 'arr_icon.item_1.desc',
   },
   {
     id: 2,
     img: <Car width={64} height={64} />,
     title: 'arr_icon.item_2.title',
-    description:
-      'arr_icon.item_2.desc',
+    description: 'arr_icon.item_2.desc',
   },
   {
     id: 3,
     img: <ThreeD width={64} height={64} />,
     title: 'arr_icon.item_3.title',
-    description:
-      "arr_icon.item_3.desc",
+    description: 'arr_icon.item_3.desc',
   },
   {
     id: 4,
     img: <Promo width={64} height={64} />,
     title: 'arr_icon.item_4.title',
-    description:
-      "arr_icon.item_4.desc",
+    description: 'arr_icon.item_4.desc',
   },
   {
     id: 5,
     img: <Headphone width={64} height={64} />,
     title: 'arr_icon.item_5.title',
-    description:
-      "arr_icon.item_5.desc",
+    description: 'arr_icon.item_5.desc',
   },
 
   {
     id: 6,
     img: <Pig width={64} height={64} />,
     title: 'arr_icon.item_6.title',
-    description: "arr_icon.item_6.desc"
-    ,
+    description: 'arr_icon.item_6.desc',
   },
 ];
 const arrMobileScreen = [
@@ -66,48 +60,42 @@ const arrMobileScreen = [
     id: 1,
     img: <Preventivo width={64} height={64} />,
     title: 'arr_icon.item_1.title',
-    description:
-      'arr_icon.item_1.desc',
+    description: 'arr_icon.item_1.desc',
   },
   {
     id: 3,
     img: <ThreeD width={64} height={64} />,
     title: 'arr_icon.item_3.title',
-    description:
-      'arr_icon.item_3.desc',
+    description: 'arr_icon.item_3.desc',
   },
   {
     id: 5,
     img: <Headphone width={64} height={64} />,
     title: 'arr_icon.item_5.title',
-    description:
-      'arr_icon.item_5.desc',
+    description: 'arr_icon.item_5.desc',
   },
   {
     id: 2,
     img: <Car width={64} height={64} />,
     title: 'arr_icon.item_2.title',
-    description:
-      'arr_icon.item_2.desc',
+    description: 'arr_icon.item_2.desc',
   },
 
   {
     id: 4,
     img: <Promo width={64} height={64} />,
     title: 'arr_icon.item_4.title',
-    description:
-      'arr_icon.item_4.desc',
+    description: 'arr_icon.item_4.desc',
   },
   {
     id: 6,
     img: <Pig width={64} height={64} />,
     title: 'arr_icon.item_6.title',
-    description:
-      'arr_icon.item_6.desc',
+    description: 'arr_icon.item_6.desc',
   },
 ];
 const BookAppointment: React.FC<BookAppointmentProps> = ({ className = '' }) => {
-  const { t } = useTranslation('private')
+  const { t } = useTranslation('private');
   const [openForm, setOpenForm] = useState(false);
   const openPopup = () => {
     setOpenForm(true);

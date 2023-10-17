@@ -8,7 +8,7 @@ import TextField from '~/components/common/textfield';
 import clsx from 'clsx';
 import { bookingValidate } from '~/validation/booking';
 import { validateFormValues } from '~/validation';
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { FormApi } from 'final-form';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useTranslation } from 'react-i18next';
@@ -170,7 +170,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className = '', handleClose, 
               size="md"
               disabled={loading || submitted}
             >
-              {t("button.send")}
+              {t('button.send')}
             </Button>
             {submitted && (
               <span className="mb-2 absolute top-6 flex justify-center items-start gap-1 md:gap-2 font-semibold text-sm">
@@ -196,7 +196,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className = '', handleClose, 
                     stroke="white"
                   ></path>
                 </svg>
-                {t("button.request_success")}
+                {t('button.request_success')}
               </span>
             )}
           </form>

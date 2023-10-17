@@ -76,8 +76,8 @@
     },
     "phone": "Phone",
     "open": {
-      "label": "Address",
-      "Open": "Lunedì-Venerdì: 9:00 - 20:30 Sabato: 10:00 - 20:00"
+      "label": "Open",
+      "open": "Lunedì-Venerdì: 9:00 - 20:30 Sabato: 10:00 - 20:00"
     }
   },
   "proposal_form": {
