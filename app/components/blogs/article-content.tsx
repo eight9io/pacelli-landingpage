@@ -49,12 +49,12 @@ const ArticleContent: React.FC<ArticleContentProps> = ({article}) => {
         </Heading>
         {article.excerptHtml ? (
           <HTMLContent
-            className="mb-6 text-gray-900"
+            className="w-full mb-6 text-gray-900"
             htmlString={article.excerptHtml}
           />
         ) : null}
         <HTMLContent
-          className="max-w-[80ch]"
+          className="w-full max-w-full !overflow-hidden"
           htmlString={article.contentHtml}
         />
       </article>

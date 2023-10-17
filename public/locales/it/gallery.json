@@ -1,5 +1,6 @@
 {
   "description": "This is a non-page component that requires its own namespace",
   "title": "Our projects 100+ completed projects",
-  "load_more": "Load more"
+  "load_more": "Load more",
+  "view_more": "View more"
 }
