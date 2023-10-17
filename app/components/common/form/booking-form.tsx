@@ -81,7 +81,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className = '', handleClose, 
   };
 
   return (
-    <div className={clsx('bg-gray-100 px-4 md:px-8 py-16 relative', className)}>
+    <div className={clsx('bg-gray-100 px-4 md:px-8  py-8 md:py-16 relative', className)}>
       {closeButton && closeButton}
       <Form
         onSubmit={onSubmit}
@@ -112,7 +112,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className = '', handleClose, 
               )}
               inputErrorClassName="focus:border-b-red-500"
             />
-            <div className="grid grid-cols-12 gap-y-4 md:gap-y-8 md:gap-x-8 mb-6">
+            <div className="grid grid-cols-12  md:gap-y-8 md:gap-x-8  md:mb-6">
               <div className="col-span-12 md:col-span-6">
                 <DatePicker
                   id="date"
@@ -123,7 +123,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className = '', handleClose, 
                   )}
                 />
               </div>
-              <div className="col-span-12 md:col-span-6">
+              <div className="col-span-12 md:col-span-6 ">
                 <DatePicker
                   id="time"
                   name="time"
@@ -141,7 +141,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className = '', handleClose, 
               label="Note"
               rows={1}
               inputClassName={clsx(
-                'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
+                'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2 ',
               )}
             />
 
