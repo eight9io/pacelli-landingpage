@@ -11,24 +11,27 @@ import CategoriesList from '~/components/blogs/categories-list';
 import LatestArticles from '~/components/blogs/latest-articles';
 
 import {Image} from '@shopify/hydrogen-react';
+import {cacheNoneInStaging} from '~/lib/utils';
 
 export const headers = routeHeaders;
 
-export async function loader({
-  request,
-  context: {storefront},
-  params,
-}: LoaderArgs) {
+export async function loader({request, context, params}: LoaderArgs) {
+  const {storefront} = context;
   const {handle, articleHandle} = params as {
     handle: string;
     articleHandle: string;
   };
 
-  const blogData = await storefront.query(BLOG_LIST_QUERY);
+  const blogData = await storefront.query(BLOG_LIST_QUERY, {
+    cache: cacheNoneInStaging(context),
+  });
   const blogArticleData = await storefront.query(BLOG_ARTICLE_DETAIL_QUERY, {
     variables: {handle, articleHandle},
+    cache: cacheNoneInStaging(context),
   });
-  const latestArticlesData = await storefront.query(FEATURED_BLOG_QUERY);
+  const latestArticlesData = await storefront.query(FEATURED_BLOG_QUERY, {
+    cache: cacheNoneInStaging(context),
+  });
 
   return {
     blogs: blogData?.blogs.nodes,
@@ -61,3 +64,7 @@ export default function BlogDetailPage() {
     </div>
   );
 }
+
+export const handle = {
+  i18n: ['common', 'header', 'blogs'],
+};

@@ -15,6 +15,7 @@ import {FEATURED_BLOG_QUERY} from '~/graphql/blogs';
 import {HOME_CAROUSEL_QUERY} from '~/graphql/carousel';
 import {parseCarousel} from '~/lib/shopify';
 import invariant from 'tiny-invariant';
+import {cacheNoneInStaging} from '~/lib/utils';
 
 export const headers = routeHeaders;
 
@@ -22,6 +23,7 @@ const getHomeCarousel = async (context: AppLoadContext) => {
   const {env} = context;
   const data = await context.storefront.query(HOME_CAROUSEL_QUERY, {
     variables: {handle: env.PUBLIC_HOME_CAROUSEL_HANDLE || 'home'},
+    cache: cacheNoneInStaging(context),
   });
 
   invariant(data, 'No carousel data found');
@@ -44,6 +46,7 @@ export async function loader({params, context}: LoaderArgs) {
 
   const {articles} = await context.storefront.query(FEATURED_BLOG_QUERY, {
     variables: {first: 3},
+    cache: cacheNoneInStaging(context),
   });
 
   const carousels = await getHomeCarousel(context);
@@ -74,3 +77,7 @@ export default function Homepage() {
     </>
   );
 }
+
+export const handle = {
+  i18n: ['common', 'header', 'home'],
+};
