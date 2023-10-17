@@ -1,5 +1,5 @@
 'use client';
-/* eslint-disable */
+
 import clsx from 'clsx';
 import {useCallback, useRef, useState} from 'react';
 import {useDebounce} from 'usehooks-ts';
@@ -83,7 +83,7 @@ const Carousel: React.FC<CarouselProps> = ({
       active?: boolean,
       onClick?: (id: string, index?: number) => void,
     ) => (
-      <span
+      <div
         key={`indicator-${item.id}`}
         onClick={() =>
           onClick ? onClick(item.id, index) : onIndicatorClick(item.id, index)
@@ -96,7 +96,7 @@ const Carousel: React.FC<CarouselProps> = ({
             active ? 'bg-white' : 'bg-gray-400',
           )}
         ></span>
-      </span>
+      </div>
     ),
     [],
   );
@@ -130,7 +130,10 @@ const Carousel: React.FC<CarouselProps> = ({
         )}
       </div>
       <div
-        className={clsx('absolute bottom-24 left-0  z-4', indicatorClassName)}
+        className={clsx(
+          'absolute bottom-24 left-0 w-full z-4',
+          indicatorClassName,
+        )}
       >
         <div className={clsx('base-container flex justify-start py-2 gap-2 ')}>
           {data.map((item, index) =>

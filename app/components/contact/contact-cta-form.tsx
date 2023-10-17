@@ -29,7 +29,7 @@ export const InfoContact = (containerStyle: {containerStyle?: string}) => {
     },
     {
       title: t('contacts.open.label'),
-      value: t('contacts.open.Open'),
+      value: t('contacts.open.open'),
       icon: <Clock className="w-6 h-6" />,
     },
   ];
