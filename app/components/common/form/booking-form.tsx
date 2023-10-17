@@ -8,7 +8,7 @@ import TextField from '~/components/common/textfield';
 import clsx from 'clsx';
 import { bookingValidate } from '~/validation/booking';
 import { validateFormValues } from '~/validation';
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { FormApi } from 'final-form';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useTranslation } from 'react-i18next';
@@ -16,7 +16,8 @@ import { useRootContext } from '~/hooks/useRootContext';
 
 interface BookingFormProps {
   className?: string;
-  handleSubmitForm?: any;
+  handleClose?: () => void;
+  closeButton?: React.ReactNode;
 }
 interface BookingFormValidation {
   fullname: string;
@@ -27,7 +28,7 @@ interface BookingFormValidation {
   message?: string;
 }
 
-const BookingForm: React.FC<BookingFormProps> = ({ className = '' }) => {
+const BookingForm: React.FC<BookingFormProps> = ({ className = '', handleClose, closeButton }) => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
@@ -70,6 +71,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className = '' }) => {
           form.resetFieldState(key);
         });
         recaptchaRef.current?.reset();
+        handleClose && handleClose();
       })
       .catch((err) => {
         console.log(err);
@@ -80,6 +82,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className = '' }) => {
 
   return (
     <div className={clsx('bg-gray-100 px-4 md:px-8 py-16 relative', className)}>
+      {closeButton && closeButton}
       <Form
         onSubmit={onSubmit}
         validate={validateFormValues(bookingValidate(t))}
@@ -163,7 +166,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className = '' }) => {
             </div>
 
             <Button
-              className="rounded-sm uppercase mt-4"
+              className="rounded-sm uppercase mt-8"
               size="md"
               disabled={loading || submitted}
             >
