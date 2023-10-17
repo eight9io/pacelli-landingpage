@@ -13,31 +13,31 @@ import { useTranslation } from 'react-i18next';
 
 export const headers = routeHeaders;
 
-// export async function loader({ params, context }: LoaderArgs) {
-//   const seo = seoPayload.home();
+export async function loader({ params, context }: LoaderArgs) {
+  const seo = seoPayload.home();
 
-//   return defer({
-//     analytics: {
-//       pageType: AnalyticsPageType.home,
-//     },
-//     seo,
-//   });
-// }
+  return defer({
+    analytics: {
+      pageType: AnalyticsPageType.home,
+    },
+    seo,
+  });
+}
 
 export default function PartnershipServicesPage() {
   const { t } = useTranslation('professional');
   return (
     <>
-      {/* <HeroPartnerships /> */}
-      {/* <Contact /> */}
-      {/* <BeforeAfter
+      <HeroPartnerships />
+      <Contact />
+      <BeforeAfter
         title={t('before_after.title')}
         description={t('before_after.desc')}
         afterImg={services2}
         beforeImg={services1}
       />
       <Brands className="mt-[60px] md:mt-[90px]" />
-      <SocialProof /> */}
+      <SocialProof />
     </>
   );
 }
