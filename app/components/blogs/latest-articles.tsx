@@ -20,7 +20,7 @@ const LatestArticles: React.FC<LatestArticlesProps> = ({
       <Heading variant="h4" className="text-primary mb-6 !font-normal">
         {t('categories')}
       </Heading>
-      <ul className="flex flex-col gap-6">
+      <ul className="flex flex-col gap-6 whitespace-pre">
         {articles?.map((article) => (
           <Link
             key={article.id}
