@@ -12,25 +12,32 @@ import {
 } from '~/graphql/blogs';
 import ArticlesPagination from '~/components/blogs/articles-pagination';
 import {Article} from '@shopify/hydrogen/storefront-api-types';
-import {parseObject} from '~/lib/utils';
+import {
+  cacheNoneInStaging,
+  isStagingEnvironment,
+  parseObject,
+} from '~/lib/utils';
 
 export const headers = routeHeaders;
 
-export async function loader({
-  request,
-  context: {storefront},
-  params,
-}: LoaderArgs) {
+export async function loader({request, context, params}: LoaderArgs) {
+  const {storefront, env} = context;
   const {handle} = params as {handle: string};
+  const isStaging = isStagingEnvironment(env);
   let articleData: any;
 
   const pinnedArticleData = await storefront.query(ARTICLE_BY_ID_QUERY, {
-    variables: {id: 'gid://shopify/Article/606763745578'},
+    variables: {
+      id: env.PUBLIC_PINNDED_ARTICLE_ID || 'gid://shopify/Article/606763745578',
+    },
   });
 
-  const data = await storefront.query(BLOG_LIST_QUERY);
+  const data = await storefront.query(BLOG_LIST_QUERY, {
+    cache: cacheNoneInStaging(context),
+  });
   const selectedBlog = await storefront.query(BLOG_QUERY, {
     variables: {handle},
+    cache: cacheNoneInStaging(context),
   });
 
   if (handle && !selectedBlog.blog) {
@@ -43,7 +50,7 @@ export async function loader({
   if (!handle) {
     articleData = await storefront.query(FEATURED_BLOG_QUERY, {
       variables: {first: 8},
-      cache: storefront.CacheShort(),
+      cache: cacheNoneInStaging(context),
     });
   }
 
@@ -96,3 +103,7 @@ export default function BlogPage() {
     </>
   );
 }
+
+export const handle = {
+  i18n: ['common', 'header', 'blogs'],
+};

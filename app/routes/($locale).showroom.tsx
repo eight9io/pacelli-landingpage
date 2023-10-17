@@ -10,3 +10,7 @@ export default function PartnershipServicesPage() {
     </>
   );
 }
+
+export const handle = {
+  i18n: ['common', 'showroom', 'header'],
+};

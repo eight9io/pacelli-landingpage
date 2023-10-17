@@ -1,3 +1,4 @@
+import {storefront} from 'utils/storefront';
 import {useLocation, useMatches} from '@remix-run/react';
 import {parse as parseCookie} from 'worktop/cookie';
 import type {MoneyV2} from '@shopify/hydrogen/storefront-api-types';
@@ -10,7 +11,8 @@ import type {
 } from 'storefrontapi.generated';
 import {countries} from '~/data/countries';
 
-import type {I18nLocale} from './type';
+import type {I18nLocale, Storefront} from './type';
+import {AppLoadContext} from '@shopify/remix-oxygen';
 
 type EnhancedMenuItemProps = {
   to: string;
@@ -371,3 +373,16 @@ export async function fetchGoogleVerification(
 
   return gResponse as ResponseGoogleVerification;
 }
+
+export const isStagingEnvironment = (context: AppLoadContext | Env) => {
+  if ('env' in context) {
+    return context.env?.PUBLIC_IS_STAGING === 'true';
+  }
+  return context?.PUBLIC_IS_STAGING === 'true';
+};
+
+export const cacheNoneInStaging = (context: AppLoadContext) => {
+  return isStagingEnvironment(context)
+    ? context.storefront.CacheNone()
+    : context.storefront.CacheShort();
+};
