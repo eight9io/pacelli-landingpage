@@ -1,15 +1,16 @@
-import {Button} from '~/components/snippets';
-import {Field, Form} from 'react-final-form';
+import { Button } from '~/components/snippets';
+import { Field, Form } from 'react-final-form';
 import TextField from '~/components/common/textfield';
 import clsx from 'clsx';
-import {validateFormValues} from '~/validation';
+import { validateFormValues } from '~/validation';
 import Select from '../select';
-import {proposalValidate} from '~/validation/proposal';
+import { proposalValidate } from '~/validation/proposal';
 import Heading from '../heading';
 import ReCAPTCHA from 'react-google-recaptcha';
-import {useRef, useState} from 'react';
-import {useRootContext} from '~/hooks/useRootContext';
-import {FormApi} from 'final-form';
+import { useRef, useState } from 'react';
+import { useRootContext } from '~/hooks/useRootContext';
+import { FormApi } from 'final-form';
+import { useTranslation } from 'react-i18next';
 
 interface ProposalFormProps {
   className?: string;
@@ -25,17 +26,17 @@ const pdfLink =
   'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/pacelii.pdf';
 
 /* eslint-disable */
-const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
+const ProposalForm: React.FC<ProposalFormProps> = ({ className = '' }) => {
+  const { t } = useTranslation('common');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [reCaptchaDone, setReCaptchaDone] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
-  const onChange = () => {
-    setReCaptchaDone(true);
+  const onChange = (form: any) => {
+    form.change('reCaptcha', true);
   };
 
-  const {ENV} = useRootContext();
+  const { ENV } = useRootContext();
 
   const onSubmit = (
     values: any,
@@ -50,7 +51,6 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
       phone: values.phone,
       reCaptcha: recaptchaValue,
     };
-    if (!reCaptchaDone) return;
 
     setLoading(true);
     fetch('/api/proposal', {
@@ -95,20 +95,20 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
     <div className={clsx('bg-base-100 px-4 md:px-8 py-14 relative', className)}>
       <Form
         onSubmit={onSubmit}
-        validate={validateFormValues(proposalValidate)}
+        validate={validateFormValues(proposalValidate(t))}
         validateOnBlur={false}
-        render={({handleSubmit, values, form}) => {
+        render={({ handleSubmit, values, form }) => {
           return (
             <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
               <Heading
                 className="font-semibold text-primary text-center mb-14"
                 variant="h3"
               >
-                Ricevere una proposta
+                {t('proposal_form.title')}
               </Heading>
               <div className="relative">
                 <Field name="occupation">
-                  {({input, meta}) => (
+                  {({ input, meta }) => (
                     <div className="pb-6">
                       <Select
                         value={values?.occupation}
@@ -150,21 +150,35 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
                 )}
                 inputErrorClassName="focus:border-b-red-500"
               />
-              <ReCAPTCHA
-                onChange={onChange}
-                className="[&_iframe]:w-full"
-                sitekey={ENV.PUBLIC_SITE_RECAPTCHA_KEY || ''}
-                ref={recaptchaRef}
-              />
-              {!reCaptchaDone && (
+              <div className="relative">
+                <Field name="reCaptcha">
+                  {({ input, meta }) => (
+                    <>
+                      <ReCAPTCHA
+                        onChange={() => onChange(form)}
+                        className="[&_iframe]:w-full"
+                        sitekey={ENV.PUBLIC_SITE_RECAPTCHA_KEY || ''}
+                        ref={recaptchaRef}
+                      />
+                      {meta.touched && meta.error && (
+                        <span className="absolute text-red-500 text-sm left-1 -bottom-6 text-left pl-3">
+                          {meta.error}
+                        </span>
+                      )}
+                    </>
+                  )}
+                </Field>
+              </div>
+
+              {/* {!reCaptchaDone && (
                 <p className="text-sm text-[#ef4444]">ReCaptcha is required</p>
-              )}
+              )} */}
               <Button
                 className="rounded-sm uppercase mt-6"
                 size="md"
                 disabled={loading || submitted}
               >
-                DOWNLOAD
+                {t('button.download')}
               </Button>
               {submitted && (
                 <span className="mb-2 absolute top-6 flex justify-center items-start gap-1 md:gap-2 font-semibold text-sm">
@@ -190,7 +204,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
                       stroke="white"
                     ></path>
                   </svg>
-                  Your download is successfull.
+                  {t("button.down_success")}
                 </span>
               )}
             </form>

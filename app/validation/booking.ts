@@ -55,5 +55,8 @@ export const bookingValidate = (t: any) => {
       }),
     ),
     message: yup.string(),
+    reCaptcha: yup
+      .boolean()
+      .required('The terms and conditions must be accepted.'),
   });
 };

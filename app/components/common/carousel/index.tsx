@@ -1,9 +1,9 @@
 'use client';
 /* eslint-disable */
 import clsx from 'clsx';
-import { useCallback, useRef, useState } from 'react';
-import { useDebounce } from 'usehooks-ts';
-import { Button } from '~/components/Button';
+import {useCallback, useRef, useState} from 'react';
+import {useDebounce} from 'usehooks-ts';
+import {Button} from '~/components/Button';
 import ArrowLeft from '~/components/common/icons/arrow-slide-left';
 import ArrowRight from '~/components/common/icons/arrow-slide-right';
 interface CarouselProps {
@@ -130,10 +130,7 @@ const Carousel: React.FC<CarouselProps> = ({
         )}
       </div>
       <div
-        className={clsx(
-          'absolute bottom-24 left-0  z-4',
-          indicatorClassName,
-        )}
+        className={clsx('absolute bottom-24 left-0  z-4', indicatorClassName)}
       >
         <div className={clsx('base-container flex justify-start py-2 gap-2 ')}>
           {data.map((item, index) =>

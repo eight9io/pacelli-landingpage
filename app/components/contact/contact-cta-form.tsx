@@ -9,10 +9,30 @@ import Link from '~/components/Link';
 import Facebook from '~/components/common/icons/facebook';
 import Instagram from '~/components/common/icons/instagram';
 import Youtube from '~/components/common/icons/youtube';
+import {useTranslation} from 'react-i18next';
 interface ContactCTAFormProps {
   className?: string;
 }
 export const InfoContact = (containerStyle: {containerStyle?: string}) => {
+  const {t} = useTranslation('common');
+
+  const infoItems = [
+    {
+      title: t('contacts.phone'), // Contact
+      value: '+39 (0824) 948533',
+      icon: <Phone className="w-6 h-6 " />,
+    },
+    {
+      title: t('contacts.address.label'),
+      value: t('contacts.address.address'),
+      icon: <Location className="w-6 h-6" />,
+    },
+    {
+      title: t('contacts.open.label'),
+      value: t('contacts.open.Open'),
+      icon: <Clock className="w-6 h-6" />,
+    },
+  ];
   return (
     <>
       <ul className={clsx('flex flex-col  pb-8 gap-8', containerStyle)}>
@@ -24,17 +44,18 @@ export const InfoContact = (containerStyle: {containerStyle?: string}) => {
   );
 };
 const ContactCTAForm: React.FC<ContactCTAFormProps> = ({className = ''}) => {
+  const {t} = useTranslation('contact');
   return (
     <section className={clsx('base-container py-24 md:py-32', className)}>
       <h2 className="text-[40px] md:text-[64px] font-semibold leading-[50px] md:leading-[78px]">
-        Contatti
+        {t('contact:title')}
       </h2>
       <div className="grid grid-cols-12 gap-8 pt-6">
         <div className="col-span-12 md:col-span-6">
           <InfoContact containerStyle="border-b " />
           <div>
             <Heading className="font-bold md:text-base mb-4 mt-8" variant="h5">
-              Connect with us
+              {t('contact:subtitle')}
             </Heading>
             <div className="md:text-base flex items-center gap-4">
               <div className="flex gap-4 items-center relative order-0 md:order-1">
@@ -95,21 +116,3 @@ const InfoItem: React.FC<InfoItemProps> = ({title, value, icon}) => {
     </li>
   );
 };
-
-const infoItems = [
-  {
-    title: 'Phone',
-    value: '+39 (0824) 948533',
-    icon: <Phone className="w-6 h-6 " />,
-  },
-  {
-    title: 'Address',
-    value: 'Via Volturno, 11, San Salvatore Telesino (BN)',
-    icon: <Location className="w-6 h-6" />,
-  },
-  {
-    title: 'Open',
-    value: 'Lunedì-Venerdì: 9:00 - 20:30			Sabato: 10:00 - 20:00',
-    icon: <Clock className="w-6 h-6" />,
-  },
-];
