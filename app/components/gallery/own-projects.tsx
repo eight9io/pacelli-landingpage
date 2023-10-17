@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import {useState} from 'react';
 import ProjectCard from './project-card';
 import {useTranslation} from 'react-i18next';
+import {Skeleton} from '../Skeleton';
 interface ContactProps {
   className?: string;
   projects: any[];
@@ -20,7 +21,7 @@ const OwnProjects: React.FC<ContactProps> = (props) => {
     setPageInfo(newPageInfo);
   };
 
-  const {t} = useTranslation('gallery');
+  const {t, ready} = useTranslation('gallery');
 
   return (
     <section
@@ -29,9 +30,13 @@ const OwnProjects: React.FC<ContactProps> = (props) => {
         props.className,
       )}
     >
-      <h2 className="text-[40px] md:text-[64px] font-semibold leading-[50px] md:leading-[78px] text-[#142423] lg:w-1/2">
-        {t('gallery:title')}
-      </h2>
+      {ready ? (
+        <h2 className="text-[40px] md:text-[64px] font-semibold leading-[50px] md:leading-[78px] text-[#142423] lg:w-1/2">
+          {t('gallery:title')}
+        </h2>
+      ) : (
+        <Skeleton count={2} />
+      )}
       <div className="grid grid-cols-12 gap-y-8 lg:gap-8 mt-11">
         {projects && projects.length
           ? projects.map((item, index) => (
