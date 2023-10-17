@@ -4,7 +4,7 @@ import Booking from '~/components/home/booking';
 import {LoaderArgs, json} from '@shopify/remix-oxygen';
 import invariant from 'tiny-invariant';
 import {useLoaderData} from '@remix-run/react';
-import {parseObject} from '~/lib/utils';
+import {cacheNoneInStaging, parseObject} from '~/lib/utils';
 import {PROJECT_DETAIL_QUERY} from '~/graphql/gallery';
 
 export async function loader({request, params, context}: LoaderArgs) {
@@ -14,6 +14,7 @@ export async function loader({request, params, context}: LoaderArgs) {
       language: context.storefront.i18n.language,
       handle: params.handle,
     },
+    cache: cacheNoneInStaging(context),
   });
 
   invariant(data, 'No data returned from Shopify API');
@@ -105,3 +106,7 @@ export default function ProjectDetail() {
     </>
   );
 }
+
+export const handle = {
+  i18n: ['common', 'header', 'gallery'],
+};

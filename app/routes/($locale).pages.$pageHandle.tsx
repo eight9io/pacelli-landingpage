@@ -6,6 +6,7 @@ import {routeHeaders} from '~/data/cache';
 import {seoPayload} from '~/lib/seo.server';
 import HTMLContent from '~/components/blogs/html-content';
 import Heading from '~/components/common/heading';
+import {cacheNoneInStaging} from '~/lib/utils';
 
 export const headers = routeHeaders;
 
@@ -17,6 +18,7 @@ export async function loader({request, params, context}: LoaderArgs) {
       handle: params.pageHandle,
       language: context.storefront.i18n.language,
     },
+    cache: cacheNoneInStaging(context),
   });
 
   if (!page) {

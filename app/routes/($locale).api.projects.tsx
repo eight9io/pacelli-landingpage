@@ -1,14 +1,15 @@
 import {json, type LoaderArgs} from '@shopify/remix-oxygen';
 import {PROJECT_GALLERY_QUERY} from '~/graphql/gallery';
-import {parseObject} from '~/lib/utils';
+import {cacheNoneInStaging, parseObject} from '~/lib/utils';
 
-export async function loader({request, context: {storefront}}: LoaderArgs) {
+export async function loader({request, context}: LoaderArgs) {
   const params = new URL(request.url).searchParams;
 
   const variables = Object.fromEntries(params);
 
-  const projectData = await storefront.query(PROJECT_GALLERY_QUERY, {
+  const projectData = await context.storefront.query(PROJECT_GALLERY_QUERY, {
     variables,
+    cache: cacheNoneInStaging(context),
   });
 
   let projects = parseObject(projectData, 'metaobjects.nodes');
