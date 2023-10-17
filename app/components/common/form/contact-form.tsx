@@ -2,7 +2,7 @@
 
 import {Button} from '~/components/snippets';
 import DatePicker from '../date-picker';
-import {Form, useForm} from 'react-final-form';
+import {Field, Form, useForm} from 'react-final-form';
 import TextArea from '~/components/common/text-area';
 import TextField from '~/components/common/textfield';
 import clsx from 'clsx';
@@ -11,7 +11,6 @@ import {validateFormValues} from '~/validation';
 import {useRef, useState} from 'react';
 import {FormApi} from 'final-form';
 import ReCAPTCHA from 'react-google-recaptcha';
-import {SITE_RECAPTCHA_KEY} from '~/lib/const';
 import {useRootContext} from '~/hooks/useRootContext';
 
 interface ContactFormProps {
@@ -27,11 +26,10 @@ interface ContactFormValidation {
 const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [reCaptchaDone, setReCaptchaDone] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
-  const onChange = () => {
-    setReCaptchaDone(true);
+  const onChange = (form: any) => {
+    form.change('reCaptcha', true);
   };
   const {ENV} = useRootContext();
   const onSubmit = (
@@ -46,7 +44,6 @@ const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
       message: values.message,
       reCaptcha: recaptchaValue,
     };
-    if (!reCaptchaDone) return;
 
     setLoading(true);
     fetch('/api/contact', {
@@ -104,15 +101,25 @@ const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
               )}
             />
 
-            <ReCAPTCHA
-              onChange={onChange}
-              className="[&_iframe]:w-full"
-              sitekey={ENV.PUBLIC_SITE_RECAPTCHA_KEY || ''}
-              ref={recaptchaRef}
-            />
-            {!reCaptchaDone && (
-              <p className="text-sm text-[#ef4444]">ReCaptcha is required</p>
-            )}
+            <div className="relative mb-6">
+              <Field name="reCaptcha">
+                {({input, meta}) => (
+                  <>
+                    <ReCAPTCHA
+                      onChange={() => onChange(form)}
+                      className="[&_iframe]:w-full"
+                      sitekey={ENV.PUBLIC_SITE_RECAPTCHA_KEY || ''}
+                      ref={recaptchaRef}
+                    />
+                    {meta.touched && meta.error && (
+                      <span className="absolute text-red-500 text-sm left-1 -bottom-6 text-left pl-3">
+                        {meta.error}
+                      </span>
+                    )}
+                  </>
+                )}
+              </Field>
+            </div>
 
             <Button
               className="rounded-sm uppercase"

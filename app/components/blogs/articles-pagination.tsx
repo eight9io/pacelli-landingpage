@@ -15,6 +15,7 @@ import {useCallback, useEffect, useRef, useState} from 'react';
 import AngleDown from '~/components/common/icons/angle-full-down';
 import {Button} from '../Button';
 import {useInView} from 'react-intersection-observer';
+import {useTranslation} from 'react-i18next';
 
 interface ArticlesPaginationProps {
   className?: string;
@@ -26,6 +27,7 @@ const ArticlesPagination: React.FC<ArticlesPaginationProps> = ({
   className = '',
   articles: propsArticles = [],
 }) => {
+  const {t} = useTranslation('common');
   const {
     blogs,
     selectedBlog,
@@ -37,7 +39,7 @@ const ArticlesPagination: React.FC<ArticlesPaginationProps> = ({
 
   const selectedItem = selectedBlog
     ? selectedBlog
-    : {title: 'All', handle: undefined};
+    : {title: t('button.all'), handle: undefined};
 
   useEffect(() => {
     if (!fetcher.data || fetcher.state === 'loading') return;
@@ -68,7 +70,7 @@ const ArticlesPagination: React.FC<ArticlesPaginationProps> = ({
     >
       <div className="flex border-b border-gray-300 mb-8 items-center justify-between">
         <Heading variant="h3">
-          {selectedBlog ? selectedBlog.title : 'All'}
+          {selectedBlog ? selectedBlog.title : t('button.all')}
         </Heading>
         <Filter items={blogs} selected={selectedItem} />
       </div>
@@ -94,7 +96,7 @@ const ArticlesPagination: React.FC<ArticlesPaginationProps> = ({
             className={clsx('pb-0 text-secondary text-2xl md:text-[32px]')}
             onClick={onLoadmore}
           >
-            Load more
+            {t('button.load_more')}
           </Button>
         </div>
       ) : null}
@@ -124,6 +126,7 @@ interface FilterProps {
 }
 
 const Filter: React.FC<FilterProps> = ({className = '', selected, items}) => {
+  const {t} = useTranslation('common');
   const closeRef = useRef<HTMLDetailsElement>(null);
   const navigate = useNavigate();
   // const [searchParams, setSearchParams] = useSearchParams();
@@ -151,7 +154,7 @@ const Filter: React.FC<FilterProps> = ({className = '', selected, items}) => {
       <div className="relative">
         <details className="group rounded-none w-[100px]" ref={closeRef}>
           <summary className="flex items-center justify-end px-4 py-1 text-sm md:text-base cursor-pointer">
-            Filter
+            {t('button.filter')}
             <AngleDown className="group-open:rotate-180 transition duration-150 ml-2 text-secondary" />
           </summary>
           <div className="transition duration-150 absolute w-[260px] top-full right-0 rounded overflow-auto bg-white shadow">
@@ -168,7 +171,7 @@ const Filter: React.FC<FilterProps> = ({className = '', selected, items}) => {
                 navigate('/blogs');
               }}
             >
-              All
+              {t('button.all')}
             </Button>
             {items &&
               items.map((item) => {

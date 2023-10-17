@@ -1,5 +1,6 @@
 import clsx from 'clsx';
-import {useState} from 'react';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import BookingForm from '~/components/common/form/booking-form';
 import ThreeD from '~/components/common/icons/3d';
 import ArrowRight from '~/components/common/icons/arrow-right';
@@ -8,7 +9,7 @@ import Headphone from '~/components/common/icons/headphone';
 import Pig from '~/components/common/icons/pig';
 import Preventivo from '~/components/common/icons/preventivo';
 import Promo from '~/components/common/icons/promo';
-import {Button} from '~/components/snippets';
+import { Button } from '~/components/snippets';
 /* eslint-disable */
 
 interface BookAppointmentProps {
@@ -18,93 +19,94 @@ const arrLgScreen = [
   {
     id: 1,
     img: <Preventivo width={64} height={64} />,
-    title: 'Preventivo gratuito',
+    title: 'arr_icon.item_1.title',
     description:
-      'Ricevi la tua consulenza personalizzata e ricevi un preventivo senza alcun costo.',
+      'arr_icon.item_1.desc',
   },
   {
     id: 2,
     img: <Car width={64} height={64} />,
-    title: 'Trasporto e montaggio',
+    title: 'arr_icon.item_2.title',
     description:
-      "Offriamo servizi di trasporto e montaggio in Italia e all'estero, eseguiti dal nostro team altamente qualificato.",
+      'arr_icon.item_2.desc',
   },
   {
     id: 3,
     img: <ThreeD width={64} height={64} />,
-    title: 'Progettazione 3D su misura',
+    title: 'arr_icon.item_3.title',
     description:
-      "I nostri architetti sviluppano il tuo arredamento iniziando con un accurato rilievo delle misure e utilizzando le più avanzate tecnologie digitali. Grazie a strumenti all'avanguardia nel campo della digitalizzazione e della progettazione, ti offriamo l'opportunità di visualizzare in anteprima una rappresentazione estremamente realistica del tuo progetto.",
+      "arr_icon.item_3.desc",
   },
   {
     id: 4,
     img: <Promo width={64} height={64} />,
-    title: 'Promo speciali wedding',
+    title: 'arr_icon.item_4.title',
     description:
-      "Abbiamo creato esclusivi pacchetti promozionali dedicati alle coppie di giovani sposi, offrendo loro l'opportunità di arredare i loro spazi con mobili e materiali di alta qualità a prezzi speciali e vantaggiosi.",
+      "arr_icon.item_4.desc",
   },
   {
     id: 5,
     img: <Headphone width={64} height={64} />,
-    title: 'Assistenza clienti',
+    title: 'arr_icon.item_5.title',
     description:
-      "L'assistenza al cliente è da sempre la nostra priorità. Siamo al tuo fianco sin dalla fase iniziale della progettazione, durante la selezione dei tuoi arredi preferiti, durante l'installazione e anche nel periodo post-vendita. Il nostro impegno a supportarti è duraturo e costante.",
+      "arr_icon.item_5.desc",
   },
 
   {
     id: 6,
     img: <Pig width={64} height={64} />,
-    title: 'Finanziamenti personalizzati',
-    description:
-      "Offriamo finanziamenti personalizzabili per un acquisto senza preoccupazioni. Grazie a queste opzioni di finanziamento, potrai scegliere l'arredamento che più ami e pagarlo comodamente a rate.",
+    title: 'arr_icon.item_6.title',
+    description: "arr_icon.item_6.desc"
+    ,
   },
 ];
 const arrMobileScreen = [
   {
     id: 1,
     img: <Preventivo width={64} height={64} />,
-    title: 'Preventivo gratuito',
+    title: 'arr_icon.item_1.title',
     description:
-      'Ricevi la tua consulenza personalizzata e ricevi un preventivo senza alcun costo.',
+      'arr_icon.item_1.desc',
   },
   {
     id: 3,
     img: <ThreeD width={64} height={64} />,
-    title: 'Progettazione 3D su misura',
+    title: 'arr_icon.item_3.title',
     description:
-      "I nostri architetti sviluppano il tuo arredamento iniziando con un accurato rilievo delle misure e utilizzando le più avanzate tecnologie digitali. Grazie a strumenti all'avanguardia nel campo della digitalizzazione e della progettazione, ti offriamo l'opportunità di visualizzare in anteprima una rappresentazione estremamente realistica del tuo progetto.",
+      'arr_icon.item_3.desc',
   },
   {
     id: 5,
     img: <Headphone width={64} height={64} />,
-    title: 'Assistenza clienti',
+    title: 'arr_icon.item_5.title',
     description:
-      "L'assistenza al cliente è da sempre la nostra priorità. Siamo al tuo fianco sin dalla fase iniziale della progettazione, durante la selezione dei tuoi arredi preferiti, durante l'installazione e anche nel periodo post-vendita. Il nostro impegno a supportarti è duraturo e costante.",
+      'arr_icon.item_5.desc',
   },
   {
     id: 2,
     img: <Car width={64} height={64} />,
-    title: 'Trasporto e montaggio',
+    title: 'arr_icon.item_2.title',
     description:
-      "Offriamo servizi di trasporto e montaggio in Italia e all'estero, eseguiti dal nostro team altamente qualificato.",
+      'arr_icon.item_2.desc',
   },
 
   {
     id: 4,
     img: <Promo width={64} height={64} />,
-    title: 'Promo speciali wedding',
+    title: 'arr_icon.item_4.title',
     description:
-      "Abbiamo creato esclusivi pacchetti promozionali dedicati alle coppie di giovani sposi, offrendo loro l'opportunità di arredare i loro spazi con mobili e materiali di alta qualità a prezzi speciali e vantaggiosi.",
+      'arr_icon.item_4.desc',
   },
   {
     id: 6,
     img: <Pig width={64} height={64} />,
-    title: 'Finanziamenti personalizzati',
+    title: 'arr_icon.item_6.title',
     description:
-      "Offriamo finanziamenti personalizzabili per un acquisto senza preoccupazioni. Grazie a queste opzioni di finanziamento, potrai scegliere l'arredamento che più ami e pagarlo comodamente a rate.",
+      'arr_icon.item_6.desc',
   },
 ];
-const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
+const BookAppointment: React.FC<BookAppointmentProps> = ({ className = '' }) => {
+  const { t } = useTranslation('private')
   const [openForm, setOpenForm] = useState(false);
   const openPopup = () => {
     setOpenForm(true);
@@ -133,10 +135,10 @@ const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
               >
                 {item.img}
                 <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9">
-                  {item.title}
+                  {t(item.title)}
                 </p>
                 <p className="text-gray-900 text-base font-normal leading-7">
-                  {item.description}
+                  {t(item.description)}
                 </p>
               </div>
             ))}
@@ -145,16 +147,14 @@ const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
             {arrLgScreen.slice(2, 4).map((item) => (
               <div
                 key={item.id}
-                className="border-neutral-50 border-[1px] w-max-[395px] overflow-hidden shadow-md space-y-4 p-8 px-4 md:px-8
-
-                    "
+                className="border-neutral-50 border-[1px] w-max-[395px] overflow-hidden shadow-md space-y-4 p-8 px-4 md:px-8"
               >
                 {item.img}
                 <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9">
-                  {item.title}
+                  {t(item.title)}
                 </p>
                 <p className="text-gray-900 text-base font-normal leading-7">
-                  {item.description}
+                  {t(item.description)}
                 </p>
               </div>
             ))}
@@ -167,10 +167,10 @@ const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
               >
                 {item.img}
                 <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9">
-                  {item.title}
+                  {t(item.title)}
                 </p>
                 <p className="text-gray-900 text-base font-normal leading-7">
-                  {item.description}
+                  {t(item.description)}
                 </p>
               </div>
             ))}
@@ -180,16 +180,14 @@ const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
           {arrMobileScreen.map((item) => (
             <div
               key={item.id}
-              className="border-neutral-50 border-[1px] w-max-[395px] overflow-hidden shadow-md space-y-4 p-8 px-4 md:px-8
-
-                    "
+              className="border-neutral-50 border-[1px] w-max-[395px] overflow-hidden shadow-md space-y-4 p-8 px-4 md:px-8"
             >
               {item.img}
               <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9">
-                {item.title}
+                {t(item.title)}
               </p>
               <p className="text-gray-900 text-base font-normal leading-7">
-                {item.description}
+                {t(item.description)}
               </p>
             </div>
           ))}

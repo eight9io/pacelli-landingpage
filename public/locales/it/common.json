@@ -62,6 +62,37 @@
     },
     "note": {
       "label": "Note"
+    },
+    "occupation": {
+      "label": "Occupation"
     }
+  },
+  "contacts": {
+    "title": "Contacts",
+    "address": {
+      "label": "Address",
+      "address": "Via Volturno, 11, San Salvatore Telesino (BN)"
+    },
+    "phone": "Phone",
+    "open": {
+      "label": "Address",
+      "Open": "Lunedì-Venerdì: 9:00 - 20:30 Sabato: 10:00 - 20:00"
+    }
+  },
+  "proposal_form": {
+    "title": "Ricevere una proposta"
+  },
+  "button": {
+    "download": "Download",
+    "learn_more": "Learn more",
+    "read_more": "Read more",
+    "load_more": "Load more",
+    "all": "All",
+    "filter": "Filter",
+    "down_success": "  Your download is successfull.",
+    "share": "SHARE",
+    "back": "Back",
+    "send": "Send",
+    "request_success": "Your request is successfull. We will contact you soon!"
   }
 }

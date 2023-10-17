@@ -1,18 +1,18 @@
 'use client';
 
-import {Button} from '~/components/snippets';
+import { Button } from '~/components/snippets';
 import DatePicker from '../date-picker';
-import {Form} from 'react-final-form';
+import { Field, Form } from 'react-final-form';
 import TextArea from '~/components/common/text-area';
 import TextField from '~/components/common/textfield';
 import clsx from 'clsx';
-import {bookingValidate} from '~/validation/booking';
-import {validateFormValues} from '~/validation';
-import {useRef, useState} from 'react';
-import {FormApi} from 'final-form';
+import { bookingValidate } from '~/validation/booking';
+import { validateFormValues } from '~/validation';
+import { useRef, useState } from 'react';
+import { FormApi } from 'final-form';
 import ReCAPTCHA from 'react-google-recaptcha';
-import {useTranslation} from 'react-i18next';
-import {useRootContext} from '~/hooks/useRootContext';
+import { useTranslation } from 'react-i18next';
+import { useRootContext } from '~/hooks/useRootContext';
 
 interface BookingFormProps {
   className?: string;
@@ -27,17 +27,16 @@ interface BookingFormValidation {
   message?: string;
 }
 
-const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
+const BookingForm: React.FC<BookingFormProps> = ({ className = '' }) => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [reCaptchaDone, setReCaptchaDone] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
-  const onChange = () => {
-    setReCaptchaDone(true);
+  const onChange = (form: any) => {
+    form.change('reCaptcha', true);
   };
-  const {t} = useTranslation('common');
-  const {ENV} = useRootContext();
+  const { t } = useTranslation('common');
+  const { ENV } = useRootContext();
 
   const onSubmit = (
     values: any,
@@ -54,7 +53,6 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
       message: values.message,
       reCaptcha: recaptchaValue,
     };
-    if (!reCaptchaDone) return;
 
     setLoading(true);
     fetch('/api/booking', {
@@ -86,7 +84,7 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
         onSubmit={onSubmit}
         validate={validateFormValues(bookingValidate(t))}
         validateOnBlur={false}
-        render={({handleSubmit}) => (
+        render={({ handleSubmit, form }) => (
           <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
             <TextField
               name="fullname"
@@ -144,21 +142,32 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
               )}
             />
 
-            <ReCAPTCHA
-              onChange={onChange}
-              className="[&_iframe]:w-full"
-              sitekey={ENV.PUBLIC_SITE_RECAPTCHA_KEY}
-              ref={recaptchaRef}
-            />
-            {!reCaptchaDone && (
-              <p className="text-sm text-[#ef4444]">ReCaptcha is required</p>
-            )}
+            <div className="relative">
+              <Field name="reCaptcha">
+                {({ input, meta }) => (
+                  <>
+                    <ReCAPTCHA
+                      onChange={() => onChange(form)}
+                      className="[&_iframe]:w-full"
+                      sitekey={ENV.PUBLIC_SITE_RECAPTCHA_KEY || ''}
+                      ref={recaptchaRef}
+                    />
+                    {meta.touched && meta.error && (
+                      <span className="absolute text-red-500 text-sm left-1 -bottom-6 text-left pl-3">
+                        {meta.error}
+                      </span>
+                    )}
+                  </>
+                )}
+              </Field>
+            </div>
+
             <Button
               className="rounded-sm uppercase mt-4"
               size="md"
               disabled={loading || submitted}
             >
-              send
+              {t("button.send")}
             </Button>
             {submitted && (
               <span className="mb-2 absolute top-6 flex justify-center items-start gap-1 md:gap-2 font-semibold text-sm">
@@ -184,7 +193,7 @@ const BookingForm: React.FC<BookingFormProps> = ({className = ''}) => {
                     stroke="white"
                   ></path>
                 </svg>
-                Your request is successfull. We will contact you soon!
+                {t("button.request_success")}
               </span>
             )}
           </form>
