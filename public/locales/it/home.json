@@ -1,13 +1,13 @@
 {
   "description": {
-    "item1": "This is a non-page component that requires its own namespace"
+    "item1": "Esplora la tradizione italiana dell'arredamento di qualità con Pacelli Arredamenti. Con oltre 50 anni di esperienza, collaboriamo con oltre 50 brand di eccellenza, offrendo una vasta gamma di prodotti"
   },
   "hero": {
     "item1": {
-      "title": "La tradizione italiana dell’arredamento di qualità"
+      "title": "Arredamento di qualità"
     },
     "item2": {
-      "title": "100+",
+      "title": "1000+",
       "subtitle": "Progetti realizzati"
     },
     "item3": {
@@ -28,7 +28,7 @@
     },
     "item7": {
       "title": "L’arredamento\nche stai cercando",
-      "desc": "Pacelli Arredamenti è il punto di riferimento dove trovare la migliore selezione di cucine,\n camere da letto, camerette, soggiorni, divani, poltrone, tendaggi, materassi e reti,\nilluminazione, arredo ufficio e decorazioni."
+      "desc": "Pacelli Arredamenti è il punto di riferimento dove trovare la migliore selezione di cucine,\n camere da letto, camerette, soggiorni, divani, poltrone, tendaggi, materassi e reti,\nilluminazione, arredo ufficio e decorazioni"
     },
     "learn_more": "Learn more"
   },
@@ -50,7 +50,7 @@
   "brand": {
     "title": "Insieme ai migliori Brands",
     "subtitle1": "Siamo orgogliosi di affermare che le Aziende di cui siamo rifornitori sono considerate le migliori nel mercato del mobile. Aziende orientate alla ricerca di soluzioni moderne e creative e attente ai cambiamenti del vivere la casa e l'arredo.",
-    "subtitle2": "La qualità, l'innovazione, l'affidabilità e la collaborazione sono i principi fondamentali su cui si basa la nostra relazione con queste partner eccezionali."
+    "subtitle2": "La qualità, l'innovazione, l'affidabilità e la collaborazione sono i principi fondamentali su cui si basa la nostra relazione con queste partner eccezionali"
   },
   "social-proof": {
     "title": "Cosa dicono di noi",

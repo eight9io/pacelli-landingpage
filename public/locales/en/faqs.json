@@ -1,20 +1,21 @@
 {
-  "description": "This is a non-page component that requires its own namespace",
+  "description": "We offer free measurement, design and assembly services, guaranteeing maximum convenience and unlimited assistance to satisfy your design and furnishing needs",
   "title": "Frequently Asked Question",
   "item1": {
-    "question": "Fornite il servizio di rilievo delle misure? é a pagamento?",
-    "answer": "Offriamo una consulenza completa e personalizzata per realizzare il tuo progetto di design. Iniziamo con un rilievo misure gratuito, che ci consente di comprendere appieno lo spazio a tua disposizione e le tue esigenze. Questo servizio è il nostro punto di partenza per creare un progetto su misura che si adatti perfettamente alle tue aspettative.\nInoltre, ti offriamo anche il servizio di progettazione e renderizzazione gratuito. Grazie a strumenti avanzati, trasformiamo la tua visione in una rappresentazione visiva dettagliata, consentendoci di visualizzare il tuo futuro ambiente prima ancora che diventi realtà. Questo servizio ti aiuta a prendere decisioni informate e a perfezionare ogni aspetto del tuo progetto."
+    "question": "Do you provide the measurement taking service? is it for paid?",
+    "answer": "We offer complete and personalized consultancy to realize your design project. We start with a free measurement survey, which allows us to fully understand the space available to you and your needs. This service is our starting point for creating a bespoke project that fits your expectations perfectly. Furthermore, we also offer you free design and rendering service. Using advanced tools, we transform your vision into a detailed visual representation, allowing us to visualize your future environment before it becomes reality. This service helps you make informed decisions and refine every aspect of your project."
   },
   "item2": {
-    "question": "Qual è la durata della garanzia dell’arredamento acquistato?",
-    "answer": "Offriamo un servizio di assistenza post-vendita senza limiti di tempo. Siamo qui per te oggi, domani e sempre.\nLa nostra dedizione a soddisfare le tue esigenze e risolvere ogni eventuale problema non conosce scadenza. La tua completa soddisfazione è la nostra priorità assoluta, e siamo pronti a offrire supporto e assistenza in modo continuo."
+    "question": "How long is the warranty for the furniture purchased?",
+    "answer": "We offer an after-sales assistance service without time limits. We are here for you today, tomorrow and always. Our dedication to meeting your needs and solving any problems knows no expiration. Your complete satisfaction is our top priority, and we stand ready to offer ongoing support and assistance"
   },
   "item3": {
-    "question": "Il prezzo finale comprende anche la consegna e il montaggio?",
-    "answer": "Per garantire la massima convenienza ai nostri clienti, offriamo la consegna e il montaggio gratuiti. Siamo qui per semplificarti la vita e renderlo il più agevole possibile.\nNella stragrande maggioranza dei casi, non ci sono costi aggiuntivi per la consegna e il montaggio. Tuttavia, comprendiamo che ci possono essere situazioni eccezionali in cui dovremmo effettuare consegne a lunghe distanze. In queste circostanze, valuteremo la situazione caso per caso e, se necessario, concorderemo un rimborso spese equo.\nLa nostra priorità è soddisfare le tue esigenze e rendere il processo il più semplice possibile per te. La trasparenza è fondamentale, e ci impegniamo a garantire che tu comprenda appieno ogni aspetto della consegna e del montaggio."
+    "question": "Does the final price also include delivery and assembly?",
+    "answer": "To ensure maximum convenience for our customers, we offer free delivery and assembly. We are here to make your life easier and as smooth as possible. In the vast majority of cases, there are no additional costs for delivery and assembly. However, we understand that there may be exceptional situations where we would need to deliver long distances. In these circumstances, we will evaluate the situation on a case-by-case basis and, if necessary, agree a fair expense reimbursement. Our priority is to meet your needs and make the process as easy as possible for you. Transparency is key, and we are committed to ensuring that you fully understand every aspect of delivery and assembly."
   },
   "item4": {
-    "question": "Quali sono i tempi di consegna?",
-    "answer": "I tempi di consegna variano in base alle specifiche del tuo progetto.\nPer esempio, quando si tratta di realizzare una cucina su misura, teniamo conto di ogni dettaglio, comprese le eventuali fuori squadra e personalizzazioni che hai richiesto.\nIn media, il tempo di consegna per un progetto di questo genere è di circa 40 giorni. Tuttavia, è importante sottolineare che la precisione e l'attenzione che mettiamo in ogni passo del processo sono un investimento nel risultato finale. La tua cucina su misura sarà un'opera d'arte culinaria che vale la pena aspettare."
+    "question": "What are the delivery times?",
+    "answer": "Delivery times vary based on the specifics of your project.\nFor example, when it comes to creating a bespoke kitchen, we take every detail into account, including any out-of-squares and customizations you have requested.\nOn average, the delivery time delivery time for a project of this kind is approximately 40 days. However, it is important to emphasize that the precision and attention we put into each step of the process is an investment in the final result. Your custom kitchen will be a culinary work of art worth waiting for"
   }
 }
+ 
