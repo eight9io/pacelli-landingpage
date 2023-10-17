@@ -3,18 +3,20 @@ import Heading from '~/components/common/heading';
 import showroom6 from '~/assets/showroom/showroom6.png';
 import showroom5 from '~/assets/showroom/showroom5.png';
 
-import {Button} from '~/components/snippets';
+import { Button } from '~/components/snippets';
 /* eslint-disable */
 import ArrowRight from '~/components/common/icons/arrow-right';
-import {InfoContact} from '../contact/contact-cta-form';
+import { InfoContact } from '../contact/contact-cta-form';
 import BookingForm from '../common/form/booking-form';
-import {useState} from 'react';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface MyTeamProps {
   className?: string;
 }
 
-const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
+const MyTeam: React.FC<MyTeamProps> = ({ className = '' }) => {
+  const { t } = useTranslation("showroom");
   const [openForm, setOpenForm] = useState(false);
   const openPopup = () => {
     setOpenForm(true);
@@ -38,15 +40,12 @@ const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
           className="mb-4 md:mb-8 text-[48px] text-primary-950"
           variant="h3"
         >
-          Il nostro Team di esperti
+          {t("team.title")}
         </Heading>
         <div className="grid grid-cols-12 gap-5 lg:gap-8">
           <div className="col-span-12 md:col-span-4 space-y-8">
             <p className="text-base font-normal leading-7 text-neutral-800 ">
-              La nostra squadra di architetti e progettisti d'interni è pronta a
-              fornirti la consulenza di cui hai bisogno per rendere il tuo
-              progetto una realtà.Saranno al tuo fianco in ogni fase del
-              processo, garantendoti il massimo supporto e expertise
+              {t("team.sub_title")}
             </p>
             <p className="text-primary-950 text-[22px] md:text-2xl font-bold leading-9">
               Contacts
@@ -67,9 +66,7 @@ const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
             </h3>
 
             <p className="text-base font-normal leading-7 text-neutral-800 ">
-              Con il suo straordinario talento nel rendering 3D, offre ai nostri
-              clienti un'esperienza visiva unica trasportandoli nella realtà dei
-              loro ambienti.
+              {t("team.bruno_info")}
             </p>
             <div className="w-full mt-auto">
               <Button
@@ -96,8 +93,7 @@ const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
             </h3>
 
             <p className="text-base font-normal leading-7 text-neutral-800">
-              Architetto di lunga data che ha contribuito in modo significativo
-              alla crescita e al successo di Pacelli Arredamenti.
+              {t("team.ernesto_info")}
             </p>
             <div className="w-full mt-auto">
               <Button
