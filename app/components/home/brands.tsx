@@ -65,7 +65,7 @@ const Brands: React.FC<BrandsProps> = ({
               {t('brand.title')}
             </Heading>
             <p className="text-gray-900 leading-7">
-              {t('brand.subtitle')}
+              {t('brand.subtitle1')}
             </p>
           </div>
           <div

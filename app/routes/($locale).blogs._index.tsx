@@ -1,9 +1,9 @@
-import {defer, json, type LoaderArgs} from '@shopify/remix-oxygen';
-import {useLoaderData} from '@remix-run/react';
-import {routeHeaders} from '~/data/cache';
+import { defer, json, type LoaderArgs } from '@shopify/remix-oxygen';
+import { useLoaderData } from '@remix-run/react';
+import { routeHeaders } from '~/data/cache';
 import Hero from '~/components/blogs/pinned-article';
 import invariant from 'tiny-invariant';
-import {NonNullableFields} from '~/lib/type';
+import { NonNullableFields } from '~/lib/type';
 import {
   ARTICLE_BY_ID_QUERY,
   BLOG_LIST_QUERY,
@@ -11,14 +11,14 @@ import {
   FEATURED_BLOG_QUERY,
 } from '~/graphql/blogs';
 import ArticlesPagination from '~/components/blogs/articles-pagination';
-import {Article} from '@shopify/hydrogen/storefront-api-types';
-import {parseObject} from '~/lib/utils';
+import { Article } from '@shopify/hydrogen/storefront-api-types';
+import { parseObject } from '~/lib/utils';
 
 export const headers = routeHeaders;
 
 export async function loader({
   request,
-  context: {storefront, env},
+  context: { storefront, env },
 }: LoaderArgs) {
   const pinnedArticleData = await storefront.query(ARTICLE_BY_ID_QUERY, {
     variables: {
@@ -27,7 +27,7 @@ export async function loader({
   });
   const data = await storefront.query(BLOG_LIST_QUERY);
   const articleData = await storefront.query(FEATURED_BLOG_QUERY, {
-    variables: {first: 8},
+    variables: { first: 8 },
     cache: storefront.CacheNone(),
   });
 
@@ -37,7 +37,7 @@ export async function loader({
   ).filter(Boolean);
 
   if (!blogs || !blogs.length) {
-    throw new Response('Not found', {status: 404});
+    throw new Response('Not found', { status: 404 });
   }
 
   // const seo = seoPayload.policies({policies, url: request.url});
@@ -47,9 +47,9 @@ export async function loader({
   const pageInfo = articleData?.articles?.pageInfo
     ? articleData.articles?.pageInfo
     : {
-        hasNextPage: false,
-        hasPreviousPage: false,
-      };
+      hasNextPage: false,
+      hasPreviousPage: false,
+    };
 
   const pinnedArticle = parseObject(pinnedArticleData, 'article');
 
@@ -64,7 +64,7 @@ export async function loader({
 }
 
 export default function BlogPage() {
-  const {articles, pinnedArticle} = useLoaderData<typeof loader>();
+  const { articles, pinnedArticle } = useLoaderData<typeof loader>();
 
   return (
     <>
