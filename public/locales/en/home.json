@@ -4,7 +4,7 @@
   },
   "hero": {
     "item1": {
-      "title": "La tradizione italiana dell’arredamento di qualità"
+      "title": "The Italian tradition of quality furnishings"
     },
     "item2": {
       "title": "100+",
@@ -32,20 +32,67 @@
     },
     "learn_more": "Learn more"
   },
+  "about": {
+    "title": "Chi siamo",
+    "item1": {
+      "title": "Mission",
+      "subtitle": "Creare ambienti straordinari che trasformano le visioni dei clienti in realtà, garantendo esperienze di successo"
+    },
+    "item2": {
+      "title": "Perché noi",
+      "subtitle": "Scegliere Pacelli Arredamenti è un'esperienza unica, con qualità e convenienza che si fondono per realizzare i tuoi sogni d'arredo"
+    },
+    "item3": {
+      "title": "Punti di forza",
+      "subtitle": "Il nostro successo si fonda su prodotti di alta qualità, precisione e impegno per la fiducia e la trasparenza"
+    }
+  },
   "brand": {
-    "title": "Insieme ai migliori Brands",
-    "subtitle": "Siamo orgogliosi di affermare che le Aziende di cui siamo rifornitori sono considerate le migliori nel mercato del mobile. Aziende orientate alla ricerca di soluzioni moderne e creative e attente ai cambiamenti del vivere la casa e l'arredo.La qualità, l'innovazione, l'affidabilità e la collaborazione sono i principi fondamentali su cui si basa la nostra relazione con queste partner eccezionali."
+    "title": "Along with the best brands",
+    "subtitle1": "Siamo orgogliosi di affermare che le Aziende di cui siamo rifornitori sono considerate le migliori nel mercato del mobile. Aziende orientate alla ricerca di soluzioni moderne e creative e attente ai cambiamenti del vivere la casa e l'arredo.",
+    "subtitle2": "La qualità, l'innovazione, l'affidabilità e la collaborazione sono i principi fondamentali su cui si basa la nostra relazione con queste partner eccezionali."
   },
   "social-proof": {
     "title": "What they say about us",
-    "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+    "item1": {
+      "author": "Geltrude",
+      "excerpt": "Felice di essermi affidata a voi che siete stati super professionali e siete riusciti ad incontrare il mio gusto creando con molto garbo il laboratorio che ho sempre sognato."
+    },
+    "item2": {
+      "author": "Maria",
+      "excerpt": "Paolo un grande professionista. Sa consigliarti sempre con garbo e consapevolezza del suo sapere!"
+    },
+    "item3": {
+      "author": "Marajà",
+      "excerpt": "Grazie Paolo che hai realizzato perfettamente la nostra idea. Complimenti per la professionalità, la gentilezza e la precisione. Grazie angora da tutta la famiglia Marajà."
+    },
+    "item4": {
+      "author": "Franco",
+      "excerpt": "Grazie ad  Arredamenti Pacelli per la professionalità e competenza nella progettazione e montaggio della mia nuova cucina , ho ricevuto tantissimi complimenti dai miei amici."
+    },
+    "item5": {
+      "author": "Lino",
+      "excerpt": "La professionalità fatta persona, persona bellissima. Ho avuto il piacere di collaborare con loro, passione sensa fine."
+    },
+    "item6": {
+      "author": "Agostino",
+      "excerpt": "Grazie per l’immensa professionalità."
+    },
+    "item7": {
+      "author": "Claudia",
+      "excerpt": "Arrivano ovunque e ti portano un pezzo di casa."
+    },
+    "item8": {
+      "author": "Vincenzo",
+      "excerpt": "Grazie mille a te Paolo e al tuo staff per la grande professionalità e la disponibilità, anche per me è stato un vero piacere collaborare con te."
+    }
   },
   "booking": {
     "title": "Make an appointment with us",
-    "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+    "subtitle": "Desideri un ambiente che rifletta la tua personalità e soddisfi le tue esigenze? Prenota un appuntamento con noi, e saremo lieti di aiutarti nella valutazione iniziale dei tuoi spazi da arredare. Il nostro team di esperti ti assisterà nella progettazione della soluzione migliore per te. Rendiamo i tuoi sogni di arredamento una realtà. Contattaci oggi stesso!"
   },
   "blog": {
     "title": "News",
-    "view_all": "Vedi tutti"
+    "view_all": "View all"
   }
 }
