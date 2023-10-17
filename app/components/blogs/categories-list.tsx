@@ -24,7 +24,7 @@ const CategoriesList: React.FC<CategoriesListProps> = ({
           <Link
             key={blog.id}
             to={`/blogs/${blog.handle}`}
-            className="text-gray-900 hover:font-semibold border-b py-2"
+            className="text-gray-900 hover:font-semibold border-b py-2 whitespace-pre"
           >
             {blog.title}
           </Link>
