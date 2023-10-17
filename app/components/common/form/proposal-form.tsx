@@ -30,11 +30,10 @@ const ProposalForm: React.FC<ProposalFormProps> = ({ className = '' }) => {
   const { t } = useTranslation('common');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [reCaptchaDone, setReCaptchaDone] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
-  const onChange = (value: any) => {
-    setReCaptchaDone(true);
+  const onChange = (form: any) => {
+    form.change('reCaptcha', true);
   };
 
   const { ENV } = useRootContext();
@@ -52,7 +51,6 @@ const ProposalForm: React.FC<ProposalFormProps> = ({ className = '' }) => {
       phone: values.phone,
       reCaptcha: recaptchaValue,
     };
-    if (!reCaptchaDone) return;
 
     setLoading(true);
     fetch('/api/proposal', {
@@ -152,15 +150,29 @@ const ProposalForm: React.FC<ProposalFormProps> = ({ className = '' }) => {
                 )}
                 inputErrorClassName="focus:border-b-red-500"
               />
-              <ReCAPTCHA
-                onChange={onChange}
-                className="[&_iframe]:w-full"
-                sitekey={ENV.PUBLIC_SITE_RECAPTCHA_KEY || ''}
-                ref={recaptchaRef}
-              />
-              {!reCaptchaDone && (
+              <div className="relative">
+                <Field name="reCaptcha">
+                  {({ input, meta }) => (
+                    <>
+                      <ReCAPTCHA
+                        onChange={() => onChange(form)}
+                        className="[&_iframe]:w-full"
+                        sitekey={ENV.PUBLIC_SITE_RECAPTCHA_KEY || ''}
+                        ref={recaptchaRef}
+                      />
+                      {meta.touched && meta.error && (
+                        <span className="absolute text-red-500 text-sm left-1 -bottom-6 text-left pl-3">
+                          {meta.error}
+                        </span>
+                      )}
+                    </>
+                  )}
+                </Field>
+              </div>
+
+              {/* {!reCaptchaDone && (
                 <p className="text-sm text-[#ef4444]">ReCaptcha is required</p>
-              )}
+              )} */}
               <Button
                 className="rounded-sm uppercase mt-6"
                 size="md"

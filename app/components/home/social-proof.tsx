@@ -10,15 +10,17 @@ import agostino from '~/assets/carousel/agostino.png';
 import geltrude from '~/assets/carousel/geltrude.png';
 import vincenzo from '~/assets/carousel/vincenzo.png';
 import claudia from '~/assets/carousel/claudia.png';
+import {useTranslation} from 'react-i18next';
 
 interface SocialProofProps {
   className?: string;
 }
 
 const SocialProof: React.FC<SocialProofProps> = ({className = ''}) => {
+  const {t} = useTranslation('home');
   return (
     <section className={clsx('pt-[60px] bg-[#f5f6f7]', className)}>
-      <Heading className="text-center">Cosa dicono di noi</Heading>
+      <Heading className="text-center">{t('home:social-proof.title')}</Heading>
       <div className="px-0 relative">
         <div className="base-container">
           <Carousel
@@ -42,10 +44,10 @@ const SocialProof: React.FC<SocialProofProps> = ({className = ''}) => {
                 <div className="col-span-12 md:col-span-4 flex flex-col gap-4 px-4 md:px-0 space-y-3">
                   <IconQuote className="text-secondary " />
                   <h3 className="text-primary text-[40px] font-normal leading-[50px]">
-                    {item.author}
+                    {t(item.author)}
                   </h3>
                   <p className="text-gray-900 text-base font-normal leading-7">
-                    {item.quote}
+                    {t(item.quote)}
                   </p>
                 </div>
               </div>
@@ -72,55 +74,49 @@ const mockData: SocialProofItemProps[] = [
   {
     id: 'item-proof1',
     image: geltrude,
-    author: 'Geltrude',
-    quote:
-      'Felice di essermi affidata a voi che siete stati super professionali e siete riusciti ad incontrare il mio gusto creando con molto garbo il laboratorio che ho sempre sognato.',
+    author: 'home:social-proof.item1.author',
+    quote: 'home:social-proof.item1.excerpt',
   },
   {
     id: 'item-proof2',
     image: maria,
-    author: 'Maria',
-    quote:
-      'Paolo un grande professionista. Sa consigliarti sempre con garbo e consapevolezza del suo sapere!',
+    author: 'home:social-proof.item2.author',
+    quote: 'home:social-proof.item2.excerpt',
   },
   {
     id: 'item-proof3',
     image: maraja,
-    author: 'Marajà',
-    quote:
-      'Grazie Paolo che hai realizzato perfettamente la nostra idea. Complimenti per la professionalità, la gentilezza e la precisione. Grazie angora da tutta la famiglia Marajà.',
+    author: 'home:social-proof.item3.author',
+    quote: 'home:social-proof.item3.excerpt',
   },
   {
     id: 'item-proof4',
     image: franco,
-    author: 'Franco',
-    quote:
-      'Grazie ad  Arredamenti Pacelli per la professionalità e competenza nella progettazione e montaggio della mia nuova cucina , ho ricevuto tantissimi complimenti dai miei amici.',
+    author: 'home:social-proof.item4.author',
+    quote: 'home:social-proof.item4.excerpt',
   },
   {
     id: 'item-proof5',
     image: lino,
-    author: 'Lino',
-    quote:
-      'La professionalità fatta persona, persona bellissima. Ho avuto il piacere di collaborare con loro, passione sensa fine.',
+    author: 'home:social-proof.item5.author',
+    quote: 'home:social-proof.item5.excerpt',
   },
   {
     id: 'item-proof6',
     image: agostino,
-    author: 'Agostino',
-    quote: 'Grazie per l’immensa professionalità.',
+    author: 'home:social-proof.item6.author',
+    quote: 'home:social-proof.item6.excerpt',
   },
   {
     id: 'item-proof7',
     image: claudia,
-    author: 'Claudia',
-    quote: 'Arrivano ovunque e ti portano un pezzo di casa.',
+    author: 'home:social-proof.item7.author',
+    quote: 'home:social-proof.item7.excerpt',
   },
   {
     id: 'item-proof8',
     image: vincenzo,
-    author: 'Vincenzo',
-    quote:
-      'Grazie mille a te Paolo e al tuo staff per la grande professionalità e la disponibilità, anche per me è stato un vero piacere collaborare con te.',
+    author: 'home:social-proof.item8.author',
+    quote: 'home:social-proof.item8.excerpt',
   },
 ];
