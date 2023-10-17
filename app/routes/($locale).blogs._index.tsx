@@ -7,28 +7,28 @@ import {NonNullableFields} from '~/lib/type';
 import {
   ARTICLE_BY_ID_QUERY,
   BLOG_LIST_QUERY,
-  BLOG_QUERY,
   FEATURED_BLOG_QUERY,
 } from '~/graphql/blogs';
 import ArticlesPagination from '~/components/blogs/articles-pagination';
 import {Article} from '@shopify/hydrogen/storefront-api-types';
-import {parseObject} from '~/lib/utils';
+import {cacheNoneInStaging, parseObject} from '~/lib/utils';
 
 export const headers = routeHeaders;
 
-export async function loader({
-  request,
-  context: {storefront, env},
-}: LoaderArgs) {
+export async function loader({request, context}: LoaderArgs) {
+  const {storefront, env} = context;
   const pinnedArticleData = await storefront.query(ARTICLE_BY_ID_QUERY, {
     variables: {
       id: env.PUBLIC_PINNDED_ARTICLE_ID || 'gid://shopify/Article/606763745578',
     },
+    cache: cacheNoneInStaging(context),
   });
-  const data = await storefront.query(BLOG_LIST_QUERY);
+  const data = await storefront.query(BLOG_LIST_QUERY, {
+    cache: cacheNoneInStaging(context),
+  });
   const articleData = await storefront.query(FEATURED_BLOG_QUERY, {
     variables: {first: 8},
-    cache: storefront.CacheNone(),
+    cache: cacheNoneInStaging(context),
   });
 
   invariant(data, 'No data returned from Shopify API');
@@ -73,3 +73,7 @@ export default function BlogPage() {
     </>
   );
 }
+
+export const handle = {
+  i18n: ['common', 'header', 'blogs'],
+};

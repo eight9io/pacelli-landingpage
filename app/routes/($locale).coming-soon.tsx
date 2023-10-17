@@ -23,3 +23,7 @@ export default function ComingSoonPage() {
     </>
   );
 }
+
+export const handle = {
+  i18n: ['common', 'header', 'coming_soon'],
+};

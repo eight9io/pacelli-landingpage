@@ -45,3 +45,7 @@ export default function AboutPage() {
     </>
   );
 }
+
+export const handle = {
+  i18n: ['common', 'header', 'about'],
+};

@@ -39,3 +39,7 @@ export default function ContactPage() {
     </>
   );
 }
+
+export const handle = {
+  i18n: ['common', 'header', 'contact'],
+};
