@@ -16,7 +16,7 @@ interface MyTeamProps {
 }
 
 const MyTeam: React.FC<MyTeamProps> = ({ className = '' }) => {
-  const { t } = useTranslation("showroom");
+  const { t } = useTranslation('showroom');
   const [openForm, setOpenForm] = useState(false);
   const openPopup = () => {
     setOpenForm(true);
@@ -40,15 +40,15 @@ const MyTeam: React.FC<MyTeamProps> = ({ className = '' }) => {
           className="mb-4 md:mb-8 text-[48px] text-primary-950"
           variant="h3"
         >
-          {t("team.title")}
+          {t('team.title')}
         </Heading>
         <div className="grid grid-cols-12 gap-5 lg:gap-8">
           <div className="col-span-12 md:col-span-4 space-y-8">
             <p className="text-base font-normal leading-7 text-neutral-800 ">
-              {t("team.sub_title")}
+              {t('team.sub_title')}
             </p>
             <p className="text-primary-950 text-[22px] md:text-2xl font-bold leading-9">
-              Contacts
+              {t('contacts.title')}
             </p>
             <InfoContact />
           </div>
@@ -66,7 +66,7 @@ const MyTeam: React.FC<MyTeamProps> = ({ className = '' }) => {
             </h3>
 
             <p className="text-base font-normal leading-7 text-neutral-800 ">
-              {t("team.bruno_info")}
+              {t('team.bruno_info')}
             </p>
             <div className="w-full mt-auto">
               <Button
@@ -74,7 +74,7 @@ const MyTeam: React.FC<MyTeamProps> = ({ className = '' }) => {
                 size="md"
                 onClick={openPopup}
               >
-                Book appointment
+                {t('contacts.book_appointment')}
                 <ArrowRight className="text-secondary w-5 h-5 stroke-secondary origin-center stroke-2" />
               </Button>
             </div>
@@ -93,7 +93,7 @@ const MyTeam: React.FC<MyTeamProps> = ({ className = '' }) => {
             </h3>
 
             <p className="text-base font-normal leading-7 text-neutral-800">
-              {t("team.ernesto_info")}
+              {t('team.ernesto_info')}
             </p>
             <div className="w-full mt-auto">
               <Button

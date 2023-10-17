@@ -1,12 +1,12 @@
 import clsx from 'clsx';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 import services4 from '~/assets/services/services-4.png';
 interface PlanProps {
   className?: string;
 }
 
-const Plan: React.FC<PlanProps> = ({ className = '' }) => {
-  const { t } = useTranslation('private');
+const Plan: React.FC<PlanProps> = ({className = ''}) => {
+  const {t} = useTranslation('private');
 
   return (
     <section

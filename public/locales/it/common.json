@@ -88,6 +88,11 @@
     "read_more": "Read more",
     "load_more": "Load more",
     "all": "All",
-    "filter": "Filter"
+    "filter": "Filter",
+    "down_success": "  Your download is successfull.",
+    "share": "SHARE",
+    "back": "Back",
+    "send": "Send",
+    "request_success": "Your request is successfull. We will contact you soon!"
   }
 }

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import CardImg from '../CardImg';
-import {useState} from 'react';
-import {useTranslation} from 'react-i18next';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 interface ContactProps {
   className?: string;
   projects: any[];
@@ -33,13 +33,13 @@ const OwnProjects: React.FC<ContactProps> = (props) => {
 
   const onLoadMore = async () => {
     const data = await fetch('/api/projects?after=' + pageInfo.endCursor);
-    const {projects: newProjects, pageInfo: newPageInfo} =
+    const { projects: newProjects, pageInfo: newPageInfo } =
       (await data.json()) as any;
     setProjects([...projects, ...newProjects]);
     setPageInfo(newPageInfo);
   };
 
-  const {t} = useTranslation('gallery');
+  const { t } = useTranslation('gallery');
 
   return (
     <section
@@ -54,10 +54,10 @@ const OwnProjects: React.FC<ContactProps> = (props) => {
       <div className="grid grid-cols-12 gap-y-8 lg:gap-8 mt-11">
         {projects && projects.length
           ? projects.map((item, index) => (
-              <div className="col-span-12 lg:col-span-6" key={item.id}>
-                <CardImg item={item} />
-              </div>
-            ))
+            <div className="col-span-12 lg:col-span-6" key={item.id}>
+              <CardImg item={item} />
+            </div>
+          ))
           : null}
       </div>
       {pageInfo.hasNextPage === true && (
@@ -68,7 +68,7 @@ const OwnProjects: React.FC<ContactProps> = (props) => {
               'text-secondary cursor-pointer font-normal my-8 mx-auto text-[24px] md:text-[32px] leading-[48px]  underline',
             )}
           >
-            Load more
+            {t('load_more')}
           </button>
         </div>
       )}

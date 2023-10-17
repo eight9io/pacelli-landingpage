@@ -1,22 +1,23 @@
-import {Article} from '@shopify/hydrogen/storefront-api-types';
+import { Article } from '@shopify/hydrogen/storefront-api-types';
 import HTMLContent from './html-content';
 import Heading from '../common/heading';
 import dayjs from 'dayjs';
 import Tag from '~/components/common/icons/tag';
 import Share from '../common/icons/share';
-import {FacebookShareButton} from 'react-share';
-import {useLoaderData, useNavigate} from '@remix-run/react';
+import { FacebookShareButton } from 'react-share';
+import { useLoaderData, useNavigate } from '@remix-run/react';
 import arrowRight from '~/assets/icons/arrow-right.svg';
-import {Button} from '~/components/snippets';
+import { Button } from '~/components/snippets';
+import { useTranslation } from 'react-i18next';
 
 interface ArticleContentProps {
   className?: string;
   article: Article;
 }
 
-const ArticleContent: React.FC<ArticleContentProps> = ({article}) => {
-  const {currentUrl} = useLoaderData();
-
+const ArticleContent: React.FC<ArticleContentProps> = ({ article }) => {
+  const { currentUrl } = useLoaderData();
+  const { t } = useTranslation('common');
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
 
@@ -36,7 +37,7 @@ const ArticleContent: React.FC<ArticleContentProps> = ({article}) => {
           <FacebookShareButton url={currentUrl || ''}>
             <span className="text-gray-400 flex text-sm uppercase items-center gap-2">
               <Share className="text-gray-400 w-4 h-4 " />
-              SHARE
+              {t('button.share')}
             </span>
           </FacebookShareButton>
         </div>
@@ -63,7 +64,7 @@ const ArticleContent: React.FC<ArticleContentProps> = ({article}) => {
         onClick={goBack}
       >
         <img className="duration-200 rotate-180" src={arrowRight} alt="Back" />
-        back
+        {t('button.back')}
       </Button>
     </>
   );

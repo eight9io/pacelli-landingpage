@@ -52,7 +52,7 @@ const BeforeAfter: React.FC<BeforeAfterProps> = ({
               alt="Mission"
               width={394}
               height={600}
-              className="h-[600px]"
+              className="h-[600px] w-full "
             />
           </div>
           <div className="col-span-12 md:col-span-4">
@@ -61,7 +61,7 @@ const BeforeAfter: React.FC<BeforeAfterProps> = ({
               alt="Mission"
               width={394}
               height={600}
-              className="h-[600px]"
+              className="h-[600px]  w-full "
             />
           </div>
         </div>

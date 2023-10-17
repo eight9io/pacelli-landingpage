@@ -21,11 +21,11 @@ const Contact: React.FC<ContactProps> = ({ className = '' }) => {
           <h2 className="text-[40px] md:text-[64px] font-semibold leading-[50px] md:leading-[78px] text-[# 142423]">
             {t('contact.title')}
           </h2>
-          <p className="text-base font-normal leading-7">
-            {t('contact.desc')}
-          </p>
+          <p className="text-base font-normal leading-7">{t('contact.desc')}</p>
           <div className="h-[1.5px] bg-gray-300"></div>
-          <p className="text-base  leading-7 font-bold">   {t('contact.call_us')}</p>
+          <p className="text-base  leading-7 font-bold">
+            {t('contact.call_us')}
+          </p>
           <div className="flex gap-4 text-gray-600 font-normal text-base">
             <Phone className="text-secondary w-6 h-6 stroke-secondary origin-center rotate-[270deg] stroke-2" />
             +39 0824/948533

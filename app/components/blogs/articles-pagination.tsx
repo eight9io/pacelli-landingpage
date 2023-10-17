@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import PinterestGalleryItem from '~/components/common/pinterest-gallery/gallery-item';
 import PinterestGallery from '~/components/common/pinterest-gallery/gallery';
-import { Article } from '@shopify/hydrogen/storefront-api-types';
+import {Article} from '@shopify/hydrogen/storefront-api-types';
 import ArticleCard from '~/components/common/article-card';
 import Heading from '../common/heading';
 import {
@@ -10,12 +10,12 @@ import {
   useNavigate,
   useSearchParams,
 } from '@remix-run/react';
-import { loader } from '~/routes/($locale).blogs._index';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import {loader} from '~/routes/($locale).blogs._index';
+import {useCallback, useEffect, useRef, useState} from 'react';
 import AngleDown from '~/components/common/icons/angle-full-down';
-import { Button } from '../Button';
-import { useInView } from 'react-intersection-observer';
-import { useTranslation } from 'react-i18next';
+import {Button} from '../Button';
+import {useInView} from 'react-intersection-observer';
+import {useTranslation} from 'react-i18next';
 
 interface ArticlesPaginationProps {
   className?: string;
@@ -27,7 +27,7 @@ const ArticlesPagination: React.FC<ArticlesPaginationProps> = ({
   className = '',
   articles: propsArticles = [],
 }) => {
-  const { t } = useTranslation('common');
+  const {t} = useTranslation('common');
   const {
     blogs,
     selectedBlog,
@@ -39,7 +39,7 @@ const ArticlesPagination: React.FC<ArticlesPaginationProps> = ({
 
   const selectedItem = selectedBlog
     ? selectedBlog
-    : { title: t('button.all'), handle: undefined };
+    : {title: t('button.all'), handle: undefined};
 
   useEffect(() => {
     if (!fetcher.data || fetcher.state === 'loading') return;
@@ -51,7 +51,7 @@ const ArticlesPagination: React.FC<ArticlesPaginationProps> = ({
   }, [fetcher.data, fetcher.state]);
 
   const onLoadmore = useCallback(async () => {
-    const { endCursor: after } = pageInfo;
+    const {endCursor: after} = pageInfo;
     if (!after) return;
     fetcher.load(`/api/articles?after=${after}`);
   }, [pageInfo, fetcher]);
@@ -77,16 +77,16 @@ const ArticlesPagination: React.FC<ArticlesPaginationProps> = ({
       <PinterestGallery className="w-full gap-6 md:gap-8">
         {articles && articles.length
           ? articles.map((article, index) => (
-            <PinterestGalleryItem
-              variant={varianCalculator(index)}
-              key={article.id}
-            >
-              <ArticleCard
-                article={article}
+              <PinterestGalleryItem
                 variant={varianCalculator(index)}
-              />
-            </PinterestGalleryItem>
-          ))
+                key={article.id}
+              >
+                <ArticleCard
+                  article={article}
+                  variant={varianCalculator(index)}
+                />
+              </PinterestGalleryItem>
+            ))
           : null}
       </PinterestGallery>
       {pageInfo?.hasNextPage ? (
@@ -125,13 +125,13 @@ interface FilterProps {
   items: any[];
 }
 
-const Filter: React.FC<FilterProps> = ({ className = '', selected, items }) => {
-  const { t } = useTranslation('common');
+const Filter: React.FC<FilterProps> = ({className = '', selected, items}) => {
+  const {t} = useTranslation('common');
   const closeRef = useRef<HTMLDetailsElement>(null);
   const navigate = useNavigate();
   // const [searchParams, setSearchParams] = useSearchParams();
 
-  const { ref } = useInView({
+  const {ref} = useInView({
     threshold: 0,
     triggerOnce: true,
   });

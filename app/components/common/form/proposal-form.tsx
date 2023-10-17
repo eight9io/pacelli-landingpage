@@ -204,7 +204,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({ className = '' }) => {
                       stroke="white"
                     ></path>
                   </svg>
-                  Your download is successfull.
+                  {t("button.down_success")}
                 </span>
               )}
             </form>
