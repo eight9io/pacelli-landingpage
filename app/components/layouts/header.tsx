@@ -112,17 +112,16 @@ export function HeaderSection() {
             <div className="flex relative mt-4">
               <ul className="space-y-0 xs:space-y-4 xs:py-6 w-full md:w-1/2 flex-col md:block">
                 {mainMenuItems.map(({text, href, items}) => (
-                  <li key={href}>
+                  <li key={`main-${href}-${text}`}>
                     {href ? (
                       <Link
                         className={clsx(
-                          'flex justify-between items-center md:block rounded-none box-border pt-2 pb-1 md:pt-4 md:pb-2 text-base xs:text-[32px] md:text-[40px] leading-8 text-white border-b border-b-transparent hover:border-b-slate-400 ',
+                          'flex justify-between items-center md:block rounded-none box-border pt-2 pb-1 md:pt-4 md:pb-2 text-xl xs:text-[32px] md:text-[40px] leading-8 text-white border-b border-b-transparent hover:border-b-slate-400 ',
                           {'cursor-default': href === '#'},
                           isMenuItemActive(href) &&
                             'text-white border-b-slate-400',
                           'peer hover:[&+div]:block max-w-[395px]',
                         )}
-                        key={`${href}-${text}`}
                         to={href}
                         onClick={(event) => {
                           if (href === '#') {
@@ -142,10 +141,10 @@ export function HeaderSection() {
                     ) : (
                       <span
                         className={clsx(
-                          'flex justify-between items-center md:block rounded-none text-sm box-border pt-2 pb-1 md:pt-4 md:pb-2 xs:text-[32px] md:text-[40px] leading-8 text-white border-b border-b-transparent hover:border-b-slate-400 ',
+                          'flex justify-between items-center md:block rounded-none box-border pt-2 pb-1 md:pt-4 md:pb-2 text-xl xs:text-[32px] md:text-[40px] leading-8 text-white border-b border-b-transparent hover:border-b-slate-400 ',
                           'peer hover:[&+div]:block max-w-[395px]',
                         )}
-                        key={`${href}-${text}`}
+                        key={`main-${href}-${text}`}
                       >
                         {text}
                         {items && items.length ? (
@@ -163,7 +162,7 @@ export function HeaderSection() {
                           return href ? (
                             <Link
                               className={clsx(
-                                'block rounded-none box-border pt-0 xs:pt-2 pb-1 text-xs md:pt-4 md:pb-2 xs:text-2xl md:text-[32px] leading-7 text-white border-b border-b-transparent hover:border-b-slate-400 max-w-[395px]',
+                                'block rounded-none box-border pt-0 xs:pt-2 pb-1 text-base md:pt-4 md:pb-2 xs:text-2xl md:text-[32px] leading-7 text-white border-b border-b-transparent hover:border-b-slate-400 max-w-[395px]',
                                 isMenuItemActive(href) &&
                                   'text-white border-b-slate-400',
                               )}
@@ -178,7 +177,7 @@ export function HeaderSection() {
                           ) : (
                             <span
                               className={clsx(
-                                'block rounded-none box-border pt-2 pb-1 text-xs md:pt-4 md:pb-2 xs:text-2xl md:text-[32px] leading-7 text-white border-b border-b-transparent hover:border-b-slate-400 max-w-[395px]',
+                                'block rounded-none box-border pt-2 pb-1 text-base md:pt-4 md:pb-2 xs:text-2xl md:text-[32px] leading-7 text-white border-b border-b-transparent hover:border-b-slate-400 max-w-[395px]',
                               )}
                               key={`${href}-${text}`}
                             >

@@ -1,8 +1,8 @@
-import { Blog } from '@shopify/hydrogen/storefront-api-types';
+import {Blog} from '@shopify/hydrogen/storefront-api-types';
 import Heading from '../common/heading';
 import Link from '../Link';
 import clsx from 'clsx';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 
 interface CategoriesListProps {
   className?: string;
@@ -13,7 +13,7 @@ const CategoriesList: React.FC<CategoriesListProps> = ({
   className = '',
   blogs,
 }) => {
-  const { t } = useTranslation('blogs');
+  const {t} = useTranslation('blogs');
   return (
     <div className={clsx(className)}>
       <Heading variant="h4" className="text-primary mb-6 !font-normal">

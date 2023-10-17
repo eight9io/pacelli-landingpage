@@ -1,23 +1,23 @@
-import { Article } from '@shopify/hydrogen/storefront-api-types';
+import {Article} from '@shopify/hydrogen/storefront-api-types';
 import HTMLContent from './html-content';
 import Heading from '../common/heading';
 import dayjs from 'dayjs';
 import Tag from '~/components/common/icons/tag';
 import Share from '../common/icons/share';
-import { FacebookShareButton } from 'react-share';
-import { useLoaderData, useNavigate } from '@remix-run/react';
+import {FacebookShareButton} from 'react-share';
+import {useLoaderData, useNavigate} from '@remix-run/react';
 import arrowRight from '~/assets/icons/arrow-right.svg';
-import { Button } from '~/components/snippets';
-import { useTranslation } from 'react-i18next';
+import {Button} from '~/components/snippets';
+import {useTranslation} from 'react-i18next';
 
 interface ArticleContentProps {
   className?: string;
   article: Article;
 }
 
-const ArticleContent: React.FC<ArticleContentProps> = ({ article }) => {
-  const { currentUrl } = useLoaderData();
-  const { t } = useTranslation('common');
+const ArticleContent: React.FC<ArticleContentProps> = ({article}) => {
+  const {currentUrl} = useLoaderData();
+  const {t} = useTranslation('common');
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
 
@@ -43,7 +43,7 @@ const ArticleContent: React.FC<ArticleContentProps> = ({ article }) => {
         </div>
         <Heading
           variant="h1"
-          className="text-primary !text-[40px] md:text-[64px] !leading-[60px] md:leading-[78px] font-semibold mb-6"
+          className="text-primary !text-[40px] md:!text-[64px] !leading-[60px] md:!leading-[78px] font-semibold mb-6"
         >
           {article.title}
         </Heading>
