@@ -1,43 +1,43 @@
 {
-  "description": "This is a non-page component that requires its own namespace",
+  "description": "Pacelli Arredamenti with a vast selection of high quality products and a strong commitment to your satisfaction, is your reliable partner to transform your vision of extraordinary interiors into a tangible reality",
   "mission": {
     "title": "Mission",
-    "subtitle1": "Creare ambienti straordinari che soddisfino le esigenze e i gusti individuali dei clienti",
-    "subtitle2": "Trasformare le visioni dei clienti in realtà",
-    "subtitle3": "Assicurare il successo di ogni progetto"
+    "subtitle1": "Creating extraordinary environments that meet customers' individual needs and tastes",
+    "subtitle2": "Transforming customer visions into reality",
+    "subtitle3": "Ensure the success of every project"
   },
   "reason": {
-    "title": "Perché noi",
-    "subtitle1": "Scegliere Pacelli Arredamenti è molto più di una semplice decisione d'acquisto; è un'affermazione del tuo impegno per la qualità e il tuo apprezzamento per il design ineguagliabile. ",
-    "subtitle2": "Con Pacelli Arredamenti, non c'è bisogno di compromessi. Qui, la qualità e la convenienza si fondono armoniosamente, offrendoti l'opportunità di realizzare i tuoi sogni d'arredo in un unico, straordinario luogo."
+    "title": "Why us",
+    "subtitle1": "Choosing Pacelli Arredamenti is much more than a simple purchasing decision; it is an affirmation of your commitment to quality and your appreciation for unparalleled design",
+    "subtitle2": "With Pacelli Arredamenti, there is no need for compromises. Here, quality and convenience come together harmoniously, offering you the opportunity to realize your furnishing dreams in one extraordinary place"
   },
   "strong_point": {
-    "title": "Punti di forza",
-    "subtitle": "Il nostro successo è alimentato da tre pilastri fondamentali: una vasta selezione di prodotti selezionati da aziende di alta qualità, una costante attenzione alla precisione e un forte impegno per la fiducia e la trasparenza.",
+    "title": "Strengths",
+    "subtitle": "Our success is fueled by three fundamental pillars: a vast selection of products selected by high-quality companies, an unwavering focus on precision and a strong commitment to trust and transparency",
     "item1": {
-      "title": "Consegna ad ogni costo",
-      "content": "Consegna a qualsiasi piano, montaggio e installazione professionale"
+      "title": "Delivery at any cost",
+      "content": "Delivery to any floor, professional assembly and installation"
     },
     "item2": {
-      "title": "Brand esclusivi",
-      "content": "Siamo i rappresentanti ufficiali di molti produttori di altissima qualità"
+      "title": "Exclusive brands",
+      "content": "We are the official representatives of many top quality manufacturers"
     },
     "item3": {
-      "title": "Garanzia",
-      "content": "Sostituzione pezzi immediata in caso di malfunzionamento o difettosità dei prodotti"
+      "title": "Guarantee",
+      "content": "Immediate replacement of parts in the event of malfunction or product defects"
     },
     "item4": {
-      "title": "Assistenza post-vendita",
-      "content": "Facciamo assistenza diretta con sistemazioni specialistiche tramite fabbri, falegnami ed ebanisti esperti, anche a distanza di anni"
+      "title": "After-sales assistance",
+      "content": "We provide direct assistance with specialist arrangements through expert blacksmiths, carpenters and cabinetmakers, even after years"
     },
     "item5": {
-      "title": "50+ anni sul mercato del mobile",
-      "content": "Pacelli è un simbolo di affidabilità e supporto al Cliente anche dopo anni, garantendo assistenza e supporto continuo con i professionisti interni"
+      "title": "50+ years on the furniture market",
+      "content": "Pacelli is a symbol of reliability and customer support even after years, guaranteeing continuous assistance and support with internal professionals"
     }
   },
   "history": {
-    "title": "La nostra storia",
-    "description1": "La progettazione di interni per Pacelli è una testimonianza di dedizione e passione che ha attraversato più di tre generazioni. Fin dal dopoguerra, questa famiglia ha contribuito in modo significativo all'evoluzione di questo settore in continua trasformazione. Il capitolo iniziale di questa affascinante storia si apre nel lontano 1968, quando il visionario Ivo Pacelli compie una mossa audace e rivoluzionaria. Da un'attività di vendita che abbracciava una vasta gamma di prodotti, tra cui alimentari e mangimi, Ivo decide di concentrarsi su qualcosa di diverso: i mobili. Inizialmente, i locali in cui operavano rimasero gli stessi, ma il suo spirito intraprendente, unito alla crescente richiesta di arredi di qualità, spinse la famiglia Pacelli a sognare in grande. Alla fine degli anni '70, il bisogno di spazio divenne evidente, e fu in questo momento cruciale che nacque la sede storica dell'azienda. L'edificio consisteva in una struttura in muratura sottostante a un grande spazio agibile in prefabbricato, uno dei primi di tutta la zona.",
-    "description2": "Questa sede rappresentava l'impegno e la determinazione della famiglia Pacelli nel settore dell'arredamento. I risultati di tanta dedizione e impegno non si fecero attendere, e appena dieci anni dopo il primo ampliamento, l'azienda si trovò nella necessità di abbattere nuovamente lo stabile originario per costruirne uno nuovo, questa volta con tre piani. Al cuore di questa azienda c'è una squadra eccezionale di professionisti altamente qualificati, guidati dalla visione e dalla leadership di Paolo Pacelli, il figlio di Ivo, che con dedizione e passione guida l'azienda da ormai 30 anni. Questo impegno per l'eccellenza si traduce in un'offerta senza pari di servizi e prodotti per l'arredamento, dalla progettazione di interni ed esterni all'arredamento per il bagno, dai prodotti tessili all'illuminazione, dall’ oggettistica alla carta da parati. La sede storica rappresenta ancora oggi il cuore pulsante di questa azienda. Qui, le tradizioni di famiglia vengono custodite gelosamente, mentre la passione per l'arredamento di alta qualità continua a guidare l'azienda verso nuovi orizzonti di successo. In sintesi, la sede storica di Pacelli è molto più di un luogo fisico: qui le radici familiari si intrecciano con la creatività contemporanea, dove l'arredamento di alta qualità è una forma d'arte che si evolve costantemente. È il fulcro in cui il passato e il futuro si abbracciano, dando vita a un'azienda che incarna l'essenza del design senza tempo."
+    "title": "Our story",
+    "description1": "Interior design for Pacelli is a testament to dedication and passion that has spanned more than three generations. Since the post-war period, this family has contributed significantly to the evolution of this ever-changing sector. The initial chapter of this fascinating story opens way back in 1968, when the visionary Ivo Pacelli makes a bold and revolutionary move. From a sales business that spanned a wide range of products, including food and feed, Ivo decided to focus on something different: furniture. Initially, the premises in which they operated remained the same, but his enterprising spirit, combined with the growing demand for quality furnishings, pushed the Pacelli family to dream big. At the end of the 1970s, the need for space became evident, and it was at this crucial moment that the company's historic headquarters was born. The building consisted of a masonry structure beneath a large prefabricated usable space, one of the first in the entire area.",
+    "description2": "This headquarters represented the commitment and determination of the Pacelli family in the furniture sector. The results of such dedication and commitment were not long in coming, and just ten years after the first expansion, the company found itself having to demolish the original building again to build a new one, this time with three floors. At the heart of this company is an exceptional team of highly qualified professionals, guided by the vision and leadership of Paolo Pacelli, Ivo's son, who has led the company with dedication and passion for 30 years now. This commitment to excellence translates into an unparalleled offering of furnishing services and products, from interior and exterior design to bathroom furnishings, from textile products to lighting, from objects to wallpaper . The historic headquarters still represents the beating heart of this company today. Here, family traditions are jealously guarded, while the passion for high-quality furniture continues to guide the company towards new horizons of success. In summary, Pacelli's historic headquarters is much more than a physical place: here family roots are intertwined with contemporary creativity, where high-quality furniture is an art form that constantly evolves. It is the hub where the past and future embrace each other, creating a company that embodies the essence of timeless design."
   }
 }
