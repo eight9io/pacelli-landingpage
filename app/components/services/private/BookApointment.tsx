@@ -203,7 +203,7 @@ const BookAppointment: React.FC<BookAppointmentProps> = ({ className = '' }) => 
             className="md:scale-[0.85] max-w-[600px] base-container  z-50 absolute  "
           >
             <BookingForm handleClose={closePopup} closeButton={
-              <XMarkIcon stroke="gray" className="h-6 w-6  absolute top-5 right-5 cursor-pointer hover:scale-125 transition-all duration-300" aria-hidden="true"
+              <XMarkIcon stroke="gray" className="h-8 w-8  absolute top-5 right-5 cursor-pointer hover:scale-125 transition-all duration-300 z-[100] " aria-hidden="true"
                 onClick={closePopup}
               />
             } />

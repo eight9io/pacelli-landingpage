@@ -1,10 +1,10 @@
 import * as React from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
-import {forwardRef, useState} from 'react';
-import {default as RDDatePicker, ReactDatePickerProps} from 'react-datepicker';
-import {Field, FieldProps, FieldRenderProps} from 'react-final-form';
+import { forwardRef, useState } from 'react';
+import { default as RDDatePicker, ReactDatePickerProps } from 'react-datepicker';
+import { Field, FieldProps, FieldRenderProps } from 'react-final-form';
 import clsx from 'clsx';
-import {ChevronDownIcon} from '@heroicons/react/24/outline';
+import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import dayjs from 'dayjs';
 
 function CoreDatePicker(props: any) {
@@ -58,10 +58,10 @@ const DatePicker: React.FC<DatePickerProp> = ({
 
   return (
     <Field name={name}>
-      {({input, meta}) => (
+      {({ input, meta }) => (
         <label
           htmlFor={`id-${name}`}
-          className={clsx('group relative pb-6', className)}
+          className={clsx('group relative md:pb-6', className)}
         >
           <CoreDatePicker
             id={`id-${name}`}
@@ -96,8 +96,8 @@ const DatePicker: React.FC<DatePickerProp> = ({
                       `placeholder:text-primary-950 peer block w-full p-3 text-gray-600  border border-r-0 focus:border-red-400 focus:bg-white focus:outline-none focus:ring-0 appearance-none rounded-tr-none rounded-br-none rounded transition-colors duration-300`,
                       'border-gray-400 input focus:outline-offset-0 focus:outline-w-[1px] focus:outline-1 rounded-sm input-primary w-full focus:!bg-transparent [&+div]:!bg-transparent [&+div]:!border-none [&+div]:!border-b-2 [&+div]:!border-b-red-500',
                       meta.error &&
-                        meta.touched &&
-                        'focus:outline-red-500 border-red-500',
+                      meta.touched &&
+                      'focus:outline-red-500 border-red-500',
                       meta.error && meta.touched && inputErrorClassName,
                       inputClassName,
                     )}
@@ -126,7 +126,7 @@ const DatePicker: React.FC<DatePickerProp> = ({
           />
           <span className="hidden group-focus:block">{label}</span>
           {meta.error && meta.touched && (
-            <span className="text-red-500 text-sm absolute text-left mt-2 pl-2 left-1 -bottom-[14px]">
+            <span className="text-red-500 text-sm absolute text-left mt-2 pl-2 left-1  -bottom-[38px] md:-bottom-[14px]">
               {meta.error}
             </span>
           )}
@@ -136,6 +136,6 @@ const DatePicker: React.FC<DatePickerProp> = ({
   );
 };
 
-export {CoreDatePicker};
+export { CoreDatePicker };
 
 export default DatePicker;
