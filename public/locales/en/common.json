@@ -83,6 +83,16 @@
     "title": "Ricevere una proposta"
   },
   "button": {
-    "download": "Download"
+    "download": "Download",
+    "learn_more": "Learn more",
+    "read_more": "Read more",
+    "load_more": "Load more",
+    "all": "All",
+    "filter": "Filter",
+    "down_success": "  Your download is successfull.",
+    "share": "SHARE",
+    "back": "Back",
+    "send": "Send",
+    "request_success": "Your request is successfull. We will contact you soon!"
   }
 }

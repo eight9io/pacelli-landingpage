@@ -39,7 +39,7 @@ import penta from '~/assets/brands/penta.png';
 import prandina from '~/assets/brands/prandina.png';
 import ronda_design from '~/assets/brands/ronda_design.png';
 import Heading from '../common/heading';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 
 interface BrandsProps {
   className?: string;
@@ -50,7 +50,7 @@ const Brands: React.FC<BrandsProps> = ({
   className = '',
   showDescription = true,
 }) => {
-  const { t } = useTranslation('home');
+  const {t} = useTranslation('home');
   return (
     <section className={clsx(className)}>
       <div className="base-container !pt-0">
@@ -61,12 +61,8 @@ const Brands: React.FC<BrandsProps> = ({
               showDescription ? '' : 'hidden',
             )}
           >
-            <Heading className="mb-4 md:mb-6">
-              {t('brand.title')}
-            </Heading>
-            <p className="text-gray-900 leading-7">
-              {t('brand.subtitle1')}
-            </p>
+            <Heading className="mb-4 md:mb-6">{t('brand.title')}</Heading>
+            <p className="text-gray-900 leading-7">{t('brand.subtitle1')}</p>
           </div>
           <div
             className={clsx(

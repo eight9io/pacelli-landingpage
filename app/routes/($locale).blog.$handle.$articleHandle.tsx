@@ -1,6 +1,6 @@
-import {defer, json, type LoaderArgs} from '@shopify/remix-oxygen';
-import {useLoaderData} from '@remix-run/react';
-import {routeHeaders} from '~/data/cache';
+import { defer, json, type LoaderArgs } from '@shopify/remix-oxygen';
+import { useLoaderData } from '@remix-run/react';
+import { routeHeaders } from '~/data/cache';
 import {
   BLOG_ARTICLE_DETAIL_QUERY,
   BLOG_LIST_QUERY,
@@ -10,23 +10,24 @@ import ArticleContent from '~/components/blogs/article-content';
 import CategoriesList from '~/components/blogs/categories-list';
 import LatestArticles from '~/components/blogs/latest-articles';
 
-import {Image} from '@shopify/hydrogen-react';
+import { Image } from '@shopify/hydrogen-react';
+
 
 export const headers = routeHeaders;
 
 export async function loader({
   request,
-  context: {storefront},
+  context: { storefront },
   params,
 }: LoaderArgs) {
-  const {handle, articleHandle} = params as {
+  const { handle, articleHandle } = params as {
     handle: string;
     articleHandle: string;
   };
 
   const blogData = await storefront.query(BLOG_LIST_QUERY);
   const blogArticleData = await storefront.query(BLOG_ARTICLE_DETAIL_QUERY, {
-    variables: {handle, articleHandle},
+    variables: { handle, articleHandle },
   });
   const latestArticlesData = await storefront.query(FEATURED_BLOG_QUERY);
 
@@ -40,7 +41,7 @@ export async function loader({
 }
 
 export default function BlogDetailPage() {
-  const {article, blogs, latestArticles} = useLoaderData<typeof loader>();
+  const { article, blogs, latestArticles } = useLoaderData<typeof loader>();
 
   return (
     <div className="mt-40 md:mb-32">

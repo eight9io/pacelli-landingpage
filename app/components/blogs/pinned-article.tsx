@@ -1,11 +1,11 @@
 import clsx from 'clsx';
 
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 import Link from '~/components/Link';
 import arrowRight from '~/assets/icons/arrow-right.svg';
 import Heading from '../common/heading';
 import bg from '~/assets/images/image_blog_hero.png';
-import { Article } from '@shopify/hydrogen/storefront-api-types';
+import {Article} from '@shopify/hydrogen/storefront-api-types';
 import Tag from '../common/icons/tag';
 
 interface PinnedArticleProps {
@@ -17,7 +17,7 @@ const PinnedArticle: React.FC<PinnedArticleProps> = ({
   className = '',
   article,
 }) => {
-  const { t } = useTranslation('common');
+  const {t} = useTranslation('common');
 
   return (
     <>
