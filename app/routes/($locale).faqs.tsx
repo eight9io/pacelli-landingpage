@@ -46,7 +46,7 @@ export default function FaqsPage() {
       <div className="grid grid-cols-10 base-container gap-4">
         <div className="col-span-10 md:col-span-3">
           <Heading
-            className="text-gray-900 !text-[32px] md:!text-5xl"
+            className="text-gray-900 !text-[32px] md:!text-5xl md:!leading-[72px]"
             variant="h2"
           >
             {t('faqs:title')}

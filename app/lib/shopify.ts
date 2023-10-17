@@ -30,6 +30,8 @@ export const parseCarouselItem = (field: MetaobjectField) => {
   const carouselItems = nodes.map((node: Metaobject) => {
     const carouselItem: any = {};
     if (node.fields) {
+      carouselItem.id = node.id;
+      carouselItem.handle = node.handle;
       node.fields.forEach((field: MetaobjectField) => {
         if (!field.type.includes('list.')) {
           if (field.type === 'file_reference') {
@@ -48,6 +50,8 @@ export const parseCarouselItem = (field: MetaobjectField) => {
     }
     return carouselItem;
   });
+
+  console.log('carouselItems', carouselItems);
 
   return carouselItems;
 };
