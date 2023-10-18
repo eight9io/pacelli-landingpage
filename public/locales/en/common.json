@@ -7,7 +7,9 @@
   "helpLocize": "With using <1>locize</1> you directly support the future of <3>i18next</3>.",
   "languageSwitcher": "Switch from <1>{{lng}}</1> to: ",
   "header": {
-    "title": "Namespaced Components"
+    "title": "Namespaced Components",
+    "open_menu": "Open main menu",
+    "close": "Close"
   },
   "footer": {
     "contact_with_us": "Contact with us",
@@ -70,10 +72,17 @@
     },
     "occupation": {
       "label": "Occupation"
+    },
+    "full_name": {
+      "label": "Full Name"
+    },
+    "message": {
+      "label": "Message"
     }
   },
   "contacts": {
     "title": "Contacts",
+    "title2": "CONTACT WITH US",
     "address": {
       "label": "Address",
       "address": "Via Volturno, 11, San Salvatore Telesino (BN)"
@@ -81,8 +90,9 @@
     "phone": "Phone",
     "open": {
       "label": "Open time",
-      "Open": "Lunedì-Venerdì: 9:00 - 20:30 Sabato: 10:00 - 20:00"
-    }
+      "open": "Lunedì-Venerdì: 9:00 - 20:30 Sabato: 10:00 - 20:00"
+    },
+    "hotline": "Hotline:"
   },
   "proposal_form": {
     "title": "Receive a proposal"
@@ -98,6 +108,8 @@
     "share": "SHARE",
     "back": "Back",
     "send": "Send",
-    "request_success": "Your request is successfull. We will contact you soon!"
+    "request_success": "Your request is successfull. We will contact you soon!",
+    "edit": "Edit",
+    "remove": "Remove"
   }
 }

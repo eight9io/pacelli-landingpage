@@ -1,8 +1,8 @@
 'use client';
 /* eslint-disable */
 import clsx from 'clsx';
-import { UIEvent, useEffect, useRef, useState } from 'react';
-import { Button } from '~/components/Button';
+import {UIEvent, useEffect, useRef, useState} from 'react';
+import {Button} from '~/components/Button';
 import ArrowLeft from '~/components/common/icons/arrow-slide-left';
 import ArrowRight from '~/components/common/icons/arrow-slide-right';
 import Carousel from '../common/carousel';
@@ -23,7 +23,7 @@ interface CarouselProps {
   indicatorClassName?: string;
 }
 
-const CarouselArrow: React.FC<CarouselProps> = ({ data = [] }) => {
+const CarouselArrow: React.FC<CarouselProps> = ({data = []}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const carouselRef = useRef<HTMLImageElement>(null);
   const [divWidth, setDivWidth] = useState(0);

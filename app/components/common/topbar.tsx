@@ -5,12 +5,14 @@ import Instagram from './icons/instagram';
 import Youtube from './icons/youtube';
 import Phone from './icons/phone';
 import Location from './icons/location';
+import {useTranslation} from 'react-i18next';
 
 interface TopbarProps {
   children?: React.ReactNode;
 }
 
 const Topbar = ({children}: TopbarProps) => {
+  const {t} = useTranslation('common');
   return (
     <div className="hidden md:block bg-gray-100">
       <div className="!py-1 px-4 lg:px-8">
@@ -34,7 +36,7 @@ const Topbar = ({children}: TopbarProps) => {
             )}
           >
             <Location className="w-4 h-4 stroke-secondary" />
-            Via Volturno, 11, San Salvatore Telesino (BN)
+            {t('contacts.address.address')}
           </Link>
           <div
             className={clsx(
@@ -42,7 +44,7 @@ const Topbar = ({children}: TopbarProps) => {
               "after:absolute after:content-[''] after:w-[2px] after:h-5 after:-right-4 after:top-1/2 after:-translate-y-1/2 after:bg-neutral-300",
             )}
           >
-            Lunedì-Venerdì: 9:00 - 20:30 Sabato: 10:00 - 20:00
+            {t('contacts.open.open')}
           </div>
           <div className={clsx('flex gap-3 items-center relative')}>
             <Link

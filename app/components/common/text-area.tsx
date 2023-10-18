@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { Field, FieldProps, FieldRenderProps } from 'react-final-form';
+import {Field, FieldProps, FieldRenderProps} from 'react-final-form';
 
 interface TextAreaProp {
   className?: string;
@@ -26,7 +26,7 @@ const TextArea: React.FC<TextAreaProp> = ({
 }) => {
   return (
     <Field name={name}>
-      {({ input, meta }) => (
+      {({input, meta}) => (
         <label
           htmlFor={`id-${name}`}
           className={clsx('group relative md:pb-6', className)}
@@ -39,8 +39,8 @@ const TextArea: React.FC<TextAreaProp> = ({
             className={clsx(
               'border-gray-400 textarea focus:outline-offset-0 focus:outline-w-[1px] focus:outline-1 rounded-sm input-primary w-full text-base placeholder:text-primary-950  ',
               meta.error &&
-              meta.touched &&
-              'focus:outline-red-500 border-red-500',
+                meta.touched &&
+                'focus:outline-red-500 border-red-500',
               meta.error && meta.touched && inputErrorClassName,
               inputClassName,
             )}
