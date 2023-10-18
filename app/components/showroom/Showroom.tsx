@@ -1,4 +1,3 @@
-/* eslint-disable */
 import clsx from 'clsx';
 import {useTranslation} from 'react-i18next';
 import showroom1 from '~/assets/showroom/showroom1.png';
