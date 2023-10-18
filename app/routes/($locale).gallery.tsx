@@ -3,8 +3,9 @@ import SocialProof from '~/components/home/social-proof';
 import OwnProjects from '~/components/gallery/own-projects';
 import {LoaderArgs, json} from '@shopify/remix-oxygen';
 import {PROJECT_GALLERY_QUERY} from '~/graphql/gallery';
-import {cacheNoneInStaging, parseObject} from '~/lib/utils';
+import {cacheNoneInStaging, getFixedT, parseObject} from '~/lib/utils';
 import {useLoaderData} from '@remix-run/react';
+import {seoPayload} from '~/lib/seo.server';
 
 export async function loader({request, context}: LoaderArgs) {
   const data = await context.storefront.query(PROJECT_GALLERY_QUERY, {
@@ -45,7 +46,10 @@ export async function loader({request, context}: LoaderArgs) {
     return handledProject;
   });
 
-  return json({projects, pageInfo});
+  const t = await getFixedT(context.storefront, 'gallery');
+  const seo = seoPayload.landingpage(t);
+
+  return json({projects, pageInfo, seo});
 }
 
 export default function Homepage() {

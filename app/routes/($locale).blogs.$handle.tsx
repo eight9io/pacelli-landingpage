@@ -14,16 +14,17 @@ import ArticlesPagination from '~/components/blogs/articles-pagination';
 import {Article} from '@shopify/hydrogen/storefront-api-types';
 import {
   cacheNoneInStaging,
+  getFixedT,
   isStagingEnvironment,
   parseObject,
 } from '~/lib/utils';
+import {seoPayload} from '~/lib/seo.server';
 
 export const headers = routeHeaders;
 
 export async function loader({request, context, params}: LoaderArgs) {
   const {storefront, env} = context;
   const {handle} = params as {handle: string};
-  const isStaging = isStagingEnvironment(env);
   let articleData: any;
 
   const pinnedArticleData = await storefront.query(ARTICLE_BY_ID_QUERY, {
@@ -64,7 +65,13 @@ export async function loader({request, context, params}: LoaderArgs) {
     throw new Response('Not found', {status: 404});
   }
 
-  // const seo = seoPayload.policies({policies, url: request.url});
+  const t = await getFixedT(context.storefront, 'blogs');
+
+  const seo = seoPayload.blog({
+    blog: selectedBlog.blog as any,
+    url: request.url,
+    t,
+  });
 
   const articles = selectedBlog.blog
     ? selectedBlog.blog?.articles.nodes
@@ -89,7 +96,7 @@ export async function loader({request, context, params}: LoaderArgs) {
     pageInfo,
     selectedBlog: selectedBlog.blog,
     pinnedArticle,
-    // seo
+    seo,
   });
 }
 

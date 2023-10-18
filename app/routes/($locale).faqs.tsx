@@ -8,22 +8,13 @@ import clsx from 'clsx';
 import Heading from '~/components/common/heading';
 import {useMemo, useState} from 'react';
 import {useTranslation} from 'react-i18next';
+import {getFixedT} from '~/lib/utils';
 
 export const headers = routeHeaders;
 
 export async function loader({params, context}: LoaderArgs) {
-  // const {language, country} = context.storefront.i18n;
-
-  // if (
-  //   params.locale &&
-  //   params.locale.toLowerCase() !== `${language}-${country}`.toLowerCase()
-  // ) {
-  //   // If the locale URL param is defined, yet we still are on `EN-US`
-  //   // the the locale param must be invalid, send to the 404 page
-  //   throw new Response(null, {status: 404});
-  // }
-
-  const seo = seoPayload.home();
+  const t = await getFixedT(context.storefront, 'faqs');
+  const seo = seoPayload.landingpage(t);
 
   return defer({
     analytics: {

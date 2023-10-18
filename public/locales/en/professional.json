@@ -1,4 +1,9 @@
 {
+  "seo": {
+    "title": "Professional Services",
+    "titleTemplate": "%s | Pacelli Arredamenti",
+    "description": "Esplora la tradizione italiana dell'arredamento di qualità con Pacelli Arredamenti. Con oltre 50 anni di esperienza, collaboriamo con oltre 50 brand di eccellenza, offrendo una vasta gamma di prodotti"
+  },
   "contact": {
     "title": "Are you an architect? An interior designer?",
     "desc": "Download our collaboration proposal with sector professionals",
