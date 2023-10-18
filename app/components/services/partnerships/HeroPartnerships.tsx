@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import services from '~/assets/services/services-5.webp';
+import services from '~/assets/services/services-5.jpg';
 interface HeroPartnershipsProps {
   className?: string;
 }
