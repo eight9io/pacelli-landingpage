@@ -1,16 +1,16 @@
-import {Button} from '~/components/snippets';
-import {Field, Form} from 'react-final-form';
+import { Button } from '~/components/snippets';
+import { Field, Form } from 'react-final-form';
 import TextField from '~/components/common/textfield';
 import clsx from 'clsx';
-import {validateFormValues} from '~/validation';
+import { validateFormValues } from '~/validation';
 import Select from '../select';
-import {proposalValidate} from '~/validation/proposal';
+import { proposalValidate } from '~/validation/proposal';
 import Heading from '../heading';
 import ReCAPTCHA from 'react-google-recaptcha';
-import {useRef, useState} from 'react';
-import {useRootContext} from '~/hooks/useRootContext';
-import {FormApi} from 'final-form';
-import {useTranslation} from 'react-i18next';
+import { useRef, useState } from 'react';
+import { useRootContext } from '~/hooks/useRootContext';
+import { FormApi } from 'final-form';
+import { useTranslation } from 'react-i18next';
 
 interface ProposalFormProps {
   className?: string;
@@ -26,8 +26,8 @@ const pdfLink =
   'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/pacelii.pdf';
 
 /* eslint-disable */
-const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
-  const {t} = useTranslation('common');
+const ProposalForm: React.FC<ProposalFormProps> = ({ className = '' }) => {
+  const { t } = useTranslation('common');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
@@ -36,7 +36,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
     form.change('reCaptcha', true);
   };
 
-  const {ENV} = useRootContext();
+  const { ENV } = useRootContext();
 
   const onSubmit = (
     values: any,
@@ -97,7 +97,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
         onSubmit={onSubmit}
         validate={validateFormValues(proposalValidate(t))}
         validateOnBlur={false}
-        render={({handleSubmit, values, form}) => {
+        render={({ handleSubmit, values, form }) => {
           return (
             <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
               <Heading
@@ -108,11 +108,11 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
               </Heading>
               <div className="relative">
                 <Field name="occupation">
-                  {({input, meta}) => (
+                  {({ input, meta }) => (
                     <div className="pb-6">
                       <Select
                         value={values?.occupation}
-                        label="Chi sei?"
+                        label={`${t('common:form.occupation.label')} *`}
                         handleChangeValue={(e: any, value: any) =>
                           handleChangeValue(e, value, form)
                         }
@@ -128,7 +128,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
               </div>
               <TextField
                 name="name"
-                label="Name  *"
+                label={`${t('common:form.name.label')} *`}
                 inputClassName={clsx(
                   'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2 ',
                 )}
@@ -136,7 +136,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
               />
               <TextField
                 name="phone"
-                label="Numero di telefono *"
+                label={`${t('common:form.phone.label')} *`}
                 inputClassName={clsx(
                   'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent   focus:border-b-2',
                 )}
@@ -144,7 +144,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
               />
               <TextField
                 name="email"
-                label="Email *"
+                label={`${t('common:form.email.label')} *`}
                 inputClassName={clsx(
                   'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent   focus:border-b-2',
                 )}
@@ -152,7 +152,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
               />
               <div className="relative">
                 <Field name="reCaptcha">
-                  {({input, meta}) => (
+                  {({ input, meta }) => (
                     <>
                       <ReCAPTCHA
                         onChange={() => onChange(form)}
@@ -169,10 +169,6 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
                   )}
                 </Field>
               </div>
-
-              {/* {!reCaptchaDone && (
-                <p className="text-sm text-[#ef4444]">ReCaptcha is required</p>
-              )} */}
               <Button
                 className="rounded-sm uppercase mt-6"
                 size="md"

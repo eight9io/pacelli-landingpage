@@ -78,7 +78,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className = '' }) => {
           <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
             <TextField
               name="fullname"
-              label="Full name *"
+              label={`${t('common:form.full_name.label')} *`}
               inputClassName={clsx(
                 'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
               )}
@@ -87,7 +87,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className = '' }) => {
 
             <TextField
               name="email"
-              label="Email *"
+              label={`${t('common:form.email.label')} *`}
               inputClassName={clsx(
                 'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
               )}
@@ -95,7 +95,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className = '' }) => {
             />
             <TextArea
               name="message"
-              label="Message"
+              label={`${t('common:form.message.label')} *`}
               rows={1}
               inputClassName={clsx(
                 'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
@@ -154,7 +154,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className = '' }) => {
                     stroke="white"
                   ></path>
                 </svg>
-                Your request is successfull. We will contact you soon!
+                {t('button.request_success')}
               </span>
             )}
           </form>

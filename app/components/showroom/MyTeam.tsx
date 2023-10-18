@@ -101,7 +101,7 @@ const MyTeam: React.FC<MyTeamProps> = ({ className = '' }) => {
                 size="md"
                 onClick={openPopup}
               >
-                Book appointment
+                {t('contacts.book_appointment')}
                 <ArrowRight className="text-secondary w-5 h-5 stroke-secondary origin-center stroke-2" />
               </Button>
             </div>
