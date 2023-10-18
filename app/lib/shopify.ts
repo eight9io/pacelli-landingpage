@@ -51,7 +51,5 @@ export const parseCarouselItem = (field: MetaobjectField) => {
     return carouselItem;
   });
 
-  console.log('carouselItems', carouselItems);
-
   return carouselItems;
 };

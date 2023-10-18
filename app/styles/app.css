@@ -127,7 +127,7 @@ shop-pay-button {
   }
 }
 
-pseudo="-webkit-details-marker" {
+[pseudo="-webkit-details-marker"] {
   display: none !important;
 }
 
