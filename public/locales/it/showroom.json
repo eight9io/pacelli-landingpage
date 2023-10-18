@@ -1,4 +1,9 @@
 {
+  "seo": {
+    "title": "Showroom",
+    "titleTemplate": "%s | Pacelli Arredamenti",
+    "description": "Esplora la tradizione italiana dell'arredamento di qualità con Pacelli Arredamenti. Con oltre 50 anni di esperienza, collaboriamo con oltre 50 brand di eccellenza, offrendo una vasta gamma di prodotti"
+  },
   "showroom": {
     "title": "Showroom",
     "sub_title": "Il nostro Showroom non è solo un luogo espositivo, ma anche un laboratorio di progettazione e design d'interni. Il nostro team di architetti e designer è il partner ideale per creare realizzazioni che non solo rispecchiano, ma superano le aspettative dei nostri clienti. Pacelli Arredamenti è inoltre il luogo in cui l'accoglienza, la gentilezza e la cordialità sono di casa. Qui potrai sentirti a tuo agio fin dal primo istante, perché per noi, creare uno spazio confortevole è anche creare un ambiente accogliente dove ogni cliente si sente come a casa propria.",

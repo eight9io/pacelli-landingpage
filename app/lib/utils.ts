@@ -3,6 +3,7 @@ import {useLocation, useMatches} from '@remix-run/react';
 import {parse as parseCookie} from 'worktop/cookie';
 import type {MoneyV2} from '@shopify/hydrogen/storefront-api-types';
 import typographicBase from 'typographic-base';
+import i18n from '../../i18n.server';
 
 import type {
   ChildMenuItemFragment,
@@ -13,6 +14,7 @@ import {countries} from '~/data/countries';
 
 import type {I18nLocale, Storefront} from './type';
 import {AppLoadContext} from '@shopify/remix-oxygen';
+import {Namespace} from 'i18next';
 
 type EnhancedMenuItemProps = {
   to: string;
@@ -385,4 +387,10 @@ export const cacheNoneInStaging = (context: AppLoadContext) => {
   return isStagingEnvironment(context)
     ? context.storefront.CacheNone()
     : context.storefront.CacheShort();
+};
+
+export const getFixedT = async (storefront: Storefront, ns: Namespace) => {
+  const {language} = storefront.i18n;
+  const t = await i18n.getFixedT(language.toLowerCase(), ns);
+  return t;
 };

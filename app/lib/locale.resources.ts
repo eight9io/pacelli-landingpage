@@ -11,6 +11,8 @@ export const resources = {
     professional: require('../../public/locales/en/professional.json'),
     gallery: require('../../public/locales/en/gallery.json'),
     brand: require('../../public/locales/en/brand.json'),
+    project: require('../../public/locales/en/project.json'),
+    blogs: require('../../public/locales/en/blogs.json'),
   },
   it: {
     common: require('../../public/locales/it/common.json'),
@@ -24,5 +26,7 @@ export const resources = {
     professional: require('../../public/locales/it/professional.json'),
     gallery: require('../../public/locales/it/gallery.json'),
     brand: require('../../public/locales/it/brand.json'),
+    project: require('../../public/locales/it/project.json'),
+    blogs: require('../../public/locales/it/blogs.json'),
   },
 };

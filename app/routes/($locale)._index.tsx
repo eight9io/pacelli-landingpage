@@ -15,7 +15,7 @@ import {FEATURED_BLOG_QUERY} from '~/graphql/blogs';
 import {HOME_CAROUSEL_QUERY} from '~/graphql/carousel';
 import {parseCarousel} from '~/lib/shopify';
 import invariant from 'tiny-invariant';
-import {cacheNoneInStaging} from '~/lib/utils';
+import {cacheNoneInStaging, getFixedT} from '~/lib/utils';
 
 export const headers = routeHeaders;
 
@@ -32,8 +32,9 @@ const getHomeCarousel = async (context: AppLoadContext) => {
   return parseCarousel(data.metaobject);
 };
 
-export async function loader({params, context}: LoaderArgs) {
+export async function loader({params, context, request}: LoaderArgs) {
   const {language, country} = context.storefront.i18n;
+  const t = await getFixedT(context.storefront, 'home');
 
   if (
     params.locale &&
@@ -51,15 +52,13 @@ export async function loader({params, context}: LoaderArgs) {
 
   const carousels = await getHomeCarousel(context);
 
-  const seo = seoPayload.home();
-
   return defer({
     articles: articles?.nodes,
     analytics: {
       pageType: AnalyticsPageType.home,
     },
     carousels,
-    seo,
+    seo: seoPayload.home(t),
   });
 }
 

@@ -10,9 +10,13 @@ import Plan from '~/components/services/private/Plan';
 import BookAppointment from '~/components/services/private/BookApointment';
 import BeforeAfter from '~/components/BeforeAfter';
 import {useTranslation} from 'react-i18next';
+import {getFixedT} from '~/lib/utils';
+
 export const headers = routeHeaders;
+
 export async function loader({params, context}: LoaderArgs) {
-  const seo = seoPayload.home();
+  const t = await getFixedT(context.storefront, 'private');
+  const seo = seoPayload.landingpage(t);
 
   return defer({
     analytics: {
