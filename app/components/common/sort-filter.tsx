@@ -1,17 +1,18 @@
-import type {SyntheticEvent} from 'react';
-import {useMemo, useState} from 'react';
-import {Menu, Disclosure} from '@headlessui/react';
-import type {Location} from '@remix-run/react';
+import type { SyntheticEvent } from 'react';
+import { useMemo, useState } from 'react';
+import { Menu, Disclosure } from '@headlessui/react';
+import type { Location } from '@remix-run/react';
 import {
   Link,
   useLocation,
   useSearchParams,
   useNavigate,
 } from '@remix-run/react';
-import {useDebounce} from 'react-use';
-import type {FilterType, Filter} from '@shopify/hydrogen/storefront-api-types';
+import { useDebounce } from 'react-use';
+import type { FilterType, Filter } from '@shopify/hydrogen/storefront-api-types';
 
-import {Heading, IconFilters, IconCaret, IconXMark, Text} from '~/components';
+import { Heading, IconFilters, IconCaret, IconXMark, Text } from '~/components';
+import { useTranslation } from 'react-i18next';
 
 export type AppliedFilter = {
   label: string;
@@ -32,7 +33,7 @@ type Props = {
   filters: Filter[];
   appliedFilters?: AppliedFilter[];
   children: React.ReactNode;
-  collections?: Array<{handle: string; title: string}>;
+  collections?: Array<{ handle: string; title: string }>;
 };
 
 export function SortFilter({
@@ -58,11 +59,10 @@ export function SortFilter({
       </div>
       <div className="flex flex-col flex-wrap md:flex-row">
         <div
-          className={`transition-all duration-200 ${
-            isOpen
-              ? 'opacity-100 min-w-full md:min-w-[240px] md:w-[240px] md:pr-8 max-h-full'
-              : 'opacity-0 md:min-w-[0px] md:w-[0px] pr-0 max-h-0 md:max-h-full'
-          }`}
+          className={`transition-all duration-200 ${isOpen
+            ? 'opacity-100 min-w-full md:min-w-[240px] md:w-[240px] md:pr-8 max-h-full'
+            : 'opacity-0 md:min-w-[0px] md:w-[0px] pr-0 max-h-0 md:max-h-full'
+            }`}
         >
           <FiltersDrawer
             collections={collections}
@@ -116,7 +116,7 @@ export function FiltersDrawer({
         );
     }
   };
-
+  const { t } = useTranslation('common')
   return (
     <>
       <nav className="py-8">
@@ -127,14 +127,14 @@ export function FiltersDrawer({
         ) : null}
 
         <Heading as="h4" size="lead" className="pb-4">
-          Filter By
+          {t('filter.title')}
         </Heading>
         <div className="divide-y">
           {filters.map(
             (filter: Filter) =>
               filter.values.length > 1 && (
                 <Disclosure as="div" key={filter.id} className="w-full">
-                  {({open}) => (
+                  {({ open }) => (
                     <>
                       <Disclosure.Button className="flex justify-between w-full py-4">
                         <Text size="lead">{filter.label}</Text>
@@ -162,13 +162,14 @@ export function FiltersDrawer({
   );
 }
 
-function AppliedFilters({filters = []}: {filters: AppliedFilter[]}) {
+function AppliedFilters({ filters = [] }: { filters: AppliedFilter[] }) {
   const [params] = useSearchParams();
   const location = useLocation();
+  const { t } = useTranslation('common')
   return (
     <>
       <Heading as="h4" size="lead" className="pb-4">
-        Applied filters
+        {t("filter.applied_filters")}
       </Heading>
       <div className="flex flex-wrap gap-2">
         {filters.map((filter: AppliedFilter) => {
@@ -233,7 +234,7 @@ function getFilterLink(
 
 const PRICE_RANGE_FILTER_DEBOUNCE = 500;
 
-function PriceRangeFilter({max, min}: {max?: number; min?: number}) {
+function PriceRangeFilter({ max, min }: { max?: number; min?: number }) {
   const location = useLocation();
   const params = useMemo(
     () => new URLSearchParams(location.search),
@@ -252,11 +253,11 @@ function PriceRangeFilter({max, min}: {max?: number; min?: number}) {
       )
         return;
 
-      const price: {min?: string; max?: string} = {};
+      const price: { min?: string; max?: string } = {};
       if (minPrice !== '') price.min = minPrice;
       if (maxPrice !== '') price.max = maxPrice;
 
-      const newParams = filterInputToParams('PRICE_RANGE', {price}, params);
+      const newParams = filterInputToParams('PRICE_RANGE', { price }, params);
       navigate(`${location.pathname}?${newParams.toString()}`);
     },
     PRICE_RANGE_FILTER_DEBOUNCE,
@@ -272,11 +273,11 @@ function PriceRangeFilter({max, min}: {max?: number; min?: number}) {
     const newMinPrice = (event.target as HTMLInputElement).value;
     setMinPrice(newMinPrice);
   };
-
+  const { t } = useTranslation('common')
   return (
     <div className="flex flex-col">
       <label className="mb-4">
-        <span>from</span>
+        <span>{t("filter.from")}</span>
         <input
           name="maxPrice"
           className="text-black"
@@ -287,7 +288,7 @@ function PriceRangeFilter({max, min}: {max?: number; min?: number}) {
         />
       </label>
       <label>
-        <span>to</span>
+        <span>{t("filter.to")}</span>
         <input
           name="minPrice"
           className="text-black"
@@ -321,7 +322,7 @@ function filterInputToParams(
         } else if (typeof value === 'boolean') {
           params.set(key, value.toString());
         } else {
-          const {name, value: val} = value as {name: string; value: string};
+          const { name, value: val } = value as { name: string; value: string };
           const allVariants = params.getAll(`variantOption`);
           const newVariant = `${name}:${val}`;
           if (!allVariants.includes(newVariant)) {
@@ -336,8 +337,8 @@ function filterInputToParams(
 }
 
 export default function SortMenu() {
-  const items: {label: string; key: SortParam}[] = [
-    {label: 'Featured', key: 'featured'},
+  const items: { label: string; key: SortParam }[] = [
+    { label: 'Featured', key: 'featured' },
     {
       label: 'Price: Low - High',
       key: 'price-low-high',
@@ -358,12 +359,12 @@ export default function SortMenu() {
   const [params] = useSearchParams();
   const location = useLocation();
   const activeItem = items.find((item) => item.key === params.get('sort'));
-
+  const { t } = useTranslation('common')
   return (
     <Menu as="div" className="relative z-30 shadow">
       <Menu.Button className="flex items-center">
         <span className="px-2">
-          <span className="px-2 font-medium">Sort by:</span>
+          <span className="px-2 font-medium">{t("filter.sort_by")}</span>
           <span>{(activeItem || items[0]).label}</span>
         </span>
         <IconCaret />
@@ -377,9 +378,8 @@ export default function SortMenu() {
           <Menu.Item key={item.label}>
             {() => (
               <Link
-                className={`block text-sm pb-2 px-3 ${
-                  activeItem?.key === item.key ? 'font-bold' : 'font-normal'
-                }`}
+                className={`block text-sm pb-2 px-3 ${activeItem?.key === item.key ? 'font-bold' : 'font-normal'
+                  }`}
                 to={getSortLink(item.key, params, location)}
               >
                 {item.label}

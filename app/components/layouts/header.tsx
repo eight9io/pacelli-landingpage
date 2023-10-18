@@ -1,27 +1,29 @@
-import {useEffect, useRef, useState} from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-import {Dialog} from '@headlessui/react';
-import {Link} from '~/components/Link';
+import { Dialog } from '@headlessui/react';
+import { Link } from '~/components/Link';
 import Logo from '~/components/common/logo';
 import Topbar from '~/components/common/topbar';
-import {ChevronDownIcon, XMarkIcon} from '@heroicons/react/24/outline';
+import { ChevronDownIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import home from '~/assets/icons/home.svg';
 import menu from '~/assets/icons/menu.svg';
 import useScrollPosition from '~/hooks/useScrollPosition';
 import LocaleSwitcher from '~/components/common/languages-selector';
-import {useLocation} from '@remix-run/react';
+import { useLocation } from '@remix-run/react';
 import Phone from '../common/icons/phone';
 import Facebook from '../common/icons/facebook';
 import Instagram from '../common/icons/instagram';
 import Youtube from '../common/icons/youtube';
 import Location from '../common/icons/location';
+import { useTranslation } from 'react-i18next';
 
 const STICKY_OFFSET = 0;
 
 export function HeaderSection() {
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
   const subMenuRef = useRef<HTMLDivElement>(null);
 
   const scrollPosition = useScrollPosition();
@@ -31,15 +33,15 @@ export function HeaderSection() {
     if (!isSticky && scrollPosition > STICKY_OFFSET) setIsSticky(true);
     else if (isSticky && scrollPosition <= STICKY_OFFSET) setIsSticky(false);
 
-    if (
-      pathname === '/services/professional' ||
-      pathname === '/services/private'
-    )
-      setMobileMenuOpen(false);
+    // if (
+    //   pathname === '/services/professional' ||
+    //   pathname === '/services/private'
+    // )
+    //   setMobileMenuOpen(false);
   }, [scrollPosition, pathname]);
 
   const isMenuItemActive = (href: string) => {
-    const {pathname: path} = new URL('https://x' + href);
+    const { pathname: path } = new URL('https://x' + href);
 
     return pathname?.startsWith(path);
   };
@@ -50,6 +52,7 @@ export function HeaderSection() {
     const target = e.target;
     target.closest('ul')?.querySelector('.submenu')?.classList.toggle('hidden');
   };
+  const { t } = useTranslation('common');
   return (
     <header
       className={clsx(
@@ -73,7 +76,7 @@ export function HeaderSection() {
             to="/"
             className="ml-5 inline-flex items-center justify-center rounded-md text-gray-700"
           >
-            <span className="sr-only">Open main menu</span>
+            <span className="sr-only"> {t('header.open_menu')}</span>
             <span className="relative inline-block">
               <Link to={'/'}>
                 <img src={home} alt="menu" width={24} height={24} />
@@ -85,7 +88,7 @@ export function HeaderSection() {
             className="ml-5 inline-flex items-center justify-center rounded-md text-gray-700"
             onClick={() => setMobileMenuOpen(true)}
           >
-            <span className="sr-only">Open main menu</span>
+            <span className="sr-only">{t('header.open_menu')}</span>
             <span className="relative inline-block">
               <img src={menu} alt="menu" width={24} height={24} />
             </span>
@@ -106,20 +109,20 @@ export function HeaderSection() {
               className="absolute z-50 rounded-md text-gray-700 flex items-center gap-2 right-0 md:right-6"
               onClick={() => setMobileMenuOpen(false)}
             >
-              <span className="text-white">Close</span>
+              <span className="text-white">{t('header.close')}</span>
               <XMarkIcon stroke="#fff" className="h-6 w-6" aria-hidden="true" />
             </button>
             <div className="flex relative mt-4">
               <ul className="space-y-0 xs:space-y-4 xs:py-6 w-full md:w-1/2 flex-col md:block">
-                {mainMenuItems.map(({text, href, items}) => (
+                {mainMenuItems.map(({ text, href, items }) => (
                   <li key={`main-${href}-${text}`}>
                     {href ? (
                       <Link
                         className={clsx(
                           'flex justify-between items-center md:block rounded-none box-border pt-2 pb-1 md:pt-4 md:pb-2 text-xl xs:text-[32px] md:text-[40px] leading-8 text-white border-b border-b-transparent hover:border-b-slate-400 ',
-                          {'cursor-default': href === '#'},
+                          { 'cursor-default': href === '#' },
                           isMenuItemActive(href) &&
-                            'text-white border-b-slate-400',
+                          'text-white border-b-slate-400',
                           'peer hover:[&+div]:block max-w-[395px]',
                         )}
                         to={href}
@@ -158,13 +161,13 @@ export function HeaderSection() {
 
                     {items && items.length && (
                       <div className="block flex-col md:absolute h-full top-0 left-[395px] md:hidden md:peer-hover:!flex pl-4 md:pl-0 submenu">
-                        {items.map(({text, href}) => {
+                        {items.map(({ text, href }) => {
                           return href ? (
                             <Link
                               className={clsx(
                                 'block rounded-none box-border pt-0 xs:pt-2 pb-1 text-base md:pt-4 md:pb-2 xs:text-2xl md:text-[32px] leading-7 text-white border-b border-b-transparent hover:border-b-slate-400 max-w-[395px]',
                                 isMenuItemActive(href) &&
-                                  'text-white border-b-slate-400',
+                                'text-white border-b-slate-400',
                               )}
                               key={`${href}-${text}`}
                               to={href}
@@ -212,7 +215,7 @@ export function HeaderSection() {
                 )}
               >
                 <Location className="w-4 h-4 stroke-white" />
-                Via Volturno, 11, San Salvatore Telesino (BN)
+                {t('contacts.address.address')}
               </Link>
               <div
                 className={clsx(
@@ -220,7 +223,7 @@ export function HeaderSection() {
                   "after:absolute after:content-[''] after:w-[2px] after:h-5",
                 )}
               >
-                Lunedì-Venerdì: 9:00 - 20:30 Sabato: 10:00 - 20:00
+                {t('contacts.open.open')}
               </div>
               <div className={clsx('flex gap-3 items-center relative')}>
                 <Link
