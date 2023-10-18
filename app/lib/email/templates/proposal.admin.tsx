@@ -19,12 +19,14 @@ export const ProposalAdminTemplate = ({data}: ProposalAdminTemplateProps) => {
       <Head />
       <Body style={style.main}>
         <Container style={style.container}>
-          <Img
-            src="https://cdn.shopify.com/s/files/1/0816/1971/4346/files/logo.png"
-            width="153"
-            height="48"
-            alt="Pacelli"
-          />
+          <Section style={style.logoWrapper}>
+            <Img
+              src="https://cdn.shopify.com/s/files/1/0816/1971/4346/files/logo-4x.webp"
+              width="306"
+              height="96"
+              alt="Pacelli"
+            />
+          </Section>
           <Section style={style.header}>
             You received a new message from your online store download form.
           </Section>
@@ -55,6 +57,12 @@ const style = {
   },
   header: {
     borderBottom: '1px solid #f0f0f0',
+    paddingBottom: 20,
+  },
+  logoWrapper: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     paddingBottom: 20,
   },
   content: {
