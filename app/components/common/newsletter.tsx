@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import {
   SfButton,
   SfInput,
@@ -6,8 +6,10 @@ import {
   SfIconCheckCircle,
   SfIconClose,
 } from '@storefront-ui/react';
+import { useTranslation } from 'react-i18next';
 
 export default function NewsletterBox() {
+  const { t } = useTranslation('common')
   const [inputValue, setInputValue] = useState('');
   const [positiveAlert, setPositiveAlert] = useState(false);
   const [errorAlert, setErrorAlert] = useState(false);
@@ -38,11 +40,10 @@ export default function NewsletterBox() {
     <div className="relative">
       <div className="bg-neutral-100 p-4 sm:p-10 text-center">
         <p className="typography-headline-4 sm:typography-headline-3 font-bold">
-          Subscribe and get discount on your first purchase!
+          {t('newsletter.title')}
         </p>
         <p className="typography-text-sm sm:typography-text-base my-2 mb-4">
-          Be aware of upcoming sales and events. Receive gifts and special
-          offers!
+          {t('newsletter.desc')}
         </p>
         <form
           className="mb-4 flex flex-col sm:flex-row gap-4 max-w-[688px] mx-auto"
@@ -56,19 +57,19 @@ export default function NewsletterBox() {
             onChange={(event) => setInputValue(event.target.value)}
           />
           <SfButton type="submit" size="lg">
-            Subscribe to Newsletter
+            {t('newsletter.button')}
           </SfButton>
         </form>
         <div className="typography-text-xs text-neutral-600">
-          To learn how we process your data, visit our{' '}
+          {t('newsletter.learn_how')}
           <SfLink href="#" className="!text-neutral-600">
-            Privacy Notice
+            {t('newsletter.privacy_notice')}
           </SfLink>
-          . You can{' '}
+          {t('newsletter.you_can')}
           <SfLink href="#" className="!text-neutral-600">
-            unsubscribe
-          </SfLink>{' '}
-          at any time without costs.
+            {t('newsletter.unsubscribe')}
+          </SfLink>
+          {t('newsletter.without_costs')}
         </div>
       </div>
       <div className="absolute top-0 right-0 mx-2 mt-2 sm:mr-6">
@@ -79,7 +80,7 @@ export default function NewsletterBox() {
           >
             <SfIconCheckCircle className="mr-2 my-2 text-positive-700" />
             <p className="py-2 mr-2">
-              Your email has been added to the newsletter subscription.
+              {t('newsletter.message_email')}
             </p>
             <button
               type="button"
@@ -98,7 +99,7 @@ export default function NewsletterBox() {
             className="flex items-start md:items-center max-w-[600px] shadow-md bg-negative-100 pr-2 pl-4 ring-1 ring-negative-300 typography-text-sm md:typography-text-base py-1 rounded-md"
           >
             <p className="py-2 mr-2">
-              This email is already subscribed for our newsletter.
+              {t('newsletter.subscribed')}
             </p>
             <button
               type="button"

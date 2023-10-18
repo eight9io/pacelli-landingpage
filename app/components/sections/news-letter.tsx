@@ -4,7 +4,7 @@ interface NewsLetterProps {
   className?: string;
 }
 
-const NewsLetter: React.FC<NewsLetterProps> = ({className = ''}) => {
+const NewsLetter: React.FC<NewsLetterProps> = ({ className = '' }) => {
   return (
     <section className={clsx('border-t border-neutral-200', className)}>
       <div className="base-container py-10 text-center">

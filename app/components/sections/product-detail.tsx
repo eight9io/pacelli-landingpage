@@ -8,15 +8,15 @@ import {
   useCart,
 } from '@shopify/hydrogen-react';
 
-import {Button} from '~/components/snippets';
-import {Product} from '@shopify/hydrogen-react/storefront-api-types';
+import { Button } from '~/components/snippets';
+import { Product } from '@shopify/hydrogen-react/storefront-api-types';
 import clsx from 'clsx';
 // import Image from 'next/image';
 // import { Product } from 'graphql/graphql';
-import {useVariantSelector} from 'hooks/useVariantSelector';
+import { useVariantSelector } from 'hooks/useVariantSelector';
 
-export function ProductSingleSection({product}: {product: Product}) {
-  const {variantId, options, selectOption} = useVariantSelector(product);
+export function ProductSingleSection({ product }: { product: Product }) {
+  const { variantId, options, selectOption } = useVariantSelector(product);
 
   return (
     <ProductProvider data={product}>
@@ -51,7 +51,7 @@ export function ProductSingleSection({product}: {product: Product}) {
               </div>
 
               <div className="mb-2">
-                {options?.map(({name, values}) => (
+                {options?.map(({ name, values }) => (
                   <div className="mb-3" key={name}>
                     <div className="flex items-center justify-between">
                       <h3 className="mb-1 text-lg font-medium text-gray-900">
@@ -59,7 +59,7 @@ export function ProductSingleSection({product}: {product: Product}) {
                       </h3>
                     </div>
 
-                    {values?.map(({value, selected, disabled}) => {
+                    {values?.map(({ value, selected, disabled }) => {
                       return (
                         <Button
                           className="mr-1"
