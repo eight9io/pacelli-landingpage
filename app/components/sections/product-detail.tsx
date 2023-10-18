@@ -14,11 +14,10 @@ import clsx from 'clsx';
 // import Image from 'next/image';
 // import { Product } from 'graphql/graphql';
 import { useVariantSelector } from 'hooks/useVariantSelector';
-import { useTranslation } from 'react-i18next';
 
 export function ProductSingleSection({ product }: { product: Product }) {
   const { variantId, options, selectOption } = useVariantSelector(product);
-  const { t } = useTranslation('common')
+
   return (
     <ProductProvider data={product}>
       <section className="base-container">
@@ -37,7 +36,7 @@ export function ProductSingleSection({ product }: { product: Product }) {
 
           <div className="md:basis-6/12">
             <div className="mt-4 pt-5 md:pt-10">
-              <h2 className="sr-only">{t("product_detail.title")}</h2>
+              <h2 className="sr-only">Product information</h2>
 
               <h1 className="mb-5 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
                 {product.title}
@@ -88,7 +87,7 @@ export function ProductSingleSection({ product }: { product: Product }) {
                   variantId ? '' : 'opacity-50 pointer-events-none',
                 )}
               >
-                {t("product_detail.add_to_cart")}
+                Add to Cart
               </AddToCartButton>
             </div>
           </div>
