@@ -2884,16 +2884,17 @@
     eslint-plugin-react-hooks "^4.6.0"
     eslint-plugin-testing-library "^5.10.2"
 
-"@remix-run/node@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@remix-run/node/-/node-2.0.1.tgz#5947c1f8b78b42b93c1e537debc0b56e78308ffa"
-  integrity sha512-pWsbmkNRb7azYomh1IGSKeW68hkwBBp6L2AWvfKSq2r2MJXHCzqgAJEc0uWkEUx6OtFbVNOg27g/cMCyKvrjIA==
+"@remix-run/node@1.19.1":
+  version "1.19.1"
+  resolved "https://registry.yarnpkg.com/@remix-run/node/-/node-1.19.1.tgz#f154f23cb6960a2126c7b5d94153471e6956611e"
+  integrity sha512-7RbuaG3PMkit04xhu+RdOLHbLj7rhPVJwLeMXAYreQ0D9hvssWNt2lPGEowLd//2IGthU8OvNpb1rB+vyFuF1Q==
   dependencies:
-    "@remix-run/server-runtime" "2.0.1"
-    "@remix-run/web-fetch" "^4.4.1"
-    "@remix-run/web-file" "^3.1.0"
-    "@remix-run/web-stream" "^1.1.0"
+    "@remix-run/server-runtime" "1.19.1"
+    "@remix-run/web-fetch" "^4.3.5"
+    "@remix-run/web-file" "^3.0.2"
+    "@remix-run/web-stream" "^1.0.3"
     "@web3-storage/multipart-parser" "^1.0.0"
+    abort-controller "^3.0.0"
     cookie-signature "^1.1.0"
     source-map-support "^0.5.21"
     stream-slice "^0.1.2"
@@ -2911,11 +2912,6 @@
   resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.7.2.tgz#cba1cf0a04bc04cb66027c51fa600e9cbc388bc8"
   integrity sha512-7Lcn7IqGMV+vizMPoEl5F0XDshcdDYtMI6uJLQdQz5CfZAwy3vvGKYSUk789qndt5dEC4HfSjviSYlSoHGL2+A==
 
-"@remix-run/router@1.9.0":
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.9.0.tgz#9033238b41c4cbe1e961eccb3f79e2c588328cf6"
-  integrity sha512-bV63itrKBC0zdT27qYm6SDZHlkXwFL1xMBuhkn+X7l0+IIhNaH5wuuvZKp6eKhCD4KFhujhfhCT1YxXW6esUIA==
-
 "@remix-run/server-runtime@1.19.1":
   version "1.19.1"
   resolved "https://registry.yarnpkg.com/@remix-run/server-runtime/-/server-runtime-1.19.1.tgz#e8afe95279e03f99014c663dd3cb36421e224fb3"
@@ -2928,19 +2924,6 @@
     set-cookie-parser "^2.4.8"
     source-map "^0.7.3"
 
-"@remix-run/server-runtime@2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@remix-run/server-runtime/-/server-runtime-2.0.1.tgz#e4ea0ca90cf156c6c587ba79df59b4dd18fef8ba"
-  integrity sha512-xCW2aw9EILx7F3orEHN2fcpEkNzZTRU8VzP7gS9pmHP45qteFqsY5Qg2/dnF17royWmeeBNhnXaJOgb76W1KEA==
-  dependencies:
-    "@remix-run/router" "1.9.0"
-    "@types/cookie" "^0.4.1"
-    "@web3-storage/multipart-parser" "^1.0.0"
-    cookie "^0.4.1"
-    set-cookie-parser "^2.4.8"
-    source-map "^0.7.3"
-    type-fest "^4.0.0"
-
 "@remix-run/web-blob@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@remix-run/web-blob/-/web-blob-3.1.0.tgz#e0c669934c1eb6028960047e57a13ed38bbfb434"
@@ -2949,7 +2932,7 @@
     "@remix-run/web-stream" "^1.1.0"
     web-encoding "1.1.5"
 
-"@remix-run/web-fetch@^4.4.1":
+"@remix-run/web-fetch@^4.3.5":
   version "4.4.1"
   resolved "https://registry.yarnpkg.com/@remix-run/web-fetch/-/web-fetch-4.4.1.tgz#1ea34e6f1c660a52e7582007917a552f0efdc58b"
   integrity sha512-xMceEGn2kvfeWS91nHSOhEQHPGgjFnmDVpWFZrbWPVdiTByMZIn421/tdSF6Kd1RsNsY+5Iwt3JFEKZHAcMQHw==
@@ -2963,7 +2946,7 @@
     data-uri-to-buffer "^3.0.1"
     mrmime "^1.0.0"
 
-"@remix-run/web-file@^3.1.0":
+"@remix-run/web-file@^3.0.2", "@remix-run/web-file@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@remix-run/web-file/-/web-file-3.1.0.tgz#07219021a2910e90231bc30ca1ce693d0e9d3825"
   integrity sha512-dW2MNGwoiEYhlspOAXFBasmLeYshyAyhIdrlXBi06Duex5tDr3ut2LFKVj7tyHLmn8nnNwFf1BjNbkQpygC2aQ==
@@ -2977,7 +2960,7 @@
   dependencies:
     web-encoding "1.1.5"
 
-"@remix-run/web-stream@^1.1.0":
+"@remix-run/web-stream@^1.0.3", "@remix-run/web-stream@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@remix-run/web-stream/-/web-stream-1.1.0.tgz#b93a8f806c2c22204930837c44d81fdedfde079f"
   integrity sha512-KRJtwrjRV5Bb+pM7zxcTJkhIqWWSy+MYsIxHK+0m5atcznsf15YwUBWHWulZerV2+vvHH1Lp1DD7pw6qKW8SgA==
@@ -12413,11 +12396,6 @@ type-fest@^3.0.0, type-fest@^3.6.0:
   version "3.13.1"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-3.13.1.tgz#bb744c1f0678bea7543a2d1ec24e83e68e8c8706"
   integrity sha512-tLq3bSNx+xSpwvAJnzrK0Ep5CLNWjvFTOp71URMaAEWBfRb9nnJiBoUe0tF8bI4ZFO3omgBR6NvnbzVUT3Ly4g==
-
-type-fest@^4.0.0:
-  version "4.3.3"
-  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.3.3.tgz#e991de7c373097721d53dbf38b904f1e51915294"
-  integrity sha512-bxhiFii6BBv6UiSDq7uKTMyADT9unXEl3ydGefndVLxFeB44LRbT4K7OJGDYSyDrKnklCC1Pre68qT2wbUl2Aw==
 
 type-is@~1.6.18:
   version "1.6.18"
