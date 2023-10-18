@@ -11,11 +11,10 @@ import {
 } from '@shopify/hydrogen-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
 
 export function CartSection() {
   const cart = useCart();
-  const { t } = useTranslation('common');
+
   return (
     <section className="base-container">
       <ul role="list" className="-my-6 mb-2 divide-y divide-gray-200">
@@ -61,7 +60,7 @@ export function CartSection() {
 
                 <div className="flex flex-1 items-end justify-between text-sm">
                   <div className="text-gray-500">
-                    {t("cart_section.qty")} <CartLineQuantity></CartLineQuantity>
+                    Qty <CartLineQuantity></CartLineQuantity>
                   </div>
 
                   <div className="flex">
@@ -69,7 +68,7 @@ export function CartSection() {
                       className="font-medium text-indigo-600 hover:text-indigo-500"
                       adjust="remove"
                     >
-                      {t("cart_section.remove")}
+                      Remove
                     </CartLineQuantityAdjustButton>
 
                     {/* <CartLineQuantityAdjustButton adjust="increase">Increase</CartLineQuantityAdjustButton>
@@ -84,17 +83,17 @@ export function CartSection() {
 
       <div className="border-t border-gray-200 pt-4">
         <div className="flex justify-between text-base font-medium text-gray-900">
-          <p>   {t("cart_section.subtotal")}</p>
+          <p>Subtotal</p>
           <div>
             <CartCost amountType="subtotal" />
           </div>
         </div>
         <p className="mt-0.5 text-sm text-gray-500">
-          {t("cart_section.message_shipping")}
+          Shipping and taxes calculated at checkout.
         </p>
         <div className="mt-6 flex">
           <CartCheckoutButton className="flex-1 rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">
-            {t("cart_section.checkout")}
+            Checkout
           </CartCheckoutButton>
         </div>
         <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
@@ -105,7 +104,7 @@ export function CartSection() {
               href="/products"
               className="font-medium text-indigo-600 hover:text-indigo-500"
             >
-              {t("cart_section.continue_shopping")}
+              Continue Shopping
               <span aria-hidden="true"> &rarr;</span>
             </Link>
           </p>
