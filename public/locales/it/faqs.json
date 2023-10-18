@@ -1,5 +1,9 @@
 {
-  "description": "Offriamo servizi di rilievo misure gratuito, progettazione e montaggio, garantendo la massima convenienza e un'assistenza senza limiti di tempo per soddisfare le tue esigenze di design e arredamento",
+  "seo": {
+    "title": "FAQs",
+    "titleTemplate": "%s | Pacelli Arredamenti",
+    "description": "Esplora la tradizione italiana dell'arredamento di qualità con Pacelli Arredamenti. Con oltre 50 anni di esperienza, collaboriamo con oltre 50 brand di eccellenza, offrendo una vasta gamma di prodotti"
+  },
   "title": "Frequently Asked Question",
   "item1": {
     "question": "Fornite il servizio di rilievo delle misure? é a pagamento?",

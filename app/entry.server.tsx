@@ -55,6 +55,7 @@ export default async function handleRequest(
       'https://www.gstatic.com/',
       'https://www.youtube.com/iframe_api',
       'https://www.youtube.com/s/player/99faf012/www-widgetapi.vflset/www-widgetapi.js',
+      'https://www.youtube.com/s/player/dd34ec3d/www-widgetapi.vflset/www-widgetapi.js',
     ],
   });
   const body = await renderToReadableStream(
