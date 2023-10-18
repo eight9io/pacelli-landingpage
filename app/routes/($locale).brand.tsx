@@ -6,22 +6,13 @@ import {seoPayload} from '~/lib/seo.server';
 import {routeHeaders} from '~/data/cache';
 import Hero from '~/components/brand/hero';
 import Brand from '~/components/home/brands';
+import {getFixedT} from '~/lib/utils';
 
 export const headers = routeHeaders;
 
 export async function loader({params, context}: LoaderArgs) {
-  // const {language, country} = context.storefront.i18n;
-
-  // if (
-  //   params.locale &&
-  //   params.locale.toLowerCase() !== `${language}-${country}`.toLowerCase()
-  // ) {
-  //   // If the locale URL param is defined, yet we still are on `EN-US`
-  //   // the the locale param must be invalid, send to the 404 page
-  //   throw new Response(null, {status: 404});
-  // }
-
-  const seo = seoPayload.home();
+  const t = await getFixedT(context.storefront, 'brand');
+  const seo = seoPayload.landingpage(t);
 
   return defer({
     analytics: {

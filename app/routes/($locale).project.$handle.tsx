@@ -4,8 +4,9 @@ import Booking from '~/components/home/booking';
 import {LoaderArgs, json} from '@shopify/remix-oxygen';
 import invariant from 'tiny-invariant';
 import {useLoaderData} from '@remix-run/react';
-import {cacheNoneInStaging, parseObject} from '~/lib/utils';
+import {cacheNoneInStaging, getFixedT, parseObject} from '~/lib/utils';
 import {PROJECT_DETAIL_QUERY} from '~/graphql/gallery';
+import {seoPayload} from '~/lib/seo.server';
 
 export async function loader({request, params, context}: LoaderArgs) {
   invariant(params.handle, 'id is required');
@@ -43,7 +44,10 @@ export async function loader({request, params, context}: LoaderArgs) {
     });
   }
 
-  return json({project: handledProject});
+  const t = await getFixedT(context.storefront, 'project');
+  const seo = seoPayload.project(t, handledProject);
+
+  return json({project: handledProject, seo});
 }
 
 export default function ProjectDetail() {
@@ -57,24 +61,32 @@ export default function ProjectDetail() {
         client={project.client}
         imageCover={project.cover}
       />
-      <Detail
-        title="The challenge to face"
-        subTitle={project.challenge_description}
-        image={project.challenge_image}
-        imgPosition="right"
-      />
-      <Detail
-        title="The solution found"
-        subTitle={project.solution_description}
-        image={project.solution_image}
-        imgPosition="left"
-      />
-      <Detail
-        title="The result obtained"
-        subTitle={project.result_description}
-        image={project.result_image}
-        imgPosition="left"
-      />
+      {project.challenge_description ? (
+        <Detail
+          title="The challenge to face"
+          subTitle={project.challenge_description}
+          image={project.challenge_image}
+          imgPosition="right"
+        />
+      ) : null}
+
+      {project.solution_description ? (
+        <Detail
+          title="The solution found"
+          subTitle={project.solution_description}
+          image={project.solution_image}
+          imgPosition="left"
+        />
+      ) : null}
+
+      {project.result_description ? (
+        <Detail
+          title="The result obtained"
+          subTitle={project.result_description}
+          image={project.result_image}
+          imgPosition="left"
+        />
+      ) : null}
       <div className="base-container">
         {project.media && project.media.previewImage ? (
           <>
@@ -108,5 +120,5 @@ export default function ProjectDetail() {
 }
 
 export const handle = {
-  i18n: ['common', 'header', 'gallery'],
+  i18n: ['common', 'header', 'gallery', 'project'],
 };

@@ -11,7 +11,8 @@ import CategoriesList from '~/components/blogs/categories-list';
 import LatestArticles from '~/components/blogs/latest-articles';
 
 import {Image} from '@shopify/hydrogen-react';
-import {cacheNoneInStaging} from '~/lib/utils';
+import {cacheNoneInStaging, getFixedT} from '~/lib/utils';
+import {seoPayload} from '~/lib/seo.server';
 
 export const headers = routeHeaders;
 
@@ -33,12 +34,20 @@ export async function loader({request, context, params}: LoaderArgs) {
     cache: cacheNoneInStaging(context),
   });
 
+  const t = await getFixedT(context.storefront, 'blogs');
+  const seo = seoPayload.article({
+    article: blogArticleData?.blog?.articleByHandle,
+    url: request.url,
+    t,
+  });
+
   return {
     blogs: blogData?.blogs.nodes,
     blog: blogArticleData?.blog,
     article: blogArticleData?.blog?.articleByHandle,
     latestArticles: latestArticlesData?.articles.nodes,
     currentUrl: request.url,
+    seo,
   };
 }
 

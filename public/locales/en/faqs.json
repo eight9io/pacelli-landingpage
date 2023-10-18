@@ -1,4 +1,9 @@
 {
+  "seo": {
+    "title": "FAQs",
+    "titleTemplate": "%s | Pacelli Arredamenti",
+    "description": "Esplora la tradizione italiana dell'arredamento di qualità con Pacelli Arredamenti. Con oltre 50 anni di esperienza, collaboriamo con oltre 50 brand di eccellenza, offrendo una vasta gamma di prodotti"
+  },
   "description": "We offer free measurement, design and assembly services, guaranteeing maximum convenience and unlimited assistance to satisfy your design and furnishing needs",
   "title": "Frequently Asked Question",
   "item1": {
@@ -18,4 +23,3 @@
     "answer": "Delivery times vary based on the specifics of your project.\nFor example, when it comes to creating a bespoke kitchen, we take every detail into account, including any out-of-squares and customizations you have requested.\nOn average, the delivery time delivery time for a project of this kind is approximately 40 days. However, it is important to emphasize that the precision and attention we put into each step of the process is an investment in the final result. Your custom kitchen will be a culinary work of art worth waiting for"
   }
 }
- 
