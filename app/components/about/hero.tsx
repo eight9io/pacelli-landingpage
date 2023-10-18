@@ -1,25 +1,30 @@
 import clsx from 'clsx';
-import Carousel from '~/components/common/carousel';
-
-import {useTranslation} from 'react-i18next';
-import Link from '~/components/Link';
-import arrowRight from '~/assets/icons/arrow-right.svg';
-import Quote from '../common/icons/quote';
-import {Video} from '@shopify/hydrogen';
-// import ReactPlayer from 'react-player/lazy';
-import ReactPlayer from 'react-player/youtube';
 
 interface HeroProps {
   className?: string;
 }
 
-const VIDEO_SRC = 'https://www.youtube.com/watch?v=L8BzYFjHJDU';
+const VIDEO_SRC =
+  'https://cdn.shopify.com/videos/c/o/v/59e5273c2f174a02a1326acc0a7c34e7.mp4';
 
 const Hero: React.FC<HeroProps> = ({className = ''}) => {
   return (
-    <section className={clsx('overflow-hidden relative', className)}>
+    <section
+      className={clsx('base-container overflow-hidden relative', className)}
+    >
       <div className="mb-20 w-full md:h-[800px]">
-        <ReactPlayer url={VIDEO_SRC} width="full" height={800} playing />
+        <video
+          width="1030"
+          height="580"
+          controls
+          muted
+          // autoPlay
+          playsInline
+          loop
+          className="mx-auto h-[800px] w-full"
+        >
+          <source type="video/mp4" src={VIDEO_SRC} />
+        </video>
       </div>
     </section>
   );

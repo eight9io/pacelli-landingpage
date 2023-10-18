@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 
 interface IntroProps {
   className?: string;
@@ -16,7 +16,7 @@ const Intro: React.FC<IntroProps> = ({
   client,
   imageCover,
 }) => {
-  const { t } = useTranslation('common')
+  const {t} = useTranslation('common');
   return (
     <section
       className={clsx(' md:py-24 lg:py-[90px] base-container ', className)}

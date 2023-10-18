@@ -2,21 +2,21 @@ import clsx from 'clsx';
 import Heading from '~/components/common/heading';
 import showroom6 from '~/assets/showroom/showroom6.png';
 import showroom5 from '~/assets/showroom/showroom5.png';
-import { XMarkIcon } from '@heroicons/react/24/outline';
-import { Button } from '~/components/snippets';
+import {XMarkIcon} from '@heroicons/react/24/outline';
+import {Button} from '~/components/snippets';
 /* eslint-disable */
 import ArrowRight from '~/components/common/icons/arrow-right';
-import { InfoContact } from '../contact/contact-cta-form';
+import {InfoContact} from '../contact/contact-cta-form';
 import BookingForm from '../common/form/booking-form';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import {useState} from 'react';
+import {useTranslation} from 'react-i18next';
 
 interface MyTeamProps {
   className?: string;
 }
 
-const MyTeam: React.FC<MyTeamProps> = ({ className = '' }) => {
-  const { t } = useTranslation('showroom');
+const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
+  const {t} = useTranslation('showroom');
   const [openForm, setOpenForm] = useState(false);
   const openPopup = () => {
     setOpenForm(true);
@@ -120,11 +120,17 @@ const MyTeam: React.FC<MyTeamProps> = ({ className = '' }) => {
             onClick={(e) => e.stopPropagation()}
             className="md:scale-[0.85] max-w-[608px] base-container z-50 absolute"
           >
-            <BookingForm handleClose={closePopup} closeButton={
-              <XMarkIcon stroke="gray" className="h-8 w-8  absolute top-5 right-5 cursor-pointer hover:scale-125 transition-all duration-300 z-[100]" aria-hidden="true"
-                onClick={closePopup}
-              />
-            } />
+            <BookingForm
+              handleClose={closePopup}
+              closeButton={
+                <XMarkIcon
+                  stroke="gray"
+                  className="h-8 w-8  absolute top-5 right-5 cursor-pointer hover:scale-125 transition-all duration-300 z-[100]"
+                  aria-hidden="true"
+                  onClick={closePopup}
+                />
+              }
+            />
           </div>
         </div>
       )}
