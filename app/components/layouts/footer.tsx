@@ -1,11 +1,13 @@
 import Facebook from '~/components/common/icons/facebook';
 import Instagram from '~/components/common/icons/instagram';
-import {Link} from '~/components/Link';
+import { Link } from '~/components/Link';
 import Logo from '~/components/common/logo';
 import clsx from 'clsx';
 import Youtube from '~/components/common/icons/youtube';
+import { useTranslation } from 'react-i18next';
 
 const FooterSection = () => {
+  const { t } = useTranslation('common');
   return (
     <footer className="bg-primary-950">
       <div className="base-container py-0 flex justify-between">
@@ -42,14 +44,14 @@ const FooterSection = () => {
           </div>
           <div className="col-span-12 md:col-span-3 mt-4 md:mt-0">
             <div className="text-white text-base font-normal">
-              CONTACT WITH US
+              {t('contacts.title2')}
             </div>
             <p className="text-white text-xs md:text-sm font-normal leading-[21px] mt-6 flex gap-2">
-              Hotline: <span className="">+39 0824/948533</span>
+              {t('contacts.hotline')}: <span className="">+39 0824/948533</span>
             </p>
             <p className="text-white text-xs md:text-sm font-normal leading-[21px] mt-6 flex gap-2">
-              Address:{' '}
-              <span>Via Volturno, 11, San Salvatore Telesino (BN)</span>
+              {t('contacts.address.label')}
+              <span>      {t('contacts.address.address')}</span>
             </p>
           </div>
         </div>
