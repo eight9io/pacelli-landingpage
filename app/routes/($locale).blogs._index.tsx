@@ -11,7 +11,8 @@ import {
 } from '~/graphql/blogs';
 import ArticlesPagination from '~/components/blogs/articles-pagination';
 import {Article} from '@shopify/hydrogen/storefront-api-types';
-import {cacheNoneInStaging, parseObject} from '~/lib/utils';
+import {cacheNoneInStaging, getFixedT, parseObject} from '~/lib/utils';
+import {seoPayload} from '~/lib/seo.server';
 
 export const headers = routeHeaders;
 
@@ -40,7 +41,12 @@ export async function loader({request, context}: LoaderArgs) {
     throw new Response('Not found', {status: 404});
   }
 
-  // const seo = seoPayload.policies({policies, url: request.url});
+  const t = await getFixedT(context.storefront, 'blogs');
+  const seo = seoPayload.blog({
+    blog: {} as any,
+    url: request.url,
+    t,
+  });
 
   const articles = parseObject(articleData, 'articles.nodes') || [];
 
@@ -59,7 +65,7 @@ export async function loader({request, context}: LoaderArgs) {
     pageInfo,
     selectedBlog: undefined,
     pinnedArticle,
-    // seo
+    seo,
   });
 }
 

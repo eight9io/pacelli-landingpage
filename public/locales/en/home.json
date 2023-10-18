@@ -1,4 +1,9 @@
 {
+  "seo": {
+    "title": "Home",
+    "titleTemplate": "%s | Pacelli Arredamenti",
+    "description": "Esplora la tradizione italiana dell'arredamento di qualità con Pacelli Arredamenti. Con oltre 50 anni di esperienza, collaboriamo con oltre 50 brand di eccellenza, offrendo una vasta gamma di prodotti"
+  },
   "description": {
     "item1": "Explore the Italian tradition of quality furniture with Pacelli Arredamenti. With over 50 years of experience, we collaborate with over 50 excellent brands, offering a vast range of products"
   },
