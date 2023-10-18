@@ -1,18 +1,18 @@
 'use client';
 
-import { Button } from '~/components/snippets';
+import {Button} from '~/components/snippets';
 import DatePicker from '../date-picker';
-import { Field, Form, useForm } from 'react-final-form';
+import {Field, Form, useForm} from 'react-final-form';
 import TextArea from '~/components/common/text-area';
 import TextField from '~/components/common/textfield';
 import clsx from 'clsx';
-import { contactValidate } from '~/validation/contact';
-import { validateFormValues } from '~/validation';
-import { useRef, useState } from 'react';
-import { FormApi } from 'final-form';
+import {contactValidate} from '~/validation/contact';
+import {validateFormValues} from '~/validation';
+import {useRef, useState} from 'react';
+import {FormApi} from 'final-form';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { useRootContext } from '~/hooks/useRootContext';
-import { useTranslation } from 'react-i18next';
+import {useRootContext} from '~/hooks/useRootContext';
+import {useTranslation} from 'react-i18next';
 
 interface ContactFormProps {
   className?: string;
@@ -24,15 +24,15 @@ interface ContactFormValidation {
   message?: string;
 }
 
-const ContactForm: React.FC<ContactFormProps> = ({ className = '' }) => {
+const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
-  const { t } = useTranslation('common');
+  const {t} = useTranslation('common');
   const onChange = (form: any) => {
     form.change('reCaptcha', true);
   };
-  const { ENV } = useRootContext();
+  const {ENV} = useRootContext();
   const onSubmit = (
     values: ContactFormValidation,
     form: FormApi<ContactFormValidation, Partial<ContactFormValidation>>,
@@ -50,7 +50,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className = '' }) => {
     fetch('/api/contact', {
       method: 'POST',
       mode: 'no-cors',
-      headers: { Accept: 'application/json', Authentication: recaptchaValue! },
+      headers: {Accept: 'application/json', Authentication: recaptchaValue!},
       body: JSON.stringify(newData),
     })
       .then(() => {
@@ -74,11 +74,11 @@ const ContactForm: React.FC<ContactFormProps> = ({ className = '' }) => {
         onSubmit={onSubmit}
         validate={validateFormValues(contactValidate(t))}
         validateOnBlur={false}
-        render={({ handleSubmit, submitting, form }) => (
+        render={({handleSubmit, submitting, form}) => (
           <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
             <TextField
               name="fullname"
-              label="Full name *"
+              label={`${t('common:form.full_name.label')} *`}
               inputClassName={clsx(
                 'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
               )}
@@ -87,7 +87,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className = '' }) => {
 
             <TextField
               name="email"
-              label="Email *"
+              label={`${t('common:form.email.label')} *`}
               inputClassName={clsx(
                 'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
               )}
@@ -95,7 +95,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className = '' }) => {
             />
             <TextArea
               name="message"
-              label="Message"
+              label={`${t('common:form.message.label')} *`}
               rows={1}
               inputClassName={clsx(
                 'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
@@ -104,7 +104,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className = '' }) => {
 
             <div className="relative mb-6">
               <Field name="reCaptcha">
-                {({ input, meta }) => (
+                {({input, meta}) => (
                   <>
                     <ReCAPTCHA
                       onChange={() => onChange(form)}
@@ -127,7 +127,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className = '' }) => {
               size="md"
               disabled={loading || submitted}
             >
-              {t("button.send")}
+              {t('button.send')}
             </Button>
 
             {submitted && (
@@ -154,7 +154,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className = '' }) => {
                     stroke="white"
                   ></path>
                 </svg>
-                Your request is successfull. We will contact you soon!
+                {t('button.request_success')}
               </span>
             )}
           </form>

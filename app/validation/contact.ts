@@ -2,9 +2,14 @@ import * as yup from 'yup';
 /* eslint-disable */
 export const contactValidate = (t: any) => {
   return yup.object({
-    email: yup.string().email(t('common:validate.email')).required(t('common:validate.required', {
-      label: t('common:form.email.label', null, 'Email'),
-    })),
+    email: yup
+      .string()
+      .email(t('common:validate.email'))
+      .required(
+        t('common:validate.required', {
+          label: t('common:form.email.label', null, 'Email'),
+        }),
+      ),
     fullname: yup
       .string()
       .min(
@@ -20,8 +25,6 @@ export const contactValidate = (t: any) => {
         }),
       ),
     message: yup.string(),
-    reCaptcha: yup
-      .boolean()
-      .required(t('common:validate.reCaptcha')),
+    reCaptcha: yup.boolean().required(t('common:validate.reCaptcha')),
   });
-}
+};

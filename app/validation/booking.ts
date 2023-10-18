@@ -55,8 +55,6 @@ export const bookingValidate = (t: any) => {
       }),
     ),
     message: yup.string(),
-    reCaptcha: yup
-      .boolean()
-      .required(t('common:validate.reCaptcha')),
+    reCaptcha: yup.boolean().required(t('common:validate.reCaptcha')),
   });
 };

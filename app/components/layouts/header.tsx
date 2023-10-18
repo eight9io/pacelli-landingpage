@@ -16,6 +16,7 @@ import Facebook from '../common/icons/facebook';
 import Instagram from '../common/icons/instagram';
 import Youtube from '../common/icons/youtube';
 import Location from '../common/icons/location';
+import {useTranslation} from 'react-i18next';
 
 const STICKY_OFFSET = 0;
 
@@ -31,11 +32,11 @@ export function HeaderSection() {
     if (!isSticky && scrollPosition > STICKY_OFFSET) setIsSticky(true);
     else if (isSticky && scrollPosition <= STICKY_OFFSET) setIsSticky(false);
 
-    if (
-      pathname === '/services/professional' ||
-      pathname === '/services/private'
-    )
-      setMobileMenuOpen(false);
+    // if (
+    //   pathname === '/services/professional' ||
+    //   pathname === '/services/private'
+    // )
+    //   setMobileMenuOpen(false);
   }, [scrollPosition, pathname]);
 
   const isMenuItemActive = (href: string) => {
@@ -50,6 +51,7 @@ export function HeaderSection() {
     const target = e.target;
     target.closest('ul')?.querySelector('.submenu')?.classList.toggle('hidden');
   };
+  const {t} = useTranslation('common');
   return (
     <header
       className={clsx(
@@ -73,7 +75,7 @@ export function HeaderSection() {
             to="/"
             className="ml-5 inline-flex items-center justify-center rounded-md text-gray-700"
           >
-            <span className="sr-only">Open main menu</span>
+            <span className="sr-only"> {t('header.open_menu')}</span>
             <span className="relative inline-block">
               <Link to={'/'}>
                 <img src={home} alt="menu" width={24} height={24} />
@@ -85,7 +87,7 @@ export function HeaderSection() {
             className="ml-5 inline-flex items-center justify-center rounded-md text-gray-700"
             onClick={() => setMobileMenuOpen(true)}
           >
-            <span className="sr-only">Open main menu</span>
+            <span className="sr-only">{t('header.open_menu')}</span>
             <span className="relative inline-block">
               <img src={menu} alt="menu" width={24} height={24} />
             </span>
@@ -106,7 +108,7 @@ export function HeaderSection() {
               className="absolute z-50 rounded-md text-gray-700 flex items-center gap-2 right-0 md:right-6"
               onClick={() => setMobileMenuOpen(false)}
             >
-              <span className="text-white">Close</span>
+              <span className="text-white">{t('header.close')}</span>
               <XMarkIcon stroke="#fff" className="h-6 w-6" aria-hidden="true" />
             </button>
             <div className="flex relative mt-4">
@@ -212,7 +214,7 @@ export function HeaderSection() {
                 )}
               >
                 <Location className="w-4 h-4 stroke-white" />
-                Via Volturno, 11, San Salvatore Telesino (BN)
+                {t('contacts.address.address')}
               </Link>
               <div
                 className={clsx(
@@ -220,7 +222,7 @@ export function HeaderSection() {
                   "after:absolute after:content-[''] after:w-[2px] after:h-5",
                 )}
               >
-                Lunedì-Venerdì: 9:00 - 20:30 Sabato: 10:00 - 20:00
+                {t('contacts.open.open')}
               </div>
               <div className={clsx('flex gap-3 items-center relative')}>
                 <Link

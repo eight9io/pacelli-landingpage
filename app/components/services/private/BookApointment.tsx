@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import {useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import BookingForm from '~/components/common/form/booking-form';
 import ThreeD from '~/components/common/icons/3d';
 import ArrowRight from '~/components/common/icons/arrow-right';
@@ -9,8 +9,8 @@ import Headphone from '~/components/common/icons/headphone';
 import Pig from '~/components/common/icons/pig';
 import Preventivo from '~/components/common/icons/preventivo';
 import Promo from '~/components/common/icons/promo';
-import { Button } from '~/components/snippets';
-import { XMarkIcon } from '@heroicons/react/24/outline';
+import {Button} from '~/components/snippets';
+import {XMarkIcon} from '@heroicons/react/24/outline';
 /* eslint-disable */
 
 interface BookAppointmentProps {
@@ -94,8 +94,8 @@ const arrMobileScreen = [
     description: 'arr_icon.item_6.desc',
   },
 ];
-const BookAppointment: React.FC<BookAppointmentProps> = ({ className = '' }) => {
-  const { t } = useTranslation('private');
+const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
+  const {t} = useTranslation('private');
   const [openForm, setOpenForm] = useState(false);
   const openPopup = () => {
     setOpenForm(true);
@@ -202,11 +202,17 @@ const BookAppointment: React.FC<BookAppointmentProps> = ({ className = '' }) => 
             onClick={(e) => e.stopPropagation()}
             className="md:scale-[0.85] max-w-[600px] base-container  z-50 absolute  "
           >
-            <BookingForm handleClose={closePopup} closeButton={
-              <XMarkIcon stroke="gray" className="h-8 w-8  absolute top-5 right-5 cursor-pointer hover:scale-125 transition-all duration-300 z-[100] " aria-hidden="true"
-                onClick={closePopup}
-              />
-            } />
+            <BookingForm
+              handleClose={closePopup}
+              closeButton={
+                <XMarkIcon
+                  stroke="gray"
+                  className="h-8 w-8  absolute top-5 right-5 cursor-pointer hover:scale-125 transition-all duration-300 z-[100] "
+                  aria-hidden="true"
+                  onClick={closePopup}
+                />
+              }
+            />
           </div>
         </div>
       )}

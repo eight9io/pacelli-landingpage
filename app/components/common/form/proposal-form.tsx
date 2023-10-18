@@ -111,7 +111,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
                     <div className="pb-6">
                       <Select
                         value={values?.occupation}
-                        label="Chi sei?"
+                        label={`${t('common:form.occupation.label')} *`}
                         handleChangeValue={(e: any, value: any) =>
                           handleChangeValue(e, value, form)
                         }
@@ -127,7 +127,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
               </div>
               <TextField
                 name="name"
-                label="Name  *"
+                label={`${t('common:form.name.label')} *`}
                 inputClassName={clsx(
                   'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2 ',
                 )}
@@ -135,7 +135,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
               />
               <TextField
                 name="phone"
-                label="Numero di telefono *"
+                label={`${t('common:form.phone.label')} *`}
                 inputClassName={clsx(
                   'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent   focus:border-b-2',
                 )}
@@ -143,7 +143,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
               />
               <TextField
                 name="email"
-                label="Email *"
+                label={`${t('common:form.email.label')} *`}
                 inputClassName={clsx(
                   'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent   focus:border-b-2',
                 )}
@@ -168,10 +168,6 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
                   )}
                 </Field>
               </div>
-
-              {/* {!reCaptchaDone && (
-                <p className="text-sm text-[#ef4444]">ReCaptcha is required</p>
-              )} */}
               <Button
                 className="rounded-sm uppercase mt-6"
                 size="md"
