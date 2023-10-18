@@ -1,13 +1,13 @@
 import Facebook from '~/components/common/icons/facebook';
 import Instagram from '~/components/common/icons/instagram';
-import { Link } from '~/components/Link';
+import {Link} from '~/components/Link';
 import Logo from '~/components/common/logo';
 import clsx from 'clsx';
 import Youtube from '~/components/common/icons/youtube';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 
 const FooterSection = () => {
-  const { t } = useTranslation('common');
+  const {t} = useTranslation('common');
   return (
     <footer className="bg-primary-950">
       <div className="base-container py-0 flex justify-between">
@@ -51,7 +51,7 @@ const FooterSection = () => {
             </p>
             <p className="text-white text-xs md:text-sm font-normal leading-[21px] mt-6 flex gap-2">
               {t('contacts.address.label')}
-              <span>      {t('contacts.address.address')}</span>
+              <span> {t('contacts.address.address')}</span>
             </p>
           </div>
         </div>

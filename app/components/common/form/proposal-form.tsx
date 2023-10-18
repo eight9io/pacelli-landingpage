@@ -1,16 +1,16 @@
-import { Button } from '~/components/snippets';
-import { Field, Form } from 'react-final-form';
+import {Button} from '~/components/snippets';
+import {Field, Form} from 'react-final-form';
 import TextField from '~/components/common/textfield';
 import clsx from 'clsx';
-import { validateFormValues } from '~/validation';
+import {validateFormValues} from '~/validation';
 import Select from '../select';
-import { proposalValidate } from '~/validation/proposal';
+import {proposalValidate} from '~/validation/proposal';
 import Heading from '../heading';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { useRef, useState } from 'react';
-import { useRootContext } from '~/hooks/useRootContext';
-import { FormApi } from 'final-form';
-import { useTranslation } from 'react-i18next';
+import {useRef, useState} from 'react';
+import {useRootContext} from '~/hooks/useRootContext';
+import {FormApi} from 'final-form';
+import {useTranslation} from 'react-i18next';
 
 interface ProposalFormProps {
   className?: string;
@@ -22,12 +22,11 @@ interface ProposalFormValidation {
   phone: string;
   occupation: string;
 }
-const pdfLink =
-  'https://cdn.shopify.com/s/files/1/0816/1971/4346/files/pacelii.pdf';
+const pdfLink = '/proposta.pdf';
 
 /* eslint-disable */
-const ProposalForm: React.FC<ProposalFormProps> = ({ className = '' }) => {
-  const { t } = useTranslation('common');
+const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
+  const {t} = useTranslation('common');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
@@ -36,7 +35,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({ className = '' }) => {
     form.change('reCaptcha', true);
   };
 
-  const { ENV } = useRootContext();
+  const {ENV} = useRootContext();
 
   const onSubmit = (
     values: any,
@@ -97,7 +96,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({ className = '' }) => {
         onSubmit={onSubmit}
         validate={validateFormValues(proposalValidate(t))}
         validateOnBlur={false}
-        render={({ handleSubmit, values, form }) => {
+        render={({handleSubmit, values, form}) => {
           return (
             <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
               <Heading
@@ -108,7 +107,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({ className = '' }) => {
               </Heading>
               <div className="relative">
                 <Field name="occupation">
-                  {({ input, meta }) => (
+                  {({input, meta}) => (
                     <div className="pb-6">
                       <Select
                         value={values?.occupation}
@@ -152,7 +151,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({ className = '' }) => {
               />
               <div className="relative">
                 <Field name="reCaptcha">
-                  {({ input, meta }) => (
+                  {({input, meta}) => (
                     <>
                       <ReCAPTCHA
                         onChange={() => onChange(form)}

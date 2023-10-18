@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import {
   SfButton,
   SfInput,
@@ -6,10 +6,10 @@ import {
   SfIconCheckCircle,
   SfIconClose,
 } from '@storefront-ui/react';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 
 export default function NewsletterBox() {
-  const { t } = useTranslation('common')
+  const {t} = useTranslation('common');
   const [inputValue, setInputValue] = useState('');
   const [positiveAlert, setPositiveAlert] = useState(false);
   const [errorAlert, setErrorAlert] = useState(false);
@@ -79,9 +79,7 @@ export default function NewsletterBox() {
             className="flex items-start md:items-center shadow-md max-w-[600px] bg-positive-100 pr-2 pl-4 mb-2 ring-1 ring-positive-200 typography-text-sm md:typography-text-base py-1 rounded-md"
           >
             <SfIconCheckCircle className="mr-2 my-2 text-positive-700" />
-            <p className="py-2 mr-2">
-              {t('newsletter.message_email')}
-            </p>
+            <p className="py-2 mr-2">{t('newsletter.message_email')}</p>
             <button
               type="button"
               className="p-1.5 md:p-2 ml-auto rounded-md text-positive-700 hover:bg-positive-200 active:bg-positive-300 hover:text-positive-800 active:text-positive-900"
@@ -98,9 +96,7 @@ export default function NewsletterBox() {
             role="alert"
             className="flex items-start md:items-center max-w-[600px] shadow-md bg-negative-100 pr-2 pl-4 ring-1 ring-negative-300 typography-text-sm md:typography-text-base py-1 rounded-md"
           >
-            <p className="py-2 mr-2">
-              {t('newsletter.subscribed')}
-            </p>
+            <p className="py-2 mr-2">{t('newsletter.subscribed')}</p>
             <button
               type="button"
               className="p-1.5 md:p-2 ml-auto rounded-md text-negative-700 hover:bg-negative-200 active:bg-negative-300 hover:text-negative-800 active:text-negative-900"

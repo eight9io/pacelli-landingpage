@@ -1,16 +1,15 @@
 import Heading from '~/components/common/heading';
 import comming_soon from '~/assets/images/image_coming_soon.png';
 import logo from '~/assets/images/logo-4x.png';
-import { ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
-
+import {ReactNode} from 'react';
+import {useTranslation} from 'react-i18next';
 
 interface Props {
   children: ReactNode;
 }
 
 export function Layout(props: Props) {
-  const { t } = useTranslation('common');
+  const {t} = useTranslation('common');
   return (
     <section className="p-0 bg-white">
       <div className="base-container flex flex-col justify-center items-center min-h-screen">

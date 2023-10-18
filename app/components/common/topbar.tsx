@@ -5,14 +5,14 @@ import Instagram from './icons/instagram';
 import Youtube from './icons/youtube';
 import Phone from './icons/phone';
 import Location from './icons/location';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 
 interface TopbarProps {
   children?: React.ReactNode;
 }
 
-const Topbar = ({ children }: TopbarProps) => {
-  const { t } = useTranslation('common');
+const Topbar = ({children}: TopbarProps) => {
+  const {t} = useTranslation('common');
   return (
     <div className="hidden md:block bg-gray-100">
       <div className="!py-1 px-4 lg:px-8">
