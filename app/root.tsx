@@ -35,6 +35,7 @@ import {useAnalytics} from './hooks/useAnalytics';
 import {useChangeLanguage} from 'remix-i18next';
 import {LAYOUT_QUERY} from './graphql/common';
 import {RootContext} from './hooks/useRootContext';
+import i18n from '../i18n.server';
 
 // This is important to avoid re-fetching root queries on sub-navigations
 export const shouldRevalidate: ShouldRevalidateFunction = ({
@@ -77,7 +78,9 @@ export async function loader({request, context}: LoaderArgs) {
     getLayoutData(context),
   ]);
 
-  const seo = seoPayload.root({shop: layout.shop, url: request.url});
+  const {language} = storefront.i18n;
+  const t = await i18n.getFixedT(language.toLowerCase(), 'common');
+  const seo = seoPayload.root({shop: layout.shop, url: request.url, t});
 
   if (!request.url.endsWith('/coming-soon') && env.PUBLIC_IS_COMING_SOON) {
     return redirect('/coming-soon');
