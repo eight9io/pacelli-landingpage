@@ -127,6 +127,10 @@ shop-pay-button {
   }
 }
 
+pseudo="-webkit-details-marker" {
+  display: none !important;
+}
+
 /* @layer components {
   .article {
     h2,
