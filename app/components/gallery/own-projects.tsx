@@ -12,16 +12,19 @@ interface ContactProps {
 const OwnProjects: React.FC<ContactProps> = (props) => {
   const [projects, setProjects] = useState(props.projects);
   const [pageInfo, setPageInfo] = useState(props.pageInfo);
+  const {t, ready, i18n} = useTranslation('gallery');
 
   const onLoadMore = async () => {
-    const data = await fetch('/api/projects?after=' + pageInfo.endCursor);
+    const data = await fetch(
+      `/api/projects?after=${
+        pageInfo.endCursor
+      }&language=${i18n.language.toUpperCase()}`,
+    );
     const {projects: newProjects, pageInfo: newPageInfo} =
       (await data.json()) as any;
     setProjects([...projects, ...newProjects]);
     setPageInfo(newPageInfo);
   };
-
-  const {t, ready} = useTranslation('gallery');
 
   return (
     <section

@@ -75,7 +75,6 @@ export function HeaderSection() {
             to="/"
             className="ml-5 inline-flex items-center justify-center rounded-md text-gray-700"
           >
-            <span className="sr-only"> {t('header.open_menu')}</span>
             <span className="relative inline-block">
               <Link to={'/'}>
                 <img src={home} alt="menu" width={24} height={24} />
@@ -87,7 +86,6 @@ export function HeaderSection() {
             className="ml-5 inline-flex items-center justify-center rounded-md text-gray-700"
             onClick={() => setMobileMenuOpen(true)}
           >
-            <span className="sr-only">{t('header.open_menu')}</span>
             <span className="relative inline-block">
               <img src={menu} alt="menu" width={24} height={24} />
             </span>
@@ -197,6 +195,7 @@ export function HeaderSection() {
             <div className="flex gap-y-4 flex-col text-xs text-white border-t border-t-gray-500 fixed bottom-4 md:bottom-10 pt-2 md:pt-6 md:hidden w-[calc(100%-32px)]">
               <Link
                 to="tel:0123456789"
+                externalLink
                 className={clsx(
                   'flex gap-3 items-center relative',
                   "after:absolute after:content-[''] after:w-[2px] after:h-5",
@@ -206,6 +205,7 @@ export function HeaderSection() {
                 (0824) 948533
               </Link>
               <Link
+                externalLink
                 to="https://www.google.com/maps/place/Via+Volturno,+11,+82030+San+Salvatore+Telesino+BN,+%C3%9D/@41.2338572,14.4944365,17z/data=!3m1!4b1!4m6!3m5!1s0x133a449f754d3625:0xe78f82b5f51c1467!8m2!3d41.2338532!4d14.4970114!16s%2Fg%2F11c5m20g6r?hl=vi-VN&entry=ttu"
                 target="_blank"
                 className={clsx(
@@ -226,6 +226,7 @@ export function HeaderSection() {
               </div>
               <div className={clsx('flex gap-3 items-center relative')}>
                 <Link
+                  externalLink
                   to="https://www.facebook.com/arredamentipacelli/?locale=it_IT"
                   target="_blank"
                   className="w-8 h-8 p-2 bg-secondary rounded-full object-contain"
@@ -233,6 +234,7 @@ export function HeaderSection() {
                   <Facebook className="w-4 h-4 stroke-white invert brightness-0" />
                 </Link>
                 <Link
+                  externalLink
                   to="https://www.instagram.com/pacelliarredamenti"
                   target="_blank"
                   className="w-8 h-8 p-2 bg-secondary rounded-full object-contain"
@@ -240,6 +242,7 @@ export function HeaderSection() {
                   <Instagram className="w-4 h-4 stroke-white invert brightness-0" />
                 </Link>
                 <Link
+                  externalLink
                   to="https://www.youtube.com/@arredamentipacelli4456/featured"
                   target="_blank"
                   className="w-8 h-8 p-2 bg-secondary rounded-full object-contain"

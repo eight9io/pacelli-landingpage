@@ -8,6 +8,7 @@ import {
 
 type LinkProps = Omit<RemixLinkProps, 'className'> & {
   className?: RemixNavLinkProps['className'] | RemixLinkProps['className'];
+  externalLink?: boolean;
 };
 
 /**
@@ -26,9 +27,13 @@ type LinkProps = Omit<RemixLinkProps, 'className'> & {
  * Ultimately, it is up to you to decide how to implement this behavior.
  */
 export function Link(props: LinkProps) {
-  const {to, className, ...resOfProps} = props;
+  const {to, className, externalLink, ...resOfProps} = props;
   const [root] = useMatches();
   const selectedLocale = root.data?.selectedLocale;
+
+  if (externalLink) {
+    return <RemixNavLink to={to} className={className} {...resOfProps} />;
+  }
 
   let toWithLocale = to;
 
