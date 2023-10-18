@@ -111,52 +111,5 @@
     "request_success": "Your request is successfull. We will contact you soon!",
     "edit": "Edit",
     "remove": "Remove"
-  },
-  "newsletter": {
-    "title": "Subscribe and get discount on your first purchase!",
-    "desc": " Be aware of upcoming sales and events. Receive gifts and special offers!",
-    "button": " Subscribe to Newsletter",
-    "learn_how": "To learn how we process your data, visit our",
-    "you_can": ". You can",
-    "unsubscribe": "unsubscribe",
-    "without_costs.": "at any time without costs.",
-    "privacy_notice": "Privacy Notice",
-    "message_email": "Your email has been added to the newsletter subscription.",
-    "subscribed": "This email is already subscribed for our newsletter.",
-    "subscribe": "Subscribe to our emails"
-  },
-  "filter": {
-    "title": "Filter By",
-    "applied_filters": "Applied filters",
-    "from": "from",
-    "to": "to",
-    "sort_by": "Sort by: "
-  },
-  "coming_soon": {
-    "title": "Prossimamente!!!",
-    "desc": " Presto lanceremo il nostro sito web."
-  },
-  "client": "Client",
-  "cart_section": {
-    "qty": "Qty",
-    "remove": "Remove",
-    "message_shipping": "Shipping and taxes calculated at checkout.",
-    "subtotal": "Subtotal",
-    "checkout": "Checkout",
-    "continue_shopping": "Continue shopping"
-  },
-  "product_detail": {
-    "title": "Product information",
-    "add_to_cart": "Add to cart"
-  },
-  "acc_address": {
-    "no_address": "You haven saved any addresses yet.",
-    "add_address": "  Add an Address",
-    "address_book": "Address Book",
-    "default": "Default"
-  },
-  "acc_detail": {
-    "title": "Account Details",
-    "security": "Security"
   }
 }
