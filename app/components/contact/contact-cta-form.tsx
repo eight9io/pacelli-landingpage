@@ -60,6 +60,7 @@ const ContactCTAForm: React.FC<ContactCTAFormProps> = ({className = ''}) => {
             <div className="md:text-base flex items-center gap-4">
               <div className="flex gap-4 items-center relative order-0 md:order-1">
                 <Link
+                  externalLink
                   to="https://www.facebook.com/arredamentipacelli/?locale=it_IT"
                   target="_blank"
                   className="w-[44px] h-[44px] p-[10px] bg-secondary rounded-full object-contain"
@@ -67,6 +68,7 @@ const ContactCTAForm: React.FC<ContactCTAFormProps> = ({className = ''}) => {
                   <Facebook className="text-white w-6 h-6 stroke-white" />
                 </Link>
                 <Link
+                  externalLink
                   to="https://www.instagram.com/pacelliarredamenti"
                   target="_blank"
                   className="w-[44px] h-[44px] p-[10px] bg-secondary rounded-full object-contain"
@@ -74,6 +76,7 @@ const ContactCTAForm: React.FC<ContactCTAFormProps> = ({className = ''}) => {
                   <Instagram className="text-white w-6 h-6 stroke-white" />
                 </Link>
                 <Link
+                  externalLink
                   to="https://www.youtube.com/@arredamentipacelli4456/featured"
                   target="_blank"
                   className="w-[44px] h-[44px] p-[10px] bg-secondary rounded-full object-contain"

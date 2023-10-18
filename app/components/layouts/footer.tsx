@@ -83,6 +83,7 @@ const FooterSection = () => {
             )}
           >
             <Link
+              externalLink
               to="https://www.facebook.com/arredamentipacelli/?locale=it_IT"
               target="_blank"
               className="w-10 h-10 p-2 bg-white rounded-full object-contain"
@@ -90,6 +91,7 @@ const FooterSection = () => {
               <Facebook className="text-secondary w-6 h-6 stroke-secondary" />
             </Link>
             <Link
+              externalLink
               to="https://www.instagram.com/pacelliarredamenti"
               target="_blank"
               className="w-10 h-10 p-2 bg-white rounded-full object-contain"
@@ -97,6 +99,7 @@ const FooterSection = () => {
               <Instagram className="text-secondary w-6 h-6 stroke-secondary" />
             </Link>
             <Link
+              externalLink
               to="https://www.youtube.com/@arredamentipacelli4456/featured"
               target="_blank"
               className="w-10 h-10 p-2 bg-white rounded-full object-contain"

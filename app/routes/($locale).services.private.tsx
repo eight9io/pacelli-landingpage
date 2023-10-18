@@ -45,5 +45,5 @@ export default function PartnershipServicesPage() {
 }
 
 export const handle = {
-  i18n: ['common', 'header', 'private'],
+  i18n: ['common', 'header', 'private', 'home'],
 };

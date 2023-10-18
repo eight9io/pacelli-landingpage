@@ -4,7 +4,6 @@ import {hydrateRoot} from 'react-dom/client';
 
 import i18next from 'i18next';
 import {I18nextProvider, initReactI18next} from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-http-backend';
 import {getInitialNamespaces} from 'remix-i18next';
 import i18nextOptions from '../i18nextOptions';
@@ -60,7 +59,8 @@ async function hydrate() {
   if (!i18next.isInitialized)
     await i18next
       .use(initReactI18next) // Tell i18next to use the react-i18next plugin
-      .use(LanguageDetector) // Setup a client-side language detector
+      // .use(LanguageDetector) // Setup a client-side language detector
+      // .use(resourcesToBackend(resources))
       .use(Backend) // Setup your backend
       .init({
         ...i18nextOptions,

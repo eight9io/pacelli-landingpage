@@ -384,9 +384,7 @@ export const isStagingEnvironment = (context: AppLoadContext | Env) => {
 };
 
 export const cacheNoneInStaging = (context: AppLoadContext) => {
-  return isStagingEnvironment(context)
-    ? context.storefront.CacheNone()
-    : context.storefront.CacheShort();
+  return context.storefront.CacheNone();
 };
 
 export const getFixedT = async (storefront: Storefront, ns: Namespace) => {
