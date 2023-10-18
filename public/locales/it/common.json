@@ -73,14 +73,14 @@
     }
   },
   "contacts": {
-    "title": "Contacts",
+    "title": "Contatti",
     "address": {
-      "label": "Address",
+      "label": "Indirizzo",
       "address": "Via Volturno, 11, San Salvatore Telesino (BN)"
     },
-    "phone": "Phone",
+    "phone": "Telefono",
     "open": {
-      "label": "Open",
+      "label": "Orari",
       "open": "Lunedì-Venerdì: 9:00 - 20:30 Sabato: 10:00 - 20:00"
     }
   },

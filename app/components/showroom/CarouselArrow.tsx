@@ -11,11 +11,13 @@ import image7 from '~/assets/showroom/image-7.png';
 import image8 from '~/assets/showroom/image-8.png';
 import image9 from '~/assets/showroom/image-9.png';
 import showroom7 from '~/assets/showroom/showroom7.png';
-import ReactPlayer from 'react-player/youtube';
 
 interface CarouselShowroomProps {
   className?: string;
 }
+
+const VIDEO_SRC =
+  'https://cdn.shopify.com/videos/c/o/v/ac8e899892be4f208707392e5f66f1e4.mp4';
 
 const CarouselShowroom: React.FC<CarouselShowroomProps> = ({
   className = '',
@@ -74,12 +76,18 @@ const CarouselShowroom: React.FC<CarouselShowroomProps> = ({
         />
       </div>
       <div className="flex items-center justify-center mt-32">
-        <ReactPlayer
-          url="https://www.youtube.com/watch?v=LBzT3pllAAY"
-          width={1030}
-          height={580}
-          playing
-        />
+        <video
+          width="1030"
+          height="580"
+          controls
+          muted
+          // autoPlay
+          playsInline
+          loop
+          className="mx-auto h-[580] w-full"
+        >
+          <source type="video/mp4" src={VIDEO_SRC} />
+        </video>
       </div>
     </section>
   );
