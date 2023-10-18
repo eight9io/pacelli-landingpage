@@ -1,9 +1,9 @@
 'use client';
-
 import clsx from 'clsx';
-import {useCallback, useRef, useState} from 'react';
-import {useDebounce} from 'usehooks-ts';
-import {Button} from '~/components/Button';
+import { use } from 'i18next';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useDebounce } from 'usehooks-ts';
+import { Button } from '~/components/Button';
 import ArrowLeft from '~/components/common/icons/arrow-slide-left';
 import ArrowRight from '~/components/common/icons/arrow-slide-right';
 interface CarouselProps {
@@ -32,9 +32,17 @@ const Carousel: React.FC<CarouselProps> = ({
   indicatorClassName = '',
   positionArrow,
 }) => {
+  console.log(data.length);
+
   const carouselRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, 5000);
+    return () => clearInterval(interval);
+  }
+    , [currentIndex >= data.length - 1]);
   const debounceIndex = useDebounce(currentIndex, 20);
 
   const onIndicatorClick = (id: string, index = 0) => {
@@ -136,7 +144,7 @@ const Carousel: React.FC<CarouselProps> = ({
         )}
       >
         <div className={clsx('base-container flex justify-start py-2 gap-2 ')}>
-          {data.map((item, index) =>
+          {data.length > 1 && data.map((item, index) =>
             (renderIndicator ?? defaultRenderIndicator)(
               item,
               index,
@@ -146,7 +154,7 @@ const Carousel: React.FC<CarouselProps> = ({
           )}
         </div>
       </div>
-      {positionArrow == 'center' && (
+      {data.length > 1 && positionArrow == 'center' && (
         <>
           <div className="absolute top-1/2 hidden md:block">
             <Button
@@ -172,7 +180,7 @@ const Carousel: React.FC<CarouselProps> = ({
           </div>
         </>
       )}
-      {positionArrow == 'bottom' && (
+      {data.length > 1 && positionArrow == 'bottom' && (
         <div className="  gap-8 absolute   base-container md:bottom-0 w-auto  right-10 md:left-0 hidden md:flex">
           <Button
             className={clsx(

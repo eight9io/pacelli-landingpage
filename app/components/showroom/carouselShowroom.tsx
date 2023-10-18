@@ -1,5 +1,4 @@
 'use client';
-/* eslint-disable */
 import clsx from 'clsx';
 import {UIEvent, useEffect, useRef, useState} from 'react';
 import {Button} from '~/components/Button';
@@ -25,22 +24,25 @@ interface CarouselProps {
 
 const CarouselArrow: React.FC<CarouselProps> = ({data = []}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const carouselRef = useRef<HTMLImageElement>(null);
   const [divWidth, setDivWidth] = useState(0);
+  const carouselRef = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    updateDivWidth();
+    window.addEventListener('resize', updateDivWidth);
+    const interval = setInterval(() => {
+      handleNext();
+    }, 5000);
+    return () => {
+      window.removeEventListener('resize', updateDivWidth);
+      clearInterval(interval);
+    };
+  }, [currentSlide]);
   const updateDivWidth = () => {
     if (carouselRef.current) {
       const width = carouselRef.current.offsetWidth;
-      setDivWidth(width + 15);
+      setDivWidth(width + 18);
     }
   };
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 2000);
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
   const handlePrev = () => {
     setCurrentSlide((currentSlide - 3 + data.length) % (data.length - 2));
   };
@@ -56,7 +58,7 @@ const CarouselArrow: React.FC<CarouselProps> = ({data = []}) => {
             'whitespace-nowrap  align-top  space-x-4 transition-all duration-700 ease-in-out ',
           )}
           style={{
-            transform: `translateX(-${currentSlide * 410}px)`,
+            transform: `translateX(-${currentSlide * divWidth}px)`,
           }}
         >
           {data.map((item, index) => (
