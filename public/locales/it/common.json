@@ -51,13 +51,13 @@
       "label": "Data"
     },
     "time": {
-      "label": "Tempo"
+      "label": "Ora"
     },
     "note": {
       "label": "Nota"
     },
     "occupation": {
-      "label": "OcOccupazioneupation"
+      "label": "Occupazione"
     },
     "full_name": {
       "label": "Nome e cognome"
@@ -68,7 +68,7 @@
   },
   "contacts": {
     "title": "Contatti",
-    "title2": "CONTATTACI CON NOI",
+    "title2": "CONTATTACI",
     "address": {
       "label": "Indirizzo",
       "address": "Via Volturno, 11, San Salvatore Telesino (BN)"
@@ -85,18 +85,18 @@
     "title": "Ricevere una proposta"
   },
   "button": {
-    "download": "Scaricamento",
+    "download": "Scarica",
     "learn_more": "Saperne di più",
-    "read_more": "Per saperne di più",
+    "read_more": "Leggi ancora",
     "load_more": "Carica di più",
     "all": "tutto",
     "filter": "Filtro",
     "down_success": "Il tuo download è riuscito.",
-    "share": "CONDIVIDERE",
+    "share": "CONDIVIDI",
     "back": "Indietro",
     "send": "Inviare",
     "request_success": "La tua richiesta è andata a buon fine. Ti contatteremo presto!",
-    "edit": "Modificare",
-    "remove": "Rimuovere"
+    "edit": "Modifica",
+    "remove": "Rimuovi"
   }
 }
