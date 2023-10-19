@@ -1,8 +1,8 @@
 'use client';
 import clsx from 'clsx';
-import {useCallback, useEffect, useRef, useState} from 'react';
-import {useDebounce} from 'usehooks-ts';
-import {Button} from '~/components/Button';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useDebounce } from 'usehooks-ts';
+import { Button } from '~/components/Button';
 import ArrowLeft from '~/components/common/icons/arrow-slide-left';
 import ArrowRight from '~/components/common/icons/arrow-slide-right';
 interface CarouselProps {
@@ -42,6 +42,8 @@ const Carousel: React.FC<CarouselProps> = ({
   const debounceIndex = useDebounce(currentIndex, 20);
 
   const onIndicatorClick = (id: string, index = 0) => {
+
+
     if (carouselRef.current) {
       carouselRef.current.scrollTo({
         left: document.getElementById(id)?.offsetLeft,
@@ -139,7 +141,7 @@ const Carousel: React.FC<CarouselProps> = ({
           indicatorClassName,
         )}
       >
-        <div className={clsx('base-container flex justify-start py-2 gap-2 ')}>
+        <div className={clsx('base-container flex justify-start py-2 gap-2  z-50 ')}>
           {data.length > 1 &&
             data.map((item, index) =>
               (renderIndicator ?? defaultRenderIndicator)(
@@ -178,10 +180,10 @@ const Carousel: React.FC<CarouselProps> = ({
         </>
       )}
       {data.length > 1 && positionArrow == 'bottom' && (
-        <div className="  gap-8 absolute   base-container md:bottom-0 w-auto  right-10 md:left-0 hidden md:flex">
+        <div className="  gap-8 absolute   md:bottom-0   hidden md:flex base-container px-0  w-auto" >
           <Button
             className={clsx(
-              'rounded-sm uppercase mt-6 bg-[#e6e7eb] p-4 hover:bg-neutral-300 transition-all duration-300',
+              '  rounded-sm uppercase mt-6 bg-[#e6e7eb] p-4 hover:bg-neutral-300 transition-all duration-300',
             )}
             size="md"
             onClick={handlePrev}
