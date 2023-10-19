@@ -4,12 +4,7 @@ import PinterestGallery from '~/components/common/pinterest-gallery/gallery';
 import {Article} from '@shopify/hydrogen/storefront-api-types';
 import ArticleCard from '~/components/common/article-card';
 import Heading from '../common/heading';
-import {
-  useFetcher,
-  useLoaderData,
-  useNavigate,
-  useSearchParams,
-} from '@remix-run/react';
+import {useFetcher, useLoaderData, useNavigate} from '@remix-run/react';
 import {loader} from '~/routes/($locale).blogs._index';
 import {useCallback, useEffect, useRef, useState} from 'react';
 import AngleDown from '~/components/common/icons/angle-full-down';
@@ -27,7 +22,7 @@ const ArticlesPagination: React.FC<ArticlesPaginationProps> = ({
   className = '',
   articles: propsArticles = [],
 }) => {
-  const {t} = useTranslation('common');
+  const {t, i18n} = useTranslation('common');
   const {
     blogs,
     selectedBlog,
@@ -53,8 +48,8 @@ const ArticlesPagination: React.FC<ArticlesPaginationProps> = ({
   const onLoadmore = useCallback(async () => {
     const {endCursor: after} = pageInfo;
     if (!after) return;
-    fetcher.load(`/api/articles?after=${after}`);
-  }, [pageInfo, fetcher]);
+    fetcher.load(`/api/articles?after=${after}&language=${i18n.language}`);
+  }, [pageInfo, fetcher, i18n.language]);
 
   useEffect(() => {
     setArticles(propsArticles);
