@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import Heading from '~/components/common/heading';
-import {Button} from '~/components/snippets';
+import { Button } from '~/components/snippets';
 
 import ArrowRight from '~/components/common/icons/arrow-right';
-import {Link} from '@remix-run/react';
-import {useTranslation} from 'react-i18next';
+import { Link } from '@remix-run/react';
+import { useTranslation } from 'react-i18next';
 
 interface BeforeAfterProps {
   className?: string;
@@ -21,7 +21,7 @@ const BeforeAfter: React.FC<BeforeAfterProps> = ({
   beforeImg,
   afterImg,
 }) => {
-  const {t} = useTranslation('common');
+  const { t } = useTranslation('common');
   return (
     <section className={clsx('bg-gray-100 py-[60px] md:py-[90px]', className)}>
       <div className="base-container">
@@ -52,7 +52,7 @@ const BeforeAfter: React.FC<BeforeAfterProps> = ({
               alt="Mission"
               width={394}
               height={600}
-              className="h-[600px] w-full "
+              className="h-[600px] w-full object-cover "
             />
           </div>
           <div className="col-span-12 md:col-span-4">
@@ -61,7 +61,7 @@ const BeforeAfter: React.FC<BeforeAfterProps> = ({
               alt="Mission"
               width={394}
               height={600}
-              className="h-[600px]  w-full "
+              className="h-[600px]  w-full object-cover "
             />
           </div>
         </div>

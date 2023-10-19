@@ -1,14 +1,14 @@
 import Intro from '~/components/project-detail/Intro';
 import Detail from '~/components/project-detail/Detail';
 import Booking from '~/components/home/booking';
-import {LoaderArgs, json} from '@shopify/remix-oxygen';
+import { LoaderArgs, json } from '@shopify/remix-oxygen';
 import invariant from 'tiny-invariant';
-import {useLoaderData} from '@remix-run/react';
-import {cacheNoneInStaging, getFixedT, parseObject} from '~/lib/utils';
-import {PROJECT_DETAIL_QUERY} from '~/graphql/gallery';
-import {seoPayload} from '~/lib/seo.server';
+import { useLoaderData } from '@remix-run/react';
+import { cacheNoneInStaging, getFixedT, parseObject } from '~/lib/utils';
+import { PROJECT_DETAIL_QUERY } from '~/graphql/gallery';
+import { seoPayload } from '~/lib/seo.server';
 
-export async function loader({request, params, context}: LoaderArgs) {
+export async function loader({ request, params, context }: LoaderArgs) {
   invariant(params.handle, 'id is required');
   const data = await context.storefront.query(PROJECT_DETAIL_QUERY, {
     variables: {
@@ -47,12 +47,11 @@ export async function loader({request, params, context}: LoaderArgs) {
   const t = await getFixedT(context.storefront, 'project');
   const seo = seoPayload.project(t, handledProject);
 
-  return json({project: handledProject, seo});
+  return json({ project: handledProject, seo });
 }
 
 export default function ProjectDetail() {
-  const {project} = useLoaderData<typeof loader>();
-
+  const { project } = useLoaderData<typeof loader>();
   return (
     <>
       <Intro
@@ -75,7 +74,7 @@ export default function ProjectDetail() {
           title="The solution found"
           subTitle={project.solution_description}
           image={project.solution_image}
-          imgPosition="left"
+          imgPosition="right"
         />
       ) : null}
 
@@ -122,3 +121,5 @@ export default function ProjectDetail() {
 export const handle = {
   i18n: ['common', 'header', 'gallery', 'project'],
 };
+
+export const shouldRevalidate = () => true;

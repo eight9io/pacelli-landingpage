@@ -83,3 +83,5 @@ export default function BlogPage() {
 export const handle = {
   i18n: ['common', 'header', 'blogs'],
 };
+
+export const shouldRevalidate = () => true;
