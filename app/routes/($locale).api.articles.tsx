@@ -20,3 +20,5 @@ export async function loader({request, context}: LoaderArgs) {
     pageInfo: parseObject(articleData, 'articles.pageInfo') || {},
   });
 }
+
+export const shouldRevalidate = () => true;

@@ -122,3 +122,5 @@ export default function ProjectDetail() {
 export const handle = {
   i18n: ['common', 'header', 'gallery', 'project'],
 };
+
+export const shouldRevalidate = () => true;
