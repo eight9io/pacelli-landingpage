@@ -1,23 +1,23 @@
-import {Article} from '@shopify/hydrogen/storefront-api-types';
+import { Article } from '@shopify/hydrogen/storefront-api-types';
 import HTMLContent from './html-content';
 import Heading from '../common/heading';
 import dayjs from 'dayjs';
 import Tag from '~/components/common/icons/tag';
 import Share from '../common/icons/share';
-import {FacebookShareButton} from 'react-share';
-import {useLoaderData, useNavigate} from '@remix-run/react';
+import { FacebookShareButton } from 'react-share';
+import { useLoaderData, useNavigate } from '@remix-run/react';
 import arrowRight from '~/assets/icons/arrow-right.svg';
-import {Button} from '~/components/snippets';
-import {useTranslation} from 'react-i18next';
+import { Button } from '~/components/snippets';
+import { useTranslation } from 'react-i18next';
 
 interface ArticleContentProps {
   className?: string;
   article: Article;
 }
 
-const ArticleContent: React.FC<ArticleContentProps> = ({article}) => {
-  const {currentUrl} = useLoaderData();
-  const {t} = useTranslation('common');
+const ArticleContent: React.FC<ArticleContentProps> = ({ article }) => {
+  const { currentUrl } = useLoaderData();
+  const { t } = useTranslation('common');
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
 
@@ -63,7 +63,7 @@ const ArticleContent: React.FC<ArticleContentProps> = ({article}) => {
         size="md"
         onClick={goBack}
       >
-        <img className="duration-200 rotate-180" src={arrowRight} alt="Back" />
+        <img className="duration-200 rotate-180 object-cover" src={arrowRight} alt="Back" />
         {t('button.back')}
       </Button>
     </>

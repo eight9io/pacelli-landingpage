@@ -1,14 +1,14 @@
 import clsx from 'clsx';
 import Heading from '../common/heading';
 import strongpoint from '~/assets/about/strongpoint.png';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 interface StrongPointProps {
   className?: string;
 }
 
-const StrongPoint: React.FC<StrongPointProps> = ({className = ''}) => {
-  const {t} = useTranslation('about');
+const StrongPoint: React.FC<StrongPointProps> = ({ className = '' }) => {
+  const { t } = useTranslation('about');
   return (
     <section className={clsx('bg-gray-100 py-[60px] md:py-[90px]', className)}>
       <div className="base-container">
@@ -65,7 +65,7 @@ const StrongPoint: React.FC<StrongPointProps> = ({className = ''}) => {
               alt="Mission"
               width={500}
               height={640}
-              className="h-[640px]"
+              className="h-[640px] object-cover"
             />
           </div>
         </div>
@@ -80,7 +80,7 @@ type ItemProps = {
   content: string;
 };
 
-const Item: React.FC<ItemProps> = ({count, title, content}) => {
+const Item: React.FC<ItemProps> = ({ count, title, content }) => {
   return (
     <div className="pt-8 pb-4 md:pb-6 md:border-t">
       <Heading

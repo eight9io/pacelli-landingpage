@@ -2,21 +2,21 @@ import clsx from 'clsx';
 import Heading from '~/components/common/heading';
 import showroom6 from '~/assets/showroom/showroom6.png';
 import showroom5 from '~/assets/showroom/showroom5.png';
-import {XMarkIcon} from '@heroicons/react/24/outline';
-import {Button} from '~/components/snippets';
+import { XMarkIcon } from '@heroicons/react/24/outline';
+import { Button } from '~/components/snippets';
 /* eslint-disable */
 import ArrowRight from '~/components/common/icons/arrow-right';
-import {InfoContact} from '../contact/contact-cta-form';
+import { InfoContact } from '../contact/contact-cta-form';
 import BookingForm from '../common/form/booking-form';
-import {useState} from 'react';
-import {useTranslation} from 'react-i18next';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface MyTeamProps {
   className?: string;
 }
 
-const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
-  const {t} = useTranslation('showroom');
+const MyTeam: React.FC<MyTeamProps> = ({ className = '' }) => {
+  const { t } = useTranslation('showroom');
   const [openForm, setOpenForm] = useState(false);
   const openPopup = () => {
     setOpenForm(true);
@@ -58,7 +58,7 @@ const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
               alt="Mission"
               width={394}
               height={500}
-              className="h-[500px] w-full "
+              className="h-[500px] w-full object-cover"
             />
 
             <h3 className="text-gray-900 text-[40px] font-normal leading-[50px] mt-6 mb-4">
@@ -85,7 +85,7 @@ const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
               alt="Mission"
               width={394}
               height={500}
-              className="h-[500px] w-full"
+              className="h-[500px] w-full object-cover"
             />
 
             <h3 className="text-gray-900 text-[40px] font-normal leading-[50px] mt-6 mb-4">
