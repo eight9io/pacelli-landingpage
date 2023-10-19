@@ -130,7 +130,7 @@ export function HeaderSection() {
                           setMobileMenuOpen(false);
                         }}
                       >
-                        {text}
+                        {t(text)}
                         {items && items.length ? (
                           <ChevronDownIcon
                             className="stroke-white w-6 h-6 md:!hidden"
@@ -148,7 +148,7 @@ export function HeaderSection() {
                         key={`main-${href}-${text}`}
                         onClick={onToggleSubMenu}
                       >
-                        {text}
+                        {t(text)}
                         {items && items.length ? (
                           <ChevronDownIcon className="stroke-white w-6 h-6 md:!hidden" />
                         ) : undefined}
@@ -171,7 +171,7 @@ export function HeaderSection() {
                                 setMobileMenuOpen(false);
                               }}
                             >
-                              {text}
+                              {t(text)}
                             </Link>
                           ) : (
                             <span
@@ -180,7 +180,7 @@ export function HeaderSection() {
                               )}
                               key={`${href}-${text}`}
                             >
-                              {text}
+                              {t(text)}
                             </span>
                           );
                         })}
@@ -265,44 +265,44 @@ interface MenuItem {
 
 const mainMenuItems: MenuItem[] = [
   {
-    text: 'About',
+    text: 'menu.about',
     href: '/about',
   },
   {
-    text: 'Showroom',
+    text: 'menu.showroom',
     href: '/showroom',
   },
   {
-    text: 'Brands',
+    text: 'menu.brand',
     href: '/brand',
   },
   {
-    text: 'Services',
+    text: 'menu.services',
     items: [
       {
-        text: 'Professional services',
+        text: 'menu.services_professional',
         href: '/services/professional',
       },
       {
-        text: 'Private services',
+        text: 'menu.services_private',
         href: '/services/private',
       },
     ],
   },
   {
-    text: 'Blogs',
+    text: 'menu.blog',
     href: '/blogs',
   },
   {
-    text: 'Gallery',
+    text: 'menu.gallery',
     href: '/gallery',
   },
   {
-    text: 'Contact us',
+    text: 'menu.contact_us',
     href: '/contact',
   },
   {
-    text: 'FAQs',
+    text: 'menu.faqs',
     href: '/faqs',
   },
 ];
