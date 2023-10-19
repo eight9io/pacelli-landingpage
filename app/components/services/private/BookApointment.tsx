@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import {useState} from 'react';
-import {useTranslation} from 'react-i18next';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import BookingForm from '~/components/common/form/booking-form';
 import ThreeD from '~/components/common/icons/3d';
 import ArrowRight from '~/components/common/icons/arrow-right';
@@ -9,8 +9,8 @@ import Headphone from '~/components/common/icons/headphone';
 import Pig from '~/components/common/icons/pig';
 import Preventivo from '~/components/common/icons/preventivo';
 import Promo from '~/components/common/icons/promo';
-import {Button} from '~/components/snippets';
-import {XMarkIcon} from '@heroicons/react/24/outline';
+import { Button } from '~/components/snippets';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 /* eslint-disable */
 
 interface BookAppointmentProps {
@@ -94,12 +94,15 @@ const arrMobileScreen = [
     description: 'arr_icon.item_6.desc',
   },
 ];
-const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
-  const {t} = useTranslation('private');
+const BookAppointment: React.FC<BookAppointmentProps> = ({ className = '' }) => {
+  const { t } = useTranslation('private');
   const [openForm, setOpenForm] = useState(false);
   const openPopup = () => {
     setOpenForm(true);
     document.body.style.overflow = 'hidden';
+    document.body.addEventListener('wheel', function (event) {
+      event.preventDefault();
+    });
     document.body.classList.add('lg:pr-[15px]');
     var header = document.getElementById('nav-header');
     if (header) header.classList.add('lg:pr-[47px]');
