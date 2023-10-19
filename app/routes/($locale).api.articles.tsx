@@ -4,8 +4,6 @@ import {cacheNoneInStaging, parseObject} from '~/lib/utils';
 
 export async function loader({request, context}: LoaderArgs) {
   const params = new URL(request.url).searchParams;
-  const after = params.get('after');
-  const first = params.get('first');
 
   const variables = Object.fromEntries(params);
 

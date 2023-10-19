@@ -20,11 +20,17 @@ export function Layout(props: Props) {
           width={608}
         />
         <Heading className="text-primary mb-2 !text-[32px] md:!text-[40px] font-semibold">
+          Prossimamente!!!
+        </Heading>
+        <p className="text-center text-gray-600 text-base font-normal leading-7">
+          Presto lanceremo il nostro sito web.
+        </p>
+        {/* <Heading className="text-primary mb-2 !text-[32px] md:!text-[40px] font-semibold">
           {t('coming_soon.title')}
         </Heading>
         <p className="text-center text-gray-600 text-base font-normal leading-7">
           {t('coming_soon.desc')}
-        </p>
+        </p> */}
       </div>
     </section>
   );
