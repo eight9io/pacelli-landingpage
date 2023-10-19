@@ -139,25 +139,24 @@ export function HeaderSection() {
                         ) : undefined}
                       </Link>
                     ) : (
-                      <span
+                      <Link
                         className={clsx(
                           'flex justify-between items-center md:block rounded-none box-border pt-1 pb-1 md:pt-4 md:pb-2 text-[22px] md:text-[40px] leading-8 text-white border-b border-b-transparent hover:border-b-slate-400 ',
-                          'peer hover:[&+div]:block max-w-[395px]',
+                          'peer hover:[&+div]:block max-w-[395px] w-[100%]',
                         )}
+                        to="#"
                         key={`main-${href}-${text}`}
+                        onClick={onToggleSubMenu}
                       >
                         {text}
                         {items && items.length ? (
-                          <ChevronDownIcon
-                            className="stroke-white w-6 h-6 md:!hidden"
-                            onClick={onToggleSubMenu}
-                          />
+                          <ChevronDownIcon className="stroke-white w-6 h-6 md:!hidden" />
                         ) : undefined}
-                      </span>
+                      </Link>
                     )}
 
                     {items && items.length && (
-                      <div className="block flex-col md:absolute h-full top-0 left-[395px] md:hidden md:peer-hover:!flex pl-4 md:pl-0 submenu">
+                      <div className="flex-col md:absolute h-full top-0 left-[395px] hidden md:peer-hover:!flex pl-4 md:pl-0 submenu">
                         {items.map(({text, href}) => {
                           return href ? (
                             <Link
