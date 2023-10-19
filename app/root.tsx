@@ -156,11 +156,11 @@ export default function App() {
           }}
         >
           {data.ENV.PUBLIC_IS_COMING_SOON ? (
-            <ComingSoonLayout key={`${locale.language}-${locale.country}`}>
+            <ComingSoonLayout key={`${locale.language}`}>
               <Outlet />
             </ComingSoonLayout>
           ) : (
-            <Layout key={`${locale.language}-${locale.country}`}>
+            <Layout key={`${locale.language}`}>
               <Outlet />
             </Layout>
           )}

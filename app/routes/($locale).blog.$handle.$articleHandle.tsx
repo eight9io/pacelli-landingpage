@@ -77,3 +77,7 @@ export default function BlogDetailPage() {
 export const handle = {
   i18n: ['common', 'header', 'blogs'],
 };
+
+export function shouldRevalidate() {
+  return true;
+}

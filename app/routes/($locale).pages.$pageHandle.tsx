@@ -57,3 +57,5 @@ const PAGE_QUERY = `#graphql
     }
   }
 `;
+
+export const shouldRevalidate = () => true;
