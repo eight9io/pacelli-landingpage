@@ -22,11 +22,17 @@
     "showroom": "Showroom",
     "brand": "Brand",
     "services": "Services",
+    "services_professional": "Professional Services",
+    "services_private": "Private Services",
     "history": "History",
     "gallery": "Gallery",
     "blog": "Blog",
     "contact_us": "Contact us",
-    "close": "Close"
+    "faqs": "FAQs",
+    "close": "Close",
+    "privacy_poplicy": "Privacy Policy",
+    "terms_conditions": "Terms and Conditions",
+    "cookies_policy": "Cookies Policy"
   },
   "routes": {
     "home": "Home",
