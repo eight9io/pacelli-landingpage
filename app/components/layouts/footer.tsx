@@ -13,7 +13,7 @@ const FooterSection = () => {
       <div className="base-container py-0 flex justify-between">
         <div className="grid grid-cols-12 pb-11 pt-15 gap-y-4 md:gap-y-8 w-full">
           <div className="col-span-12 md:col-span-3 mb-4">
-            <Logo className="invert-[1] brightness-0" />
+            <Logo variant="white" className="invert-[1] brightness-0" />
           </div>
           <div className="col-span-12 md:col-span-3">
             <ul className="flex flex-col gap-4">

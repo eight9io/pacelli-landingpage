@@ -2,9 +2,9 @@ import Carousel from '~/components/common/carousel';
 import Link from '~/components/Link';
 import arrowRight from '~/assets/icons/arrow-right.svg';
 import clsx from 'clsx';
-import {useTranslation} from 'react-i18next';
-import {loader} from '~/routes/($locale)._index';
-import {useLoaderData} from '@remix-run/react';
+import { useTranslation } from 'react-i18next';
+import { loader } from '~/routes/($locale)._index';
+import { useLoaderData } from '@remix-run/react';
 
 interface HeroProps {
   className?: string;
@@ -61,9 +61,9 @@ const mockData = [
   },
 ];
 
-const Hero: React.FC<HeroProps> = ({className = ''}) => {
-  const {t, ready} = useTranslation('home');
-  const {carousels} = useLoaderData<typeof loader>();
+const Hero: React.FC<HeroProps> = ({ className = '' }) => {
+  const { t, ready } = useTranslation('home');
+  const { carousels } = useLoaderData<typeof loader>();
 
   return (
     <section
@@ -76,7 +76,7 @@ const Hero: React.FC<HeroProps> = ({className = ''}) => {
         positionArrow="center"
         renderItem={(item, index) => (
           <div
-            id={item.hero}
+            id={item.id}
             key={item.hero}
             className="carousel-item w-full h-full relative "
           >

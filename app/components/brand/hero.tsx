@@ -1,6 +1,6 @@
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import Heading from '../common/heading';
-import {Text} from '../Text';
+import { Text } from '../Text';
 import clsx from 'clsx';
 import hero_background from '~/assets/images/image_brand_hero.png';
 
@@ -8,8 +8,8 @@ interface HeroProps {
   className?: string;
 }
 
-const Hero: React.FC<HeroProps> = ({className = ''}) => {
-  const {t} = useTranslation('brand');
+const Hero: React.FC<HeroProps> = ({ className = '' }) => {
+  const { t } = useTranslation('brand');
   return (
     <section
       className={clsx(
@@ -33,7 +33,7 @@ const Hero: React.FC<HeroProps> = ({className = ''}) => {
             alt="brand"
             width={500}
             height={600}
-            className="h-[600px]"
+            className="h-[600px] object-cover"
           />
         </div>
       </div>

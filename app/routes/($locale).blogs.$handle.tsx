@@ -12,12 +12,7 @@ import {
 } from '~/graphql/blogs';
 import ArticlesPagination from '~/components/blogs/articles-pagination';
 import {Article} from '@shopify/hydrogen/storefront-api-types';
-import {
-  cacheNoneInStaging,
-  getFixedT,
-  isStagingEnvironment,
-  parseObject,
-} from '~/lib/utils';
+import {cacheNoneInStaging, getFixedT, parseObject} from '~/lib/utils';
 import {seoPayload} from '~/lib/seo.server';
 
 export const headers = routeHeaders;
@@ -114,3 +109,5 @@ export default function BlogPage() {
 export const handle = {
   i18n: ['common', 'header', 'blogs'],
 };
+
+export const shouldRevalidate = () => true;
