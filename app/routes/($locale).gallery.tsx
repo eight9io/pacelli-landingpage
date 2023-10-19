@@ -66,3 +66,5 @@ export default function Homepage() {
 export const handle = {
   i18n: ['common', 'header', 'gallery'],
 };
+
+export const shouldRevalidate = () => true;
