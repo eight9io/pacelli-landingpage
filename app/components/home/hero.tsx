@@ -76,7 +76,7 @@ const Hero: React.FC<HeroProps> = ({ className = '' }) => {
         positionArrow="center"
         renderItem={(item, index) => (
           <div
-            id={item.hero}
+            id={item.id}
             key={item.hero}
             className="carousel-item w-full h-full relative "
           >
