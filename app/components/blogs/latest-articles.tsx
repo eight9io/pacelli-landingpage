@@ -30,7 +30,9 @@ const LatestArticles: React.FC<LatestArticlesProps> = ({
             <span className="text-gray-400 block text-sm uppercase mb-1">
               {dayjs(article?.publishedAt).format('MMMM D, YYYY')}
             </span>
-            <span className="font-bold">{article.title}</span>
+            <p className="font-bold whitespace-break-spaces line-clamp-2">
+              {article.title}
+            </p>
           </Link>
         ))}
       </ul>
