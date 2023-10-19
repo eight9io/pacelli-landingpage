@@ -20,11 +20,17 @@
     "showroom": "Showroom",
     "brand": "Marrce",
     "services": "Servizi",
+    "services_professional": "Servizi professionali",
+    "services_private": "Servizi privati",
     "history": "Storia",
     "gallery": "Galleria",
     "blog": "Blog",
     "contact_us": "Contattaci",
-    "close": "Vicino"
+    "faqs": "Domande frequenti",
+    "close": "Vicino",
+    "privacy_poplicy": "Privacy e politica",
+    "terms_conditions": "Termini e Condizioni",
+    "cookies_policy": "Politica sui cookie"
   },
 
   "language": "Lingua",
