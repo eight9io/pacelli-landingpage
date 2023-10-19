@@ -20,7 +20,7 @@
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@react-email/components": "^0.0.7",
-    "@remix-run/node": "^2.0.1",
+    "@remix-run/node": "1.19.1",
     "@remix-run/react": "1.19.1",
     "@sendgrid/mail": "^7.7.0",
     "@shopify/cli": "3.48.0",

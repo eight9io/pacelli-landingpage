@@ -17,6 +17,7 @@ import {
   useMatches,
   useRouteError,
   type ShouldRevalidateFunction,
+  useLocation,
 } from '@remix-run/react';
 import {ShopifySalesChannel, Seo, useNonce} from '@shopify/hydrogen';
 import invariant from 'tiny-invariant';
@@ -36,6 +37,8 @@ import {useChangeLanguage} from 'remix-i18next';
 import {LAYOUT_QUERY} from './graphql/common';
 import {RootContext} from './hooks/useRootContext';
 import i18n from '../i18n.server';
+import {useTranslation} from 'react-i18next';
+import {useEffect} from 'react';
 
 // This is important to avoid re-fetching root queries on sub-navigations
 export const shouldRevalidate: ShouldRevalidateFunction = ({
@@ -109,6 +112,7 @@ export default function App() {
   const nonce = useNonce();
   const data = useLoaderData<typeof loader>();
   const locale = data.selectedLocale ?? DEFAULT_LOCALE;
+  const location = useLocation();
   const hasUserConsent = true;
 
   useAnalytics(hasUserConsent);
@@ -117,7 +121,14 @@ export default function App() {
   // detected by the loader, this way, when we do something to change the
   // language, this locale will change and i18next will load the correct
   // translation files
-  useChangeLanguage(locale.language.toLowerCase());
+  // useChangeLanguage(locale.language.toLowerCase());
+
+  const {i18n} = useTranslation();
+  useEffect(() => {
+    if (!locale.language) return;
+    if (i18n.language === locale.language.toLowerCase()) return;
+    i18n.changeLanguage(locale.language.toLowerCase());
+  }, [locale.language, location.pathname, i18n]);
 
   return (
     <html lang={locale.language}>
@@ -177,7 +188,7 @@ export function ErrorBoundary({error}: {error: Error}) {
         <Links />
       </head>
       <body>
-        <Layout key={`${locale.language}-${locale.country}`}>
+        <Layout key={`${locale.language}`}>
           {isRouteError ? (
             <>
               {routeError.status === 404 ? (
