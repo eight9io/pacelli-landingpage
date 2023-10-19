@@ -1,7 +1,7 @@
 'use client';
 import clsx from 'clsx';
-import {UIEvent, useEffect, useRef, useState} from 'react';
-import {Button} from '~/components/Button';
+import { UIEvent, useEffect, useRef, useState } from 'react';
+import { Button } from '~/components/Button';
 import ArrowLeft from '~/components/common/icons/arrow-slide-left';
 import ArrowRight from '~/components/common/icons/arrow-slide-right';
 import Carousel from '../common/carousel';
@@ -22,7 +22,7 @@ interface CarouselProps {
   indicatorClassName?: string;
 }
 
-const CarouselArrow: React.FC<CarouselProps> = ({data = []}) => {
+const CarouselArrow: React.FC<CarouselProps> = ({ data = [] }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [divWidth, setDivWidth] = useState(0);
   const carouselRef = useRef<HTMLImageElement>(null);
@@ -52,7 +52,7 @@ const CarouselArrow: React.FC<CarouselProps> = ({data = []}) => {
 
   return (
     <div className="relative ">
-      <div className="carousel">
+      <div className="carousel ">
         <div
           className={clsx(
             'whitespace-nowrap  align-top  space-x-4 transition-all duration-700 ease-in-out ',
@@ -65,7 +65,7 @@ const CarouselArrow: React.FC<CarouselProps> = ({data = []}) => {
             <div className="carousel-slide basis-auto grow-0 shrink-0 inline-block ">
               <img
                 key={index}
-                className="h-[540px]"
+                className="h-[540px] object-cover"
                 src={item}
                 alt="Carousel"
                 width={395}
