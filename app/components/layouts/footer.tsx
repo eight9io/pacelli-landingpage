@@ -20,7 +20,7 @@ const FooterSection = () => {
               {footerMenus1.map((menu) => (
                 <li key={`footer_${menu.href}`}>
                   <Link to={menu.href} className="uppercase text-white">
-                    {menu.text}
+                    {t(menu.text)}
                   </Link>
                 </li>
               ))}
@@ -36,7 +36,7 @@ const FooterSection = () => {
                       'normal-case': menu.text === 'FAQs',
                     })}
                   >
-                    {menu.text}
+                    {t(menu.text)}
                   </Link>
                 </li>
               ))}
@@ -73,7 +73,7 @@ const FooterSection = () => {
                 to={menu.href}
                 className="text-gray-400 font-normal px-3 leading-[32px] hover:text-white first:pl-0 last:after:!hidden relative after:content-[''] after:absolute after:bg-gray-400 after:w-[1px] after:h-4 after:top-[6px] after:-right-0"
               >
-                {menu.text}
+                {t(menu.text)}
               </Link>
             ))}
           </ul>
@@ -117,56 +117,56 @@ export default FooterSection;
 
 const footerMenus1 = [
   {
-    text: 'About',
+    text: 'menu.about',
     href: '/about',
   },
   {
-    text: 'Showroom',
+    text: 'menu.showroom',
     href: '/showroom',
   },
   {
-    text: 'Brands',
+    text: 'menu.brand',
     href: '/brand',
   },
   {
-    text: 'Professional Services',
+    text: 'menu.services_professional',
     href: '/services/professional',
   },
   {
-    text: 'Private Services',
+    text: 'menu.services_private',
     href: '/services/private',
   },
 ];
 const footerMenus2 = [
   {
-    text: 'Gallery',
+    text: 'menu.gallery',
     href: '/gallery',
   },
   {
-    text: 'Blog',
+    text: 'menu.blog',
     href: '/blogs',
   },
   {
-    text: 'FAQs',
+    text: 'menu.faqs',
     href: '/faqs',
   },
   {
-    text: 'Contacts',
+    text: 'menu.contact_us',
     href: '/contact',
   },
 ];
 
 const footerMenus3 = [
   {
-    text: 'Privacy Policy',
+    text: 'menu.privacy_poplicy',
     href: '/pages/privacy-poplicy',
   },
   {
-    text: 'Term and Conditions',
+    text: 'menu.terms_conditions',
     href: '/pages/terms-conditions',
   },
   {
-    text: 'Cookies Policy',
+    text: 'menu.cookies_policy',
     href: '/pages/cookies-policy',
   },
 ];
