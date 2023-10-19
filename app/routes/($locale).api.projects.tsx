@@ -52,3 +52,5 @@ export async function loader({request, context}: LoaderArgs) {
     pageInfo,
   });
 }
+
+export const shouldRevalidate = () => true;

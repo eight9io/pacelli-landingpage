@@ -131,13 +131,7 @@ function Language({
   isSelected: boolean;
 }) {
   return (
-    <ChangeLocaleForm
-      key={countryLocale.country}
-      redirectTo={countryUrlPath}
-      buyerIdentity={{
-        countryCode: countryLocale.country,
-      }}
-    >
+    <ChangeLocaleForm key={countryLocale.country} redirectTo={countryUrlPath}>
       <Button
         className={clsx([
           'bg-white w-full p-2 transition flex justify-start',
@@ -158,11 +152,9 @@ function Language({
 
 function ChangeLocaleForm({
   children,
-  buyerIdentity,
   redirectTo,
 }: {
   children: React.ReactNode;
-  buyerIdentity: CartBuyerIdentityInput;
   redirectTo: string;
 }) {
   const fetcher = useFetcher();
