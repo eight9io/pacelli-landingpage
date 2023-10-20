@@ -40,7 +40,8 @@
     "phone": "Numero di telefono invalido",
     "min": "{{label}} deve contenere almeno {{min}} caratteri",
     "after_today": "{{label}} deve essere dopo oggi",
-    "reCaptcha": "Verifica di non essere un robot"
+    "reCaptcha": "Verifica di non essere un robot",
+    "date": "Data non valida"
   },
   "form": {
     "email": {
