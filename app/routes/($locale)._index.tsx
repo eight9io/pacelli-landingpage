@@ -43,7 +43,7 @@ export async function loader({params, context, request}: LoaderArgs) {
   }
 
   const {articles} = await context.storefront.query(FEATURED_BLOG_QUERY, {
-    variables: {first: 3},
+    variables: {first: 10},
     cache: cacheNoneInStaging(context),
   });
 
@@ -77,3 +77,5 @@ export default function Homepage() {
 export const handle = {
   i18n: ['common', 'header', 'home'],
 };
+
+export const shouldRevalidate = () => true;
