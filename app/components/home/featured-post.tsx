@@ -19,6 +19,7 @@ const FeaturedPosts: React.FC<FeaturedPostsProps> = ({
   articles = [],
 }) => {
   const t = useTranslation('home').t;
+  const firstThreeArticles = articles.slice(0, 3) || [];
 
   return (
     <section
@@ -37,7 +38,7 @@ const FeaturedPosts: React.FC<FeaturedPostsProps> = ({
           </Link>
         </div>
         <div className="grid grid-cols-3 gap-8">
-          {articles.map((article) => (
+          {firstThreeArticles.map((article) => (
             <Link
               to={`/blog/${article.blog.handle}/${article.handle}`}
               className="col-span-3 md:col-span-1"
