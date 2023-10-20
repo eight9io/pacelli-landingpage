@@ -191,7 +191,7 @@ export function HeaderSection() {
               </ul>
             </div>
 
-            <div className="flex gap-y-4 flex-col text-xs text-white border-t border-t-gray-500 md:bottom-10 pt-2 md:pt-6 md:hidden w-[calc(100%-32px)]">
+            <div className="mt-6 flex gap-y-4 flex-col text-xs text-white border-t border-t-gray-500 md:bottom-10 pt-6 md:hidden w-[calc(100%-32px)]">
               <Link
                 to="tel:0123456789"
                 externalLink

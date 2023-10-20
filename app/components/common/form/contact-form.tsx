@@ -28,7 +28,7 @@ const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
-  const {t} = useTranslation('common');
+  const {t, i18n} = useTranslation('common');
   const onChange = (form: any) => {
     form.change('reCaptcha', true);
   };
@@ -44,6 +44,7 @@ const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
       email: values.email,
       message: values.message,
       reCaptcha: recaptchaValue,
+      language: i18n.language,
     };
 
     setLoading(true);
@@ -129,9 +130,8 @@ const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
             >
               {t('button.send')}
             </Button>
-
             {submitted && (
-              <span className="mb-2 absolute top-6 flex justify-center items-start gap-1 md:gap-2 font-semibold text-sm">
+              <span className="mt-2 top-6 flex justify-start items-start gap-1 md:gap-2 font-semibold text-sm">
                 <svg
                   aria-hidden="true"
                   focusable="false"
