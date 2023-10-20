@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import Heading from '../common/heading';
-import {Article} from '@shopify/hydrogen/storefront-api-types';
+import { Article } from '@shopify/hydrogen/storefront-api-types';
 import Link from '../Link';
 import dayjs from 'dayjs';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 interface LatestArticlesProps {
   className?: string;
@@ -14,11 +14,11 @@ const LatestArticles: React.FC<LatestArticlesProps> = ({
   className = '',
   articles,
 }) => {
-  const {t} = useTranslation('blogs');
+  const { t } = useTranslation('blogs');
   return (
     <div className={clsx(className)}>
       <Heading variant="h4" className="text-primary mb-6 !font-normal">
-        {t('categories')}
+        {t('latest_posts')}
       </Heading>
       <ul className="flex flex-col gap-6 whitespace-pre">
         {articles?.map((article) => (
