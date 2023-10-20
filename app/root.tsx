@@ -19,27 +19,27 @@ import {
   type ShouldRevalidateFunction,
   useLocation,
 } from '@remix-run/react';
-import { ShopifySalesChannel, Seo, useNonce } from '@shopify/hydrogen';
+import {ShopifySalesChannel, Seo, useNonce} from '@shopify/hydrogen';
 import invariant from 'tiny-invariant';
 
 import Layout from '~/components/layouts/default';
 import ComingSoonLayout from '~/components/layouts/coming-soon';
-import { seoPayload } from '~/lib/seo.server';
+import {seoPayload} from '~/lib/seo.server';
 
 import favicon from '../public/favicon.svg';
 
-import { GenericError } from './components/GenericError';
-import { NotFound } from './components/NotFound';
+import {GenericError} from './components/GenericError';
+import {NotFound} from './components/NotFound';
 import styles from '~/styles/app.css';
-import { DEFAULT_LOCALE, parseMenu } from './lib/utils';
-import { useAnalytics } from './hooks/useAnalytics';
-import { useChangeLanguage } from 'remix-i18next';
-import { LAYOUT_QUERY } from './graphql/common';
-import { RootContext } from './hooks/useRootContext';
+import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
+import {useAnalytics} from './hooks/useAnalytics';
+import {useChangeLanguage} from 'remix-i18next';
+import {LAYOUT_QUERY} from './graphql/common';
+import {RootContext} from './hooks/useRootContext';
 import i18n from '../i18n.server';
-import { useTranslation } from 'react-i18next';
-import { useEffect } from 'react';
-import NextTopLoader from "nextjs-toploader";
+import {useTranslation} from 'react-i18next';
+import {useEffect} from 'react';
+import NextTopLoader from 'nextjs-toploader';
 // This is important to avoid re-fetching root queries on sub-navigations
 export const shouldRevalidate: ShouldRevalidateFunction = ({
   formMethod,
@@ -61,7 +61,7 @@ export const shouldRevalidate: ShouldRevalidateFunction = ({
 
 export const links: LinksFunction = () => {
   return [
-    { rel: 'stylesheet', href: styles },
+    {rel: 'stylesheet', href: styles},
     {
       rel: 'preconnect',
       href: 'https://cdn.shopify.com',
@@ -70,20 +70,20 @@ export const links: LinksFunction = () => {
       rel: 'preconnect',
       href: 'https://shop.app',
     },
-    { rel: 'icon', type: 'image/svg+xml', href: favicon },
+    {rel: 'icon', type: 'image/svg+xml', href: favicon},
   ];
 };
 
-export async function loader({ request, context }: LoaderArgs) {
-  const { session, storefront, cart, env } = context;
+export async function loader({request, context}: LoaderArgs) {
+  const {session, storefront, cart, env} = context;
   const [customerAccessToken, layout] = await Promise.all([
     session.get('customerAccessToken'),
     getLayoutData(context),
   ]);
 
-  const { language } = storefront.i18n;
+  const {language} = storefront.i18n;
   const t = await i18n.getFixedT(language.toLowerCase(), 'common');
-  const seo = seoPayload.root({ shop: layout.shop, url: request.url, t });
+  const seo = seoPayload.root({shop: layout.shop, url: request.url, t});
 
   if (!request.url.endsWith('/coming-soon') && env.PUBLIC_IS_COMING_SOON) {
     return redirect('/coming-soon');
@@ -123,7 +123,7 @@ export default function App() {
   // translation files
   // useChangeLanguage(locale.language.toLowerCase());
 
-  const { i18n } = useTranslation();
+  const {i18n} = useTranslation();
   useEffect(() => {
     if (!locale.language) return;
     if (i18n.language === locale.language.toLowerCase()) return;
@@ -139,7 +139,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="bg-white">
+      <body id="root" className="bg-white">
         <NextTopLoader
           color="#2a4542"
           initialPosition={0.3}
@@ -173,7 +173,7 @@ export default function App() {
   );
 }
 
-export function ErrorBoundary({ error }: { error: Error }) {
+export function ErrorBoundary({error}: {error: Error}) {
   const nonce = useNonce();
   const [root] = useMatches();
   const locale = root?.data?.selectedLocale ?? DEFAULT_LOCALE;
@@ -197,7 +197,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body id="root">
         <Layout key={`${locale.language}`}>
           {isRouteError ? (
             <>
@@ -205,7 +205,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
                 <NotFound type={pageType} />
               ) : (
                 <GenericError
-                  error={{ message: `${routeError.status} ${routeError.data}` }}
+                  error={{message: `${routeError.status} ${routeError.data}`}}
                 />
               )}
             </>
@@ -221,7 +221,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
   );
 }
 
-async function getLayoutData({ storefront, env }: AppLoadContext) {
+async function getLayoutData({storefront, env}: AppLoadContext) {
   const data = await storefront.query(LAYOUT_QUERY, {
     variables: {
       headerMenuHandle: 'main-menu',
@@ -242,25 +242,25 @@ async function getLayoutData({ storefront, env }: AppLoadContext) {
       - /blog/news/blog-post -> /news/blog-post
       - /collections/all -> /products
   */
-  const customPrefixes = { BLOG: '', CATALOG: 'products' };
+  const customPrefixes = {BLOG: '', CATALOG: 'products'};
 
   const headerMenu = data?.headerMenu
     ? parseMenu(
-      data.headerMenu,
-      data.shop.primaryDomain.url,
-      env,
-      customPrefixes,
-    )
+        data.headerMenu,
+        data.shop.primaryDomain.url,
+        env,
+        customPrefixes,
+      )
     : undefined;
 
   const footerMenu = data?.footerMenu
     ? parseMenu(
-      data.footerMenu,
-      data.shop.primaryDomain.url,
-      env,
-      customPrefixes,
-    )
+        data.footerMenu,
+        data.shop.primaryDomain.url,
+        env,
+        customPrefixes,
+      )
     : undefined;
 
-  return { shop: data.shop, headerMenu, footerMenu };
+  return {shop: data.shop, headerMenu, footerMenu};
 }
