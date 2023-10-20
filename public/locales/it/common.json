@@ -18,7 +18,7 @@
     "home": "Casa",
     "about": "Chi siamo ",
     "showroom": "Showroom",
-    "brand": "Marrce",
+    "brand": "Brand",
     "services": "Servizi",
     "services_professional": "Servizi professionali",
     "services_private": "Servizi privati",
@@ -28,7 +28,7 @@
     "contact_us": "Contattaci",
     "faqs": "Domande frequenti",
     "close": "Vicino",
-    "privacy_poplicy": "Privacy e politica",
+    "privacy_poplicy": "Privacy Policy",
     "terms_conditions": "Termini e Condizioni",
     "cookies_policy": "Politica sui cookie"
   },
@@ -75,7 +75,7 @@
   },
   "contacts": {
     "title": "Contatti",
-    "title2": "CONTATTACI",
+    "title2": "COME RAGGIUNGERCI",
     "address": {
       "label": "Indirizzo",
       "address": "Via Volturno, 11, San Salvatore Telesino (BN)"

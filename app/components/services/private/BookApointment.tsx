@@ -11,6 +11,8 @@ import Preventivo from '~/components/common/icons/preventivo';
 import Promo from '~/components/common/icons/promo';
 import {Button} from '~/components/snippets';
 import {PopupModal} from 'react-calendly';
+import { XMarkIcon } from '@heroicons/react/24/outline';
+/* eslint-disable */
 
 interface BookAppointmentProps {
   className?: string;
@@ -93,14 +95,17 @@ const arrMobileScreen = [
     description: 'arr_icon.item_6.desc',
   },
 ];
-const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
-  const {t} = useTranslation('private');
+const BookAppointment: React.FC<BookAppointmentProps> = ({ className = '' }) => {
+  const { t } = useTranslation('private');
   const [openForm, setOpenForm] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   const openPopup = () => {
     setOpenForm(true);
     document.body.style.overflow = 'hidden';
+    document.body.addEventListener('wheel', function (event) {
+      event.preventDefault();
+    });
     document.body.classList.add('lg:pr-[15px]');
     const header = document.getElementById('nav-header');
     if (header) header.classList.add('lg:pr-[47px]');
