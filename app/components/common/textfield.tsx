@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import {Field, FieldProps, FieldRenderProps} from 'react-final-form';
+import {Field} from 'react-final-form';
 
 interface TextFieldProp {
   className?: string;
@@ -31,7 +31,7 @@ const TextField: React.FC<TextFieldProp> = ({
               type="text"
               placeholder={label}
               className={clsx(
-                'border-gray-400  input focus:outline-offset-0 focus:outline-w-[1px] focus:outline-1 rounded-sm input-primary w-full focus:ring-transparent placeholder:text-primary-950',
+                'border-gray-400 input px-2 focus:outline-offset-0 focus:outline-w-[1px] focus:outline-1 rounded-sm input-primary w-full focus:ring-transparent placeholder:text-primary-950',
                 meta.error &&
                   meta.touched &&
                   'focus:outline-red-500 border-red-500',

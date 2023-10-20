@@ -15,7 +15,13 @@ export const proposalValidate = (t: any) => {
       ),
     name: yup
       .string()
-      .min(2)
+      .min(
+        2,
+        t('common:validate.min', {
+          label: t('common:form.name.label', null, 'Name'),
+          min: 2,
+        }),
+      )
       .required(
         t('common:validate.required', {
           label: t('common:form.name.label'),
@@ -23,7 +29,7 @@ export const proposalValidate = (t: any) => {
       ),
     phone: yup
       .string()
-      .matches(phoneRegExp)
+      .matches(phoneRegExp, t('common:validate.phone'))
       .required(
         t('common:validate.required', {
           label: t('common:form.phone.label'),
@@ -34,5 +40,6 @@ export const proposalValidate = (t: any) => {
         label: t('common:form.occupation.label'),
       }),
     ),
+    reCaptcha: yup.boolean().required(t('common:validate.reCaptcha')),
   });
 };
