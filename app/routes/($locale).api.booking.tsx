@@ -33,7 +33,9 @@ export const action: ActionFunction = async ({request, context}) => {
     data.reCaptcha || '',
     env.PUBLIC_SECRET_RECAPTCHA_KEY,
   );
+  const language = data.language || 'it';
   delete data.reCaptcha;
+  delete data.language;
 
   if (!success) return json({ok: false});
   try {

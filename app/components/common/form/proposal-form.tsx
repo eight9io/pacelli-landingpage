@@ -21,12 +21,12 @@ interface ProposalFormValidation {
   email: string;
   phone: string;
   occupation: string;
+  reCaptcha: string;
 }
 const pdfLink = '/proposta.pdf';
 
-/* eslint-disable */
 const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
-  const {t} = useTranslation('common');
+  const {t, i18n} = useTranslation('common');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
@@ -41,7 +41,6 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
     values: any,
     form: FormApi<ProposalFormValidation, Partial<ProposalFormValidation>>,
   ) => {
-    console.log('values', values);
     const recaptchaValue = recaptchaRef.current!.getValue();
 
     const newData = {
@@ -49,6 +48,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
       email: values.email,
       phone: values.phone,
       reCaptcha: recaptchaValue,
+      language: i18n.language,
     };
 
     setLoading(true);
@@ -176,7 +176,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
                 {t('button.download')}
               </Button>
               {submitted && (
-                <span className="mb-2 absolute top-6 flex justify-center items-start gap-1 md:gap-2 font-semibold text-sm">
+                <span className="mt-2 top-6 flex justify-start items-start gap-1 md:gap-2 font-semibold text-sm">
                   <svg
                     aria-hidden="true"
                     focusable="false"
