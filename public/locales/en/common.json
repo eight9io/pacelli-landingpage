@@ -54,7 +54,8 @@
     "phone": "Invalid phone number",
     "min": "{{label}} must be at least {{min}} characters",
     "after_today": "{{label}} must be after today",
-    "reCaptcha": "Please verify that you are not a robot"
+    "reCaptcha": "Please verify that you are not a robot",
+    "date": "Invalid date"
   },
   "form": {
     "email": {

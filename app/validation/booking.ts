@@ -37,6 +37,8 @@ export const bookingValidate = (t: any) => {
       ),
     date: yup
       .date()
+      .transform((v) => (v instanceof Date ? v : null))
+      .typeError(t('common:validate.date'))
       .min(
         new Date(),
         t('common:validate.after_today', {
