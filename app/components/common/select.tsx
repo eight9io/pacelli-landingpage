@@ -1,17 +1,9 @@
 import clsx from 'clsx';
-import {useTranslation} from 'react-i18next';
-import {CartForm} from '@shopify/hydrogen';
-import {CartBuyerIdentityInput} from '@shopify/hydrogen/storefront-api-types';
-/* eslint-disable */
-import {Button} from '~/components';
-import type {Locale, Localizations, selectOccupation} from '~/lib/type';
-import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
-import {useFetcher, useLocation, useMatches} from '@remix-run/react';
-
-import {DEFAULT_LOCALE} from '~/lib/utils';
-import {useInView} from 'react-intersection-observer';
+import type {selectOccupation} from '~/lib/type';
+import {useCallback, useRef} from 'react';
 import AngleDown from '../icons/angle-down';
 import {ArrSelectOccupation} from '~/data/selectOccupation';
+/* eslint-disable */
 
 interface SelectorProps {
   className?: string;
@@ -40,7 +32,7 @@ const Select: React.FC<SelectorProps> = ({
     >
       <div className="relative w-full border-[0px] border-b border-gray-400 focus:outline-transparent focus:border-b-2">
         <details className="group rounded-none" ref={closeRef}>
-          <summary className="flex items-center justify-between px-4 py-1 text-sm md:text-base cursor-pointer">
+          <summary className="flex items-center justify-between px-2 py-1 text-sm md:text-base cursor-pointer">
             {value ? value : label}
             <AngleDown className="group-open:rotate-180 transition duration-150 ml-1" />
           </summary>

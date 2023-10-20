@@ -58,7 +58,7 @@ const FooterSection = () => {
       </div>
       <div className="md:border-t border-t-gray-400">
         <div className="base-container flex flex-col-reverse md:flex-row justify-between py-2 gap-y-2">
-          <ul className="text-xs md:text-sm text-white flex">
+          <ul className="text-xs md:text-sm text-white flex flex-wrap">
             {/* © {new Date().getFullYear()},{' '}
               <Link href="/" className="hover:underline">
                 Pacelli
