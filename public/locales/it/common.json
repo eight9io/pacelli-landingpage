@@ -7,7 +7,7 @@
   "header": {
     "title": "Componenti con spazio dei nomi",
     "open_menu": "Apri il menu principale",
-    "close": "Vicino"
+    "close": "Chiudi"
   },
   "footer": {
     "contact_with_us": "Contattaci",
@@ -27,7 +27,7 @@
     "blog": "Blog",
     "contact_us": "Contattaci",
     "faqs": "Domande frequenti",
-    "close": "Vicino",
+    "close": "Chiudi",
     "privacy_poplicy": "Privacy Policy",
     "terms_conditions": "Termini e Condizioni",
     "cookies_policy": "Politica sui cookie"
