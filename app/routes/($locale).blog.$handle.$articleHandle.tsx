@@ -34,6 +34,13 @@ export async function loader({request, context, params}: LoaderArgs) {
     cache: cacheNoneInStaging(context),
   });
 
+  if (!blogArticleData?.blog?.articleByHandle) {
+    throw new Response(null, {
+      status: 404,
+      statusText: 'Not Found',
+    });
+  }
+
   const t = await getFixedT(context.storefront, 'blogs');
   const seo = seoPayload.article({
     article: blogArticleData?.blog?.articleByHandle,

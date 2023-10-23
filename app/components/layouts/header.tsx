@@ -37,7 +37,7 @@ export function HeaderSection() {
     //   pathname === '/services/private'
     // )
     //   setMobileMenuOpen(false);
-  }, [scrollPosition, pathname]);
+  }, [scrollPosition, pathname, isSticky]);
 
   const isMenuItemActive = (href: string) => {
     const {pathname: path} = new URL('https://x' + href);
@@ -130,7 +130,7 @@ export function HeaderSection() {
                           setMobileMenuOpen(false);
                         }}
                       >
-                        {text}
+                        {t(text)}
                         {items && items.length ? (
                           <ChevronDownIcon
                             className="stroke-white w-6 h-6 md:!hidden"
@@ -139,25 +139,24 @@ export function HeaderSection() {
                         ) : undefined}
                       </Link>
                     ) : (
-                      <span
+                      <Link
                         className={clsx(
                           'flex justify-between items-center md:block rounded-none box-border pt-1 pb-1 md:pt-4 md:pb-2 text-[22px] md:text-[40px] leading-8 text-white border-b border-b-transparent hover:border-b-slate-400 ',
-                          'peer hover:[&+div]:block max-w-[395px]',
+                          'peer hover:[&+div]:block max-w-[395px] w-[100%]',
                         )}
+                        to="#"
                         key={`main-${href}-${text}`}
+                        onClick={onToggleSubMenu}
                       >
-                        {text}
+                        {t(text)}
                         {items && items.length ? (
-                          <ChevronDownIcon
-                            className="stroke-white w-6 h-6 md:!hidden"
-                            onClick={onToggleSubMenu}
-                          />
+                          <ChevronDownIcon className="stroke-white w-6 h-6 md:!hidden" />
                         ) : undefined}
-                      </span>
+                      </Link>
                     )}
 
                     {items && items.length && (
-                      <div className="block flex-col md:absolute h-full top-0 left-[395px] md:hidden md:peer-hover:!flex pl-4 md:pl-0 submenu">
+                      <div className="flex-col md:absolute h-full top-0 left-[395px] hidden md:peer-hover:!flex pl-4 md:pl-0 submenu">
                         {items.map(({text, href}) => {
                           return href ? (
                             <Link
@@ -172,7 +171,7 @@ export function HeaderSection() {
                                 setMobileMenuOpen(false);
                               }}
                             >
-                              {text}
+                              {t(text)}
                             </Link>
                           ) : (
                             <span
@@ -181,7 +180,7 @@ export function HeaderSection() {
                               )}
                               key={`${href}-${text}`}
                             >
-                              {text}
+                              {t(text)}
                             </span>
                           );
                         })}
@@ -192,7 +191,7 @@ export function HeaderSection() {
               </ul>
             </div>
 
-            <div className="flex gap-y-4 flex-col text-xs text-white border-t border-t-gray-500 fixed bottom-4 md:bottom-10 pt-2 md:pt-6 md:hidden w-[calc(100%-32px)]">
+            <div className="mt-6 flex gap-y-4 flex-col text-xs text-white border-t border-t-gray-500 md:bottom-10 pt-6 md:hidden w-[calc(100%-32px)]">
               <Link
                 to="tel:0123456789"
                 externalLink
@@ -266,44 +265,44 @@ interface MenuItem {
 
 const mainMenuItems: MenuItem[] = [
   {
-    text: 'About',
+    text: 'menu.about',
     href: '/about',
   },
   {
-    text: 'Showroom',
+    text: 'menu.showroom',
     href: '/showroom',
   },
   {
-    text: 'Brands',
+    text: 'menu.brand',
     href: '/brand',
   },
   {
-    text: 'Services',
+    text: 'menu.services',
     items: [
       {
-        text: 'Professional services',
+        text: 'menu.services_professional',
         href: '/services/professional',
       },
       {
-        text: 'Private services',
+        text: 'menu.services_private',
         href: '/services/private',
       },
     ],
   },
   {
-    text: 'Blogs',
+    text: 'menu.blog',
     href: '/blogs',
   },
   {
-    text: 'Gallery',
+    text: 'menu.gallery',
     href: '/gallery',
   },
   {
-    text: 'Contact us',
+    text: 'menu.contact_us',
     href: '/contact',
   },
   {
-    text: 'FAQs',
+    text: 'menu.faqs',
     href: '/faqs',
   },
 ];

@@ -4,84 +4,78 @@
     "titleTemplate": "%s | Pacelli Arredamenti",
     "description": "Esplora la tradizione italiana dell'arredamento di qualità con Pacelli Arredamenti. Con oltre 50 anni di esperienza, collaboriamo con oltre 50 brand di eccellenza, offrendo una vasta gamma di prodotti"
   },
-  "helpLocize": "With using <1>locize</1> you directly support the future of <3>i18next</3>.",
-  "languageSwitcher": "Switch from <1>{{lng}}</1> to: ",
   "header": {
-    "title": "Namespaced Components",
-    "open_menu": "Open main menu",
-    "close": "Close"
+    "title": "Componenti con spazio dei nomi",
+    "open_menu": "Apri il menu principale",
+    "close": "Vicino"
   },
   "footer": {
-    "contact_with_us": "Contact with us",
-    "hotline": "Hotline",
-    "address": "Address"
+    "contact_with_us": "Contattaci",
+    "hotline": "Linea diretta",
+    "address": "Indirizzo"
   },
   "menu": {
-    "home": "Home",
-    "about": "About",
+    "home": "Casa",
+    "about": "Chi siamo ",
     "showroom": "Showroom",
     "brand": "Brand",
-    "services": "Services",
-    "history": "History",
-    "gallery": "Gallery",
+    "services": "Servizi",
+    "services_professional": "Servizi professionali",
+    "services_private": "Servizi privati",
+    "history": "Storia",
+    "gallery": "Galleria",
     "blog": "Blog",
-    "contact_us": "Contact us",
-    "close": "Close"
+    "contact_us": "Contattaci",
+    "faqs": "Domande frequenti",
+    "close": "Vicino",
+    "privacy_poplicy": "Privacy Policy",
+    "terms_conditions": "Termini e Condizioni",
+    "cookies_policy": "Politica sui cookie"
   },
-  "routes": {
-    "home": "Home",
-    "about": "About",
-    "showroom": "Showroom",
-    "brand": "Brand",
-    "services": "Services",
-    "history": "History",
-    "gallery": "Gallery",
-    "blog": "Blog",
-    "products": "Products",
-    "collections": "Collections",
-    "contact_us": "Contact us"
-  },
-  "language": "Language",
+
+  "language": "Lingua",
   "validate": {
-    "required": "{{label}} is required",
-    "email": "Invalid email address",
-    "phone": "Invalid phone number",
-    "min": "{{label}} must be at least {{min}} characters",
-    "after_today": "{{label}} must be after today",
-    "reCaptcha": "Please verify that you are not a robot"
+    "required": "{{label}} è obbligatorio",
+    "email": "indirizzo email non valido",
+    "phone": "Numero di telefono invalido",
+    "min": "{{label}} deve contenere almeno {{min}} caratteri",
+    "after_today": "{{label}} deve essere dopo oggi",
+    "reCaptcha": "Verifica di non essere un robot",
+    "date": "Data non valida"
   },
   "form": {
     "email": {
       "label": "Email",
-      "placeholder": "Enter your email"
+      "placeholder": "Inserisci il tuo indirizzo email"
     },
     "name": {
-      "label": "Name"
+      "label": "Nome"
     },
     "phone": {
-      "label": "Phone Number"
+      "label": "Numero di telefono"
     },
     "date": {
-      "label": "Date"
+      "label": "Data"
     },
     "time": {
-      "label": "Time"
+      "label": "Ora"
     },
     "note": {
-      "label": "Note"
+      "label": "Nota"
     },
     "occupation": {
-      "label": "Occupation"
+      "label": "Occupazione"
     },
     "full_name": {
-      "label": "Full Name"
+      "label": "Nome e cognome"
     },
     "message": {
-      "label": "Message"
+      "label": "Messaggio"
     }
   },
   "contacts": {
     "title": "Contatti",
+    "title2": "COME RAGGIUNGERCI",
     "address": {
       "label": "Indirizzo",
       "address": "Via Volturno, 11, San Salvatore Telesino (BN)"
@@ -98,18 +92,18 @@
     "title": "Ricevere una proposta"
   },
   "button": {
-    "download": "Download",
-    "learn_more": "Learn more",
-    "read_more": "Read more",
-    "load_more": "Load more",
-    "all": "All",
-    "filter": "Filter",
-    "down_success": "  Your download is successfull.",
-    "share": "SHARE",
-    "back": "Back",
-    "send": "Send",
-    "request_success": "Your request is successfull. We will contact you soon!",
-    "edit": "Edit",
-    "remove": "Remove"
+    "download": "Scarica",
+    "learn_more": "Saperne di più",
+    "read_more": "Leggi ancora",
+    "load_more": "Carica di più",
+    "all": "tutto",
+    "filter": "Filtro",
+    "down_success": "Il tuo download è riuscito.",
+    "share": "CONDIVIDI",
+    "back": "Indietro",
+    "send": "Inviare",
+    "request_success": "La tua richiesta è andata a buon fine. Ti contatteremo presto!",
+    "edit": "Modifica",
+    "remove": "Rimuovi"
   }
 }

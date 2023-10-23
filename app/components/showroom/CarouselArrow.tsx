@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import CarouselArrow from './carouselShowroom';
-import {Button} from '../Button';
+import { Button } from '../Button';
 import image1 from '~/assets/showroom/image-1.png';
 import image2 from '~/assets/showroom/image-2.png';
 import image3 from '~/assets/showroom/image-3.png';
@@ -46,7 +46,7 @@ const CarouselShowroom: React.FC<CarouselShowroomProps> = ({
             >
               <div className="col-span-12 md:col-span-4 px-4 md:px-0">
                 <img
-                  className="w-full h-[540px]"
+                  className="w-full h-[540px] object-cover"
                   src={item.image}
                   alt={item.author}
                   width={395}

@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import {useTranslation} from 'react-i18next';
 import BookingForm from '~/components/common/form/booking-form';
+import {InlineWidget} from 'react-calendly';
 
 interface BookingProps {
   className?: string;
@@ -23,7 +24,8 @@ const Booking: React.FC<BookingProps> = ({className = ''}) => {
           </p>
         </div>
         <div className="col-span-12 md:col-span-7">
-          <BookingForm />
+          {/* <BookingForm /> */}
+          <InlineWidget url="https://calendly.com/pacelliarredamenti/progettazione-online?hide_event_type_details=1&hide_gdpr_banner=1" />
         </div>
       </div>
     </section>
