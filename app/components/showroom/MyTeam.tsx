@@ -2,14 +2,13 @@ import clsx from 'clsx';
 import Heading from '~/components/common/heading';
 import showroom6 from '~/assets/showroom/showroom6.png';
 import showroom5 from '~/assets/showroom/showroom5.png';
-import { XMarkIcon } from '@heroicons/react/24/outline';
 import { Button } from '~/components/snippets';
 /* eslint-disable */
 import ArrowRight from '~/components/common/icons/arrow-right';
 import { InfoContact } from '../contact/contact-cta-form';
-import BookingForm from '../common/form/booking-form';
-import { useState } from 'react';
+import { useState, useRef} from 'react';
 import { useTranslation } from 'react-i18next';
+import {PopupModal} from 'react-calendly';
 
 interface MyTeamProps {
   className?: string;
@@ -18,11 +17,13 @@ interface MyTeamProps {
 const MyTeam: React.FC<MyTeamProps> = ({ className = '' }) => {
   const { t } = useTranslation('showroom');
   const [openForm, setOpenForm] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
   const openPopup = () => {
     setOpenForm(true);
     document.body.style.overflow = 'hidden';
     document.body.classList.add('lg:pr-[15px]');
-    var header = document.getElementById('nav-header');
+    const header = document.getElementById('nav-header');
     if (header) header.classList.add('lg:pr-[47px]');
   };
 
@@ -30,7 +31,7 @@ const MyTeam: React.FC<MyTeamProps> = ({ className = '' }) => {
     setOpenForm(false);
     document.body.style.overflow = 'auto';
     document.body.classList.remove('lg:pr-[15px]');
-    var header = document.getElementById('nav-header');
+    const header = document.getElementById('nav-header');
     if (header) header.classList.remove('lg:pr-[47px]');
   };
   return (
@@ -108,32 +109,23 @@ const MyTeam: React.FC<MyTeamProps> = ({ className = '' }) => {
           </div>
         </div>
       </div>
-      {openForm && (
-        <div
-          className={clsx(
-            'fixed  w-screen h-screen bg-[#57575799] top-0 left-0 z-[100] flex justify-center items-center overflow-x-hidden  ',
-            openForm ? 'show-popup active' : 'hide-popup',
-          )}
-          onClick={closePopup}
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="md:scale-[0.85] max-w-[608px] base-container z-50 absolute"
-          >
-            <BookingForm
-              handleClose={closePopup}
-              closeButton={
-                <XMarkIcon
-                  stroke="gray"
-                  className="h-8 w-8  absolute top-5 right-5 cursor-pointer hover:scale-125 transition-all duration-300 z-[100]"
-                  aria-hidden="true"
-                  onClick={closePopup}
-                />
-              }
-            />
-          </div>
-        </div>
-      )}
+      <div
+        className={clsx(
+          ' bg-[#57575799] top-0 left-0 z-[100] flex justify-center items-center overflow-x-hidden  ',
+          openForm
+            ? 'show-popup active fixed w-screen h-screen flex'
+            : 'hide-popup',
+        )}
+        onClick={closePopup}
+        ref={ref}
+      >
+      </div>
+      <PopupModal
+        url="https://calendly.com/pacelliarredamenti/progettazione-online"
+        onModalClose={closePopup}
+        open={openForm}
+        rootElement={ref.current as HTMLDivElement}
+      />
     </section>
   );
 };
