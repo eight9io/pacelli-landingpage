@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import {
   SfScrollable,
   SfButton,
@@ -109,10 +109,10 @@ export default function GalleryHorizontal() {
         wrapperClassName="h-full min-h-0"
         buttonsPlacement="none"
         isActiveIndexCentered
-        drag={{containerWidth: true}}
+        drag={{ containerWidth: true }}
         onDragEnd={onDragged}
       >
-        {images.map(({imageSrc, alt}, index) => (
+        {images.map(({ imageSrc, alt }, index) => (
           <div
             key={`${alt}-${index}`}
             className="flex justify-center h-full basis-full shrink-0 grow snap-center"
@@ -120,7 +120,7 @@ export default function GalleryHorizontal() {
             <img
               aria-label={alt}
               aria-hidden={activeIndex !== index}
-              className="w-auto h-full"
+              className="w-auto h-full object-cover"
               alt={alt}
               src={imageSrc}
             />
@@ -150,7 +150,7 @@ export default function GalleryHorizontal() {
           />
         }
       >
-        {images.map(({imageThumbSrc, alt}, index) => (
+        {images.map(({ imageThumbSrc, alt }, index) => (
           <button
             type="button"
             aria-label={alt}
@@ -167,7 +167,7 @@ export default function GalleryHorizontal() {
           >
             <img
               alt={alt}
-              className="object-contain border border-neutral-200"
+              className="object-contain border border-neutral-200 object-cover"
               width="78"
               height="78"
               src={imageThumbSrc}

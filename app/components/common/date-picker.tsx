@@ -79,7 +79,10 @@ const DatePicker: React.FC<DatePickerProp> = ({
             showTimeSelect={timeOnly}
             timeIntervals={15}
             timeCaption="Time"
-            wrapperClassName="w-full pb-6"
+            wrapperClassName={clsx(
+              'w-full',
+              meta.error && meta.touched ? 'pb-2' : 'pb-6',
+            )}
             dateFormat={dateFormat}
             popperPlacement="bottom"
             customInput={
@@ -93,7 +96,7 @@ const DatePicker: React.FC<DatePickerProp> = ({
                     placeholder={label}
                     aria-label={label}
                     className={clsx(
-                      `placeholder:text-primary-950 peer block w-full p-3 text-gray-600  border border-r-0 focus:border-red-400 focus:bg-white focus:outline-none focus:ring-0 appearance-none rounded-tr-none rounded-br-none rounded transition-colors duration-300`,
+                      `placeholder:text-primary-950 peer block w-full py-3 px-2 text-gray-600  border border-r-0 focus:border-red-400 focus:bg-white focus:outline-none focus:ring-0 appearance-none rounded-tr-none rounded-br-none rounded transition-colors duration-300`,
                       'border-gray-400 input focus:outline-offset-0 focus:outline-w-[1px] focus:outline-1 rounded-sm input-primary w-full focus:!bg-transparent [&+div]:!bg-transparent [&+div]:!border-none [&+div]:!border-b-2 [&+div]:!border-b-red-500',
                       meta.error &&
                         meta.touched &&
@@ -126,7 +129,7 @@ const DatePicker: React.FC<DatePickerProp> = ({
           />
           <span className="hidden group-focus:block">{label}</span>
           {meta.error && meta.touched && (
-            <span className="text-red-500 text-sm absolute text-left mt-2 pl-2 left-1  -bottom-[38px] md:-bottom-[14px]">
+            <span className="text-red-500 text-sm text-left mt-2 pl-2 left-1 -bottom-[38px] md:-bottom-[14px]">
               {meta.error}
             </span>
           )}

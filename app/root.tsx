@@ -39,7 +39,7 @@ import {RootContext} from './hooks/useRootContext';
 import i18n from '../i18n.server';
 import {useTranslation} from 'react-i18next';
 import {useEffect} from 'react';
-
+import NextTopLoader from 'nextjs-toploader';
 // This is important to avoid re-fetching root queries on sub-navigations
 export const shouldRevalidate: ShouldRevalidateFunction = ({
   formMethod,
@@ -139,7 +139,17 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="bg-white">
+      <body id="root" className="bg-white">
+        <NextTopLoader
+          color="#2a4542"
+          initialPosition={0.3}
+          crawlSpeed={800}
+          height={3}
+          showSpinner={false}
+          easing="ease"
+          speed={1000}
+          shadow="0 0 10px #2299DD,0 0 5px #2299DD"
+        />
         <RootContext.Provider
           value={{
             ENV: data.ENV,
@@ -187,7 +197,7 @@ export function ErrorBoundary({error}: {error: Error}) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body id="root">
         <Layout key={`${locale.language}`}>
           {isRouteError ? (
             <>

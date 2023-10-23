@@ -25,6 +25,7 @@ export const action: ActionFunction = async ({request, context}) => {
     env.PUBLIC_SECRET_RECAPTCHA_KEY,
   );
   delete data.reCaptcha;
+  delete data.language;
 
   if (!success) return json({ok: false});
   try {

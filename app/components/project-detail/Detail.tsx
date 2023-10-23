@@ -1,5 +1,7 @@
 import clsx from 'clsx';
-
+import { CarouselImage } from '../gallery/project-card';
+import { useState } from 'react';
+/* eslint-disable */
 interface DetailProps {
   className?: string;
   title: string;
@@ -15,6 +17,9 @@ const Detail: React.FC<DetailProps> = ({
   image,
   imgPosition = 'right',
 }) => {
+  console.log("🚀 ~ file: Detail.tsx:20 ~ image:", image)
+
+  const [currentSlide, setCurrentSlide] = useState(0);
   return (
     <section
       className={clsx(' pt-[30px] lg:pt-[60px] base-container ', className)}
@@ -38,13 +43,18 @@ const Detail: React.FC<DetailProps> = ({
               {subTitle}
             </p>
           ) : image ? (
-            <img
-              src={image[0]}
-              alt="Mission"
-              width={715}
-              height={600}
-              className="w-full h-full object-cover"
+            <CarouselImage arrImg={image} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide}
+              renderImg={(img: string, index: number) => <img
+                src={img as string}
+                alt="Carousel"
+                width={715}
+                height={600}
+                className="h-[600px] w-full object-cover"
+              />
+
+              }
             />
+
           ) : null}
         </div>
         <div
@@ -57,13 +67,18 @@ const Detail: React.FC<DetailProps> = ({
         >
           {imgPosition === 'right' ? (
             image ? (
-              <img
-                src={image[0]}
-                alt="Mission"
-                width={715}
-                height={600}
-                className="h-[600px] w-full object-cover"
+              <CarouselImage arrImg={image} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide}
+                renderImg={(img: string, index: number) => <img
+                  src={img as string}
+                  alt="Carousel"
+                  width={715}
+                  height={600}
+                  className="h-[600px] w-full object-cover"
+                />
+
+                }
               />
+
             ) : null
           ) : (
             <p className="text-base font-normal leading-7 text-neutral-800 mb-8">

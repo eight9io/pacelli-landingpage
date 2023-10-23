@@ -39,7 +39,14 @@ export default async function handleRequest(
 
   // App
   const {nonce, header, NonceProvider} = createContentSecurityPolicy({
-    frameSrc: ['https://www.google.com/', 'https://www.youtube.com/'],
+    frameSrc: [
+      "'self'",
+      'https://cdn.shopify.com',
+      'https://shopify.com',
+      'https://www.google.com/',
+      'https://www.youtube.com/',
+      'https://calendly.com/',
+    ],
     defaultSrc: [
       "'self'",
       'https://cdn.shopify.com',

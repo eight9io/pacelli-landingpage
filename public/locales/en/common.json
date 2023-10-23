@@ -22,11 +22,17 @@
     "showroom": "Showroom",
     "brand": "Brand",
     "services": "Services",
+    "services_professional": "Professional Services",
+    "services_private": "Private Services",
     "history": "History",
     "gallery": "Gallery",
     "blog": "Blog",
     "contact_us": "Contact us",
-    "close": "Close"
+    "faqs": "FAQs",
+    "close": "Close",
+    "privacy_poplicy": "Privacy Policy",
+    "terms_conditions": "Terms and Conditions",
+    "cookies_policy": "Cookies Policy"
   },
   "routes": {
     "home": "Home",
@@ -48,7 +54,8 @@
     "phone": "Invalid phone number",
     "min": "{{label}} must be at least {{min}} characters",
     "after_today": "{{label}} must be after today",
-    "reCaptcha": "Please verify that you are not a robot"
+    "reCaptcha": "Please verify that you are not a robot",
+    "date": "Invalid date"
   },
   "form": {
     "email": {

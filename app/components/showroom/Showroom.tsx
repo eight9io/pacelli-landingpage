@@ -1,12 +1,12 @@
 import clsx from 'clsx';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import showroom1 from '~/assets/showroom/showroom1.png';
 interface ShowroomProps {
   className?: string;
 }
 
-const Showroom: React.FC<ShowroomProps> = ({className = ''}) => {
-  const {t} = useTranslation('showroom');
+const Showroom: React.FC<ShowroomProps> = ({ className = '' }) => {
+  const { t } = useTranslation('showroom');
   const arrShowroom = [
     {
       id: 1,
@@ -52,7 +52,7 @@ const Showroom: React.FC<ShowroomProps> = ({className = ''}) => {
                   'col-span-6 lg:col-span-4  space-y-4  items-center justify-center  py-4 border-neutral-100  border-y-[1px]',
                   index === 3 && ' lg:col-start-9 border-y-[0px]',
                   index === 2 &&
-                    ' border-y-[0px] lg:border-neutral-100  lg:border-y-[1px]',
+                  ' border-y-[0px] lg:border-neutral-100  lg:border-y-[1px]',
                 )}
               >
                 <div className="flex flex-col i justify-center">
@@ -71,7 +71,7 @@ const Showroom: React.FC<ShowroomProps> = ({className = ''}) => {
             alt="Mission"
             width={501}
             height={600}
-            className="h-[600px]"
+            className="h-[600px] object-cover"
           />
         </div>
       </div>
