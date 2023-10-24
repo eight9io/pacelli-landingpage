@@ -35,7 +35,7 @@ const OwnProjects: React.FC<ContactProps> = (props) => {
     >
       {ready ? (
         <h2 className="text-[40px] md:text-[64px] font-semibold leading-[50px] md:leading-[78px] text-[#142423] lg:w-1/2">
-          {t('gallery:title')}
+          {t('gallery:title', '1000+ progetti realizzati')}
         </h2>
       ) : (
         <Skeleton count={2} />
@@ -57,7 +57,7 @@ const OwnProjects: React.FC<ContactProps> = (props) => {
               'text-secondary cursor-pointer font-normal my-8 mx-auto text-[24px] md:text-[32px] leading-[48px]  underline',
             )}
           >
-            {t('load_more')}
+            {t('load_more', 'Carica ancora')}
           </button>
         </div>
       )}

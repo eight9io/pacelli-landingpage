@@ -103,7 +103,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
                 className="font-semibold text-primary text-center mb-14"
                 variant="h3"
               >
-                {t('proposal_form.title')}
+                {t('proposal_form.title', 'Ricevere una proposta')}
               </Heading>
               <div className="relative">
                 <Field name="occupation">
@@ -111,7 +111,10 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
                     <div className="pb-6">
                       <Select
                         value={values?.occupation}
-                        label={`${t('common:form.occupation.label')} *`}
+                        label={`${t(
+                          'common:form.occupation.label',
+                          'Occupazione',
+                        )} *`}
                         handleChangeValue={(e: any, value: any) =>
                           handleChangeValue(e, value, form)
                         }
@@ -127,7 +130,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
               </div>
               <TextField
                 name="name"
-                label={`${t('common:form.name.label')} *`}
+                label={`${t('common:form.name.label', 'Nome')} *`}
                 inputClassName={clsx(
                   'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2 ',
                 )}
@@ -135,7 +138,10 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
               />
               <TextField
                 name="phone"
-                label={`${t('common:form.phone.label')} *`}
+                label={`${t(
+                  'common:form.phone.label',
+                  'Numero di telefono',
+                )} *`}
                 inputClassName={clsx(
                   'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent   focus:border-b-2',
                 )}
@@ -143,7 +149,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
               />
               <TextField
                 name="email"
-                label={`${t('common:form.email.label')} *`}
+                label={`${t('common:form.email.label', 'Email')} *`}
                 inputClassName={clsx(
                   'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent   focus:border-b-2',
                 )}
@@ -173,7 +179,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
                 size="md"
                 disabled={loading || submitted}
               >
-                {t('button.download')}
+                {t('button.download', 'Scarica')}
               </Button>
               {submitted && (
                 <span className="mt-2 top-6 flex justify-start items-start gap-1 md:gap-2 font-semibold text-sm">
@@ -199,7 +205,7 @@ const ProposalForm: React.FC<ProposalFormProps> = ({className = ''}) => {
                       stroke="white"
                     ></path>
                   </svg>
-                  {t('button.down_success')}
+                  {t('button.down_success', 'Il tuo download è riuscito.')}
                 </span>
               )}
             </form>

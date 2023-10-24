@@ -15,7 +15,9 @@ const About: React.FC<AboutProps> = ({className = ''}) => {
   return (
     <section className={clsx(className)}>
       <div className="base-container !pt-16 mb-8">
-        <Heading className="mb-8 md:mb-6">{t('home:about.title')}</Heading>
+        <Heading className="mb-8 md:mb-6">
+          {t('home:about.title', 'Chi siamo')}
+        </Heading>
         <div className="grid grid-cols-12 gap-0 gap-y-8">
           <div className="col-span-12 md:col-span-7 flex flex-col gap-6">
             <div className="md:w-3/4">
@@ -25,10 +27,13 @@ const About: React.FC<AboutProps> = ({className = ''}) => {
                   alt="Mission"
                   className="w-9 h-9 md:w-10 md:h-10 inline mr-3"
                 />
-                {t('home:about.item1.title')}
+                {t('home:about.item1.title', 'Mission')}
               </h3>
               <p className="text-base text-gray-900">
-                {t('home:about.item1.subtitle')}
+                {t(
+                  'home:about.item1.subtitle',
+                  'Creare ambienti straordinari che trasformano le visioni dei clienti in realtà, garantendo esperienze di successo',
+                )}
               </p>
             </div>
             <hr className="md:w-[calc(100%-32px)]" />
@@ -39,10 +44,13 @@ const About: React.FC<AboutProps> = ({className = ''}) => {
                   alt="Mission"
                   className="w-9 h-9 md:w-10 md:h-10 inline mr-3"
                 />
-                {t('home:about.item2.title')}
+                {t('home:about.item2.title', 'Perché noi')}
               </h3>
               <p className="text-base text-gray-900">
-                {t('home:about.item2.subtitle')}
+                {t(
+                  'home:about.item2.subtitle',
+                  "Scegliere Pacelli Arredamenti è un'esperienza unica, con qualità e convenienza che si fondono per realizzare i tuoi sogni d'arredo",
+                )}
               </p>
             </div>
             <hr className="md:w-[calc(100%-32px)]" />
@@ -53,10 +61,13 @@ const About: React.FC<AboutProps> = ({className = ''}) => {
                   alt="Mission"
                   className="w-9 h-9 md:w-10 md:h-10 inline mr-3"
                 />
-                {t('home:about.item3.title')}
+                {t('home:about.item3.title', 'Punti di forza')}
               </h3>
               <p className="text-base text-gray-900">
-                {t('home:about.item3.subtitle')}
+                {t(
+                  'home:about.item3.subtitle',
+                  'Il nostro successo si fonda su prodotti di alta qualità, precisione e impegno per la fiducia e la trasparenza',
+                )}
               </p>
             </div>
           </div>

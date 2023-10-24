@@ -12,8 +12,6 @@ import Promo from '~/components/common/icons/promo';
 import {Button} from '~/components/snippets';
 import {PopupModal} from 'react-calendly';
 
-/* eslint-disable */
-
 interface BookAppointmentProps {
   className?: string;
 }
@@ -23,30 +21,45 @@ const arrLgScreen = [
     img: <Preventivo width={64} height={64} />,
     title: 'arr_icon.item_1.title',
     description: 'arr_icon.item_1.desc',
+    reserve_title: 'Preventivo gratuito',
+    reserve_desc:
+      'Ricevi la tua consulenza personalizzata e ricevi un preventivo senza alcun costo.',
   },
   {
     id: 2,
     img: <Car width={64} height={64} />,
     title: 'arr_icon.item_2.title',
     description: 'arr_icon.item_2.desc',
+    reserve_title: 'Trasporto e montaggio',
+    reserve_desc:
+      "Offriamo servizi di trasporto e montaggio in Italia e all'estero, eseguiti dal nostro team altamente qualificato.",
   },
   {
     id: 3,
     img: <ThreeD width={64} height={64} />,
     title: 'arr_icon.item_3.title',
     description: 'arr_icon.item_3.desc',
+    reserve_title: 'Progettazione 3D su misura',
+    reserve_desc:
+      "I nostri architetti sviluppano il tuo arredamento iniziando con un accurato rilievo delle misure e utilizzando le più avanzate tecnologie digitali. Grazie a strumenti all'avanguardia nel campo della digitalizzazione e della progettazione, ti offriamo l'opportunità di visualizzare in anteprima una rappresentazione estremamente realistica del tuo progetto.",
   },
   {
     id: 4,
     img: <Promo width={64} height={64} />,
     title: 'arr_icon.item_4.title',
     description: 'arr_icon.item_4.desc',
+    reserve_title: 'Promo speciali wedding',
+    reserve_desc:
+      "Abbiamo creato esclusivi pacchetti promozionali dedicati alle coppie di giovani sposi, offrendo loro l'opportunità di arredare i loro spazi con mobili e materiali di alta qualità a prezzi speciali e vantaggiosi.",
   },
   {
     id: 5,
     img: <Headphone width={64} height={64} />,
     title: 'arr_icon.item_5.title',
     description: 'arr_icon.item_5.desc',
+    reserve_title: 'Assistenza clienti',
+    reserve_desc:
+      "L'assistenza al cliente è da sempre la nostra priorità. Siamo al tuo fianco sin dalla fase iniziale della progettazione, durante la selezione dei tuoi arredi preferiti, durante l'installazione e anche nel periodo post-vendita. Il nostro impegno a supportarti è duraturo e costante.",
   },
 
   {
@@ -54,6 +67,9 @@ const arrLgScreen = [
     img: <Pig width={64} height={64} />,
     title: 'arr_icon.item_6.title',
     description: 'arr_icon.item_6.desc',
+    reserve_title: 'Finanziamenti personalizzati',
+    reserve_desc:
+      "Offriamo finanziamenti personalizzabili per un acquisto senza preoccupazioni. Grazie a queste opzioni di finanziamento, potrai scegliere l'arredamento che più ami e pagarlo comodamente a rate.",
   },
 ];
 const arrMobileScreen = [
@@ -62,24 +78,36 @@ const arrMobileScreen = [
     img: <Preventivo width={64} height={64} />,
     title: 'arr_icon.item_1.title',
     description: 'arr_icon.item_1.desc',
+    reserve_title: 'Preventivo gratuito',
+    reserve_desc:
+      'Ricevi la tua consulenza personalizzata e ricevi un preventivo senza alcun costo.',
   },
   {
     id: 3,
     img: <ThreeD width={64} height={64} />,
     title: 'arr_icon.item_3.title',
     description: 'arr_icon.item_3.desc',
+    reserve_title: 'Progettazione 3D su misura',
+    reserve_desc:
+      "I nostri architetti sviluppano il tuo arredamento iniziando con un accurato rilievo delle misure e utilizzando le più avanzate tecnologie digitali. Grazie a strumenti all'avanguardia nel campo della digitalizzazione e della progettazione, ti offriamo l'opportunità di visualizzare in anteprima una rappresentazione estremamente realistica del tuo progetto.",
   },
   {
     id: 5,
     img: <Headphone width={64} height={64} />,
     title: 'arr_icon.item_5.title',
     description: 'arr_icon.item_5.desc',
+    reserve_title: 'Assistenza clienti',
+    reserve_desc:
+      "L'assistenza al cliente è da sempre la nostra priorità. Siamo al tuo fianco sin dalla fase iniziale della progettazione, durante la selezione dei tuoi arredi preferiti, durante l'installazione e anche nel periodo post-vendita. Il nostro impegno a supportarti è duraturo e costante.",
   },
   {
     id: 2,
     img: <Car width={64} height={64} />,
     title: 'arr_icon.item_2.title',
     description: 'arr_icon.item_2.desc',
+    reserve_title: 'Trasporto e montaggio',
+    reserve_desc:
+      "Offriamo servizi di trasporto e montaggio in Italia e all'estero, eseguiti dal nostro team altamente qualificato.",
   },
 
   {
@@ -87,12 +115,18 @@ const arrMobileScreen = [
     img: <Promo width={64} height={64} />,
     title: 'arr_icon.item_4.title',
     description: 'arr_icon.item_4.desc',
+    reserve_title: 'Promo speciali wedding',
+    reserve_desc:
+      "Abbiamo creato esclusivi pacchetti promozionali dedicati alle coppie di giovani sposi, offrendo loro l'opportunità di arredare i loro spazi con mobili e materiali di alta qualità a prezzi speciali e vantaggiosi.",
   },
   {
     id: 6,
     img: <Pig width={64} height={64} />,
     title: 'arr_icon.item_6.title',
     description: 'arr_icon.item_6.desc',
+    reserve_title: 'Finanziamenti personalizzati',
+    reserve_desc:
+      "Offriamo finanziamenti personalizzabili per un acquisto senza preoccupazioni. Grazie a queste opzioni di finanziamento, potrai scegliere l'arredamento che più ami e pagarlo comodamente a rate.",
   },
 ];
 const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
@@ -130,10 +164,10 @@ const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
               >
                 {item.img}
                 <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9">
-                  {t(item.title)}
+                  {t(item.title, item.reserve_title)}
                 </p>
                 <p className="text-gray-900 text-base font-normal leading-7">
-                  {t(item.description)}
+                  {t(item.description, item.reserve_desc)}
                 </p>
               </div>
             ))}
@@ -146,10 +180,10 @@ const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
               >
                 {item.img}
                 <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9">
-                  {t(item.title)}
+                  {t(item.title, item.reserve_title)}
                 </p>
                 <p className="text-gray-900 text-base font-normal leading-7">
-                  {t(item.description)}
+                  {t(item.description, item.reserve_desc)}
                 </p>
               </div>
             ))}
@@ -162,10 +196,10 @@ const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
               >
                 {item.img}
                 <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9">
-                  {t(item.title)}
+                  {t(item.title, item.reserve_title)}
                 </p>
                 <p className="text-gray-900 text-base font-normal leading-7">
-                  {t(item.description)}
+                  {t(item.description, item.reserve_desc)}
                 </p>
               </div>
             ))}
@@ -179,10 +213,10 @@ const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
             >
               {item.img}
               <p className="text-secondary text-[22px] md:text-2xl font-bold leading-9">
-                {t(item.title)}
+                {t(item.title, item.reserve_title)}
               </p>
               <p className="text-gray-900 text-base font-normal leading-7">
-                {t(item.description)}
+                {t(item.description, item.reserve_desc)}
               </p>
             </div>
           ))}
@@ -192,7 +226,7 @@ const BookAppointment: React.FC<BookAppointmentProps> = ({className = ''}) => {
           size="md"
           onClick={openPopup}
         >
-          {t('book_appointment')}
+          {t('book_appointment', 'Prenota appuntamento')}
           <ArrowRight className="text-secondary w-5 h-5 stroke-secondary origin-center stroke-2" />
         </Button>
       </div>
