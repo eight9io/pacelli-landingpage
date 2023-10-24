@@ -106,12 +106,12 @@ export function HeaderSection() {
               className="absolute z-50 rounded-md text-gray-700 flex items-center gap-2 right-0 md:right-6"
               onClick={() => setMobileMenuOpen(false)}
             >
-              <span className="text-white">{t('header.close')}</span>
+              <span className="text-white">{t('header.close', 'Chiudi')}</span>
               <XMarkIcon stroke="#fff" className="h-6 w-6" aria-hidden="true" />
             </button>
             <div className="flex relative mt-4">
               <ul className="space-y-2 md:space-y-4 xs:py-6 w-full md:w-1/2 flex-col md:block">
-                {mainMenuItems.map(({text, href, items}) => (
+                {mainMenuItems.map(({text, href, items, label}) => (
                   <li key={`main-${href}-${text}`}>
                     {href ? (
                       <Link
@@ -130,7 +130,7 @@ export function HeaderSection() {
                           setMobileMenuOpen(false);
                         }}
                       >
-                        {t(text)}
+                        {t(text, label)}
                         {items && items.length ? (
                           <ChevronDownIcon
                             className="stroke-white w-6 h-6 md:!hidden"
@@ -148,7 +148,7 @@ export function HeaderSection() {
                         key={`main-${href}-${text}`}
                         onClick={onToggleSubMenu}
                       >
-                        {t(text)}
+                        {t(text, label)}
                         {items && items.length ? (
                           <ChevronDownIcon className="stroke-white w-6 h-6 md:!hidden" />
                         ) : undefined}
@@ -157,7 +157,7 @@ export function HeaderSection() {
 
                     {items && items.length && (
                       <div className="flex-col md:absolute h-full top-0 left-[395px] hidden md:peer-hover:!flex pl-4 md:pl-0 submenu">
-                        {items.map(({text, href}) => {
+                        {items.map(({text, href, label}) => {
                           return href ? (
                             <Link
                               className={clsx(
@@ -171,7 +171,7 @@ export function HeaderSection() {
                                 setMobileMenuOpen(false);
                               }}
                             >
-                              {t(text)}
+                              {t(text, label)}
                             </Link>
                           ) : (
                             <span
@@ -180,7 +180,7 @@ export function HeaderSection() {
                               )}
                               key={`${href}-${text}`}
                             >
-                              {t(text)}
+                              {t(text, label)}
                             </span>
                           );
                         })}
@@ -213,7 +213,10 @@ export function HeaderSection() {
                 )}
               >
                 <Location className="w-4 h-4 stroke-white" />
-                {t('contacts.address.address')}
+                {t(
+                  'contacts.address.address',
+                  'Via Volturno, 11, San Salvatore Telesino (BN)',
+                )}
               </Link>
               <div
                 className={clsx(
@@ -221,7 +224,10 @@ export function HeaderSection() {
                   "after:absolute after:content-[''] after:w-[2px] after:h-5",
                 )}
               >
-                {t('contacts.open.open')}
+                {t(
+                  'contacts.open.open',
+                  'Lunedì-Venerdì: 9:00 - 20:30 Sabato: 10:00 - 20:00',
+                )}
               </div>
               <div className={clsx('flex gap-3 items-center relative')}>
                 <Link
@@ -261,48 +267,59 @@ interface MenuItem {
   text: string;
   href?: string;
   items?: MenuItem[];
+  label: string;
 }
 
 const mainMenuItems: MenuItem[] = [
   {
     text: 'menu.about',
     href: '/about',
+    label: 'Chi siamo ',
   },
   {
     text: 'menu.showroom',
     href: '/showroom',
+    label: 'Showroom ',
   },
   {
     text: 'menu.brand',
     href: '/brand',
+    label: 'Brand',
   },
   {
     text: 'menu.services',
+    label: 'Servizi',
     items: [
       {
         text: 'menu.services_professional',
         href: '/services/professional',
+        label: 'Servizi professionali',
       },
       {
         text: 'menu.services_private',
         href: '/services/private',
+        label: 'Servizi privati',
       },
     ],
   },
   {
     text: 'menu.blog',
     href: '/blogs',
+    label: 'Blog',
   },
   {
     text: 'menu.gallery',
     href: '/gallery',
+    label: 'Galleria',
   },
   {
     text: 'menu.contact_us',
     href: '/contact',
+    label: 'Contattaci',
   },
   {
     text: 'menu.faqs',
     href: '/faqs',
+    label: 'Domande frequenti',
   },
 ];
