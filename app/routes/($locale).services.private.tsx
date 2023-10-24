@@ -33,8 +33,14 @@ export default function PartnershipServicesPage() {
       <Plan />
       <BookAppointment />
       <BeforeAfter
-        title={t('before_after.title')}
-        description={t('before_after.desc')}
+        title={t(
+          'before_after.title',
+          'Guarda la trasformazione: Prima e Dopo',
+        )}
+        description={t(
+          'before_after.desc',
+          'Siamo entusiasti di mostrarti alcuni dei progetti che abbiamo realizzato, tutti personalizzati per soddisfare le esigenze dei nostri clienti. La trasformazione è incredibile, e siamo pronti a portare anche il tuo spazio al livello successivo. Contattaci ora per vedere come possiamo migliorare il tuo ambiente!',
+        )}
         afterImg={services2}
         beforeImg={services1}
       />

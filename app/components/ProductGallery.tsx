@@ -1,8 +1,8 @@
-import { Image } from '@shopify/hydrogen';
+import {Image} from '@shopify/hydrogen';
 
-import type { MediaFragment } from 'storefrontapi.generated';
+import type {MediaFragment} from 'storefrontapi.generated';
 
-import { useState } from 'react';
+import {useState} from 'react';
 import {
   SfScrollable,
   SfButton,
@@ -72,7 +72,7 @@ export function ProductGallery({
         wrapperClassName="h-full min-h-0"
         buttonsPlacement="none"
         isActiveIndexCentered
-        drag={{ containerWidth: true }}
+        drag={{containerWidth: true}}
         onDragEnd={onDragged}
         onScroll={onScroll}
       >
@@ -117,7 +117,7 @@ export function ProductGallery({
         {media.map((med, i) => {
           const image =
             med.__typename === 'MediaImage'
-              ? { ...med.image, altText: med.alt || 'Product image' }
+              ? {...med.image, altText: med.alt || 'Product image'}
               : null;
           return (
             <button

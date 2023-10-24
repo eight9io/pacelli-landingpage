@@ -1,6 +1,6 @@
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 import Heading from '../common/heading';
-import { Text } from '../Text';
+import {Text} from '../Text';
 import clsx from 'clsx';
 import hero_background from '~/assets/images/image_brand_hero.png';
 
@@ -8,8 +8,8 @@ interface HeroProps {
   className?: string;
 }
 
-const Hero: React.FC<HeroProps> = ({ className = '' }) => {
-  const { t } = useTranslation('brand');
+const Hero: React.FC<HeroProps> = ({className = ''}) => {
+  const {t} = useTranslation('brand');
   return (
     <section
       className={clsx(
@@ -20,10 +20,16 @@ const Hero: React.FC<HeroProps> = ({ className = '' }) => {
       <div className="grid grid-cols-12 base-container gap-8">
         <div className="col-span-12 md:col-span-7">
           <Heading className="mb-4 md:mb-8 text-secondary" variant="h3">
-            {t('brand:hero.title')}
+            {t(
+              'brand:hero.title',
+              'I nostri partner sono solo i migliori marchi di arredamento',
+            )}
           </Heading>
           <Text className="mb-6 md:mb-10 text-gray-900">
-            {t('brand:hero.description')}
+            {t(
+              'brand:hero.description',
+              "Siamo orgogliosi di affermare che le Aziende di cui siamo rifornitori sono considerate le migliori nel mercato del mobile. Aziende orientate alla ricerca di soluzioni moderne e creative e attente ai cambiamenti del vivere la casa e l'arredo. Il mercato del mobile è noto per la sua continua innovazione ed evoluzione. Per rimanere al passo con le ultime tendenze e tecnologie, è essenziale lavorare con aziende all'avanguardia. Siamo felici di essere rifornitori di aziende leader nel settore del mobile, caratterizzate dalla costante ricerca di soluzioni innovative e creative per l'arredamento domestico e non. La qualità, l'innovazione, l'affidabilità e la collaborazione sono i pilastri della nostra relazione con questi eccezionali partner. In un settore in cui la qualità è fondamentale per migliorare la vita quotidiana dei consumatori, le aziende che serviamo non fanno mai compromessi su questo aspetto, continuando ad offrire standard qualitativi altissimi",
+            )}
           </Text>
         </div>
         <div className="col-span-12 md:col-span-5">
