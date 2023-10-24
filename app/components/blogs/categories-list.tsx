@@ -17,7 +17,7 @@ const CategoriesList: React.FC<CategoriesListProps> = ({
   return (
     <div className={clsx(className)}>
       <Heading variant="h4" className="text-primary mb-6 !font-normal">
-        {t('categories')}
+        {t('categories', 'Categorie')}
       </Heading>
       <ul className="flex flex-col gap-6">
         {blogs?.map((blog) => (

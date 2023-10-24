@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { CarouselImage } from '../gallery/project-card';
-import { useState } from 'react';
-/* eslint-disable */
+import {CarouselImage} from '../gallery/project-card';
+import {useState} from 'react';
+
 interface DetailProps {
   className?: string;
   title: string;
@@ -17,8 +17,6 @@ const Detail: React.FC<DetailProps> = ({
   image,
   imgPosition = 'right',
 }) => {
-  console.log("🚀 ~ file: Detail.tsx:20 ~ image:", image)
-
   const [currentSlide, setCurrentSlide] = useState(0);
   return (
     <section
@@ -43,18 +41,20 @@ const Detail: React.FC<DetailProps> = ({
               {subTitle}
             </p>
           ) : image ? (
-            <CarouselImage arrImg={image} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide}
-              renderImg={(img: string, index: number) => <img
-                src={img as string}
-                alt="Carousel"
-                width={715}
-                height={600}
-                className="h-[600px] w-full object-cover"
-              />
-
-              }
+            <CarouselImage
+              arrImg={image}
+              currentSlide={currentSlide}
+              setCurrentSlide={setCurrentSlide}
+              renderImg={(img: string, index: number) => (
+                <img
+                  src={img as string}
+                  alt="Carousel"
+                  width={715}
+                  height={600}
+                  className="h-[600px] w-full object-cover"
+                />
+              )}
             />
-
           ) : null}
         </div>
         <div
@@ -67,18 +67,20 @@ const Detail: React.FC<DetailProps> = ({
         >
           {imgPosition === 'right' ? (
             image ? (
-              <CarouselImage arrImg={image} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide}
-                renderImg={(img: string, index: number) => <img
-                  src={img as string}
-                  alt="Carousel"
-                  width={715}
-                  height={600}
-                  className="h-[600px] w-full object-cover"
-                />
-
-                }
+              <CarouselImage
+                arrImg={image}
+                currentSlide={currentSlide}
+                setCurrentSlide={setCurrentSlide}
+                renderImg={(img: string, index: number) => (
+                  <img
+                    src={img as string}
+                    alt="Carousel"
+                    width={715}
+                    height={600}
+                    className="h-[600px] w-full object-cover"
+                  />
+                )}
               />
-
             ) : null
           ) : (
             <p className="text-base font-normal leading-7 text-neutral-800 mb-8">

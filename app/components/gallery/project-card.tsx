@@ -1,11 +1,11 @@
 import ArrowRight from '~/components/common/icons/arrow-right';
 import Link from '../Link';
-import { Button } from '../Button';
+import {Button} from '../Button';
 import clsx from 'clsx';
 import ArrowLeft from '~/components/common/icons/arrow-slide-left';
-import { RefObject, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-/* eslint-disable */
+import {RefObject, useRef, useState} from 'react';
+import {useTranslation} from 'react-i18next';
+
 interface ICard {
   item: {
     id: string;
@@ -16,7 +16,12 @@ interface ICard {
     handle: string;
   };
 }
-export const CarouselImage = ({ arrImg, currentSlide, setCurrentSlide, renderImg }: any) => {
+export const CarouselImage = ({
+  arrImg,
+  currentSlide,
+  setCurrentSlide,
+  renderImg,
+}: any) => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const next = (ref: RefObject<HTMLDivElement>) => {
     if (ref.current && currentSlide < arrImg.length - 1) {
@@ -54,7 +59,7 @@ export const CarouselImage = ({ arrImg, currentSlide, setCurrentSlide, renderImg
     prev(carouselRef);
   };
   return (
-    <div className='relative'>
+    <div className="relative">
       <div
         className="carousel w-full relative "
         ref={carouselRef}
@@ -68,24 +73,27 @@ export const CarouselImage = ({ arrImg, currentSlide, setCurrentSlide, renderImg
         }}
       >
         {arrImg?.map((img: string, index: number) => {
-          return <div
-            className="w-full carousel-item carousel-slide basis-full grow-0 shrink-0 inline-block relative"
-            key={img}
-          >
-            {renderImg ? renderImg(img, index) : <img
-              key={index}
-              className="w-full h-[225px] md:h-[400px] object-cover "
-              src={img as string}
-              alt="Carousel"
-
-            />}
-            <div className="bg-gradient-to-tl from-gray-800 to-transparent via-transparent absolute h-2/5 w-full bottom-0"></div>
-
-          </div>
+          return (
+            <div
+              className="w-full carousel-item carousel-slide basis-full grow-0 shrink-0 inline-block relative"
+              key={img}
+            >
+              {renderImg ? (
+                renderImg(img, index)
+              ) : (
+                <img
+                  key={index}
+                  className="w-full h-[225px] md:h-[400px] object-cover "
+                  src={img as string}
+                  alt="Carousel"
+                />
+              )}
+              <div className="bg-gradient-to-tl from-gray-800 to-transparent via-transparent absolute h-2/5 w-full bottom-0"></div>
+            </div>
+          );
         })}
-
       </div>
-      <div className="flex justify-end space-y-2  bottom-0 py-4 md:px-4 flex-row w-full  absolute" >
+      <div className="flex justify-end space-y-2  bottom-0 py-4 md:px-4 flex-row w-full  absolute">
         {arrImg.length > 1 && (
           <div className="flex items-center gap-x-2 col-span-1 col-start-6">
             <Button
@@ -106,20 +114,22 @@ export const CarouselImage = ({ arrImg, currentSlide, setCurrentSlide, renderImg
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-const ProjectCard = ({ item }: ICard) => {
+const ProjectCard = ({item}: ICard) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const subtitleCarouselRef = useRef<HTMLDivElement>(null);
-  const { t } = useTranslation('gallery');
-
-
+  const {t} = useTranslation('gallery');
 
   return (
     <div className="overflow-hidden shadow-lg h-full relative">
-      <CarouselImage arrImg={item?.cover} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} />
+      <CarouselImage
+        arrImg={item?.cover}
+        currentSlide={currentSlide}
+        setCurrentSlide={setCurrentSlide}
+      />
       <div className="px-6 py-5">
         <h3 className="text-primary md:text-[40px] line-clamp-1 font-semibold leading-[50px] text-[28px] md:leading-[60px]">
           {item.title}
@@ -139,9 +149,10 @@ const ProjectCard = ({ item }: ICard) => {
                 className="w-full carousel-slide basis-full grow-0 shrink-0 inline-block relative"
                 key={`${item.id}_${img}`}
                 style={{
-                  transform: `translateX(${(subtitleCarouselRef.current?.clientWidth || 0) *
+                  transform: `translateX(${
+                    (subtitleCarouselRef.current?.clientWidth || 0) *
                     currentSlide
-                    }px})`,
+                  }px})`,
                 }}
               >
                 {item.subtitles && item.subtitles[index] ? (
@@ -162,7 +173,7 @@ const ProjectCard = ({ item }: ICard) => {
           className="uppercase mt-6 inline-flex gap-3 bg-secondary-900 font-bold text-center py-2.5 px-4 text-white my-4 hover:bg-secondary-800  "
           to={`/project/${item.handle}`}
         >
-          {t('view_more')}
+          {t('view_more', 'Vedi di più')}
           <ArrowRight className="text-secondary w-5 h-5 stroke-secondary origin-center stroke-2" />
         </Link>
       </div>
