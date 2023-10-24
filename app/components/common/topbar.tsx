@@ -38,7 +38,10 @@ const Topbar = ({children}: TopbarProps) => {
             )}
           >
             <Location className="w-4 h-4 stroke-secondary" />
-            {t('contacts.address.address')}
+            {t(
+              'contacts.address.address',
+              'Via Volturno, 11, San Salvatore Telesino (BN)',
+            )}
           </Link>
           <div
             className={clsx(
@@ -46,7 +49,10 @@ const Topbar = ({children}: TopbarProps) => {
               "after:absolute after:content-[''] after:w-[2px] after:h-5 after:-right-4 after:top-1/2 after:-translate-y-1/2 after:bg-neutral-300",
             )}
           >
-            {t('contacts.open.open')}
+            {t(
+              'contacts.open.open',
+              'Lunedì-Venerdì: 9:00 - 20:30 Sabato: 10:00 - 20:00',
+            )}
           </div>
           <div className={clsx('flex gap-3 items-center relative')}>
             <Link
