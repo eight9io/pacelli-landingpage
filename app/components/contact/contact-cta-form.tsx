@@ -18,18 +18,24 @@ export const InfoContact = (containerStyle: {containerStyle?: string}) => {
 
   const infoItems = [
     {
-      title: t('contacts.phone'), // Contact
+      title: t('contacts.phone', 'Telefono'), // Contact
       value: '+39 (0824) 948533',
       icon: <Phone className="w-6 h-6 " />,
     },
     {
-      title: t('contacts.address.label'),
-      value: t('contacts.address.address'),
+      title: t('contacts.address.label', 'Indirizzo'),
+      value: t(
+        'contacts.address.address',
+        'Via Volturno, 11, San Salvatore Telesino (BN)',
+      ),
       icon: <Location className="w-6 h-6" />,
     },
     {
-      title: t('contacts.open.label'),
-      value: t('contacts.open.open'),
+      title: t('contacts.open.label', 'Orari'),
+      value: t(
+        'contacts.open.open',
+        'Lunedì-Venerdì: 9:00 - 20:30 Sabato: 10:00 - 20:00',
+      ),
       icon: <Clock className="w-6 h-6" />,
     },
   ];
@@ -48,14 +54,14 @@ const ContactCTAForm: React.FC<ContactCTAFormProps> = ({className = ''}) => {
   return (
     <section className={clsx('base-container py-24 md:py-32', className)}>
       <h2 className="text-[40px] md:text-[64px] font-semibold leading-[50px] md:leading-[78px]">
-        {t('contact:title')}
+        {t('contact:title', 'Contatti')}
       </h2>
       <div className="grid grid-cols-12 gap-8 pt-6">
         <div className="col-span-12 md:col-span-6">
           <InfoContact containerStyle="border-b " />
           <div>
             <Heading className="font-bold md:text-base mb-4 mt-8" variant="h5">
-              {t('contact:subtitle')}
+              {t('contact:subtitle', 'Contattaci')}
             </Heading>
             <div className="md:text-base flex items-center gap-4">
               <div className="flex gap-4 items-center relative order-0 md:order-1">

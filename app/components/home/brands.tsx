@@ -61,8 +61,15 @@ const Brands: React.FC<BrandsProps> = ({
               showDescription ? '' : 'hidden',
             )}
           >
-            <Heading className="mb-4 md:mb-6">{t('brand.title')}</Heading>
-            <p className="text-gray-900 leading-7">{t('brand.subtitle1')}</p>
+            <Heading className="mb-4 md:mb-6">
+              {t('brand.title', 'Insieme ai migliori Brands')}
+            </Heading>
+            <p className="text-gray-900 leading-7">
+              {t(
+                'brand.subtitle1',
+                "Siamo orgogliosi di affermare che le Aziende di cui siamo rifornitori sono considerate le migliori nel mercato del mobile. Aziende orientate alla ricerca di soluzioni moderne e creative e attente ai cambiamenti del vivere la casa e l'arredo.",
+              )}
+            </p>
           </div>
           <div
             className={clsx(

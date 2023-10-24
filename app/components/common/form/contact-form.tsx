@@ -79,7 +79,7 @@ const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
           <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
             <TextField
               name="fullname"
-              label={`${t('common:form.full_name.label')} *`}
+              label={`${t('common:form.full_name.label', 'Nome e cognome')} *`}
               inputClassName={clsx(
                 'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
               )}
@@ -88,7 +88,7 @@ const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
 
             <TextField
               name="email"
-              label={`${t('common:form.email.label')} *`}
+              label={`${t('common:form.email.label', 'Email')} *`}
               inputClassName={clsx(
                 'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
               )}
@@ -96,7 +96,7 @@ const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
             />
             <TextArea
               name="message"
-              label={`${t('common:form.message.label')} *`}
+              label={`${t('common:form.message.label', 'Messaggio')} *`}
               rows={1}
               inputClassName={clsx(
                 'border-[0px] border-b !border-solid !rounded-none focus:outline-transparent focus:border-b-2',
@@ -128,7 +128,7 @@ const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
               size="md"
               disabled={loading || submitted}
             >
-              {t('button.send')}
+              {t('button.send', 'Inviare')}
             </Button>
             {submitted && (
               <span className="mt-2 top-6 flex justify-start items-start gap-1 md:gap-2 font-semibold text-sm">
@@ -154,7 +154,10 @@ const ContactForm: React.FC<ContactFormProps> = ({className = ''}) => {
                     stroke="white"
                   ></path>
                 </svg>
-                {t('button.request_success')}
+                {t(
+                  'button.request_success',
+                  'La tua richiesta è andata a buon fine. Ti contatteremo presto!',
+                )}
               </span>
             )}
           </form>

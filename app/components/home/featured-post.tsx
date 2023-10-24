@@ -28,13 +28,13 @@ const FeaturedPosts: React.FC<FeaturedPostsProps> = ({
       <div className="base-container">
         <div className="flex justify-between items-center mb-4 md:mb-12">
           <h2 className="font-semibold text-[40px] md:text-[64px] text-gray-900 text-center">
-            {t('blog.title')}
+            {t('blog.title', 'News')}
           </h2>
           <Link
             to="/blogs"
             className="underline text-xl md:text-[32px] text-secondary font-light"
           >
-            {t('blog.view_all')}
+            {t('blog.view_all', 'Vedi tutti')}
           </Link>
         </div>
         <div className="grid grid-cols-3 gap-8">
