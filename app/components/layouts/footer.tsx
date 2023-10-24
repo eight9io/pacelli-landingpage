@@ -20,7 +20,7 @@ const FooterSection = () => {
               {footerMenus1.map((menu) => (
                 <li key={`footer_${menu.href}`}>
                   <Link to={menu.href} className="uppercase text-white">
-                    {t(menu.text)}
+                    {t(menu.text, menu.label)}
                   </Link>
                 </li>
               ))}
@@ -36,7 +36,7 @@ const FooterSection = () => {
                       'normal-case': menu.text === 'FAQs',
                     })}
                   >
-                    {t(menu.text)}
+                    {t(menu.text, menu.label)}
                   </Link>
                 </li>
               ))}
@@ -44,14 +44,21 @@ const FooterSection = () => {
           </div>
           <div className="col-span-12 md:col-span-3 mt-4 md:mt-0">
             <div className="text-white text-base font-normal">
-              {t('contacts.title2')}
+              {t('contacts.title2', 'COME RAGGIUNGERCI')}
             </div>
             <p className="text-white text-xs md:text-sm font-normal leading-[21px] mt-6 flex gap-2">
-              {t('contacts.hotline')}: <span className="">+39 0824/948533</span>
+              {t('contacts.hotline', 'Hotline')}:{' '}
+              <span className="">+39 0824/948533</span>
             </p>
             <p className="text-white text-xs md:text-sm font-normal leading-[21px] mt-6 flex gap-2">
-              {t('contacts.address.label')}
-              <span> {t('contacts.address.address')}</span>
+              {t('contacts.address.label', 'Indirizzo')}
+              <span>
+                {' '}
+                {t(
+                  'contacts.address.address',
+                  'Via Volturno, 11, San Salvatore Telesino (BN)',
+                )}
+              </span>
             </p>
           </div>
         </div>
@@ -73,7 +80,7 @@ const FooterSection = () => {
                 to={menu.href}
                 className="text-gray-400 font-normal px-3 leading-[32px] hover:text-white first:pl-0 last:after:!hidden relative after:content-[''] after:absolute after:bg-gray-400 after:w-[1px] after:h-4 after:top-[6px] after:-right-0"
               >
-                {t(menu.text)}
+                {t(menu.text, menu.label)}
               </Link>
             ))}
           </ul>
@@ -119,40 +126,49 @@ const footerMenus1 = [
   {
     text: 'menu.about',
     href: '/about',
+    label: 'Chi siamo ',
   },
   {
     text: 'menu.showroom',
     href: '/showroom',
+    label: 'Showroom ',
   },
   {
     text: 'menu.brand',
     href: '/brand',
+    label: 'Brand',
   },
   {
     text: 'menu.services_professional',
     href: '/services/professional',
+    label: 'Servizi professionali',
   },
   {
     text: 'menu.services_private',
     href: '/services/private',
+    label: 'Servizi privati',
   },
 ];
 const footerMenus2 = [
   {
     text: 'menu.gallery',
     href: '/gallery',
+    label: 'Galleria',
   },
   {
     text: 'menu.blog',
     href: '/blogs',
+    label: 'Blog',
   },
   {
     text: 'menu.faqs',
     href: '/faqs',
+    label: 'Domande frequenti',
   },
   {
     text: 'menu.contact_us',
     href: '/contact',
+    label: 'Contattaci',
   },
 ];
 
@@ -160,13 +176,16 @@ const footerMenus3 = [
   {
     text: 'menu.privacy_poplicy',
     href: '/pages/privacy-poplicy',
+    label: 'Privacy Policy',
   },
   {
     text: 'menu.terms_conditions',
     href: '/pages/terms-conditions',
+    label: 'Termini e Condizioni',
   },
   {
     text: 'menu.cookies_policy',
     href: '/pages/cookies-policy',
+    label: 'Politica sui cookie',
   },
 ];

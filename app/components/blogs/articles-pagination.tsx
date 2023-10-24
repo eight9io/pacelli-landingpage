@@ -91,7 +91,7 @@ const ArticlesPagination: React.FC<ArticlesPaginationProps> = ({
             className={clsx('pb-0 text-secondary text-2xl md:text-[32px]')}
             onClick={onLoadmore}
           >
-            {t('button.load_more')}
+            {t('button.load_more', 'Carica di più')}
           </Button>
         </div>
       ) : null}
@@ -149,7 +149,7 @@ const Filter: React.FC<FilterProps> = ({className = '', selected, items}) => {
       <div className="relative">
         <details className="group rounded-none w-[100px]" ref={closeRef}>
           <summary className="flex items-center justify-end px-4 py-1 text-sm md:text-base cursor-pointer">
-            {t('button.filter')}
+            {t('button.filter', 'Filtro')}
             <AngleDown className="group-open:rotate-180 transition duration-150 ml-2 text-secondary" />
           </summary>
           <div className="transition duration-150 absolute w-[260px] top-full right-0 rounded overflow-auto bg-white shadow">
@@ -166,7 +166,7 @@ const Filter: React.FC<FilterProps> = ({className = '', selected, items}) => {
                 navigate('/blogs');
               }}
             >
-              {t('button.all')}
+              {t('button.all', 'tutto')}
             </Button>
             {items &&
               items.map((item) => {
