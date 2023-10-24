@@ -2,20 +2,20 @@ import clsx from 'clsx';
 import Heading from '~/components/common/heading';
 import showroom6 from '~/assets/showroom/showroom6.png';
 import showroom5 from '~/assets/showroom/showroom5.png';
-import { Button } from '~/components/snippets';
-/* eslint-disable */
+import {Button} from '~/components/snippets';
+
 import ArrowRight from '~/components/common/icons/arrow-right';
-import { InfoContact } from '../contact/contact-cta-form';
-import { useState, useRef} from 'react';
-import { useTranslation } from 'react-i18next';
+import {InfoContact} from '../contact/contact-cta-form';
+import {useState, useRef} from 'react';
+import {useTranslation} from 'react-i18next';
 import {PopupModal} from 'react-calendly';
 
 interface MyTeamProps {
   className?: string;
 }
 
-const MyTeam: React.FC<MyTeamProps> = ({ className = '' }) => {
-  const { t } = useTranslation('showroom');
+const MyTeam: React.FC<MyTeamProps> = ({className = ''}) => {
+  const {t} = useTranslation('showroom');
   const [openForm, setOpenForm] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -41,15 +41,18 @@ const MyTeam: React.FC<MyTeamProps> = ({ className = '' }) => {
           className="mb-4 md:mb-8 text-[48px] text-primary-950"
           variant="h3"
         >
-          {t('team.title')}
+          {t('team.title', 'Il nostro Team di esperti')}
         </Heading>
         <div className="grid grid-cols-12 gap-5 lg:gap-8">
           <div className="col-span-12 md:col-span-4 space-y-8">
             <p className="text-base font-normal leading-7 text-neutral-800 ">
-              {t('team.sub_title')}
+              {t(
+                'team.sub_title',
+                "La nostra squadra di architetti e progettisti d'interni è pronta a fornirti la consulenza di cui hai bisogno per rendere il tuo progetto una realtà. Saranno al tuo fianco in ogni fase del processo, garantendoti il massimo supporto e expertise",
+              )}
             </p>
             <p className="text-primary-950 text-[22px] md:text-2xl font-bold leading-9">
-              {t('contacts.title')}
+              {t('contacts.title', 'Contatti')}
             </p>
             <InfoContact />
           </div>
@@ -67,7 +70,10 @@ const MyTeam: React.FC<MyTeamProps> = ({ className = '' }) => {
             </h3>
 
             <p className="text-base font-normal leading-7 text-neutral-800 ">
-              {t('team.bruno_info')}
+              {t(
+                'team.bruno_info',
+                "Con il suo straordinario talento nel rendering 3D, offre ai nostri clienti un'esperienza visiva unica trasportandoli nella realtà dei loro ambienti",
+              )}
             </p>
             <div className="w-full mt-auto">
               <Button
@@ -75,7 +81,7 @@ const MyTeam: React.FC<MyTeamProps> = ({ className = '' }) => {
                 size="md"
                 onClick={openPopup}
               >
-                {t('contacts.book_appointment')}
+                {t('contacts.book_appointment', 'Prenota un appuntamento')}
                 <ArrowRight className="text-secondary w-5 h-5 stroke-secondary origin-center stroke-2" />
               </Button>
             </div>
@@ -94,7 +100,10 @@ const MyTeam: React.FC<MyTeamProps> = ({ className = '' }) => {
             </h3>
 
             <p className="text-base font-normal leading-7 text-neutral-800">
-              {t('team.ernesto_info')}
+              {t(
+                'team.ernesto_info',
+                'Architetto di lunga data che ha contribuito in modo significativo alla crescita e al successo di Pacelli Arredamenti',
+              )}
             </p>
             <div className="w-full mt-auto">
               <Button
@@ -102,7 +111,7 @@ const MyTeam: React.FC<MyTeamProps> = ({ className = '' }) => {
                 size="md"
                 onClick={openPopup}
               >
-                {t('contacts.book_appointment')}
+                {t('contacts.book_appointment', 'Prenota un appuntamento')}
                 <ArrowRight className="text-secondary w-5 h-5 stroke-secondary origin-center stroke-2" />
               </Button>
             </div>
@@ -118,8 +127,7 @@ const MyTeam: React.FC<MyTeamProps> = ({ className = '' }) => {
         )}
         onClick={closePopup}
         ref={ref}
-      >
-      </div>
+      ></div>
       <PopupModal
         url="https://calendly.com/pacelliarredamenti/progettazione-online"
         onModalClose={closePopup}

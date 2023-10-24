@@ -3,7 +3,6 @@ import type {selectOccupation} from '~/lib/type';
 import {useCallback, useRef} from 'react';
 import AngleDown from '../icons/angle-down';
 import {ArrSelectOccupation} from '~/data/selectOccupation';
-/* eslint-disable */
 
 interface SelectorProps {
   className?: string;

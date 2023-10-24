@@ -40,7 +40,7 @@ export default function FaqsPage() {
             className="text-gray-900 !text-[32px] md:!text-5xl md:!leading-[72px]"
             variant="h2"
           >
-            {t('faqs:title')}
+            {t('faqs:title', 'Frequently Asked Question')}
           </Heading>
         </div>
         <div className="col-span-10 md:col-span-7">
@@ -68,6 +68,8 @@ interface AccordionItemProps {
   onClick: () => void;
   index: number;
   className?: string;
+  reserve_answer: string;
+  reserve_question: string;
 }
 
 const AccordionItem = ({
@@ -77,6 +79,8 @@ const AccordionItem = ({
   onClick,
   index,
   className,
+  reserve_answer,
+  reserve_question,
 }: AccordionItemProps) => {
   const {t} = useTranslation('faqs');
   const beforeContentClass = useMemo(() => {
@@ -114,10 +118,12 @@ const AccordionItem = ({
         variant="h5"
         onClick={onClick}
       >
-        {t(question)}
+        {t(question, reserve_question)}
       </Heading>
       <div className="collapse-content pl-[68px]">
-        <p className="whitespace-pre-wrap	text-gray-600">{t(anwser)}</p>
+        <p className="whitespace-pre-wrap	text-gray-600">
+          {t(anwser, reserve_answer)}
+        </p>
       </div>
     </div>
   );
@@ -127,18 +133,33 @@ const faqItems = [
   {
     question: 'faqs:item1.question',
     anwser: 'faqs:item1.answer',
+    reserve_answer:
+      'Offriamo una consulenza completa e personalizzata per realizzare il tuo progetto di design. Iniziamo con un rilievo misure gratuito, che ci consente di comprendere appieno lo spazio a tua disposizione e le tue esigenze. Questo servizio è il nostro punto di partenza per creare un progetto su misura che si adatti perfettamente alle tue aspettative.\nInoltre, ti offriamo anche il servizio di progettazione e renderizzazione gratuito. Grazie a strumenti avanzati, trasformiamo la tua visione in una rappresentazione visiva dettagliata, consentendoci di visualizzare il tuo futuro ambiente prima ancora che diventi realtà. Questo servizio ti aiuta a prendere decisioni informate e a perfezionare ogni aspetto del tuo progetto.',
+    reserve_question:
+      'Fornite il servizio di rilievo delle misure? é a pagamento?',
   },
   {
     question: 'faqs:item2.question',
     anwser: 'faqs:item2.answer',
+    reserve_answer:
+      'Offriamo un servizio di assistenza post-vendita senza limiti di tempo. Siamo qui per te oggi, domani e sempre.\nLa nostra dedizione a soddisfare le tue esigenze e risolvere ogni eventuale problema non conosce scadenza. La tua completa soddisfazione è la nostra priorità assoluta, e siamo pronti a offrire supporto e assistenza in modo continuo.',
+    reserve_question:
+      'Qual è la durata della garanzia dell’arredamento acquistato?',
   },
   {
     question: 'faqs:item3.question',
     anwser: 'faqs:item3.answer',
+    reserve_answer:
+      'Per garantire la massima convenienza ai nostri clienti, offriamo la consegna e il montaggio gratuiti. Siamo qui per semplificarti la vita e renderlo il più agevole possibile.\nNella stragrande maggioranza dei casi, non ci sono costi aggiuntivi per la consegna e il montaggio. Tuttavia, comprendiamo che ci possono essere situazioni eccezionali in cui dovremmo effettuare consegne a lunghe distanze. In queste circostanze, valuteremo la situazione caso per caso e, se necessario, concorderemo un rimborso spese equo.\nLa nostra priorità è soddisfare le tue esigenze e rendere il processo il più semplice possibile per te. La trasparenza è fondamentale, e ci impegniamo a garantire che tu comprenda appieno ogni aspetto della consegna e del montaggio.',
+    reserve_question:
+      'Il prezzo finale comprende anche la consegna e il montaggio?',
   },
   {
     question: 'faqs:item4.question',
     anwser: 'faqs:item4.answer',
+    reserve_answer: 'Quali sono i tempi di consegna?',
+    reserve_question:
+      "I tempi di consegna variano in base alle specifiche del tuo progetto.\nPer esempio, quando si tratta di realizzare una cucina su misura, teniamo conto di ogni dettaglio, comprese le eventuali fuori squadra e personalizzazioni che hai richiesto.\nIn media, il tempo di consegna per un progetto di questo genere è di circa 40 giorni. Tuttavia, è importante sottolineare che la precisione e l'attenzione che mettiamo in ogni passo del processo sono un investimento nel risultato finale. La tua cucina su misura sarà un'opera d'arte culinaria che vale la pena aspettare.",
   },
 ];
 

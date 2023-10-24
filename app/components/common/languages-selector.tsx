@@ -1,15 +1,15 @@
 import clsx from 'clsx';
-import { useTranslation } from 'react-i18next';
-import { CartForm } from '@shopify/hydrogen';
-import { CartBuyerIdentityInput } from '@shopify/hydrogen/storefront-api-types';
+import {useTranslation} from 'react-i18next';
+import {CartForm} from '@shopify/hydrogen';
+import {CartBuyerIdentityInput} from '@shopify/hydrogen/storefront-api-types';
 
-import { Button } from '~/components';
-import type { Locale, Localizations } from '~/lib/type';
-import { useCallback, useEffect, useMemo, useRef } from 'react';
-import { useFetcher, useLocation, useMatches } from '@remix-run/react';
+import {Button} from '~/components';
+import type {Locale, Localizations} from '~/lib/type';
+import {useCallback, useEffect, useMemo, useRef} from 'react';
+import {useFetcher, useLocation, useMatches} from '@remix-run/react';
 
-import { DEFAULT_LOCALE } from '~/lib/utils';
-import { useInView } from 'react-intersection-observer';
+import {DEFAULT_LOCALE} from '~/lib/utils';
+import {useInView} from 'react-intersection-observer';
 import chevron_down from '~/assets/icons/chevron-down.png';
 
 interface LanguagesSelectorProps {
@@ -21,13 +21,13 @@ const LanguagesSelector: React.FC<LanguagesSelectorProps> = ({
   className = '',
   showLabel = true,
 }) => {
-  const { t } = useTranslation();
+  const {t} = useTranslation();
 
   const [root] = useMatches();
   const fetcher = useFetcher();
   const closeRef = useRef<HTMLDetailsElement>(null);
   const selectedLocale = root.data?.selectedLocale ?? DEFAULT_LOCALE;
-  const { pathname, search } = useLocation();
+  const {pathname, search} = useLocation();
   const pathWithoutLocale = `${pathname.replace(
     selectedLocale.pathPrefix,
     '',
@@ -37,7 +37,7 @@ const LanguagesSelector: React.FC<LanguagesSelectorProps> = ({
   const defaultLocale = countries?.['default'];
   const defaultLocalePrefix = defaultLocale ? `${defaultLocale?.language}` : '';
 
-  const { ref, inView } = useInView({
+  const {ref, inView} = useInView({
     threshold: 0,
     triggerOnce: true,
   });
@@ -76,7 +76,9 @@ const LanguagesSelector: React.FC<LanguagesSelectorProps> = ({
       className={clsx('flex gap-4 justify-center', className)}
       onMouseLeave={closeDropdown}
     >
-      {showLabel && <h4 className="cursor-default">{t('language')}</h4>}
+      {showLabel && (
+        <h4 className="cursor-default">{t('language', 'Lingua')}</h4>
+      )}
       <div className="relative">
         <details className="group rounded-none" ref={closeRef}>
           <summary className="flex items-center rounded-full bg-gray-200 justify-between px-4 py-1 text-sm md:text-base cursor-pointer">

@@ -2,9 +2,9 @@ import Carousel from '~/components/common/carousel';
 import Link from '~/components/Link';
 import arrowRight from '~/assets/icons/arrow-right.svg';
 import clsx from 'clsx';
-import { useTranslation } from 'react-i18next';
-import { loader } from '~/routes/($locale)._index';
-import { useLoaderData } from '@remix-run/react';
+import {useTranslation} from 'react-i18next';
+import {loader} from '~/routes/($locale)._index';
+import {useLoaderData} from '@remix-run/react';
 
 interface HeroProps {
   className?: string;
@@ -61,9 +61,9 @@ const mockData = [
   },
 ];
 
-const Hero: React.FC<HeroProps> = ({ className = '' }) => {
-  const { t, ready } = useTranslation('home');
-  const { carousels } = useLoaderData<typeof loader>();
+const Hero: React.FC<HeroProps> = ({className = ''}) => {
+  const {t, ready} = useTranslation('home');
+  const {carousels} = useLoaderData<typeof loader>();
 
   return (
     <section
@@ -104,11 +104,11 @@ const Hero: React.FC<HeroProps> = ({ className = '' }) => {
                     to={item.learn_more_url}
                     className="btn bg-secondary rounded-none text-white hover:bg-secondary group  border-none"
                   >
-                    {t('home:hero.learn_more')}
+                    {t('home:hero.learn_more', 'SCOPRI DI PIU')}
                     <img
                       className="group-hover:translate-x-1 duration-200"
                       src={arrowRight}
-                      alt={t('home:hero.learn_more')}
+                      alt={t('home:hero.learn_more', 'SCOPRI DI PIU')}
                     />
                   </Link>
                 )}
