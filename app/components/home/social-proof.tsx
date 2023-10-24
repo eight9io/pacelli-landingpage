@@ -2,7 +2,7 @@ import Carousel from '~/components/common/carousel';
 import IconQuote from '~/components/common/icons/quote';
 import clsx from 'clsx';
 import Heading from '../common/heading';
-import maria from '~/assets/carousel/maria.png';
+import maria from '~/assets/carousel/maria.jpg';
 import maraja from '~/assets/carousel/maraja.png';
 import franco from '~/assets/carousel/franco.png';
 import lino from '~/assets/carousel/lino.png';
