@@ -149,6 +149,7 @@ const style = {
   productImage: {
     width: 100,
     height: 100,
+    objectFit: 'cover',
   },
   imgCol: {
     width: 100,
