@@ -45,11 +45,11 @@ export const action: ActionFunction = async ({request, context}) => {
       const nameField = fields.find((item: any) => item.name === 'Full name');
       const emailField = fields.find((item: any) => item.name === 'Email');
       const adminMailHtml = render(
-        <CustomerTemplate name={nameField?.value || data.fullname} />,
+        <CustomerTemplate name={nameField?.value || customer.name} />,
       );
       const mailToCustomer = {
         from: env.PUBLIC_MAIL_FROM,
-        to: emailField?.value || data.email,
+        to: emailField?.value || customer.email,
         html: adminMailHtml,
         apiKey: env.PUBLIC_SENDGRID_API_KEY,
       };
@@ -61,7 +61,6 @@ export const action: ActionFunction = async ({request, context}) => {
 
     return json({ok: true});
   } catch (error) {
-    console.log('error', error);
     return json({ok: false, error});
   }
 };
