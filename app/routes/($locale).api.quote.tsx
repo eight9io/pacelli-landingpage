@@ -3,7 +3,7 @@ import {ActionFunction} from '@remix-run/node';
 import AdminTemplate from '~/lib/email/templates/quote.admin';
 import CustomerTemplate from '~/lib/email/templates/quote.customer';
 import {render} from '@react-email/render';
-import {send} from '~/lib/email/instance';
+import {send} from '~/lib/email/mailersend';
 
 const FIELDS_MAP: any = {
   name: 'Full Name',
@@ -32,7 +32,6 @@ export const action: ActionFunction = async ({request, context}) => {
         from: env.PUBLIC_MAIL_FROM,
         to: data.adminMail || env.PUBLIC_ADMIN_MAIL_DESTINATION,
         html: adminMailHtml,
-        apiKey: env.PUBLIC_SENDGRID_API_KEY,
       };
 
       await send(mailToAdmin);
@@ -51,7 +50,6 @@ export const action: ActionFunction = async ({request, context}) => {
         from: env.PUBLIC_MAIL_FROM,
         to: emailField?.value || customer.email,
         html: adminMailHtml,
-        apiKey: env.PUBLIC_SENDGRID_API_KEY,
       };
 
       await send(mailToCustomer);
