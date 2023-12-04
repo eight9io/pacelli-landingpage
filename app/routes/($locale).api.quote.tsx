@@ -1,54 +1,33 @@
 import {json} from '@shopify/remix-oxygen';
 import {ActionFunction} from '@remix-run/node';
-import AdminTemplate from '~/lib/email/templates/booking.admin';
-import CustomerTemplate from '~/lib/email/templates/booking.customer';
+import AdminTemplate from '~/lib/email/templates/quote.admin';
+import CustomerTemplate from '~/lib/email/templates/quote.customer';
 import {render} from '@react-email/render';
 import {send} from '~/lib/email/mailersend';
-import {fetchGoogleVerification} from '~/lib/utils';
 
 const FIELDS_MAP: any = {
-  fullname: 'Full Name',
+  name: 'Full Name',
   email: 'Email',
   message: 'Message',
-  phone: 'Phone',
-  date: 'Date',
-  time: 'Time',
 };
-
-type ResponseGoogleVerification = {
-  success: boolean;
-  challenge_ts: string;
-  hostname: string;
-};
-
 export const action: ActionFunction = async ({request, context}) => {
   const env = context.env as any;
-  // check gg recaptcha validate
 
-  const data = (await request.json()) as any;
-  const {reCaptcha} = data;
-  if (!reCaptcha) return json({ok: false});
-
-  const {success} = await fetchGoogleVerification(
-    data.reCaptcha || '',
-    env.PUBLIC_SECRET_RECAPTCHA_KEY,
-  );
-  const language = data.language || 'it';
-  delete data.reCaptcha;
-  delete data.language;
-
-  if (!success) return json({ok: false});
   try {
-    const fields = Object.keys(data).map((key) => {
+    const data = (await request.json()) as any;
+    const customer = data.customer;
+    const items = data.items;
+
+    const fields = Object.keys(customer).map((key) => {
       return {
         name: FIELDS_MAP[key] || key,
-        value: data[key],
+        value: customer[key],
       };
     });
 
     // Send to admin
     try {
-      const adminMailHtml = render(<AdminTemplate data={fields} />);
+      const adminMailHtml = render(<AdminTemplate data={data} />);
       const mailToAdmin = {
         from: env.PUBLIC_MAIL_FROM,
         to: data.adminMail || env.PUBLIC_ADMIN_MAIL_DESTINATION,
@@ -61,22 +40,16 @@ export const action: ActionFunction = async ({request, context}) => {
       return json({ok: false, error});
     }
 
-    //Send to customer
+    // Send to customer
     try {
       const nameField = fields.find((item: any) => item.name === 'Full name');
       const emailField = fields.find((item: any) => item.name === 'Email');
       const adminMailHtml = render(
-        <CustomerTemplate
-          fullname={nameField?.value || data.fullname}
-          email={emailField?.value || data.email}
-          message={data.message}
-          date={data.date}
-          time={data.time}
-        />,
+        <CustomerTemplate name={nameField?.value || customer.name} />,
       );
       const mailToCustomer = {
         from: env.PUBLIC_MAIL_FROM,
-        to: emailField?.value || data.email,
+        to: emailField?.value || customer.email,
         html: adminMailHtml,
         apiKey: env.MAILERSEND_API_KEY,
       };
