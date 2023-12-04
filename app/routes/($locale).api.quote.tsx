@@ -32,6 +32,7 @@ export const action: ActionFunction = async ({request, context}) => {
         from: env.PUBLIC_MAIL_FROM,
         to: data.adminMail || env.PUBLIC_ADMIN_MAIL_DESTINATION,
         html: adminMailHtml,
+        apiKey: env.MAILERSEND_API_KEY,
       };
 
       await send(mailToAdmin);
@@ -50,6 +51,7 @@ export const action: ActionFunction = async ({request, context}) => {
         from: env.PUBLIC_MAIL_FROM,
         to: emailField?.value || customer.email,
         html: adminMailHtml,
+        apiKey: env.MAILERSEND_API_KEY,
       };
 
       await send(mailToCustomer);
