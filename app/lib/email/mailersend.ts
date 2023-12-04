@@ -1,21 +1,25 @@
-import {MailerSend, EmailParams, Sender, Recipient} from 'mailersend';
-
-const mailerSend = new MailerSend({
-  apiKey: process.env.MAILERSEND_API_KEY || '',
-});
+const MAILERSEND_ENDPOINT = 'https://api.mailersend.com/v1/email';
 
 export const send = async (data: any) => {
-  const {to, subject, html, from, text} = data;
+  const {to, subject, html, from, apiKey} = data;
 
-  const sentFrom = new Sender(from);
-  const recipients = to.split(',').map((email: string) => new Recipient(email));
+  const toEmails = to.split(',').map((email: string) => ({email}));
 
-  const emailParams = new EmailParams()
-    .setFrom(sentFrom)
-    .setTo(recipients)
-    .setSubject(subject)
-    .setHtml(html)
-    .setText(text);
+  const body = {
+    to: toEmails,
+    html,
+    subject: subject || 'Pacelli',
+    from: {email: from, name: 'Pacelli'},
+  };
 
-  return await mailerSend.email.send(emailParams);
+  const options = {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${apiKey || ''}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  };
+
+  return await fetch(MAILERSEND_ENDPOINT, options);
 };
