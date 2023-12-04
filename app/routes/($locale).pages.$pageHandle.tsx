@@ -1,11 +1,12 @@
 import {json, type LoaderArgs} from '@shopify/remix-oxygen';
-import type {Page as PageType} from '@shopify/hydrogen/storefront-api-types';
 import {useLoaderData} from '@remix-run/react';
 import invariant from 'tiny-invariant';
 
-import {PageHeader} from '~/components';
 import {routeHeaders} from '~/data/cache';
 import {seoPayload} from '~/lib/seo.server';
+import HTMLContent from '~/components/blogs/html-content';
+import Heading from '~/components/common/heading';
+import {cacheNoneInStaging} from '~/lib/utils';
 
 export const headers = routeHeaders;
 
@@ -17,6 +18,7 @@ export async function loader({request, params, context}: LoaderArgs) {
       handle: params.pageHandle,
       language: context.storefront.i18n.language,
     },
+    cache: cacheNoneInStaging(context),
   });
 
   if (!page) {
@@ -32,14 +34,12 @@ export default function Page() {
   const {page} = useLoaderData<typeof loader>();
 
   return (
-    <>
-      <PageHeader heading={page.title}>
-        <div
-          dangerouslySetInnerHTML={{__html: page.body}}
-          className="prose dark:prose-invert"
-        />
-      </PageHeader>
-    </>
+    <section className="base-container my-12 md:my-20 min-h-[50vh]">
+      <Heading variant="h2" className="mb-8 text-center">
+        {page.title}
+      </Heading>
+      <HTMLContent className="max-w-[100ch] mx-auto" htmlString={page.body} />
+    </section>
   );
 }
 
@@ -57,3 +57,5 @@ const PAGE_QUERY = `#graphql
     }
   }
 `;
+
+export const shouldRevalidate = () => true;

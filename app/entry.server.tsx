@@ -1,15 +1,16 @@
 import type {EntryContext} from '@shopify/remix-oxygen';
 import {RemixServer} from '@remix-run/react';
 import isbot from 'isbot';
-import {renderToReadableStream, renderToString} from 'react-dom/server';
+import {renderToReadableStream} from 'react-dom/server';
 import {createContentSecurityPolicy} from '@shopify/hydrogen';
 
 import {createInstance} from 'i18next';
 import {I18nextProvider, initReactI18next} from 'react-i18next';
-import Backend from 'i18next-fs-backend';
-import {resolve} from 'path';
 import i18nextOptions from '../i18nextOptions';
 import i18n from '../i18n.server';
+import resourcesToBackend from 'i18next-resources-to-backend';
+import {resources} from '~/lib/locale.resources';
+import {getLocaleFromRequest} from './lib/utils';
 
 export default async function handleRequest(
   request: Request,
@@ -19,29 +20,50 @@ export default async function handleRequest(
 ) {
   // i18next
   const instance = createInstance();
-  const lng = await i18n.getLocale(request);
+  const {language} = getLocaleFromRequest(request);
   const ns = i18n.getRouteNamespaces(remixContext);
 
   await instance
     .use(initReactI18next) // Tell our instance to use react-i18next
-    .use(Backend) // Setup our backend.init({
+
+    .use(resourcesToBackend(resources))
+    // .use(Backend) // Setup our backend.init({
     .init({
       ...i18nextOptions, // use the same configuration as in your client side.
-      lng, // The locale we detected above
+      lng: language.toLowerCase(), // The locale we detected above
       ns, // The namespaces the routes about to render want to use
-      backend: {
-        loadPath: resolve('../public/locales/{{lng}}/{{ns}}.json'),
-      },
+      // backend: {
+      //   loadPath: resolve('../public/locales/{{lng}}/{{ns}}.json'),
+      // },
     });
 
   // App
   const {nonce, header, NonceProvider} = createContentSecurityPolicy({
-    frameSrc: ['https://www.google.com/'],
+    frameSrc: [
+      "'self'",
+      'https://cdn.shopify.com',
+      'https://shopify.com',
+      'https://www.google.com/',
+      'https://www.youtube.com/',
+      'https://calendly.com/',
+    ],
     defaultSrc: [
       "'self'",
       'https://cdn.shopify.com',
       'https://shopify.com',
       'https://flowbite.s3.amazonaws.com/',
+      'https://e9-cms.sgp1.digitaloceanspaces.com',
+    ],
+    // contentSrc: ["'self'", 'https://cdn.shopify.com', 'https://shopify.com'],
+    scriptSrc: [
+      "'self'",
+      'https://cdn.shopify.com',
+      'https://shopify.com',
+      'https://www.google.com/',
+      'https://www.gstatic.com/',
+      'https://www.youtube.com/iframe_api',
+      'https://www.youtube.com/s/player/99faf012/www-widgetapi.vflset/www-widgetapi.js',
+      'https://www.youtube.com/s/player/dd34ec3d/www-widgetapi.vflset/www-widgetapi.js',
     ],
   });
   const body = await renderToReadableStream(
@@ -67,6 +89,7 @@ export default async function handleRequest(
 
   responseHeaders.set('Content-Type', 'text/html');
   responseHeaders.set('Content-Security-Policy', header);
+
   return new Response(body, {
     headers: responseHeaders,
     status: responseStatusCode,

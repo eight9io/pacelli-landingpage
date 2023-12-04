@@ -7,42 +7,32 @@ import {NonNullableFields} from '~/lib/type';
 import {
   ARTICLE_BY_ID_QUERY,
   BLOG_LIST_QUERY,
-  BLOG_QUERY,
   FEATURED_BLOG_QUERY,
 } from '~/graphql/blogs';
 import ArticlesPagination from '~/components/blogs/articles-pagination';
 import {Article} from '@shopify/hydrogen/storefront-api-types';
-import {parseObject} from '~/lib/utils';
+import {cacheNoneInStaging, getFixedT, parseObject} from '~/lib/utils';
+import {seoPayload} from '~/lib/seo.server';
 
 export const headers = routeHeaders;
 
-export async function loader({request, context: {storefront}}: LoaderArgs) {
-  const blogSlug = new URL(request.url).searchParams.get('blog');
-  let articleData: any;
-
+export async function loader({request, context}: LoaderArgs) {
+  const {storefront, env} = context;
   const pinnedArticleData = await storefront.query(ARTICLE_BY_ID_QUERY, {
-    variables: {id: 'gid://shopify/Article/606763745578'},
+    variables: {
+      id: env.PUBLIC_PINNDED_ARTICLE_ID || 'gid://shopify/Article/606763745578',
+    },
+    cache: cacheNoneInStaging(context),
   });
-  const data = await storefront.query(BLOG_LIST_QUERY);
-  const selectedBlog = await storefront.query(BLOG_QUERY, {
-    variables: {handle: blogSlug},
+  const data = await storefront.query(BLOG_LIST_QUERY, {
+    cache: cacheNoneInStaging(context),
   });
-
-  if (blogSlug && !selectedBlog.blog) {
-    throw new Response(null, {
-      status: 404,
-      statusText: 'Not Found',
-    });
-  }
-
-  if (!blogSlug) {
-    articleData = await storefront.query(FEATURED_BLOG_QUERY, {
-      variables: {first: 8},
-    });
-  }
+  const articleData = await storefront.query(FEATURED_BLOG_QUERY, {
+    variables: {first: 8},
+    cache: cacheNoneInStaging(context),
+  });
 
   invariant(data, 'No data returned from Shopify API');
-  invariant(selectedBlog, 'No data returned from Shopify API');
   const blogs = Object.values(
     data.blogs.nodes as NonNullableFields<typeof data.blogs.nodes>,
   ).filter(Boolean);
@@ -51,17 +41,16 @@ export async function loader({request, context: {storefront}}: LoaderArgs) {
     throw new Response('Not found', {status: 404});
   }
 
-  // const seo = seoPayload.policies({policies, url: request.url});
+  const t = await getFixedT(context.storefront, 'blogs');
+  const seo = seoPayload.blog({
+    blog: {} as any,
+    url: request.url,
+    t,
+  });
 
-  const articles = selectedBlog.blog
-    ? selectedBlog.blog?.articles.nodes
-    : articleData?.articles?.nodes
-    ? articleData.articles.nodes
-    : [];
+  const articles = parseObject(articleData, 'articles.nodes') || [];
 
-  const pageInfo = selectedBlog.blog?.articles?.pageInfo
-    ? selectedBlog.blog?.articles?.pageInfo
-    : articleData?.articles?.pageInfo
+  const pageInfo = articleData?.articles?.pageInfo
     ? articleData.articles?.pageInfo
     : {
         hasNextPage: false,
@@ -74,9 +63,9 @@ export async function loader({request, context: {storefront}}: LoaderArgs) {
     blogs,
     articles,
     pageInfo,
-    selectedBlog: selectedBlog.blog,
+    selectedBlog: undefined,
     pinnedArticle,
-    // seo
+    seo,
   });
 }
 
@@ -90,3 +79,9 @@ export default function BlogPage() {
     </>
   );
 }
+
+export const handle = {
+  i18n: ['common', 'header', 'blogs'],
+};
+
+export const shouldRevalidate = () => true;

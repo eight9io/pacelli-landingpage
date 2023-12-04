@@ -1,5 +1,6 @@
 import {Form} from '@remix-run/react';
 import type {MailingAddress} from '@shopify/hydrogen/storefront-api-types';
+import {useTranslation} from 'react-i18next';
 
 import type {CustomerDetailsFragment} from 'storefrontapi.generated';
 import {Button, Link, Text} from '~/components';
@@ -11,14 +12,15 @@ export function AccountAddressBook({
   customer: CustomerDetailsFragment;
   addresses: MailingAddress[];
 }) {
+  const {t} = useTranslation('common');
   return (
     <>
       <div className="grid w-full gap-4 p-4 py-6 md:gap-8 md:p-8 lg:p-12">
-        <h3 className="font-bold text-lead">Address Book</h3>
+        <h3 className="font-bold text-lead">{t('acc_address.address_book')}</h3>
         <div>
           {!addresses?.length && (
             <Text className="mb-1" width="narrow" as="p" size="copy">
-              You haven&apos;t saved any addresses yet.
+              {t('acc_address.no_address')}
             </Text>
           )}
           <div className="w-48">
@@ -27,7 +29,7 @@ export function AccountAddressBook({
               className="mt-2 text-sm w-full mb-6"
               variant="secondary"
             >
-              Add an Address
+              {t('acc_address.add_address')}
             </Button>
           </div>
           {Boolean(addresses?.length) && (
@@ -55,12 +57,13 @@ function Address({
   address: MailingAddress;
   defaultAddress?: boolean;
 }) {
+  const {t} = useTranslation('common');
   return (
     <div className="lg:p-8 p-6 border border-gray-200 rounded flex flex-col">
       {defaultAddress && (
         <div className="mb-3 flex flex-row">
           <span className="px-3 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary/50">
-            Default
+            {t('acc_address.default')}
           </span>
         </div>
       )}
@@ -82,12 +85,12 @@ function Address({
           className="text-left underline text-sm"
           prefetch="intent"
         >
-          Edit
+          {t('button.edit')}
         </Link>
         <Form action="address/delete" method="delete">
           <input type="hidden" name="addressId" value={address.id} />
           <button className="text-left text-primary/50 ml-6 text-sm">
-            Remove
+            {t('button.remove')}
           </button>
         </Form>
       </div>

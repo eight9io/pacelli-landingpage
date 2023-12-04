@@ -1,7 +1,9 @@
+import {storefront} from 'utils/storefront';
 import {useLocation, useMatches} from '@remix-run/react';
 import {parse as parseCookie} from 'worktop/cookie';
 import type {MoneyV2} from '@shopify/hydrogen/storefront-api-types';
 import typographicBase from 'typographic-base';
+import i18n from '../../i18n.server';
 
 import type {
   ChildMenuItemFragment,
@@ -10,7 +12,9 @@ import type {
 } from 'storefrontapi.generated';
 import {countries} from '~/data/countries';
 
-import type {I18nLocale} from './type';
+import type {I18nLocale, Storefront} from './type';
+import {AppLoadContext} from '@shopify/remix-oxygen';
+import {Namespace} from 'i18next';
 
 type EnhancedMenuItemProps = {
   to: string;
@@ -353,4 +357,38 @@ export const parseObject = (object: any, path: string) => {
     result = result[part];
   }
   return result;
+};
+
+type ResponseGoogleVerification = {
+  success: boolean;
+  challenge_ts: string;
+  hostname: string;
+};
+
+export async function fetchGoogleVerification(
+  token: string,
+  key: any,
+): Promise<ResponseGoogleVerification> {
+  const url = `https://www.google.com/recaptcha/api/siteverify?secret=${key}&response=${token}`;
+  const response = await fetch(url, {method: 'post'});
+  const gResponse = await response.json();
+
+  return gResponse as ResponseGoogleVerification;
+}
+
+export const isStagingEnvironment = (context: AppLoadContext | Env) => {
+  if ('env' in context) {
+    return context.env?.PUBLIC_IS_STAGING === 'true';
+  }
+  return context?.PUBLIC_IS_STAGING === 'true';
+};
+
+export const cacheNoneInStaging = (context: AppLoadContext) => {
+  return context.storefront.CacheNone();
+};
+
+export const getFixedT = async (storefront: Storefront, ns: Namespace) => {
+  const {language} = storefront.i18n;
+  const t = await i18n.getFixedT(language.toLowerCase(), ns);
+  return t;
 };

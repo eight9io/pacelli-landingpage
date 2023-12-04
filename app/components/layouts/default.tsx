@@ -10,7 +10,7 @@ export function Layout(props: Props) {
   return (
     <>
       <HeaderSection />
-      <main className="md:pt-[40px]">{props.children}</main>
+      <main className="md:pt-[40px] min-h-screen">{props.children}</main>
       <FooterSection />
     </>
   );

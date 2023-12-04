@@ -22,7 +22,7 @@ export function ProductSingleSection({product}: {product: Product}) {
     <ProductProvider data={product}>
       <section className="base-container">
         <div className="flex flex-col rounded-lg shadow-sm md:flex-row md:space-x-8">
-          <div className="md:basis-6/12 ">
+          <div className="md:basis-6/12">
             <div className="h-full w-full overflow-hidden rounded-lg bg-gray-200">
               <Image
                 src={product.images?.nodes[0].url}

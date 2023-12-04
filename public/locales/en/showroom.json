@@ -1,0 +1,25 @@
+{
+  "seo": {
+    "title": "Showroom",
+    "titleTemplate": "%s | Pacelli Arredamenti",
+    "description": "Esplora la tradizione italiana dell'arredamento di qualità con Pacelli Arredamenti. Con oltre 50 anni di esperienza, collaboriamo con oltre 50 brand di eccellenza, offrendo una vasta gamma di prodotti"
+  },
+  "showroom": {
+    "title": "Showroom",
+    "sub_title": "Our Showroom is not only an exhibition space, but also a planning and interior design laboratory. Our team of architects and designers is the ideal partner to create creations that not only reflect, but exceed the expectations of our customers. Pacelli Arredamenti is also the place where hospitality, kindness and friendliness are at home. Here you will be able to feel at ease from the first moment, because for us, creating a comfortable space also means creating a welcoming environment where every customer feels at home",
+    "specialists": "Specialists",
+    "brands": "Brands",
+    "mq": "Sqm",
+    "client": "Satisfied Clients"
+  },
+  "team": {
+    "title": "Out team of experts",
+    "sub_title": "Our team of architects and interior designers is ready to provide you with the consultancy you need to make your project a reality. They will be by your side at every stage of the process, guaranteeing you maximum support and expertise",
+    "bruno_info": "With his extraordinary talent in 3D rendering, he offers our customers a unique visual experience by transporting them into the reality of their environments",
+    "ernesto_info": "Long-standing architect who has contributed significantly to the growth and success of Pacelli Arredamenti"
+  },
+  "contacts": {
+    "title": "Contacts",
+    "book_appointment": "Book appointment"
+  }
+}

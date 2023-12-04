@@ -16,6 +16,7 @@ import Facebook from '../common/icons/facebook';
 import Instagram from '../common/icons/instagram';
 import Youtube from '../common/icons/youtube';
 import Location from '../common/icons/location';
+import {useTranslation} from 'react-i18next';
 
 const STICKY_OFFSET = 0;
 
@@ -31,12 +32,12 @@ export function HeaderSection() {
     if (!isSticky && scrollPosition > STICKY_OFFSET) setIsSticky(true);
     else if (isSticky && scrollPosition <= STICKY_OFFSET) setIsSticky(false);
 
-    if (
-      pathname === '/services/professional' ||
-      pathname === '/services/private'
-    )
-      setMobileMenuOpen(false);
-  }, [scrollPosition, pathname]);
+    // if (
+    //   pathname === '/services/professional' ||
+    //   pathname === '/services/private'
+    // )
+    //   setMobileMenuOpen(false);
+  }, [scrollPosition, pathname, isSticky]);
 
   const isMenuItemActive = (href: string) => {
     const {pathname: path} = new URL('https://x' + href);
@@ -46,14 +47,15 @@ export function HeaderSection() {
 
   const onToggleSubMenu = (e: any) => {
     e.preventDefault();
-    e.stopPropagation();
+    // e.stopPropagation();
     const target = e.target;
     target.closest('ul')?.querySelector('.submenu')?.classList.toggle('hidden');
   };
+  const {t} = useTranslation('common');
   return (
     <header
       className={clsx(
-        'bg-transparent inset-x-0 top-0 z-10 transition-all duration-200 ',
+        'bg-transparent inset-x-0 top-0 z-50 transition-all duration-200 ',
         isSticky ? 'fixed bg-white shadow-lg' : 'absolute',
       )}
     >
@@ -69,21 +71,21 @@ export function HeaderSection() {
 
         <div className="flex flex-1 justify-end">
           <LocaleSwitcher showLabel={false} />
-          <button
-            type="button"
+          <Link
+            to="/"
             className="ml-5 inline-flex items-center justify-center rounded-md text-gray-700"
           >
-            <span className="sr-only">Open main menu</span>
             <span className="relative inline-block">
-              <img src={home} alt="menu" width={24} height={24} />
+              <Link to={'/'}>
+                <img src={home} alt="menu" width={24} height={24} />
+              </Link>
             </span>
-          </button>
+          </Link>
           <button
             type="button"
             className="ml-5 inline-flex items-center justify-center rounded-md text-gray-700"
             onClick={() => setMobileMenuOpen(true)}
           >
-            <span className="sr-only">Open main menu</span>
             <span className="relative inline-block">
               <img src={menu} alt="menu" width={24} height={24} />
             </span>
@@ -104,49 +106,84 @@ export function HeaderSection() {
               className="absolute z-50 rounded-md text-gray-700 flex items-center gap-2 right-0 md:right-6"
               onClick={() => setMobileMenuOpen(false)}
             >
-              <span className="text-white">Close</span>
+              <span className="text-white">{t('header.close', 'Chiudi')}</span>
               <XMarkIcon stroke="#fff" className="h-6 w-6" aria-hidden="true" />
             </button>
             <div className="flex relative mt-4">
-              <ul className="space-y-4 py-6 w-full md:w-1/2 flex-col md:block">
-                {mainMenuItems.map(({text, href, items}) => (
-                  <li key={href}>
-                    <Link
-                      className={clsx(
-                        'flex justify-between items-center md:block rounded-none box-border pt-2 pb-1 md:pt-4 md:pb-2 text-[32px] md:text-[40px] leading-8 text-white border-b border-b-transparent hover:border-b-slate-400 ',
-                        isMenuItemActive(href) &&
-                          'text-white border-b-slate-400',
-                        'peer hover:[&+div]:block max-w-[395px]',
-                      )}
-                      key={href}
-                      to={href}
-                      onClick={() => {
-                        setMobileMenuOpen(false);
-                      }}
-                    >
-                      {text}
-                      {items && items.length ? (
-                        <ChevronDownIcon
-                          className="stroke-white w-6 h-6 md:!hidden"
-                          onClick={onToggleSubMenu}
-                        />
-                      ) : undefined}
-                    </Link>
+              <ul className="space-y-2 md:space-y-4 xs:py-6 w-full md:w-1/2 flex-col md:block">
+                {mainMenuItems.map(({text, href, items, label}) => (
+                  <li key={`main-${href}-${text}`}>
+                    {href ? (
+                      <Link
+                        className={clsx(
+                          'flex justify-between items-center md:block rounded-none box-border pt-1 pb-1 md:pt-4 md:pb-2 text-[22px] md:text-[40px] leading-8 text-white border-b border-b-transparent hover:border-b-slate-400 ',
+                          {'cursor-default': href === '#'},
+                          isMenuItemActive(href) &&
+                            'text-white border-b-slate-400',
+                          'peer hover:[&+div]:block max-w-[395px]',
+                        )}
+                        to={href}
+                        onClick={(event) => {
+                          if (href === '#') {
+                            event.preventDefault();
+                          }
+                          setMobileMenuOpen(false);
+                        }}
+                      >
+                        {t(text, label)}
+                        {items && items.length ? (
+                          <ChevronDownIcon
+                            className="stroke-white w-6 h-6 md:!hidden"
+                            onClick={onToggleSubMenu}
+                          />
+                        ) : undefined}
+                      </Link>
+                    ) : (
+                      <Link
+                        className={clsx(
+                          'flex justify-between items-center md:block rounded-none box-border pt-1 pb-1 md:pt-4 md:pb-2 text-[22px] md:text-[40px] leading-8 text-white border-b border-b-transparent hover:border-b-slate-400 ',
+                          'peer hover:[&+div]:block max-w-[395px] w-[100%]',
+                        )}
+                        to="#"
+                        key={`main-${href}-${text}`}
+                        onClick={onToggleSubMenu}
+                      >
+                        {t(text, label)}
+                        {items && items.length ? (
+                          <ChevronDownIcon className="stroke-white w-6 h-6 md:!hidden" />
+                        ) : undefined}
+                      </Link>
+                    )}
+
                     {items && items.length && (
-                      <div className="hidden flex-col md:absolute h-full top-0 left-[395px] md:hidden md:peer-hover:!flex pl-4 md:pl-0 submenu">
-                        {items.map(({text, href}) => (
-                          <Link
-                            className={clsx(
-                              'block rounded-none box-border pt-2 pb-1 md:pt-4 md:pb-2 text-2xl md:text-[32px] leading-7 text-white border-b border-b-transparent hover:border-b-slate-400 max-w-[395px]',
-                              isMenuItemActive(href) &&
-                                'text-white border-b-slate-400',
-                            )}
-                            key={href}
-                            to={href}
-                          >
-                            {text}
-                          </Link>
-                        ))}
+                      <div className="flex-col md:absolute h-full top-0 left-[395px] hidden md:peer-hover:!flex pl-4 md:pl-0 submenu">
+                        {items.map(({text, href, label}) => {
+                          return href ? (
+                            <Link
+                              className={clsx(
+                                'block rounded-none box-border pt-1 pb-1 text-base md:pt-4 md:pb-2 xs:text-2xl md:text-[32px] leading-7 text-white border-b border-b-transparent hover:border-b-slate-400 max-w-[395px]',
+                                isMenuItemActive(href) &&
+                                  'text-white border-b-slate-400',
+                              )}
+                              key={`${href}-${text}`}
+                              to={href}
+                              onClick={() => {
+                                setMobileMenuOpen(false);
+                              }}
+                            >
+                              {t(text, label)}
+                            </Link>
+                          ) : (
+                            <span
+                              className={clsx(
+                                'block rounded-none box-border pt-2 pb-1 text-base md:pt-4 md:pb-2 xs:text-2xl md:text-[32px] leading-7 text-white border-b border-b-transparent hover:border-b-slate-400 max-w-[395px]',
+                              )}
+                              key={`${href}-${text}`}
+                            >
+                              {t(text, label)}
+                            </span>
+                          );
+                        })}
                       </div>
                     )}
                   </li>
@@ -154,9 +191,10 @@ export function HeaderSection() {
               </ul>
             </div>
 
-            <div className="flex gap-y-4 flex-col text-xs text-white border-t border-t-gray-500 fixed bottom-10 pt-6 md:hidden w-[calc(100%-32px)]">
+            <div className="mt-6 flex gap-y-4 flex-col text-xs text-white border-t border-t-gray-500 md:bottom-10 pt-6 md:hidden w-[calc(100%-32px)]">
               <Link
                 to="tel:0123456789"
+                externalLink
                 className={clsx(
                   'flex gap-3 items-center relative',
                   "after:absolute after:content-[''] after:w-[2px] after:h-5",
@@ -166,14 +204,19 @@ export function HeaderSection() {
                 (0824) 948533
               </Link>
               <Link
-                to="/"
+                externalLink
+                to="https://www.google.com/maps/place/Via+Volturno,+11,+82030+San+Salvatore+Telesino+BN,+%C3%9D/@41.2338572,14.4944365,17z/data=!3m1!4b1!4m6!3m5!1s0x133a449f754d3625:0xe78f82b5f51c1467!8m2!3d41.2338532!4d14.4970114!16s%2Fg%2F11c5m20g6r?hl=vi-VN&entry=ttu"
+                target="_blank"
                 className={clsx(
                   'flex gap-3 items-center relative',
                   "after:absolute after:content-[''] after:w-[2px] after:h-5",
                 )}
               >
                 <Location className="w-4 h-4 stroke-white" />
-                Via Volturno, 11, San Salvatore Telesino (BN)
+                {t(
+                  'contacts.address.address',
+                  'Via Volturno, 11, San Salvatore Telesino (BN)',
+                )}
               </Link>
               <div
                 className={clsx(
@@ -181,23 +224,32 @@ export function HeaderSection() {
                   "after:absolute after:content-[''] after:w-[2px] after:h-5",
                 )}
               >
-                Lunedì-Venerdì: 9:00 - 20:30 Sabato: 10:00 - 20:00
+                {t(
+                  'contacts.open.open',
+                  'Lunedì-Venerdì: 9:00 - 20:30 Sabato: 10:00 - 20:00',
+                )}
               </div>
               <div className={clsx('flex gap-3 items-center relative')}>
                 <Link
-                  to=""
+                  externalLink
+                  to="https://www.facebook.com/arredamentipacelli/?locale=it_IT"
+                  target="_blank"
                   className="w-8 h-8 p-2 bg-secondary rounded-full object-contain"
                 >
                   <Facebook className="w-4 h-4 stroke-white invert brightness-0" />
                 </Link>
                 <Link
-                  to=""
+                  externalLink
+                  to="https://www.instagram.com/pacelliarredamenti"
+                  target="_blank"
                   className="w-8 h-8 p-2 bg-secondary rounded-full object-contain"
                 >
-                  <Instagram className=" w-4 h-4 stroke-white invert brightness-0" />
+                  <Instagram className="w-4 h-4 stroke-white invert brightness-0" />
                 </Link>
                 <Link
-                  to=""
+                  externalLink
+                  to="https://www.youtube.com/@arredamentipacelli4456/featured"
+                  target="_blank"
                   className="w-8 h-8 p-2 bg-secondary rounded-full object-contain"
                 >
                   <Youtube className="text-white w-4 h-4 invert brightness-0" />
@@ -213,51 +265,61 @@ export function HeaderSection() {
 
 interface MenuItem {
   text: string;
-  href: string;
+  href?: string;
   items?: MenuItem[];
+  label: string;
 }
 
 const mainMenuItems: MenuItem[] = [
   {
-    text: 'About',
+    text: 'menu.about',
     href: '/about',
+    label: 'Chi siamo ',
   },
   {
-    text: 'Showroom',
+    text: 'menu.showroom',
     href: '/showroom',
+    label: 'Showroom ',
   },
   {
-    text: 'Brands',
+    text: 'menu.brand',
     href: '/brand',
+    label: 'Brand',
   },
   {
-    text: 'Services',
-    href: '/services',
+    text: 'menu.services',
+    label: 'Servizi',
     items: [
       {
-        text: 'Professional services',
+        text: 'menu.services_professional',
         href: '/services/professional',
+        label: 'Servizi professionali',
       },
       {
-        text: 'Private services',
+        text: 'menu.services_private',
         href: '/services/private',
+        label: 'Servizi privati',
       },
     ],
   },
   {
-    text: 'Blogs',
+    text: 'menu.blog',
     href: '/blogs',
+    label: 'Blog',
   },
   {
-    text: 'Gallery',
+    text: 'menu.gallery',
     href: '/gallery',
+    label: 'Galleria',
   },
   {
-    text: 'Contact us',
+    text: 'menu.contact_us',
     href: '/contact',
+    label: 'Contattaci',
   },
   {
-    text: 'FAQs',
+    text: 'menu.faqs',
     href: '/faqs',
+    label: 'Domande frequenti',
   },
 ];

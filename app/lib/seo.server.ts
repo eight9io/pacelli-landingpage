@@ -9,6 +9,7 @@ import type {
   ShopPolicy,
   Image,
 } from '@shopify/hydrogen/storefront-api-types';
+import {Namespace, TFunction} from 'i18next';
 import type {
   Article as SeoArticle,
   BreadcrumbList,
@@ -25,14 +26,16 @@ import type {ShopFragment} from 'storefrontapi.generated';
 function root({
   shop,
   url,
+  t,
 }: {
   shop: ShopFragment;
   url: Request['url'];
+  t: TFunction<Namespace, undefined>;
 }): SeoConfig<Organization> {
   return {
-    title: shop?.name,
-    titleTemplate: '%s | Hydrogen Demo Store',
-    description: truncate(shop?.description ?? ''),
+    title: t('seo.title'),
+    titleTemplate: '%s',
+    description: truncate(t('seo.description') ?? ''),
     handle: '@shopify',
     url,
     robots: {
@@ -42,14 +45,12 @@ function root({
     jsonLd: {
       '@context': 'https://schema.org',
       '@type': 'Organization',
-      name: shop.name,
+      name: t('seo.title'),
       logo: shop.brand?.logo?.image?.url,
       sameAs: [
-        'https://twitter.com/shopify',
-        'https://facebook.com/shopify',
-        'https://instagram.com/shopify',
-        'https://youtube.com/shopify',
-        'https://tiktok.com/@shopify',
+        'https://www.facebook.com/arredamentipacelli/',
+        'https://www.instagram.com/pacelliarredamenti',
+        'https://www.youtube.com/@arredamentipacelli4456/featured',
       ],
       url,
       potentialAction: {
@@ -61,11 +62,11 @@ function root({
   };
 }
 
-function home(): SeoConfig<WebPage> {
+function home(t: TFunction<Namespace, undefined>): SeoConfig<WebPage> {
   return {
-    title: 'Home',
-    titleTemplate: '%s | Hydrogen Demo Store',
-    description: 'The best place to buy snowboarding products',
+    title: t('seo.title'),
+    titleTemplate: '%s',
+    description: t('seo.description'),
     robots: {
       noIndex: false,
       noFollow: false,
@@ -73,7 +74,44 @@ function home(): SeoConfig<WebPage> {
     jsonLd: {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
-      name: 'Home page',
+      name: t('seo.title'),
+    },
+  };
+}
+
+function landingpage(t: TFunction<Namespace, undefined>): SeoConfig<WebPage> {
+  return {
+    title: t('seo.title'),
+    titleTemplate: t('seo.titleTemplate'),
+    description: t('seo.description'),
+    robots: {
+      noIndex: false,
+      noFollow: false,
+    },
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: t('seo.title'),
+    },
+  };
+}
+
+function project(
+  t: TFunction<Namespace, undefined>,
+  project: any,
+): SeoConfig<WebPage> {
+  return {
+    title: project?.title || t('seo.title'),
+    titleTemplate: t('seo.titleTemplate'),
+    description: project?.excerpt || t('seo.description'),
+    robots: {
+      noIndex: false,
+      noFollow: false,
+    },
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: project?.title || t('seo.title'),
     },
   };
 }
@@ -323,6 +361,7 @@ function listCollections({
 function article({
   article,
   url,
+  t,
 }: {
   article: Pick<
     Article,
@@ -334,11 +373,14 @@ function article({
     >;
   };
   url: Request['url'];
+  t: TFunction<Namespace, undefined>;
 }): SeoConfig<SeoArticle> {
   return {
-    title: article?.seo?.title ?? article?.title,
-    description: truncate(article?.seo?.description ?? ''),
-    titleTemplate: '%s | Journal',
+    title: article?.seo?.title ?? article?.title ?? t('seo.title'),
+    description: truncate(
+      article?.seo?.description ?? t('seo.description') ?? '',
+    ),
+    titleTemplate: t('seo.titleTemplate'),
     url,
     media: {
       type: 'image',
@@ -356,7 +398,7 @@ function article({
       description: truncate(
         article?.seo?.description || article?.excerpt || '',
       ),
-      headline: article?.seo?.title || '',
+      headline: article?.seo?.title || t('seo.title') || '',
       image: article?.image?.url,
       url,
     },
@@ -366,20 +408,22 @@ function article({
 function blog({
   blog,
   url,
+  t,
 }: {
   blog: Pick<Blog, 'seo' | 'title'>;
   url: Request['url'];
+  t: TFunction<Namespace, undefined>;
 }): SeoConfig<SeoBlog> {
   return {
-    title: blog?.seo?.title,
-    description: truncate(blog?.seo?.description || ''),
-    titleTemplate: '%s | Blog',
+    title: blog?.seo?.title || blog?.title || t('seo.title'),
+    description: truncate(blog?.seo?.description || t('seo.description') || ''),
+    titleTemplate: t('seo.titleTemplate'),
     url,
     jsonLd: {
       '@context': 'https://schema.org',
       '@type': 'Blog',
-      name: blog?.seo?.title || blog?.title || '',
-      description: blog?.seo?.description || '',
+      name: blog?.seo?.title || blog?.title || t('seo.title') || '',
+      description: blog?.seo?.description || t('seo.description') || '',
       url,
     },
   };
@@ -470,6 +514,8 @@ export const seoPayload = {
   policy,
   product,
   root,
+  landingpage,
+  project,
 };
 
 /**

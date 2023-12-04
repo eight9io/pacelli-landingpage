@@ -1,4 +1,12 @@
-import {Body, Container, Head, Html, Text} from '@react-email/components';
+import {
+  Body,
+  Container,
+  Head,
+  Html,
+  Text,
+  Img,
+  Section,
+} from '@react-email/components';
 
 interface ContactCustomerTemplateProps {
   name?: string;
@@ -12,6 +20,14 @@ export const ContactCustomerTemplate = ({
       <Head />
       <Body style={style.main}>
         <Container style={style.container}>
+          <Section style={style.logoWrapper}>
+            <Img
+              src="https://cdn.shopify.com/s/files/1/0816/1971/4346/files/logo-4x.webp"
+              width="306"
+              height="96"
+              alt="Pacelli"
+            />
+          </Section>
           <Text style={style.text}>
             Dear <span style={style.textBold}>{name}</span>,
           </Text>
@@ -31,6 +47,12 @@ export default ContactCustomerTemplate;
 const style = {
   main: {
     backgroundColor: '#f6f9fc',
+  },
+  logoWrapper: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: 20,
   },
   container: {
     backgroundColor: '#ffffff',

@@ -3,6 +3,7 @@ import type {LoaderArgs} from '@shopify/remix-oxygen';
 import invariant from 'tiny-invariant';
 
 import type {SitemapsQuery} from 'storefrontapi.generated';
+import {Article, Blog} from '@shopify/hydrogen/storefront-api-types';
 
 const MAX_URLS = 250; // the google limit is 50K, however, SF API only allow querying for 250 resources each time
 
@@ -44,59 +45,70 @@ function xmlEncode(string: string) {
 }
 
 function shopSitemap({data, baseUrl}: {data: SitemapsQuery; baseUrl: string}) {
-  const productsData = flattenConnection(data.products)
-    .filter((product) => product.onlineStoreUrl)
-    .map((product) => {
-      const url = `${baseUrl}/products/${xmlEncode(product.handle)}`;
+  const today = new Date().toISOString();
 
-      const finalObject: ProductEntry = {
-        url,
-        lastMod: product.updatedAt,
-        changeFreq: 'daily',
-      };
+  const staticPagesRoute = [
+    '',
+    'about',
+    'contact',
+    'showroom',
+    'gallery',
+    'blogs',
+    'services/professinal',
+    'services/private',
+    'faqs',
+    'brands',
+  ];
 
-      if (product.featuredImage?.url) {
-        finalObject.image = {
-          url: xmlEncode(product.featuredImage.url),
-        };
+  const staticPagesData = staticPagesRoute.map((page) => ({
+    url: `${baseUrl}/${page}`,
+    lastMod: today,
+    changeFreq: 'daily',
+  }));
 
-        if (product.title) {
-          finalObject.image.title = xmlEncode(product.title);
-        }
+  let articles: any[] = [];
+  const blogsData = flattenConnection(data.blogs).map((blog: Blog) => {
+    articles = [...articles, ...flattenConnection(blog.articles)];
+    return {
+      url: `${baseUrl}/blogs/${xmlEncode(blog.handle)}`,
+      lastMod: today,
+      changeFreq: 'daily',
+    };
+  });
 
-        if (product.featuredImage.altText) {
-          finalObject.image.caption = xmlEncode(product.featuredImage.altText);
-        }
-      }
-
-      return finalObject;
-    });
-
-  const collectionsData = flattenConnection(data.collections)
-    .filter((collection) => collection.onlineStoreUrl)
-    .map((collection) => {
-      const url = `${baseUrl}/collections/${collection.handle}`;
-
-      return {
-        url,
-        lastMod: collection.updatedAt,
-        changeFreq: 'daily',
-      };
-    });
+  const articlesData = articles.map((article: Article) => ({
+    url: `${baseUrl}/blog/${xmlEncode(article.blog.handle)}/${xmlEncode(
+      article.handle,
+    )}`,
+    lastMod: article.publishedAt || today,
+    changeFreq: 'daily',
+  }));
 
   const pagesData = flattenConnection(data.pages)
-    .filter((page) => page.onlineStoreUrl)
-    .map((page) => {
-      const url = `${baseUrl}/pages/${page.handle}`;
+    .filter((page: any) => page.onlineStoreUrl)
+    .map((page: any) => {
+      const url = `${baseUrl}/pages/${xmlEncode(page.handle)}`;
 
       return {
         url,
         lastMod: page.updatedAt,
-        changeFreq: 'weekly',
+        changeFreq: 'daily',
       };
     });
 
-  const urlsDatas = [...productsData, ...collectionsData, ...pagesData];
+  const projectsData = flattenConnection(data.projects).map((project: any) => ({
+    url: `${baseUrl}/project/${xmlEncode(project.handle)}`,
+    lastMod: project.updatedAt,
+    changeFreq: 'daily',
+  }));
+
+  const urlsDatas = [
+    ...staticPagesData,
+    ...projectsData,
+    ...pagesData,
+    ...blogsData,
+    ...articlesData,
+  ];
 
   return `
     <urlset
@@ -145,36 +157,35 @@ function renderUrlTag({
 const SITEMAP_QUERY = `#graphql
   query sitemaps($urlLimits: Int, $language: LanguageCode)
   @inContext(language: $language) {
-    products(
-      first: $urlLimits
-      query: "published_status:'online_store:visible'"
-    ) {
-      nodes {
-        updatedAt
-        handle
-        onlineStoreUrl
-        title
-        featuredImage {
-          url
-          altText
-        }
-      }
-    }
-    collections(
-      first: $urlLimits
-      query: "published_status:'online_store:visible'"
-    ) {
-      nodes {
-        updatedAt
-        handle
-        onlineStoreUrl
-      }
-    }
     pages(first: $urlLimits, query: "published_status:'published'") {
       nodes {
         updatedAt
         handle
         onlineStoreUrl
+      }
+    }
+    blogs(first: $urlLimits, query: "published_status:'published'") {
+      nodes {
+        handle
+        onlineStoreUrl
+        articles(first: $urlLimits, query: "tag:'__pacelli'") {
+          nodes {
+            handle
+            onlineStoreUrl
+            publishedAt
+            blog {
+              handle
+            }
+          }
+        }
+      }
+    }
+    projects: metaobjects(type: "project", first: $urlLimits, reverse: true) {
+      nodes {
+        handle
+        id
+        type
+        updatedAt
       }
     }
   }

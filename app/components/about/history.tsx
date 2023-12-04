@@ -1,20 +1,23 @@
 import clsx from 'clsx';
 import Heading from '../common/heading';
 import {Text} from '../Text';
+import history from '~/assets/images/image_about_history.png';
+import {useTranslation} from 'react-i18next';
 
 interface HistoryProps {
   className?: string;
 }
 
 const History: React.FC<HistoryProps> = ({className = ''}) => {
+  const {t} = useTranslation('about');
   return (
     <section className={clsx('py-[60px] md:py-[90px]', className)}>
       <div className="base-container py-0">
-        <Heading className="mb-6">La nostra storia</Heading>
+        <Heading className="mb-6">{t('about:history.title')}</Heading>
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-12 md:col-span-5">
             <img
-              src="https://cdn.shopify.com/s/files/1/0816/1971/4346/files/image_about_history.png?v=1695266697"
+              src={history}
               alt="History"
               width={500}
               height={870}
@@ -23,51 +26,16 @@ const History: React.FC<HistoryProps> = ({className = ''}) => {
           </div>
           <div className="col-span-12 md:col-span-7">
             <Text as="p" className="text-gray-900 mb-8 max-w-auto leading-7">
-              La progettazione di interni per Pacelli è una testimonianza di
-              dedizione e passione che ha attraversato più di tre generazioni.
-              Fin dal dopoguerra, questa famiglia ha contribuito in modo
-              significativo all&apos;evoluzione di questo settore in continua
-              trasformazione. Il capitolo iniziale di questa affascinante storia
-              si apre nel lontano 1968, quando il visionario Ivo Pacelli compie
-              una mossa audace e rivoluzionaria. Da un&apos;attività di vendita
-              che abbracciava una vasta gamma di prodotti, tra cui alimentari e
-              mangimi, Ivo decide di concentrarsi su qualcosa di diverso: i
-              mobili. Inizialmente, i locali in cui operavano rimasero gli
-              stessi, ma il suo spirito intraprendente, unito alla crescente
-              richiesta di arredi di qualità, spinse la famiglia Pacelli a
-              sognare in grande. Alla fine degli anni &apos;70, il bisogno di
-              spazio divenne evidente, e fu in questo momento cruciale che
-              nacque la sede &quot;storica&quot; dell&apos;azienda.
-              L&apos;edificio consisteva in una struttura in muratura
-              sottostante a un grande spazio agibile in prefabbricato, uno dei
-              primi di tutta la zona.
+              {t(
+                'about:history.description1',
+                "Interior design for Pacelli is a testament to dedication and passion that has spanned more than three generations. Since the post-war period, this family has contributed significantly to the evolution of this ever-changing sector. The initial chapter of this fascinating story opens way back in 1968, when the visionary Ivo Pacelli makes a bold and revolutionary move. From a sales business that spanned a wide range of products, including food and feed, Ivo decided to focus on something different: furniture. Initially, the premises in which they operated remained the same, but his enterprising spirit, combined with the growing demand for quality furnishings, pushed the Pacelli family to dream big. At the end of the 1970s, the need for space became evident, and it was at this crucial moment that the company's historic headquarters was born. The building consisted of a masonry structure beneath a large prefabricated usable space, one of the first in the entire area.",
+              )}
             </Text>
             <Text as="p" className="text-gray-900 mb-8 max-w-auto leading-7">
-              Questa sede rappresentava l&apos;impegno e la determinazione della
-              famiglia Pacelli nel settore dell&apos;arredamento. I risultati di
-              tanta dedizione e impegno non si fecero attendere, e appena dieci
-              anni dopo il primo ampliamento, l&apos;azienda si trovò nella
-              necessità di abbattere nuovamente lo stabile originario per
-              costruirne uno nuovo, questa volta con tre piani. Al cuore di
-              questa azienda c&apos;è una squadra eccezionale di professionisti
-              altamente qualificati, guidati dalla visione e dalla leadership di
-              Paolo Pacelli, il figlio di Ivo, che con dedizione e passione
-              guida l&apos;azienda da ormai 30 anni. Questo impegno per
-              l&apos;eccellenza si traduce in un&apos;offerta senza pari di
-              servizi e prodotti per l&apos;arredamento, dalla progettazione di
-              interni ed esterni all&apos;arredamento per il bagno, dai prodotti
-              tessili all&apos;illuminazione, dall’ oggettistica alla carta da
-              parati. La sede storica rappresenta ancora oggi il cuore pulsante
-              di questa azienda. Qui, le tradizioni di famiglia vengono
-              custodite gelosamente, mentre la passione per l&apos;arredamento
-              di alta qualità continua a guidare l&apos;azienda verso nuovi
-              orizzonti di successo. In sintesi, la sede storica di Pacelli è
-              molto più di un luogo fisico: qui le radici familiari si
-              intrecciano con la creatività contemporanea, dove
-              l&apos;arredamento di alta qualità è una forma d&apos;arte che si
-              evolve costantemente. È il fulcro in cui il passato e il futuro si
-              abbracciano, dando vita a un&apos;azienda che incarna
-              l&apos;essenza del design senza tempo.
+              {t(
+                'about:history.description2',
+                "This headquarters represented the commitment and determination of the Pacelli family in the furniture sector. The results of such dedication and commitment were not long in coming, and just ten years after the first expansion, the company found itself having to demolish the original building again to build a new one, this time with three floors. At the heart of this company is an exceptional team of highly qualified professionals, guided by the vision and leadership of Paolo Pacelli, Ivo's son, who has led the company with dedication and passion for 30 years now. This commitment to excellence translates into an unparalleled offering of furnishing services and products, from interior and exterior design to bathroom furnishings, from textile products to lighting, from objects to wallpaper . The historic headquarters still represents the beating heart of this company today. Here, family traditions are jealously guarded, while the passion for high-quality furniture continues to guide the company towards new horizons of success. In summary, Pacelli's historic headquarters is much more than a physical place: here family roots are intertwined with contemporary creativity, where high-quality furniture is an art form that constantly evolves. It is the hub where the past and future embrace each other, creating a company that embodies the essence of timeless design.",
+              )}
             </Text>
           </div>
         </div>

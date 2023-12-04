@@ -1,18 +1,23 @@
 {
+  "seo": {
+    "title": "Home",
+    "titleTemplate": "%s | Pacelli Arredamenti",
+    "description": "Esplora la tradizione italiana dell'arredamento di qualità con Pacelli Arredamenti. Con oltre 50 anni di esperienza, collaboriamo con oltre 50 brand di eccellenza, offrendo una vasta gamma di prodotti"
+  },
   "description": {
-    "item1": "This is a non-page component that requires its own namespace"
+    "item1": "Explore the Italian tradition of quality furniture with Pacelli Arredamenti. With over 50 years of experience, we collaborate with over 50 excellent brands, offering a vast range of products"
   },
   "hero": {
     "item1": {
-      "title": "The Italian tradition\nof quality furnishings"
+      "title": "Quality furnishings"
     },
     "item2": {
-      "title": "100+",
+      "title": "1000+",
       "subtitle": "Completed\nprojects"
     },
     "item3": {
       "title": "50+",
-      "subtitle": "Years in business"
+      "subtitle": "Anni di attività"
     },
     "item4": {
       "title": "50+",
@@ -24,28 +29,75 @@
     },
     "item6": {
       "title": "2000+",
-      "subtitle": "Prodotti nel\ncatalogo"
+      "subtitle": "Products in\ncatalogue"
     },
     "item7": {
-      "title": "L’arredamento\nche stai cercando",
-      "desc": "Pacelli Arredamenti è il punto di riferimento dove trovare la migliore selezione di cucine, camere da letto, camerette, soggiorni, divani, poltrone, tendaggi, materassi e reti, illuminazione, arredo ufficio e decorazioni."
+      "title": "The furniture\nyou are looking for",
+      "desc": "Pacelli Arredamenti is the point of reference where you can find the best selection of kitchens, bedrooms, children's rooms, living rooms, sofas, armchairs, curtains, mattresses and bed bases, lighting, office furniture and decorations."
     },
     "learn_more": "Learn more"
   },
+  "about": {
+    "title": "Who we are",
+    "item1": {
+      "title": "Mission",
+      "subtitle": "Creating extraordinary environments that transform customer visions into reality, ensuring successful experiences"
+    },
+    "item2": {
+      "title": "Why us",
+      "subtitle": "Choosing Pacelli Arredamenti is a unique experience, with quality and convenience that come together to make your furnishing dreams come true"
+    },
+    "item3": {
+      "title": "Strengths",
+      "subtitle": "Our success is built on high-quality products, precision and a commitment to trust and transparency"
+    }
+  },
   "brand": {
     "title": "Along with the best brands",
-    "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+    "subtitle1": "We are proud to say that the companies we supply are considered the best in the furniture market. Companies oriented towards the search for modern and creative solutions and attentive to changes in home living and furnishings",
+    "subtitle2": "Quality, innovation, reliability and collaboration are the fundamental principles on which our relationship with these exceptional partners is based"
   },
   "social-proof": {
     "title": "What they say about us",
-    "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+    "item1": {
+      "author": "Geltrude",
+      "excerpt": "Happy to have entrusted myself to you who were super professional and managed to meet my taste by very gracefully creating the laboratory I have always dreamed of"
+    },
+    "item2": {
+      "author": "Maria",
+      "excerpt": "Paolo is a great professional. He always knows how to advise you with kindness and awareness of his knowledge!"
+    },
+    "item3": {
+      "author": "Marajà",
+      "excerpt": "Thank you Paolo for perfectly realizing our idea. Congratulations for your professionalism, kindness and precision. Thank you angora from the whole Marajà family"
+    },
+    "item4": {
+      "author": "Franco",
+      "excerpt": "Thanks to Arredamenti Pacelli for the professionalism and competence in the design and assembly of my new kitchen, I received many compliments from my friends"
+    },
+    "item5": {
+      "author": "Lino",
+      "excerpt": "Professionalism personified, a beautiful person. I had the pleasure of collaborating with them, passion without end"
+    },
+    "item6": {
+      "author": "Agostino",
+      "excerpt": "Thank you for your immense professionalism"
+    },
+    "item7": {
+      "author": "Claudia",
+      "excerpt": "They reach everywhere and bring you a piece of home"
+    },
+    "item8": {
+      "author": "Vincenzo",
+      "excerpt": "Thank you very much to you Paolo and your staff for your great professionalism and availability, it was a real pleasure for me too to collaborate with you"
+    }
   },
   "booking": {
     "title": "Make an appointment with us",
-    "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+    "subtitle": "Do you want an environment that reflects your personality and meets your needs? Book an appointment with us, and we will be happy to help you in the initial evaluation of your spaces to be furnished. Our team of experts will assist you in designing the best solution for you. Let's make your home decor dreams a reality. Contact us today!"
   },
   "blog": {
-    "title": "Blogs",
+    "title": "News",
     "view_all": "View all"
   }
 }

@@ -1,0 +1,25 @@
+{
+  "seo": {
+    "title": "FAQs",
+    "titleTemplate": "%s | Pacelli Arredamenti",
+    "description": "Esplora la tradizione italiana dell'arredamento di qualità con Pacelli Arredamenti. Con oltre 50 anni di esperienza, collaboriamo con oltre 50 brand di eccellenza, offrendo una vasta gamma di prodotti"
+  },
+  "description": "We offer free measurement, design and assembly services, guaranteeing maximum convenience and unlimited assistance to satisfy your design and furnishing needs",
+  "title": "Frequently Asked Question",
+  "item1": {
+    "question": "Do you provide the measurement taking service? is it for paid?",
+    "answer": "We offer complete and personalized consultancy to realize your design project. We start with a free measurement survey, which allows us to fully understand the space available to you and your needs. This service is our starting point for creating a bespoke project that fits your expectations perfectly. Furthermore, we also offer you free design and rendering service. Using advanced tools, we transform your vision into a detailed visual representation, allowing us to visualize your future environment before it becomes reality. This service helps you make informed decisions and refine every aspect of your project."
+  },
+  "item2": {
+    "question": "How long is the warranty for the furniture purchased?",
+    "answer": "We offer an after-sales assistance service without time limits. We are here for you today, tomorrow and always. Our dedication to meeting your needs and solving any problems knows no expiration. Your complete satisfaction is our top priority, and we stand ready to offer ongoing support and assistance"
+  },
+  "item3": {
+    "question": "Does the final price also include delivery and assembly?",
+    "answer": "To ensure maximum convenience for our customers, we offer free delivery and assembly. We are here to make your life easier and as smooth as possible. In the vast majority of cases, there are no additional costs for delivery and assembly. However, we understand that there may be exceptional situations where we would need to deliver long distances. In these circumstances, we will evaluate the situation on a case-by-case basis and, if necessary, agree a fair expense reimbursement. Our priority is to meet your needs and make the process as easy as possible for you. Transparency is key, and we are committed to ensuring that you fully understand every aspect of delivery and assembly."
+  },
+  "item4": {
+    "question": "What are the delivery times?",
+    "answer": "Delivery times vary based on the specifics of your project.\nFor example, when it comes to creating a bespoke kitchen, we take every detail into account, including any out-of-squares and customizations you have requested.\nOn average, the delivery time delivery time for a project of this kind is approximately 40 days. However, it is important to emphasize that the precision and attention we put into each step of the process is an investment in the final result. Your custom kitchen will be a culinary work of art worth waiting for"
+  }
+}

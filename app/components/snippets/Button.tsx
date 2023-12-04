@@ -49,6 +49,7 @@ export function Button(props: Props) {
   return (
     <button
       onClick={props.onClick}
+      type="submit"
       className={clsx(
         'pointer-events-auto rounded-md font-semibold leading-5 ',
         colors[props.color || 'primary'],
