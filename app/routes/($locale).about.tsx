@@ -9,6 +9,7 @@ import Mission from '~/components/about/mission';
 import Reason from '~/components/about/reason';
 import StrongPoint from '~/components/about/strong-point';
 import History from '~/components/about/history';
+import {getFixedT} from '~/lib/utils';
 
 export const headers = routeHeaders;
 
@@ -24,7 +25,8 @@ export async function loader({params, context}: LoaderArgs) {
   //   throw new Response(null, {status: 404});
   // }
 
-  const seo = seoPayload.home();
+  const t = await getFixedT(context.storefront, 'about');
+  const seo = seoPayload.landingpage(t);
 
   return defer({
     analytics: {
@@ -37,11 +39,15 @@ export async function loader({params, context}: LoaderArgs) {
 export default function AboutPage() {
   return (
     <>
-      <Hero />
       <Mission />
       <Reason />
       <StrongPoint />
       <History />
+      <Hero />
     </>
   );
 }
+
+export const handle = {
+  i18n: ['common', 'header', 'about'],
+};

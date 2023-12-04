@@ -10,7 +10,7 @@ import {useFetcher, useLocation, useMatches} from '@remix-run/react';
 
 import {DEFAULT_LOCALE} from '~/lib/utils';
 import {useInView} from 'react-intersection-observer';
-import AngleDown from '../icons/angle-down';
+import chevron_down from '~/assets/icons/chevron-down.png';
 
 interface LanguagesSelectorProps {
   className?: string;
@@ -35,9 +35,7 @@ const LanguagesSelector: React.FC<LanguagesSelectorProps> = ({
 
   const countries = (fetcher.data ?? {}) as Localizations;
   const defaultLocale = countries?.['default'];
-  const defaultLocalePrefix = defaultLocale
-    ? `${defaultLocale?.language}-${defaultLocale?.country}`
-    : '';
+  const defaultLocalePrefix = defaultLocale ? `${defaultLocale?.language}` : '';
 
   const {ref, inView} = useInView({
     threshold: 0,
@@ -78,22 +76,27 @@ const LanguagesSelector: React.FC<LanguagesSelectorProps> = ({
       className={clsx('flex gap-4 justify-center', className)}
       onMouseLeave={closeDropdown}
     >
-      {showLabel && <h4 className="cursor-default">{t('language')}</h4>}
+      {showLabel && (
+        <h4 className="cursor-default">{t('language', 'Lingua')}</h4>
+      )}
       <div className="relative">
         <details className="group rounded-none" ref={closeRef}>
           <summary className="flex items-center rounded-full bg-gray-200 justify-between px-4 py-1 text-sm md:text-base cursor-pointer">
             {selectedLocale.language}
-            <AngleDown className="group-open:rotate-180 transition duration-150 ml-1" />
+            <img
+              src={chevron_down}
+              className="w-4 h-4 group-open:rotate-180  transition duration-150 ml-1"
+              alt=""
+            />
           </summary>
-          <div className="transition duration-150 absolute w-full top-full right-0 rounded overflow-auto bg-white max-w-full">
+          <div className="transition duration-150 absolute w-full top-full right-0 rounded overflow-auto bg-white max-w-full shadow-md">
             {availableLocales &&
               Object.keys(availableLocales).map((countryPath) => {
                 const countryLocale = availableLocales[countryPath];
                 const isSelected =
-                  countryLocale.language === selectedLocale.language &&
-                  countryLocale.country === selectedLocale.country;
+                  countryLocale.language === selectedLocale.language;
 
-                const countryUrlPath = getCountryUrlPath({
+                const countryUrlPath = getLocaleUrlPath({
                   countryLocale,
                   defaultLocalePrefix,
                   pathWithoutLocale,
@@ -130,13 +133,7 @@ function Language({
   isSelected: boolean;
 }) {
   return (
-    <ChangeLocaleForm
-      key={countryLocale.country}
-      redirectTo={countryUrlPath}
-      buyerIdentity={{
-        countryCode: countryLocale.country,
-      }}
-    >
+    <ChangeLocaleForm key={countryLocale.country} redirectTo={countryUrlPath}>
       <Button
         className={clsx([
           'bg-white w-full p-2 transition flex justify-start',
@@ -157,22 +154,21 @@ function Language({
 
 function ChangeLocaleForm({
   children,
-  buyerIdentity,
   redirectTo,
 }: {
   children: React.ReactNode;
-  buyerIdentity: CartBuyerIdentityInput;
   redirectTo: string;
 }) {
+  const fetcher = useFetcher();
   return (
-    <>
+    <fetcher.Form method="post" action="/locale">
       <input type="hidden" name="redirectTo" value={redirectTo} />
       {children}
-    </>
+    </fetcher.Form>
   );
 }
 
-function getCountryUrlPath({
+function getLocaleUrlPath({
   countryLocale,
   defaultLocalePrefix,
   pathWithoutLocale,
@@ -182,8 +178,7 @@ function getCountryUrlPath({
   defaultLocalePrefix: string;
 }) {
   let countryPrefixPath = '';
-  const countryLocalePrefix = `${countryLocale.language}-${countryLocale.country}`;
-
+  const countryLocalePrefix = `${countryLocale.language}`;
   if (countryLocalePrefix !== defaultLocalePrefix) {
     countryPrefixPath = `/${countryLocalePrefix.toLowerCase()}`;
   }

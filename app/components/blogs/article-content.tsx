@@ -5,21 +5,22 @@ import dayjs from 'dayjs';
 import Tag from '~/components/common/icons/tag';
 import Share from '../common/icons/share';
 import {FacebookShareButton} from 'react-share';
-import {useNavigate} from '@remix-run/react';
+import {useLoaderData, useNavigate} from '@remix-run/react';
 import arrowRight from '~/assets/icons/arrow-right.svg';
 import {Button} from '~/components/snippets';
+import {useTranslation} from 'react-i18next';
 
 interface ArticleContentProps {
   className?: string;
   article: Article;
 }
 
-const ArticleContent: React.FC<ArticleContentProps> = ({
-  className = '',
-  article,
-}) => {
+const ArticleContent: React.FC<ArticleContentProps> = ({article}) => {
+  const {currentUrl} = useLoaderData();
+  const {t} = useTranslation('common');
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
+
   return (
     <>
       <article>
@@ -33,24 +34,27 @@ const ArticleContent: React.FC<ArticleContentProps> = ({
               {article.blog?.title}
             </span>
           ) : null}
-          <FacebookShareButton url={''}>
+          <FacebookShareButton url={currentUrl || ''}>
             <span className="text-gray-400 flex text-sm uppercase items-center gap-2">
               <Share className="text-gray-400 w-4 h-4 " />
-              SHARE
+              {t('button.share', 'CONDIVIDI')}
             </span>
           </FacebookShareButton>
         </div>
         <Heading
           variant="h1"
-          className="text-primary text-[64px] leading-[78px] font-semibold mb-6"
+          className="text-primary !text-[40px] md:!text-[64px] !leading-[60px] md:!leading-[78px] font-semibold mb-6"
         >
           {article.title}
         </Heading>
         {article.excerptHtml ? (
-          <HTMLContent className="mb-6" htmlString={article.excerptHtml} />
+          <HTMLContent
+            className="w-full mb-6 text-gray-900"
+            htmlString={article.excerptHtml}
+          />
         ) : null}
         <HTMLContent
-          className="max-w-[80ch]"
+          className="w-full max-w-full !overflow-hidden"
           htmlString={article.contentHtml}
         />
       </article>
@@ -59,8 +63,12 @@ const ArticleContent: React.FC<ArticleContentProps> = ({
         size="md"
         onClick={goBack}
       >
-        <img className="duration-200 rotate-180" src={arrowRight} alt="Back" />
-        back
+        <img
+          className="duration-200 rotate-180 object-cover"
+          src={arrowRight}
+          alt="Back"
+        />
+        {t('button.back', 'Indietro')}
       </Button>
     </>
   );

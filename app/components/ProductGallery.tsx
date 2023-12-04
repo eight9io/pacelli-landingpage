@@ -84,7 +84,7 @@ export function ProductGallery({
             <img
               aria-label={med.alt}
               aria-hidden={activeIndex !== i}
-              className="w-auto h-full"
+              className="w-auto h-full object-cover"
               alt={med.alt || ''}
               src={med.previewImage?.url}
             />

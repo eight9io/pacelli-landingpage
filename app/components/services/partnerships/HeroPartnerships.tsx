@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import services from '~/assets/services/services-1.png';
+import services from '~/assets/services/services-5.jpg';
 interface HeroPartnershipsProps {
   className?: string;
 }
@@ -8,9 +8,9 @@ const HeroPartnerships: React.FC<HeroPartnershipsProps> = ({
   className = '',
 }) => {
   return (
-    <section className={clsx(' py-[30px] md:py-[90px] mt-12', className)}>
+    <section className={clsx('py-24 md:py-32 mt-12', className)}>
       <div className="base-container">
-        <div className="grid grid-cols-12 ">
+        <div className="grid grid-cols-12">
           <div className="col-span-12 lg:col-span-9">
             <img
               src={services}

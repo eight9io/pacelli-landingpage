@@ -120,7 +120,7 @@ export default function GalleryHorizontal() {
             <img
               aria-label={alt}
               aria-hidden={activeIndex !== index}
-              className="w-auto h-full"
+              className="w-auto h-full object-cover"
               alt={alt}
               src={imageSrc}
             />
@@ -167,7 +167,7 @@ export default function GalleryHorizontal() {
           >
             <img
               alt={alt}
-              className="object-contain border border-neutral-200"
+              className="object-contain border border-neutral-200 object-cover"
               width="78"
               height="78"
               src={imageThumbSrc}

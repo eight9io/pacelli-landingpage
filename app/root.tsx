@@ -3,6 +3,7 @@ import {
   type LinksFunction,
   type LoaderArgs,
   type AppLoadContext,
+  redirect,
 } from '@shopify/remix-oxygen';
 import {
   isRouteErrorResponse,
@@ -16,11 +17,13 @@ import {
   useMatches,
   useRouteError,
   type ShouldRevalidateFunction,
+  useLocation,
 } from '@remix-run/react';
 import {ShopifySalesChannel, Seo, useNonce} from '@shopify/hydrogen';
 import invariant from 'tiny-invariant';
 
 import Layout from '~/components/layouts/default';
+import ComingSoonLayout from '~/components/layouts/coming-soon';
 import {seoPayload} from '~/lib/seo.server';
 
 import favicon from '../public/favicon.svg';
@@ -32,7 +35,11 @@ import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
 import {useAnalytics} from './hooks/useAnalytics';
 import {useChangeLanguage} from 'remix-i18next';
 import {LAYOUT_QUERY} from './graphql/common';
-
+import {RootContext} from './hooks/useRootContext';
+import i18n from '../i18n.server';
+import {useTranslation} from 'react-i18next';
+import {useEffect} from 'react';
+import NextTopLoader from 'nextjs-toploader';
 // This is important to avoid re-fetching root queries on sub-navigations
 export const shouldRevalidate: ShouldRevalidateFunction = ({
   formMethod,
@@ -63,23 +70,24 @@ export const links: LinksFunction = () => {
       rel: 'preconnect',
       href: 'https://shop.app',
     },
-    // {rel: 'icon', type: 'image/svg+xml', href: favicon},
-    {
-      rel: 'icon',
-      type: 'image/png',
-      href: 'https://cdn.shopify.com/s/files/1/0622/9511/3954/files/32x32.png?v=1671002587',
-    },
+    {rel: 'icon', type: 'image/svg+xml', href: favicon},
   ];
 };
 
 export async function loader({request, context}: LoaderArgs) {
-  const {session, storefront, cart} = context;
+  const {session, storefront, cart, env} = context;
   const [customerAccessToken, layout] = await Promise.all([
     session.get('customerAccessToken'),
     getLayoutData(context),
   ]);
 
-  const seo = seoPayload.root({shop: layout.shop, url: request.url});
+  const {language} = storefront.i18n;
+  const t = await i18n.getFixedT(language.toLowerCase(), 'common');
+  const seo = seoPayload.root({shop: layout.shop, url: request.url, t});
+
+  if (!request.url.endsWith('/coming-soon') && env.PUBLIC_IS_COMING_SOON) {
+    return redirect('/coming-soon');
+  }
 
   return defer({
     isLoggedIn: Boolean(customerAccessToken),
@@ -91,18 +99,20 @@ export async function loader({request, context}: LoaderArgs) {
       shopId: layout.shop.id,
     },
     seo,
+    ENV: env,
   });
 }
 export const handle = {
   // In the handle export, we could add a i18n key with namespaces our route
   // will need to load. This key can be a single string or an array of strings.
-  i18n: ['common', 'home'],
+  i18n: ['common', 'home', 'header'],
 };
 
 export default function App() {
   const nonce = useNonce();
   const data = useLoaderData<typeof loader>();
   const locale = data.selectedLocale ?? DEFAULT_LOCALE;
+  const location = useLocation();
   const hasUserConsent = true;
 
   useAnalytics(hasUserConsent);
@@ -111,7 +121,14 @@ export default function App() {
   // detected by the loader, this way, when we do something to change the
   // language, this locale will change and i18next will load the correct
   // translation files
-  useChangeLanguage(locale.language.toLowerCase());
+  // useChangeLanguage(locale.language.toLowerCase());
+
+  const {i18n} = useTranslation();
+  useEffect(() => {
+    if (!locale.language) return;
+    if (i18n.language === locale.language.toLowerCase()) return;
+    i18n.changeLanguage(locale.language.toLowerCase());
+  }, [locale.language, location.pathname, i18n]);
 
   return (
     <html lang={locale.language}>
@@ -122,13 +139,35 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="bg-white">
-        <Layout key={`${locale.language}-${locale.country}`}>
-          <Outlet />
-        </Layout>
-        <ScrollRestoration nonce={nonce} />
-        <Scripts nonce={nonce} />
-        <LiveReload nonce={nonce} />
+      <body id="root" className="bg-white">
+        <NextTopLoader
+          color="#2a4542"
+          initialPosition={0.3}
+          crawlSpeed={800}
+          height={3}
+          showSpinner={false}
+          easing="ease"
+          speed={1000}
+          shadow="0 0 10px #2299DD,0 0 5px #2299DD"
+        />
+        <RootContext.Provider
+          value={{
+            ENV: data.ENV,
+          }}
+        >
+          {data.ENV.PUBLIC_IS_COMING_SOON ? (
+            <ComingSoonLayout key={`${locale.language}`}>
+              <Outlet />
+            </ComingSoonLayout>
+          ) : (
+            <Layout key={`${locale.language}`}>
+              <Outlet />
+            </Layout>
+          )}
+          <ScrollRestoration nonce={nonce} />
+          <Scripts nonce={nonce} />
+          <LiveReload nonce={nonce} />
+        </RootContext.Provider>
       </body>
     </html>
   );
@@ -158,8 +197,8 @@ export function ErrorBoundary({error}: {error: Error}) {
         <Meta />
         <Links />
       </head>
-      <body>
-        <Layout key={`${locale.language}-${locale.country}`}>
+      <body id="root">
+        <Layout key={`${locale.language}`}>
           {isRouteError ? (
             <>
               {routeError.status === 404 ? (

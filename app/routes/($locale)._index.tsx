@@ -1,4 +1,4 @@
-import {defer, type LoaderArgs} from '@shopify/remix-oxygen';
+import {AppLoadContext, json, type LoaderArgs} from '@shopify/remix-oxygen';
 import {useLoaderData} from '@remix-run/react';
 import {AnalyticsPageType} from '@shopify/hydrogen';
 
@@ -12,32 +12,50 @@ import SocialProof from '~/components/home/social-proof';
 import About from '~/components/home/about';
 
 import {FEATURED_BLOG_QUERY} from '~/graphql/blogs';
+import {HOME_CAROUSEL_QUERY} from '~/graphql/carousel';
+import {parseCarousel} from '~/lib/shopify';
+import invariant from 'tiny-invariant';
+import {cacheNoneInStaging, getFixedT} from '~/lib/utils';
 
 export const headers = routeHeaders;
 
-export async function loader({params, context}: LoaderArgs) {
-  const {language, country} = context.storefront.i18n;
+const getHomeCarousel = async (context: AppLoadContext) => {
+  const {env} = context;
+  const data = await context.storefront.query(HOME_CAROUSEL_QUERY, {
+    variables: {handle: env.PUBLIC_HOME_CAROUSEL_HANDLE || 'home'},
+    cache: cacheNoneInStaging(context),
+  });
 
-  if (
-    params.locale &&
-    params.locale.toLowerCase() !== `${language}-${country}`.toLowerCase()
-  ) {
+  invariant(data, 'No carousel data found');
+  invariant(data.metaobject, 'No carousel data found');
+
+  return parseCarousel(data.metaobject);
+};
+
+export async function loader({params, context, request}: LoaderArgs) {
+  const {language, country} = context.storefront.i18n;
+  const t = await getFixedT(context.storefront, 'home');
+
+  if (params.locale && params.locale.toLowerCase() !== language.toLowerCase()) {
     // If the locale URL param is defined, yet we still are on `EN-US`
     // the the locale param must be invalid, send to the 404 page
     throw new Response(null, {status: 404});
   }
 
   const {articles} = await context.storefront.query(FEATURED_BLOG_QUERY, {
-    variables: {first: 3},
+    variables: {first: 10},
+    cache: cacheNoneInStaging(context),
   });
-  const seo = seoPayload.home();
 
-  return defer({
+  const carousels = await getHomeCarousel(context);
+
+  return json({
     articles: articles?.nodes,
     analytics: {
       pageType: AnalyticsPageType.home,
     },
-    seo,
+    carousels,
+    seo: seoPayload.home(t),
   });
 }
 
@@ -55,3 +73,9 @@ export default function Homepage() {
     </>
   );
 }
+
+export const handle = {
+  i18n: ['common', 'header', 'home'],
+};
+
+export const shouldRevalidate = () => true;

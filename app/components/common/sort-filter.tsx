@@ -12,6 +12,7 @@ import {useDebounce} from 'react-use';
 import type {FilterType, Filter} from '@shopify/hydrogen/storefront-api-types';
 
 import {Heading, IconFilters, IconCaret, IconXMark, Text} from '~/components';
+import {useTranslation} from 'react-i18next';
 
 export type AppliedFilter = {
   label: string;
@@ -116,7 +117,7 @@ export function FiltersDrawer({
         );
     }
   };
-
+  const {t} = useTranslation('common');
   return (
     <>
       <nav className="py-8">
@@ -127,7 +128,7 @@ export function FiltersDrawer({
         ) : null}
 
         <Heading as="h4" size="lead" className="pb-4">
-          Filter By
+          {t('filter.title')}
         </Heading>
         <div className="divide-y">
           {filters.map(
@@ -165,10 +166,11 @@ export function FiltersDrawer({
 function AppliedFilters({filters = []}: {filters: AppliedFilter[]}) {
   const [params] = useSearchParams();
   const location = useLocation();
+  const {t} = useTranslation('common');
   return (
     <>
       <Heading as="h4" size="lead" className="pb-4">
-        Applied filters
+        {t('filter.applied_filters')}
       </Heading>
       <div className="flex flex-wrap gap-2">
         {filters.map((filter: AppliedFilter) => {
@@ -272,11 +274,11 @@ function PriceRangeFilter({max, min}: {max?: number; min?: number}) {
     const newMinPrice = (event.target as HTMLInputElement).value;
     setMinPrice(newMinPrice);
   };
-
+  const {t} = useTranslation('common');
   return (
     <div className="flex flex-col">
       <label className="mb-4">
-        <span>from</span>
+        <span>{t('filter.from')}</span>
         <input
           name="maxPrice"
           className="text-black"
@@ -287,7 +289,7 @@ function PriceRangeFilter({max, min}: {max?: number; min?: number}) {
         />
       </label>
       <label>
-        <span>to</span>
+        <span>{t('filter.to')}</span>
         <input
           name="minPrice"
           className="text-black"
@@ -358,12 +360,12 @@ export default function SortMenu() {
   const [params] = useSearchParams();
   const location = useLocation();
   const activeItem = items.find((item) => item.key === params.get('sort'));
-
+  const {t} = useTranslation('common');
   return (
     <Menu as="div" className="relative z-30 shadow">
       <Menu.Button className="flex items-center">
         <span className="px-2">
-          <span className="px-2 font-medium">Sort by:</span>
+          <span className="px-2 font-medium">{t('filter.sort_by')}</span>
           <span>{(activeItem || items[0]).label}</span>
         </span>
         <IconCaret />

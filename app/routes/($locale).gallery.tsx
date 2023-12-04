@@ -1,13 +1,16 @@
 import Booking from '~/components/home/booking';
 import SocialProof from '~/components/home/social-proof';
-import OutProjects from '~/components/gallery/OutProjects';
+import OwnProjects from '~/components/gallery/own-projects';
 import {LoaderArgs, json} from '@shopify/remix-oxygen';
-import {PROJECT_GALERRY_QUERY} from '~/graphql/gallery';
-import {parseObject} from '~/lib/utils';
+import {PROJECT_GALLERY_QUERY} from '~/graphql/gallery';
+import {cacheNoneInStaging, getFixedT, parseObject} from '~/lib/utils';
 import {useLoaderData} from '@remix-run/react';
+import {seoPayload} from '~/lib/seo.server';
 
-export async function loader({request, context: {storefront}}: LoaderArgs) {
-  const data = await storefront.query(PROJECT_GALERRY_QUERY);
+export async function loader({request, context}: LoaderArgs) {
+  const data = await context.storefront.query(PROJECT_GALLERY_QUERY, {
+    cache: cacheNoneInStaging(context),
+  });
   let projects = parseObject(data, 'metaobjects.nodes');
   const pageInfo = parseObject(data, 'metaobjects.pageInfo');
 
@@ -26,16 +29,27 @@ export async function loader({request, context: {storefront}}: LoaderArgs) {
     if (project.fields) {
       project.fields.forEach((field: any) => {
         if (!field.type.includes('list.')) {
-          handledProject[field.key] = field.value;
+          if (field.type === 'file_reference') {
+            handledProject[field.key] = parseObject(field, 'reference');
+          } else handledProject[field.key] = field.value;
         } else {
-          handledProject[field.key] = JSON.parse(field.value);
+          if (field.type === 'list.file_reference') {
+            let listImage = parseObject(field, 'references.nodes');
+            listImage = listImage.map((image: any) =>
+              parseObject(image, 'image.url'),
+            );
+            handledProject[field.key] = listImage;
+          } else handledProject[field.key] = JSON.parse(field.value);
         }
       });
     }
     return handledProject;
   });
 
-  return json({projects, pageInfo});
+  const t = await getFixedT(context.storefront, 'gallery');
+  const seo = seoPayload.landingpage(t);
+
+  return json({projects, pageInfo, seo});
 }
 
 export default function Homepage() {
@@ -43,10 +57,14 @@ export default function Homepage() {
 
   return (
     <>
-      <OutProjects projects={projects} pageInfo={pageInfo} />
+      <OwnProjects projects={projects} pageInfo={pageInfo} />
       <Booking />
-      <SocialProof />
-      {/* <FeaturedPost articles={articles as any} /> */}
     </>
   );
 }
+
+export const handle = {
+  i18n: ['common', 'header', 'gallery'],
+};
+
+export const shouldRevalidate = () => true;

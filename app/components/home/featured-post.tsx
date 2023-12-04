@@ -5,6 +5,7 @@ import Tag from '~/components/common/icons/tag';
 import clsx from 'clsx';
 import dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
+import {useTranslation} from 'react-i18next';
 
 dayjs.extend(localizedFormat);
 
@@ -17,6 +18,9 @@ const FeaturedPosts: React.FC<FeaturedPostsProps> = ({
   className = '',
   articles = [],
 }) => {
+  const t = useTranslation('home').t;
+  const firstThreeArticles = articles.slice(0, 3) || [];
+
   return (
     <section
       className={clsx('bg-white md:bg-base-100 md:py-[90px] pb-15', className)}
@@ -24,17 +28,17 @@ const FeaturedPosts: React.FC<FeaturedPostsProps> = ({
       <div className="base-container">
         <div className="flex justify-between items-center mb-4 md:mb-12">
           <h2 className="font-semibold text-[40px] md:text-[64px] text-gray-900 text-center">
-            News
+            {t('blog.title', 'News')}
           </h2>
           <Link
             to="/blogs"
             className="underline text-xl md:text-[32px] text-secondary font-light"
           >
-            View all
+            {t('blog.view_all', 'Vedi tutti')}
           </Link>
         </div>
         <div className="grid grid-cols-3 gap-8">
-          {articles.map((article) => (
+          {firstThreeArticles.map((article) => (
             <Link
               to={`/blog/${article.blog.handle}/${article.handle}`}
               className="col-span-3 md:col-span-1"

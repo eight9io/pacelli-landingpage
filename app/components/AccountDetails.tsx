@@ -1,3 +1,4 @@
+import {useTranslation} from 'react-i18next';
 import type {CustomerDetailsFragment} from 'storefrontapi.generated';
 import {Link} from '~/components';
 
@@ -7,7 +8,7 @@ export function AccountDetails({
   customer: CustomerDetailsFragment;
 }) {
   const {firstName, lastName, email, phone} = customer;
-
+  const {t} = useTranslation('common');
   return (
     <>
       <div className="grid w-full gap-4 p-4 py-6 md:gap-8 md:p-8 lg:p-12">
