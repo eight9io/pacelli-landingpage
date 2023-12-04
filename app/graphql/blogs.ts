@@ -264,3 +264,50 @@ export const BLOG_ARTICLE_DETAIL_QUERY = `#graphql
     excerpt
   }
 ` as const;
+
+export const BLOG_CATEGORIES = `#graphql
+  query BlogCategories(
+    $language: LanguageCode,
+    $handle: String!,
+  ) @inContext( language: $language) {
+    metaobject(handle: {type: "blog_category", handle: $handle}) {
+      handle
+      id
+      type
+      updatedAt
+      fields {
+        key
+        value
+        type 
+        reference {
+            ... on MediaImage {
+              image {
+                url
+              }
+            }
+            ... on Video {
+              previewImage {
+                url
+              }
+              sources {
+                url
+                mimeType
+                width
+                height
+                format
+              }
+            }
+        }
+        references(first: 10) {
+          nodes {
+            ... on MediaImage {
+              image {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+` as const;
