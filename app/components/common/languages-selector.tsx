@@ -79,7 +79,7 @@ const LanguagesSelector: React.FC<LanguagesSelectorProps> = ({
       {showLabel && (
         <h4 className="cursor-default">{t('language', 'Lingua')}</h4>
       )}
-      <div className="relative">
+      <div className="relative m-auto">
         <details className="group rounded-none" ref={closeRef}>
           <summary className="flex items-center rounded-full bg-gray-200 justify-between px-4 py-1 text-sm md:text-base cursor-pointer">
             {selectedLocale.language}

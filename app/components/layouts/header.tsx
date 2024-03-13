@@ -72,6 +72,13 @@ export function HeaderSection() {
         <div className="flex flex-1 justify-end">
           <LocaleSwitcher showLabel={false} />
           <Link
+            to="https://arredo24.com/"
+            target="_blank"
+            className="hidden md:block ml-5 font-bold text-white px-6 py-3 bg-secondary"
+          >
+            Shop
+          </Link>
+          <Link
             to="/"
             className="ml-5 inline-flex items-center justify-center rounded-md text-gray-700"
           >
@@ -123,6 +130,7 @@ export function HeaderSection() {
                           'peer hover:[&+div]:block max-w-[395px]',
                         )}
                         to={href}
+                        target={href.includes('https') ? '_blank' : undefined}
                         onClick={(event) => {
                           if (href === '#') {
                             event.preventDefault();
@@ -321,5 +329,10 @@ const mainMenuItems: MenuItem[] = [
     text: 'menu.faqs',
     href: '/faqs',
     label: 'Domande frequenti',
+  },
+  {
+    text: 'Shop',
+    href: 'https://arredo24.com/',
+    label: 'Shop',
   },
 ];
